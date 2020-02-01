@@ -120,6 +120,8 @@ Partial Class FormBanHang
         Me.nmCount.Location = New System.Drawing.Point(282, 20)
         Me.nmCount.Name = "nmCount"
         Me.nmCount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.nmCount.Properties.IsFloatValue = False
+        Me.nmCount.Properties.Mask.EditMask = "N00"
         Me.nmCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmCount.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nmCount.Size = New System.Drawing.Size(35, 20)
@@ -226,6 +228,8 @@ Partial Class FormBanHang
         Me.nmDiscount.Location = New System.Drawing.Point(82, 35)
         Me.nmDiscount.Name = "nmDiscount"
         Me.nmDiscount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.nmDiscount.Properties.IsFloatValue = False
+        Me.nmDiscount.Properties.Mask.EditMask = "N00"
         Me.nmDiscount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmDiscount.Size = New System.Drawing.Size(72, 20)
         Me.nmDiscount.TabIndex = 5
@@ -265,7 +269,10 @@ Partial Class FormBanHang
         Me.Controls.Add(Me.tableLayout)
         Me.Controls.Add(Me.MenuStrip)
         Me.MainMenuStrip = Me.MenuStrip
+        Me.MaximumSize = New System.Drawing.Size(816, 510)
+        Me.MinimumSize = New System.Drawing.Size(816, 510)
         Me.Name = "FormBanHang"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Phần mềm quản lý quán cafe"
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()

@@ -43,11 +43,21 @@ Partial Class FormDangNhap
         '
         Me.txtMatKhau.Location = New System.Drawing.Point(109, 48)
         Me.txtMatKhau.Name = "txtMatKhau"
+        Me.txtMatKhau.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtMatKhau.Size = New System.Drawing.Size(156, 20)
         Me.txtMatKhau.TabIndex = 1
         '
         'btnDangNhap
         '
+        Me.btnDangNhap.Appearance.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnDangNhap.Appearance.BackColor2 = System.Drawing.Color.DodgerBlue
+        Me.btnDangNhap.Appearance.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.btnDangNhap.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.btnDangNhap.Appearance.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.btnDangNhap.Appearance.Options.UseBackColor = True
+        Me.btnDangNhap.Appearance.Options.UseBorderColor = True
+        Me.btnDangNhap.Appearance.Options.UseFont = True
+        Me.btnDangNhap.Appearance.Options.UseForeColor = True
         Me.btnDangNhap.Location = New System.Drawing.Point(109, 88)
         Me.btnDangNhap.Name = "btnDangNhap"
         Me.btnDangNhap.Size = New System.Drawing.Size(75, 23)
@@ -74,6 +84,13 @@ Partial Class FormDangNhap
         '
         'btnThoat
         '
+        Me.btnThoat.Appearance.BackColor = System.Drawing.Color.Red
+        Me.btnThoat.Appearance.BackColor2 = System.Drawing.Color.Red
+        Me.btnThoat.Appearance.BorderColor = System.Drawing.Color.Red
+        Me.btnThoat.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.btnThoat.Appearance.Options.UseBackColor = True
+        Me.btnThoat.Appearance.Options.UseBorderColor = True
+        Me.btnThoat.Appearance.Options.UseForeColor = True
         Me.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnThoat.Location = New System.Drawing.Point(190, 88)
         Me.btnThoat.Name = "btnThoat"
@@ -92,7 +109,10 @@ Partial Class FormDangNhap
         Me.Controls.Add(Me.btnDangNhap)
         Me.Controls.Add(Me.txtMatKhau)
         Me.Controls.Add(Me.txtTenDangNhap)
+        Me.MaximumSize = New System.Drawing.Size(293, 161)
+        Me.MinimumSize = New System.Drawing.Size(293, 161)
         Me.Name = "FormDangNhap"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Đăng Nhập"
         CType(Me.txtTenDangNhap.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMatKhau.Properties, System.ComponentModel.ISupportInitialize).EndInit()

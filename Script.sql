@@ -1,11 +1,12 @@
 CREATE DATABASE QUANCAFE;
 
+use QUANCAFE;
+
 CREATE TABLE POSITIONS
 (
 	id int identity(1,1) primary key,
 	name nvarchar(max) not null
 )
-GO
 
 CREATE TABLE STAFFS
 (
@@ -13,13 +14,13 @@ CREATE TABLE STAFFS
 	 fullname nvarchar(max) not null,
 	 dateofbirth date not null,
 	 sex int not null,
+	 idCard varchar(max), 
 	 address nvarchar(max) not null,
 	 phone nvarchar(11) null,
 	 idPosition int,
 
 	 foreign key (idPosition) references POSITIONS(id)
 )
-go
 
 CREATE TABLE ACCOUNTS
 (
@@ -30,14 +31,12 @@ CREATE TABLE ACCOUNTS
 
 	foreign key (idStaff) references STAFFS(id)
 )
-GO
 
 CREATE TABLE CATEGORYS
 (
 	id int identity(1,1) primary key,
 	name nvarchar(max) not null
 )
-GO
 
 CREATE TABLE MENUITEMS
 (
@@ -48,7 +47,6 @@ CREATE TABLE MENUITEMS
 
 	foreign key (idCategory) references CATEGORYS(id)
 )
-GO
 
 CREATE TABLE TABLES
 (
@@ -56,20 +54,34 @@ CREATE TABLE TABLES
 	name nvarchar(max) not null,
 	status int not null
 )
-GO
+
+CREATE TABLE CUSTOMERS
+(
+	id int identity(1,1) primary key,
+	sex int,
+	displayName nvarchar(max),
+	idCard varchar(max),
+	dateofbirth date,
+	address nvarchar(max),
+	phone nvarchar(20),
+	contractDate dateTime
+)
 
 CREATE TABLE BILLS
 (
 	id int identity(1,1) primary key,
 	idTable int,
+	idCustomer int,
 	dateCheckIn date, 
 	dateCheckOut date,
 	status int,
 	discount int,
+	idStaff int,
 
-	foreign key (idTable) references TABLES(id)
+	foreign key (idCustomer) references CUSTOMERS(id),
+	foreign key (idTable) references TABLES(id),
+	foreign key (idStaff) references STAFFS(id)
 )
-GO
 
 CREATE TABLE BILLINFOS
 (
@@ -81,14 +93,12 @@ CREATE TABLE BILLINFOS
 	foreign key (idBill) references BILLS(id),
 	foreign key (idMenuItems) references MENUITEMS(id),
 )
-GO
 
 CREATE TABLE UNITS
 (
 	id int identity(1,1) primary key,
 	displayName nvarchar(max)
 )
-GO
 
 CREATE TABLE SUPLIERS
 (
@@ -96,11 +106,8 @@ CREATE TABLE SUPLIERS
 	displayName nvarchar(max),
 	address nvarchar(max),
 	phone nvarchar(20),
-	email nvarchar(200),
-	moreInfo nvarchar(max),
-	contractDate DateTime
+	email nvarchar(200)
 )
-GO
 
 CREATE TABLE OBJECTS
 (
@@ -112,14 +119,12 @@ CREATE TABLE OBJECTS
 	foreign key(idUnit) references UNITS(id),
 	foreign key(idSuplier) references SUPLIERS(id),
 )
-GO
 
 CREATE TABLE INPUTS
 (
 	id nvarchar(128) primary key,
 	dateInput DateTime
 )
-GO
 
 CREATE TABLE INPUTINFOS
 (
@@ -128,30 +133,26 @@ CREATE TABLE INPUTINFOS
 	idInput nvarchar(128) not null,
 	count int,
 	inputPrice float default 0,
-	outputPrice float default 0,
-	status nvarchar(max)
+	status nvarchar(max),
 
-	foreign key (IdObject) references OBJECTS(id),
-	foreign key (IdInput) references INPUTS(id)
+	foreign key (idObject) references OBJECTS(id),
+	foreign key (idInput) references INPUTS(id)
 )
-GO
 
 CREATE TABLE OUTPUTS
 (
 	id nvarchar(128) primary key,
 	dateOutput DateTime
 )
-GO
 
 CREATE TABLE OUTPUTINFOS
 (
 	id nvarchar(128) primary key,
 	idObject nvarchar(128) not null,
-	idInputInfo nvarchar(128) not null,
+	idOutput nvarchar(128) not null,
 	count int,	
-	status nvarchar(max)
+	status nvarchar(max),
 
-	foreign key (IdObject) references OBJECTS(id),
-	foreign key (IdInputInfo) references INPUTINFOS(id)
+	foreign key (idObject) references OBJECTS(id),
+	foreign key (idOutput) references OUTPUTS(id)
 )
-GO
