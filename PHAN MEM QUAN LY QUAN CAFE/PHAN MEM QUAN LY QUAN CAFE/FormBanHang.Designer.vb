@@ -27,7 +27,6 @@ Partial Class FormBanHang
         Me.AccountInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PersonalInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tableLayout = New DevExpress.Utils.FlyoutPanel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.nmCount = New DevExpress.XtraEditors.SpinEdit()
         Me.btnAddObject = New DevExpress.XtraEditors.SimpleButton()
@@ -46,8 +45,8 @@ Partial Class FormBanHang
         Me.cbSwichTable = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.btnDiscount = New DevExpress.XtraEditors.SimpleButton()
         Me.btnSwichTable = New DevExpress.XtraEditors.SimpleButton()
+        Me.tableLayout = New System.Windows.Forms.FlowLayoutPanel()
         Me.MenuStrip.SuspendLayout()
-        CType(Me.tableLayout, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,13 +95,6 @@ Partial Class FormBanHang
         Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.LogOutToolStripMenuItem.Text = "Đăng xuất"
         '
-        'tableLayout
-        '
-        Me.tableLayout.Location = New System.Drawing.Point(12, 30)
-        Me.tableLayout.Name = "tableLayout"
-        Me.tableLayout.Size = New System.Drawing.Size(441, 432)
-        Me.tableLayout.TabIndex = 1
-        '
         'PanelControl1
         '
         Me.PanelControl1.Controls.Add(Me.nmCount)
@@ -132,7 +124,7 @@ Partial Class FormBanHang
         Me.btnAddObject.Location = New System.Drawing.Point(198, 6)
         Me.btnAddObject.Name = "btnAddObject"
         Me.btnAddObject.Size = New System.Drawing.Size(73, 48)
-        Me.btnAddObject.TabIndex = 2
+        Me.btnAddObject.TabIndex = 5
         Me.btnAddObject.Text = "Thêm món"
         '
         'cbObject
@@ -141,7 +133,7 @@ Partial Class FormBanHang
         Me.cbObject.Name = "cbObject"
         Me.cbObject.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbObject.Size = New System.Drawing.Size(183, 20)
-        Me.cbObject.TabIndex = 1
+        Me.cbObject.TabIndex = 3
         '
         'cbCategory
         '
@@ -149,7 +141,7 @@ Partial Class FormBanHang
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbCategory.Size = New System.Drawing.Size(183, 20)
-        Me.cbCategory.TabIndex = 0
+        Me.cbCategory.TabIndex = 2
         '
         'PanelControl2
         '
@@ -207,7 +199,7 @@ Partial Class FormBanHang
         Me.btnCheckOut.Location = New System.Drawing.Point(254, 6)
         Me.btnCheckOut.Name = "btnCheckOut"
         Me.btnCheckOut.Size = New System.Drawing.Size(73, 48)
-        Me.btnCheckOut.TabIndex = 5
+        Me.btnCheckOut.TabIndex = 10
         Me.btnCheckOut.Text = "Thanh toán"
         '
         'txtTotal
@@ -232,7 +224,7 @@ Partial Class FormBanHang
         Me.nmDiscount.Properties.Mask.EditMask = "N00"
         Me.nmDiscount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmDiscount.Size = New System.Drawing.Size(72, 20)
-        Me.nmDiscount.TabIndex = 5
+        Me.nmDiscount.TabIndex = 8
         '
         'cbSwichTable
         '
@@ -240,14 +232,14 @@ Partial Class FormBanHang
         Me.cbSwichTable.Name = "cbSwichTable"
         Me.cbSwichTable.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbSwichTable.Size = New System.Drawing.Size(71, 20)
-        Me.cbSwichTable.TabIndex = 5
+        Me.cbSwichTable.TabIndex = 6
         '
         'btnDiscount
         '
         Me.btnDiscount.Location = New System.Drawing.Point(82, 4)
         Me.btnDiscount.Name = "btnDiscount"
         Me.btnDiscount.Size = New System.Drawing.Size(73, 27)
-        Me.btnDiscount.TabIndex = 3
+        Me.btnDiscount.TabIndex = 9
         Me.btnDiscount.Text = "Giảm giá"
         '
         'btnSwichTable
@@ -255,18 +247,25 @@ Partial Class FormBanHang
         Me.btnSwichTable.Location = New System.Drawing.Point(3, 4)
         Me.btnSwichTable.Name = "btnSwichTable"
         Me.btnSwichTable.Size = New System.Drawing.Size(73, 27)
-        Me.btnSwichTable.TabIndex = 2
+        Me.btnSwichTable.TabIndex = 7
         Me.btnSwichTable.Text = "Chuyển bàn"
+        '
+        'tableLayout
+        '
+        Me.tableLayout.Location = New System.Drawing.Point(12, 30)
+        Me.tableLayout.Name = "tableLayout"
+        Me.tableLayout.Size = New System.Drawing.Size(438, 432)
+        Me.tableLayout.TabIndex = 1
         '
         'FormBanHang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 471)
+        Me.Controls.Add(Me.tableLayout)
         Me.Controls.Add(Me.PanelControl3)
         Me.Controls.Add(Me.PanelControl2)
         Me.Controls.Add(Me.PanelControl1)
-        Me.Controls.Add(Me.tableLayout)
         Me.Controls.Add(Me.MenuStrip)
         Me.MainMenuStrip = Me.MenuStrip
         Me.MaximumSize = New System.Drawing.Size(816, 510)
@@ -276,7 +275,6 @@ Partial Class FormBanHang
         Me.Text = "Phần mềm quản lý quán cafe"
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
-        CType(Me.tableLayout, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -296,7 +294,6 @@ Partial Class FormBanHang
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents AdminStripMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AccountInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tableLayout As DevExpress.Utils.FlyoutPanel
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents nmCount As DevExpress.XtraEditors.SpinEdit
@@ -317,4 +314,5 @@ Partial Class FormBanHang
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents PersonalInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tableLayout As System.Windows.Forms.FlowLayoutPanel
 End Class

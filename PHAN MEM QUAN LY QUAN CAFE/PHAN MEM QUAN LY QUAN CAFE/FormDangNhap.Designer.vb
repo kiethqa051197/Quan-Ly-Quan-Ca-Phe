@@ -37,7 +37,7 @@ Partial Class FormDangNhap
         Me.txtTenDangNhap.Location = New System.Drawing.Point(109, 12)
         Me.txtTenDangNhap.Name = "txtTenDangNhap"
         Me.txtTenDangNhap.Size = New System.Drawing.Size(156, 20)
-        Me.txtTenDangNhap.TabIndex = 0
+        Me.txtTenDangNhap.TabIndex = 1
         '
         'txtMatKhau
         '
@@ -45,7 +45,7 @@ Partial Class FormDangNhap
         Me.txtMatKhau.Name = "txtMatKhau"
         Me.txtMatKhau.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtMatKhau.Size = New System.Drawing.Size(156, 20)
-        Me.txtMatKhau.TabIndex = 1
+        Me.txtMatKhau.TabIndex = 2
         '
         'btnDangNhap
         '
@@ -61,7 +61,7 @@ Partial Class FormDangNhap
         Me.btnDangNhap.Location = New System.Drawing.Point(109, 88)
         Me.btnDangNhap.Name = "btnDangNhap"
         Me.btnDangNhap.Size = New System.Drawing.Size(75, 23)
-        Me.btnDangNhap.TabIndex = 1
+        Me.btnDangNhap.TabIndex = 3
         Me.btnDangNhap.Text = "Đăng nhập"
         '
         'LabelControl1
@@ -70,7 +70,7 @@ Partial Class FormDangNhap
         Me.LabelControl1.Location = New System.Drawing.Point(12, 15)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(86, 13)
-        Me.LabelControl1.TabIndex = 4
+        Me.LabelControl1.TabIndex = 0
         Me.LabelControl1.Text = "Tên đăng nhập:"
         '
         'LabelControl2
@@ -79,7 +79,7 @@ Partial Class FormDangNhap
         Me.LabelControl2.Location = New System.Drawing.Point(12, 51)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(56, 13)
-        Me.LabelControl2.TabIndex = 5
+        Me.LabelControl2.TabIndex = 0
         Me.LabelControl2.Text = "Mật khẩu:"
         '
         'btnThoat
@@ -95,7 +95,7 @@ Partial Class FormDangNhap
         Me.btnThoat.Location = New System.Drawing.Point(190, 88)
         Me.btnThoat.Name = "btnThoat"
         Me.btnThoat.Size = New System.Drawing.Size(75, 23)
-        Me.btnThoat.TabIndex = 6
+        Me.btnThoat.TabIndex = 4
         Me.btnThoat.Text = "Thoát"
         '
         'FormDangNhap

@@ -24,7 +24,7 @@ Partial Class FormAdmin
     Private Sub InitializeComponent()
         Me.tcAdmin = New DevExpress.XtraTab.XtraTabControl()
         Me.tpBill = New DevExpress.XtraTab.XtraTabPage()
-        Me.nmDiscount = New DevExpress.XtraEditors.SpinEdit()
+        Me.LabelControl45 = New DevExpress.XtraEditors.LabelControl()
         Me.btnEnd = New DevExpress.XtraEditors.SimpleButton()
         Me.btnNext = New DevExpress.XtraEditors.SimpleButton()
         Me.btnPrevious = New DevExpress.XtraEditors.SimpleButton()
@@ -125,6 +125,8 @@ Partial Class FormAdmin
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         Me.btnShowStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl11 = New DevExpress.XtraEditors.PanelControl()
+        Me.cbPositionStaff = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl33 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.txtPhoneStaff = New DevExpress.XtraEditors.TextEdit()
         Me.btnResetPass = New DevExpress.XtraEditors.SimpleButton()
@@ -248,7 +250,6 @@ Partial Class FormAdmin
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcAdmin.SuspendLayout()
         Me.tpBill.SuspendLayout()
-        CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.dgvRevenue, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -319,6 +320,7 @@ Partial Class FormAdmin
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl11.SuspendLayout()
+        CType(Me.cbPositionStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbbSexStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -409,7 +411,7 @@ Partial Class FormAdmin
         '
         'tpBill
         '
-        Me.tpBill.Controls.Add(Me.nmDiscount)
+        Me.tpBill.Controls.Add(Me.LabelControl45)
         Me.tpBill.Controls.Add(Me.btnEnd)
         Me.tpBill.Controls.Add(Me.btnNext)
         Me.tpBill.Controls.Add(Me.btnPrevious)
@@ -420,37 +422,34 @@ Partial Class FormAdmin
         Me.tpBill.Size = New System.Drawing.Size(740, 445)
         Me.tpBill.Text = "Doanh thu"
         '
-        'nmDiscount
+        'LabelControl45
         '
-        Me.nmDiscount.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.nmDiscount.Location = New System.Drawing.Point(352, 412)
-        Me.nmDiscount.Name = "nmDiscount"
-        Me.nmDiscount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.nmDiscount.Properties.IsFloatValue = False
-        Me.nmDiscount.Properties.Mask.EditMask = "N00"
-        Me.nmDiscount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.nmDiscount.Size = New System.Drawing.Size(40, 20)
-        Me.nmDiscount.TabIndex = 7
+        Me.LabelControl45.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl45.Location = New System.Drawing.Point(373, 414)
+        Me.LabelControl45.Name = "LabelControl45"
+        Me.LabelControl45.Size = New System.Drawing.Size(8, 14)
+        Me.LabelControl45.TabIndex = 7
+        Me.LabelControl45.Text = "1"
         '
         'btnEnd
         '
-        Me.btnEnd.Location = New System.Drawing.Point(524, 409)
+        Me.btnEnd.Location = New System.Drawing.Point(523, 411)
         Me.btnEnd.Name = "btnEnd"
         Me.btnEnd.Size = New System.Drawing.Size(75, 23)
-        Me.btnEnd.TabIndex = 6
+        Me.btnEnd.TabIndex = 5
         Me.btnEnd.Text = "Cuối"
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(443, 409)
+        Me.btnNext.Location = New System.Drawing.Point(442, 411)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(75, 23)
-        Me.btnNext.TabIndex = 5
+        Me.btnNext.TabIndex = 4
         Me.btnNext.Text = "Kế tiếp"
         '
         'btnPrevious
         '
-        Me.btnPrevious.Location = New System.Drawing.Point(222, 409)
+        Me.btnPrevious.Location = New System.Drawing.Point(221, 411)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(75, 23)
         Me.btnPrevious.TabIndex = 3
@@ -458,7 +457,7 @@ Partial Class FormAdmin
         '
         'btnFirst
         '
-        Me.btnFirst.Location = New System.Drawing.Point(141, 409)
+        Me.btnFirst.Location = New System.Drawing.Point(140, 411)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(75, 23)
         Me.btnFirst.TabIndex = 2
@@ -544,14 +543,14 @@ Partial Class FormAdmin
         Me.TextEdit1.Location = New System.Drawing.Point(14, 18)
         Me.TextEdit1.Name = "TextEdit1"
         Me.TextEdit1.Size = New System.Drawing.Size(190, 20)
-        Me.TextEdit1.TabIndex = 28
+        Me.TextEdit1.TabIndex = 4
         '
         'SimpleButton1
         '
         Me.SimpleButton1.Location = New System.Drawing.Point(228, 5)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(85, 45)
-        Me.SimpleButton1.TabIndex = 27
+        Me.SimpleButton1.TabIndex = 5
         Me.SimpleButton1.Text = "Tìm"
         '
         'PanelControl5
@@ -573,7 +572,7 @@ Partial Class FormAdmin
         Me.btnSave.Location = New System.Drawing.Point(119, 248)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(85, 28)
-        Me.btnSave.TabIndex = 9
+        Me.btnSave.TabIndex = 8
         Me.btnSave.Text = "Lưu"
         Me.btnSave.Visible = False
         '
@@ -582,7 +581,7 @@ Partial Class FormAdmin
         Me.btnCancel.Location = New System.Drawing.Point(210, 248)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.TabIndex = 9
         Me.btnCancel.Text = "Huỷ"
         Me.btnCancel.Visible = False
         '
@@ -618,14 +617,14 @@ Partial Class FormAdmin
         Me.txtTableName.Location = New System.Drawing.Point(119, 134)
         Me.txtTableName.Name = "txtTableName"
         Me.txtTableName.Size = New System.Drawing.Size(176, 20)
-        Me.txtTableName.TabIndex = 2
+        Me.txtTableName.TabIndex = 6
         '
         'txtStatus
         '
         Me.txtStatus.Location = New System.Drawing.Point(119, 172)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.Size = New System.Drawing.Size(176, 20)
-        Me.txtStatus.TabIndex = 1
+        Me.txtStatus.TabIndex = 7
         '
         'PanelControl4
         '
@@ -642,7 +641,7 @@ Partial Class FormAdmin
         Me.btnDeleteTable.Location = New System.Drawing.Point(310, 5)
         Me.btnDeleteTable.Name = "btnDeleteTable"
         Me.btnDeleteTable.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteTable.TabIndex = 2
+        Me.btnDeleteTable.TabIndex = 3
         Me.btnDeleteTable.Text = "Xoá"
         '
         'btnEditTable
@@ -650,7 +649,7 @@ Partial Class FormAdmin
         Me.btnEditTable.Location = New System.Drawing.Point(160, 5)
         Me.btnEditTable.Name = "btnEditTable"
         Me.btnEditTable.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditTable.TabIndex = 1
+        Me.btnEditTable.TabIndex = 2
         Me.btnEditTable.Text = "Sửa"
         '
         'btnAddTable
@@ -658,7 +657,7 @@ Partial Class FormAdmin
         Me.btnAddTable.Location = New System.Drawing.Point(10, 5)
         Me.btnAddTable.Name = "btnAddTable"
         Me.btnAddTable.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddTable.TabIndex = 0
+        Me.btnAddTable.TabIndex = 1
         Me.btnAddTable.Text = "Thêm"
         '
         'PanelControl3
@@ -709,14 +708,14 @@ Partial Class FormAdmin
         Me.TextEdit3.Location = New System.Drawing.Point(14, 18)
         Me.TextEdit3.Name = "TextEdit3"
         Me.TextEdit3.Size = New System.Drawing.Size(190, 20)
-        Me.TextEdit3.TabIndex = 28
+        Me.TextEdit3.TabIndex = 4
         '
         'SimpleButton2
         '
         Me.SimpleButton2.Location = New System.Drawing.Point(228, 5)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(85, 45)
-        Me.SimpleButton2.TabIndex = 27
+        Me.SimpleButton2.TabIndex = 5
         Me.SimpleButton2.Text = "Tìm"
         '
         'PanelControl8
@@ -736,7 +735,7 @@ Partial Class FormAdmin
         Me.btnSaveCategory.Location = New System.Drawing.Point(119, 202)
         Me.btnSaveCategory.Name = "btnSaveCategory"
         Me.btnSaveCategory.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveCategory.TabIndex = 9
+        Me.btnSaveCategory.TabIndex = 7
         Me.btnSaveCategory.Text = "Lưu"
         Me.btnSaveCategory.Visible = False
         '
@@ -745,7 +744,7 @@ Partial Class FormAdmin
         Me.btnCancelCategory.Location = New System.Drawing.Point(210, 202)
         Me.btnCancelCategory.Name = "btnCancelCategory"
         Me.btnCancelCategory.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancelCategory.TabIndex = 4
+        Me.btnCancelCategory.TabIndex = 8
         Me.btnCancelCategory.Text = "Huỷ"
         Me.btnCancelCategory.Visible = False
         '
@@ -772,7 +771,7 @@ Partial Class FormAdmin
         Me.txtCategory.Location = New System.Drawing.Point(119, 154)
         Me.txtCategory.Name = "txtCategory"
         Me.txtCategory.Size = New System.Drawing.Size(176, 20)
-        Me.txtCategory.TabIndex = 2
+        Me.txtCategory.TabIndex = 6
         '
         'PanelControl7
         '
@@ -813,7 +812,7 @@ Partial Class FormAdmin
         Me.btnDeleteCategory.Location = New System.Drawing.Point(310, 5)
         Me.btnDeleteCategory.Name = "btnDeleteCategory"
         Me.btnDeleteCategory.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteCategory.TabIndex = 2
+        Me.btnDeleteCategory.TabIndex = 3
         Me.btnDeleteCategory.Text = "Xoá"
         '
         'btnEditCategory
@@ -821,7 +820,7 @@ Partial Class FormAdmin
         Me.btnEditCategory.Location = New System.Drawing.Point(160, 5)
         Me.btnEditCategory.Name = "btnEditCategory"
         Me.btnEditCategory.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditCategory.TabIndex = 1
+        Me.btnEditCategory.TabIndex = 2
         Me.btnEditCategory.Text = "Sửa"
         '
         'btnAddCategory
@@ -829,7 +828,7 @@ Partial Class FormAdmin
         Me.btnAddCategory.Location = New System.Drawing.Point(10, 5)
         Me.btnAddCategory.Name = "btnAddCategory"
         Me.btnAddCategory.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddCategory.TabIndex = 0
+        Me.btnAddCategory.TabIndex = 1
         Me.btnAddCategory.Text = "Thêm"
         '
         'tpFood
@@ -856,7 +855,7 @@ Partial Class FormAdmin
         Me.PanelControl15.Location = New System.Drawing.Point(418, 66)
         Me.PanelControl15.Name = "PanelControl15"
         Me.PanelControl15.Size = New System.Drawing.Size(318, 379)
-        Me.PanelControl15.TabIndex = 12
+        Me.PanelControl15.TabIndex = 1
         '
         'nmPrices
         '
@@ -868,7 +867,7 @@ Partial Class FormAdmin
         Me.nmPrices.Properties.Mask.EditMask = "N00"
         Me.nmPrices.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmPrices.Size = New System.Drawing.Size(176, 20)
-        Me.nmPrices.TabIndex = 28
+        Me.nmPrices.TabIndex = 8
         '
         'LabelControl13
         '
@@ -886,7 +885,7 @@ Partial Class FormAdmin
         Me.cbCategoryFood.Name = "cbCategoryFood"
         Me.cbCategoryFood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbCategoryFood.Size = New System.Drawing.Size(176, 20)
-        Me.cbCategoryFood.TabIndex = 25
+        Me.cbCategoryFood.TabIndex = 7
         '
         'LabelControl14
         '
@@ -911,7 +910,7 @@ Partial Class FormAdmin
         Me.btnCancelFood.Location = New System.Drawing.Point(210, 179)
         Me.btnCancelFood.Name = "btnCancelFood"
         Me.btnCancelFood.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancelFood.TabIndex = 4
+        Me.btnCancelFood.TabIndex = 10
         Me.btnCancelFood.Text = "Huỷ"
         Me.btnCancelFood.Visible = False
         '
@@ -938,7 +937,7 @@ Partial Class FormAdmin
         Me.txtNameFood.Location = New System.Drawing.Point(119, 81)
         Me.txtNameFood.Name = "txtNameFood"
         Me.txtNameFood.Size = New System.Drawing.Size(176, 20)
-        Me.txtNameFood.TabIndex = 2
+        Me.txtNameFood.TabIndex = 6
         '
         'PanelControl16
         '
@@ -978,14 +977,14 @@ Partial Class FormAdmin
         Me.txtSearchFood.Location = New System.Drawing.Point(14, 18)
         Me.txtSearchFood.Name = "txtSearchFood"
         Me.txtSearchFood.Size = New System.Drawing.Size(190, 20)
-        Me.txtSearchFood.TabIndex = 28
+        Me.txtSearchFood.TabIndex = 4
         '
         'btnSearchFood
         '
         Me.btnSearchFood.Location = New System.Drawing.Point(228, 5)
         Me.btnSearchFood.Name = "btnSearchFood"
         Me.btnSearchFood.Size = New System.Drawing.Size(85, 45)
-        Me.btnSearchFood.TabIndex = 27
+        Me.btnSearchFood.TabIndex = 5
         Me.btnSearchFood.Text = "Tìm"
         '
         'PanelControl14
@@ -1003,7 +1002,7 @@ Partial Class FormAdmin
         Me.btnDeleteFood.Location = New System.Drawing.Point(310, 5)
         Me.btnDeleteFood.Name = "btnDeleteFood"
         Me.btnDeleteFood.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteFood.TabIndex = 2
+        Me.btnDeleteFood.TabIndex = 3
         Me.btnDeleteFood.Text = "Xoá"
         '
         'btnEditFood
@@ -1011,7 +1010,7 @@ Partial Class FormAdmin
         Me.btnEditFood.Location = New System.Drawing.Point(160, 5)
         Me.btnEditFood.Name = "btnEditFood"
         Me.btnEditFood.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditFood.TabIndex = 1
+        Me.btnEditFood.TabIndex = 2
         Me.btnEditFood.Text = "Sửa"
         '
         'btnAddFood
@@ -1019,7 +1018,7 @@ Partial Class FormAdmin
         Me.btnAddFood.Location = New System.Drawing.Point(10, 5)
         Me.btnAddFood.Name = "btnAddFood"
         Me.btnAddFood.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddFood.TabIndex = 0
+        Me.btnAddFood.TabIndex = 1
         Me.btnAddFood.Text = "Thêm"
         '
         'tpCustomer
@@ -1046,14 +1045,14 @@ Partial Class FormAdmin
         Me.txtSearchCustomer.Location = New System.Drawing.Point(14, 18)
         Me.txtSearchCustomer.Name = "txtSearchCustomer"
         Me.txtSearchCustomer.Size = New System.Drawing.Size(190, 20)
-        Me.txtSearchCustomer.TabIndex = 28
+        Me.txtSearchCustomer.TabIndex = 4
         '
         'btnSearchCustomer
         '
         Me.btnSearchCustomer.Location = New System.Drawing.Point(228, 5)
         Me.btnSearchCustomer.Name = "btnSearchCustomer"
         Me.btnSearchCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnSearchCustomer.TabIndex = 27
+        Me.btnSearchCustomer.TabIndex = 5
         Me.btnSearchCustomer.Text = "Tìm"
         '
         'PanelControl18
@@ -1092,7 +1091,7 @@ Partial Class FormAdmin
         Me.txtPhoneCustomer.Location = New System.Drawing.Point(118, 260)
         Me.txtPhoneCustomer.Name = "txtPhoneCustomer"
         Me.txtPhoneCustomer.Size = New System.Drawing.Size(176, 20)
-        Me.txtPhoneCustomer.TabIndex = 22
+        Me.txtPhoneCustomer.TabIndex = 11
         '
         'cbSexCustomer
         '
@@ -1102,7 +1101,7 @@ Partial Class FormAdmin
         Me.cbSexCustomer.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbSexCustomer.Properties.Items.AddRange(New Object() {"Nam", "Nữ"})
         Me.cbSexCustomer.Size = New System.Drawing.Size(176, 20)
-        Me.cbSexCustomer.TabIndex = 20
+        Me.cbSexCustomer.TabIndex = 10
         '
         'LabelControl16
         '
@@ -1119,7 +1118,7 @@ Partial Class FormAdmin
         Me.txtAddressCustomer.Multiline = True
         Me.txtAddressCustomer.Name = "txtAddressCustomer"
         Me.txtAddressCustomer.Size = New System.Drawing.Size(176, 67)
-        Me.txtAddressCustomer.TabIndex = 17
+        Me.txtAddressCustomer.TabIndex = 8
         '
         'LabelControl17
         '
@@ -1135,7 +1134,7 @@ Partial Class FormAdmin
         Me.txtIdCardCustomer.Location = New System.Drawing.Point(119, 197)
         Me.txtIdCardCustomer.Name = "txtIdCardCustomer"
         Me.txtIdCardCustomer.Size = New System.Drawing.Size(176, 20)
-        Me.txtIdCardCustomer.TabIndex = 15
+        Me.txtIdCardCustomer.TabIndex = 9
         '
         'LabelControl20
         '
@@ -1152,7 +1151,7 @@ Partial Class FormAdmin
         Me.dtpCustomer.Location = New System.Drawing.Point(119, 81)
         Me.dtpCustomer.Name = "dtpCustomer"
         Me.dtpCustomer.Size = New System.Drawing.Size(176, 20)
-        Me.dtpCustomer.TabIndex = 12
+        Me.dtpCustomer.TabIndex = 7
         '
         'LabelControl21
         '
@@ -1168,7 +1167,7 @@ Partial Class FormAdmin
         Me.btnSaveCustomer.Location = New System.Drawing.Point(119, 292)
         Me.btnSaveCustomer.Name = "btnSaveCustomer"
         Me.btnSaveCustomer.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveCustomer.TabIndex = 9
+        Me.btnSaveCustomer.TabIndex = 12
         Me.btnSaveCustomer.Text = "Lưu"
         Me.btnSaveCustomer.Visible = False
         '
@@ -1177,7 +1176,7 @@ Partial Class FormAdmin
         Me.btnCancelCustomer.Location = New System.Drawing.Point(210, 292)
         Me.btnCancelCustomer.Name = "btnCancelCustomer"
         Me.btnCancelCustomer.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancelCustomer.TabIndex = 4
+        Me.btnCancelCustomer.TabIndex = 13
         Me.btnCancelCustomer.Text = "Huỷ"
         Me.btnCancelCustomer.Visible = False
         '
@@ -1204,7 +1203,7 @@ Partial Class FormAdmin
         Me.txtNameCustomer.Location = New System.Drawing.Point(119, 47)
         Me.txtNameCustomer.Name = "txtNameCustomer"
         Me.txtNameCustomer.Size = New System.Drawing.Size(176, 20)
-        Me.txtNameCustomer.TabIndex = 2
+        Me.txtNameCustomer.TabIndex = 6
         '
         'PanelControl19
         '
@@ -1245,7 +1244,7 @@ Partial Class FormAdmin
         Me.btnDeleteCustomer.Location = New System.Drawing.Point(310, 5)
         Me.btnDeleteCustomer.Name = "btnDeleteCustomer"
         Me.btnDeleteCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteCustomer.TabIndex = 2
+        Me.btnDeleteCustomer.TabIndex = 3
         Me.btnDeleteCustomer.Text = "Xoá"
         '
         'btnEditCustomer
@@ -1253,7 +1252,7 @@ Partial Class FormAdmin
         Me.btnEditCustomer.Location = New System.Drawing.Point(160, 5)
         Me.btnEditCustomer.Name = "btnEditCustomer"
         Me.btnEditCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditCustomer.TabIndex = 1
+        Me.btnEditCustomer.TabIndex = 2
         Me.btnEditCustomer.Text = "Sửa"
         '
         'btnAddCustomer
@@ -1261,7 +1260,7 @@ Partial Class FormAdmin
         Me.btnAddCustomer.Location = New System.Drawing.Point(10, 5)
         Me.btnAddCustomer.Name = "btnAddCustomer"
         Me.btnAddCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddCustomer.TabIndex = 0
+        Me.btnAddCustomer.TabIndex = 1
         Me.btnAddCustomer.Text = "Thêm"
         '
         'tpStaff
@@ -1288,18 +1287,20 @@ Partial Class FormAdmin
         Me.TextEdit2.Location = New System.Drawing.Point(14, 18)
         Me.TextEdit2.Name = "TextEdit2"
         Me.TextEdit2.Size = New System.Drawing.Size(190, 20)
-        Me.TextEdit2.TabIndex = 28
+        Me.TextEdit2.TabIndex = 3
         '
         'btnShowStaff
         '
         Me.btnShowStaff.Location = New System.Drawing.Point(228, 5)
         Me.btnShowStaff.Name = "btnShowStaff"
         Me.btnShowStaff.Size = New System.Drawing.Size(85, 45)
-        Me.btnShowStaff.TabIndex = 27
+        Me.btnShowStaff.TabIndex = 4
         Me.btnShowStaff.Text = "Tìm"
         '
         'PanelControl11
         '
+        Me.PanelControl11.Controls.Add(Me.cbPositionStaff)
+        Me.PanelControl11.Controls.Add(Me.LabelControl33)
         Me.PanelControl11.Controls.Add(Me.LabelControl12)
         Me.PanelControl11.Controls.Add(Me.txtPhoneStaff)
         Me.PanelControl11.Controls.Add(Me.btnResetPass)
@@ -1321,10 +1322,28 @@ Partial Class FormAdmin
         Me.PanelControl11.Size = New System.Drawing.Size(318, 395)
         Me.PanelControl11.TabIndex = 7
         '
+        'cbPositionStaff
+        '
+        Me.cbPositionStaff.EditValue = "(Chưa chọn)"
+        Me.cbPositionStaff.Location = New System.Drawing.Point(119, 275)
+        Me.cbPositionStaff.Name = "cbPositionStaff"
+        Me.cbPositionStaff.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbPositionStaff.Size = New System.Drawing.Size(176, 20)
+        Me.cbPositionStaff.TabIndex = 11
+        '
+        'LabelControl33
+        '
+        Me.LabelControl33.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl33.Location = New System.Drawing.Point(14, 277)
+        Me.LabelControl33.Name = "LabelControl33"
+        Me.LabelControl33.Size = New System.Drawing.Size(54, 14)
+        Me.LabelControl33.TabIndex = 24
+        Me.LabelControl33.Text = "Chức vụ:"
+        '
         'LabelControl12
         '
         Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl12.Location = New System.Drawing.Point(13, 262)
+        Me.LabelControl12.Location = New System.Drawing.Point(14, 248)
         Me.LabelControl12.Name = "LabelControl12"
         Me.LabelControl12.Size = New System.Drawing.Size(86, 14)
         Me.LabelControl12.TabIndex = 23
@@ -1332,34 +1351,34 @@ Partial Class FormAdmin
         '
         'txtPhoneStaff
         '
-        Me.txtPhoneStaff.Location = New System.Drawing.Point(118, 260)
+        Me.txtPhoneStaff.Location = New System.Drawing.Point(119, 246)
         Me.txtPhoneStaff.Name = "txtPhoneStaff"
         Me.txtPhoneStaff.Size = New System.Drawing.Size(176, 20)
-        Me.txtPhoneStaff.TabIndex = 22
+        Me.txtPhoneStaff.TabIndex = 10
         '
         'btnResetPass
         '
-        Me.btnResetPass.Location = New System.Drawing.Point(119, 324)
+        Me.btnResetPass.Location = New System.Drawing.Point(119, 337)
         Me.btnResetPass.Name = "btnResetPass"
-        Me.btnResetPass.Size = New System.Drawing.Size(176, 50)
-        Me.btnResetPass.TabIndex = 21
+        Me.btnResetPass.Size = New System.Drawing.Size(176, 37)
+        Me.btnResetPass.TabIndex = 12
         Me.btnResetPass.Text = "Đặt lại tài khoản"
         Me.btnResetPass.Visible = False
         '
         'cbbSexStaff
         '
         Me.cbbSexStaff.EditValue = "(Chưa chọn)"
-        Me.cbbSexStaff.Location = New System.Drawing.Point(119, 230)
+        Me.cbbSexStaff.Location = New System.Drawing.Point(120, 215)
         Me.cbbSexStaff.Name = "cbbSexStaff"
         Me.cbbSexStaff.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbbSexStaff.Properties.Items.AddRange(New Object() {"Nam", "Nữ"})
         Me.cbbSexStaff.Size = New System.Drawing.Size(176, 20)
-        Me.cbbSexStaff.TabIndex = 20
+        Me.cbbSexStaff.TabIndex = 9
         '
         'LabelControl11
         '
         Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl11.Location = New System.Drawing.Point(14, 230)
+        Me.LabelControl11.Location = New System.Drawing.Point(15, 215)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(55, 14)
         Me.LabelControl11.TabIndex = 19
@@ -1367,16 +1386,16 @@ Partial Class FormAdmin
         '
         'txtAddressStaff
         '
-        Me.txtAddressStaff.Location = New System.Drawing.Point(119, 118)
+        Me.txtAddressStaff.Location = New System.Drawing.Point(120, 101)
         Me.txtAddressStaff.Multiline = True
         Me.txtAddressStaff.Name = "txtAddressStaff"
         Me.txtAddressStaff.Size = New System.Drawing.Size(176, 67)
-        Me.txtAddressStaff.TabIndex = 17
+        Me.txtAddressStaff.TabIndex = 7
         '
         'LabelControl10
         '
         Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl10.Location = New System.Drawing.Point(14, 199)
+        Me.LabelControl10.Location = New System.Drawing.Point(15, 183)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(88, 14)
         Me.LabelControl10.TabIndex = 16
@@ -1384,15 +1403,15 @@ Partial Class FormAdmin
         '
         'txtIDStaff
         '
-        Me.txtIDStaff.Location = New System.Drawing.Point(119, 197)
+        Me.txtIDStaff.Location = New System.Drawing.Point(120, 181)
         Me.txtIDStaff.Name = "txtIDStaff"
         Me.txtIDStaff.Size = New System.Drawing.Size(176, 20)
-        Me.txtIDStaff.TabIndex = 15
+        Me.txtIDStaff.TabIndex = 8
         '
         'LabelControl9
         '
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl9.Location = New System.Drawing.Point(14, 120)
+        Me.LabelControl9.Location = New System.Drawing.Point(15, 103)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(44, 14)
         Me.LabelControl9.TabIndex = 14
@@ -1401,15 +1420,15 @@ Partial Class FormAdmin
         'dtpDOBStaff
         '
         Me.dtpDOBStaff.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDOBStaff.Location = New System.Drawing.Point(119, 81)
+        Me.dtpDOBStaff.Location = New System.Drawing.Point(120, 66)
         Me.dtpDOBStaff.Name = "dtpDOBStaff"
         Me.dtpDOBStaff.Size = New System.Drawing.Size(176, 20)
-        Me.dtpDOBStaff.TabIndex = 12
+        Me.dtpDOBStaff.TabIndex = 6
         '
         'LabelControl8
         '
         Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl8.Location = New System.Drawing.Point(14, 83)
+        Me.LabelControl8.Location = New System.Drawing.Point(15, 68)
         Me.LabelControl8.Name = "LabelControl8"
         Me.LabelControl8.Size = New System.Drawing.Size(63, 14)
         Me.LabelControl8.TabIndex = 11
@@ -1417,19 +1436,19 @@ Partial Class FormAdmin
         '
         'btnSaveStaff
         '
-        Me.btnSaveStaff.Location = New System.Drawing.Point(119, 292)
+        Me.btnSaveStaff.Location = New System.Drawing.Point(119, 303)
         Me.btnSaveStaff.Name = "btnSaveStaff"
         Me.btnSaveStaff.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveStaff.TabIndex = 9
+        Me.btnSaveStaff.TabIndex = 11
         Me.btnSaveStaff.Text = "Lưu"
         Me.btnSaveStaff.Visible = False
         '
         'btnCancelStaff
         '
-        Me.btnCancelStaff.Location = New System.Drawing.Point(210, 292)
+        Me.btnCancelStaff.Location = New System.Drawing.Point(210, 303)
         Me.btnCancelStaff.Name = "btnCancelStaff"
         Me.btnCancelStaff.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancelStaff.TabIndex = 4
+        Me.btnCancelStaff.TabIndex = 12
         Me.btnCancelStaff.Text = "Huỷ"
         Me.btnCancelStaff.Visible = False
         '
@@ -1445,7 +1464,7 @@ Partial Class FormAdmin
         'LabelControl7
         '
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl7.Location = New System.Drawing.Point(13, 48)
+        Me.LabelControl7.Location = New System.Drawing.Point(14, 33)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(90, 14)
         Me.LabelControl7.TabIndex = 6
@@ -1453,10 +1472,10 @@ Partial Class FormAdmin
         '
         'txtStaffName
         '
-        Me.txtStaffName.Location = New System.Drawing.Point(119, 47)
+        Me.txtStaffName.Location = New System.Drawing.Point(120, 32)
         Me.txtStaffName.Name = "txtStaffName"
         Me.txtStaffName.Size = New System.Drawing.Size(176, 20)
-        Me.txtStaffName.TabIndex = 2
+        Me.txtStaffName.TabIndex = 5
         '
         'PanelControl10
         '
@@ -1602,7 +1621,7 @@ Partial Class FormAdmin
         Me.cbInputStatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbInputStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cbInputStatus.Size = New System.Drawing.Size(118, 20)
-        Me.cbInputStatus.TabIndex = 15
+        Me.cbInputStatus.TabIndex = 4
         '
         'LabelControl27
         '
@@ -1623,7 +1642,7 @@ Partial Class FormAdmin
         Me.nmInputPrice.Properties.Mask.EditMask = "N00"
         Me.nmInputPrice.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmInputPrice.Size = New System.Drawing.Size(72, 20)
-        Me.nmInputPrice.TabIndex = 13
+        Me.nmInputPrice.TabIndex = 5
         '
         'LabelControl26
         '
@@ -1644,7 +1663,7 @@ Partial Class FormAdmin
         Me.nmInputCount.Properties.Mask.EditMask = "N00"
         Me.nmInputCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmInputCount.Size = New System.Drawing.Size(72, 20)
-        Me.nmInputCount.TabIndex = 11
+        Me.nmInputCount.TabIndex = 2
         '
         'LabelControl25
         '
@@ -1663,7 +1682,7 @@ Partial Class FormAdmin
         Me.cbInputObject.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbInputObject.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cbInputObject.Size = New System.Drawing.Size(118, 20)
-        Me.cbInputObject.TabIndex = 9
+        Me.cbInputObject.TabIndex = 0
         '
         'dgvInput
         '
@@ -1746,7 +1765,7 @@ Partial Class FormAdmin
         Me.cbOutputStatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbOutputStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cbOutputStatus.Size = New System.Drawing.Size(118, 20)
-        Me.cbOutputStatus.TabIndex = 15
+        Me.cbOutputStatus.TabIndex = 4
         '
         'LabelControl34
         '
@@ -1767,7 +1786,7 @@ Partial Class FormAdmin
         Me.nmOutputCount.Properties.Mask.EditMask = "N00"
         Me.nmOutputCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmOutputCount.Size = New System.Drawing.Size(72, 20)
-        Me.nmOutputCount.TabIndex = 11
+        Me.nmOutputCount.TabIndex = 2
         '
         'LabelControl35
         '
@@ -1786,7 +1805,7 @@ Partial Class FormAdmin
         Me.cbOutputObject.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbOutputObject.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cbOutputObject.Size = New System.Drawing.Size(118, 20)
-        Me.cbOutputObject.TabIndex = 9
+        Me.cbOutputObject.TabIndex = 1
         '
         'dgvOutput
         '
@@ -1853,7 +1872,7 @@ Partial Class FormAdmin
         Me.cbUnit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cbUnit.Size = New System.Drawing.Size(176, 20)
-        Me.cbUnit.TabIndex = 15
+        Me.cbUnit.TabIndex = 7
         '
         'cbSuplier
         '
@@ -1863,7 +1882,7 @@ Partial Class FormAdmin
         Me.cbSuplier.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbSuplier.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cbSuplier.Size = New System.Drawing.Size(176, 20)
-        Me.cbSuplier.TabIndex = 14
+        Me.cbSuplier.TabIndex = 6
         '
         'LabelControl42
         '
@@ -1888,7 +1907,7 @@ Partial Class FormAdmin
         Me.btnSaveObject.Location = New System.Drawing.Point(117, 251)
         Me.btnSaveObject.Name = "btnSaveObject"
         Me.btnSaveObject.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveObject.TabIndex = 9
+        Me.btnSaveObject.TabIndex = 8
         Me.btnSaveObject.Text = "Lưu"
         Me.btnSaveObject.Visible = False
         '
@@ -1897,7 +1916,7 @@ Partial Class FormAdmin
         Me.btnCancelObject.Location = New System.Drawing.Point(208, 251)
         Me.btnCancelObject.Name = "btnCancelObject"
         Me.btnCancelObject.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancelObject.TabIndex = 4
+        Me.btnCancelObject.TabIndex = 9
         Me.btnCancelObject.Text = "Huỷ"
         Me.btnCancelObject.Visible = False
         '
@@ -1924,7 +1943,7 @@ Partial Class FormAdmin
         Me.txtNameObject.Location = New System.Drawing.Point(117, 99)
         Me.txtNameObject.Name = "txtNameObject"
         Me.txtNameObject.Size = New System.Drawing.Size(176, 20)
-        Me.txtNameObject.TabIndex = 2
+        Me.txtNameObject.TabIndex = 5
         '
         'PanelControl30
         '
@@ -1964,14 +1983,14 @@ Partial Class FormAdmin
         Me.txtSearchObject.Location = New System.Drawing.Point(13, 18)
         Me.txtSearchObject.Name = "txtSearchObject"
         Me.txtSearchObject.Size = New System.Drawing.Size(190, 20)
-        Me.txtSearchObject.TabIndex = 28
+        Me.txtSearchObject.TabIndex = 3
         '
         'btnSearchObject
         '
         Me.btnSearchObject.Location = New System.Drawing.Point(223, 5)
         Me.btnSearchObject.Name = "btnSearchObject"
         Me.btnSearchObject.Size = New System.Drawing.Size(85, 45)
-        Me.btnSearchObject.TabIndex = 27
+        Me.btnSearchObject.TabIndex = 4
         Me.btnSearchObject.Text = "Tìm"
         '
         'PanelControl32
@@ -2035,7 +2054,7 @@ Partial Class FormAdmin
         Me.btnSaveUnit.Location = New System.Drawing.Point(117, 142)
         Me.btnSaveUnit.Name = "btnSaveUnit"
         Me.btnSaveUnit.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveUnit.TabIndex = 9
+        Me.btnSaveUnit.TabIndex = 6
         Me.btnSaveUnit.Text = "Lưu"
         Me.btnSaveUnit.Visible = False
         '
@@ -2044,7 +2063,7 @@ Partial Class FormAdmin
         Me.btnCancelUnit.Location = New System.Drawing.Point(208, 142)
         Me.btnCancelUnit.Name = "btnCancelUnit"
         Me.btnCancelUnit.Size = New System.Drawing.Size(85, 28)
-        Me.btnCancelUnit.TabIndex = 4
+        Me.btnCancelUnit.TabIndex = 7
         Me.btnCancelUnit.Text = "Huỷ"
         Me.btnCancelUnit.Visible = False
         '
@@ -2071,7 +2090,7 @@ Partial Class FormAdmin
         Me.txtNameUnit.Location = New System.Drawing.Point(117, 103)
         Me.txtNameUnit.Name = "txtNameUnit"
         Me.txtNameUnit.Size = New System.Drawing.Size(176, 20)
-        Me.txtNameUnit.TabIndex = 2
+        Me.txtNameUnit.TabIndex = 5
         '
         'PanelControl28
         '
@@ -2111,14 +2130,14 @@ Partial Class FormAdmin
         Me.txtSearchUnit.Location = New System.Drawing.Point(13, 18)
         Me.txtSearchUnit.Name = "txtSearchUnit"
         Me.txtSearchUnit.Size = New System.Drawing.Size(190, 20)
-        Me.txtSearchUnit.TabIndex = 28
+        Me.txtSearchUnit.TabIndex = 4
         '
         'btnSearchUnit
         '
         Me.btnSearchUnit.Location = New System.Drawing.Point(223, 5)
         Me.btnSearchUnit.Name = "btnSearchUnit"
         Me.btnSearchUnit.Size = New System.Drawing.Size(85, 45)
-        Me.btnSearchUnit.TabIndex = 27
+        Me.btnSearchUnit.TabIndex = 5
         Me.btnSearchUnit.Text = "Tìm"
         '
         'PanelControl26
@@ -2179,14 +2198,14 @@ Partial Class FormAdmin
         Me.txtSearchSuplier.Location = New System.Drawing.Point(13, 18)
         Me.txtSearchSuplier.Name = "txtSearchSuplier"
         Me.txtSearchSuplier.Size = New System.Drawing.Size(190, 20)
-        Me.txtSearchSuplier.TabIndex = 28
+        Me.txtSearchSuplier.TabIndex = 3
         '
         'btnSearchSuplier
         '
         Me.btnSearchSuplier.Location = New System.Drawing.Point(223, 5)
         Me.btnSearchSuplier.Name = "btnSearchSuplier"
         Me.btnSearchSuplier.Size = New System.Drawing.Size(85, 45)
-        Me.btnSearchSuplier.TabIndex = 27
+        Me.btnSearchSuplier.TabIndex = 4
         Me.btnSearchSuplier.Text = "Tìm"
         '
         'PanelControl36
@@ -2256,7 +2275,7 @@ Partial Class FormAdmin
         Me.txtEmailSuplier.Location = New System.Drawing.Point(125, 186)
         Me.txtEmailSuplier.Name = "txtEmailSuplier"
         Me.txtEmailSuplier.Size = New System.Drawing.Size(163, 20)
-        Me.txtEmailSuplier.TabIndex = 24
+        Me.txtEmailSuplier.TabIndex = 7
         '
         'LabelControl43
         '
@@ -2272,7 +2291,7 @@ Partial Class FormAdmin
         Me.txtPhoneSuplier.Location = New System.Drawing.Point(125, 159)
         Me.txtPhoneSuplier.Name = "txtPhoneSuplier"
         Me.txtPhoneSuplier.Size = New System.Drawing.Size(163, 20)
-        Me.txtPhoneSuplier.TabIndex = 22
+        Me.txtPhoneSuplier.TabIndex = 6
         '
         'txtAddressSuplier
         '
@@ -2280,7 +2299,7 @@ Partial Class FormAdmin
         Me.txtAddressSuplier.Multiline = True
         Me.txtAddressSuplier.Name = "txtAddressSuplier"
         Me.txtAddressSuplier.Size = New System.Drawing.Size(164, 54)
-        Me.txtAddressSuplier.TabIndex = 17
+        Me.txtAddressSuplier.TabIndex = 6
         '
         'LabelControl46
         '
@@ -2296,7 +2315,7 @@ Partial Class FormAdmin
         Me.btnSaveSuplier.Location = New System.Drawing.Point(125, 235)
         Me.btnSaveSuplier.Name = "btnSaveSuplier"
         Me.btnSaveSuplier.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveSuplier.TabIndex = 9
+        Me.btnSaveSuplier.TabIndex = 8
         Me.btnSaveSuplier.Text = "Lưu"
         Me.btnSaveSuplier.Visible = False
         '
@@ -2305,7 +2324,7 @@ Partial Class FormAdmin
         Me.btnCancelSuplier.Location = New System.Drawing.Point(216, 235)
         Me.btnCancelSuplier.Name = "btnCancelSuplier"
         Me.btnCancelSuplier.Size = New System.Drawing.Size(71, 28)
-        Me.btnCancelSuplier.TabIndex = 4
+        Me.btnCancelSuplier.TabIndex = 9
         Me.btnCancelSuplier.Text = "Huỷ"
         Me.btnCancelSuplier.Visible = False
         '
@@ -2332,7 +2351,7 @@ Partial Class FormAdmin
         Me.txtNameSuplier.Location = New System.Drawing.Point(125, 58)
         Me.txtNameSuplier.Name = "txtNameSuplier"
         Me.txtNameSuplier.Size = New System.Drawing.Size(164, 20)
-        Me.txtNameSuplier.TabIndex = 2
+        Me.txtNameSuplier.TabIndex = 5
         '
         'PanelControl35
         '
@@ -2396,7 +2415,7 @@ Partial Class FormAdmin
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tcAdmin.ResumeLayout(False)
         Me.tpBill.ResumeLayout(False)
-        CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpBill.PerformLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         CType(Me.dgvRevenue, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2472,6 +2491,7 @@ Partial Class FormAdmin
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl11.ResumeLayout(False)
         Me.PanelControl11.PerformLayout()
+        CType(Me.cbPositionStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbbSexStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2682,7 +2702,6 @@ Partial Class FormAdmin
     Friend WithEvents btnDeleteCustomer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditCustomer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddCustomer As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents nmDiscount As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents LabelControl30 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents PanelControl22 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents XtraTabControl2 As DevExpress.XtraTab.XtraTabControl
@@ -2781,4 +2800,7 @@ Partial Class FormAdmin
     Friend WithEvents btnDeleteSuplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditSuplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddSuplier As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbPositionStaff As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControl33 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
 End Class
