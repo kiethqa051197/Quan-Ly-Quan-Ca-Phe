@@ -1,27 +1,16 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Data
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
-
-Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
-    Public Class Posotions
-
+﻿Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
+    Public Class Categories
         Private id As Integer
         Private name As String
-        Private salary As Integer
 
-        Public Sub New(ByVal id As Integer, ByVal name As String, ByVal salary As Integer)
+        Public Sub New(ByVal id As Integer, ByVal name As String)
             Me.id = id
             Me.name = name
-            Me.salary = salary
         End Sub
 
         Public Sub New(ByVal row As DataRow)
             Me.id = CInt(row("id"))
             Me.name = row("name").ToString()
-            Me.salary = CInt(row("salary"))
         End Sub
 
         Public Property _id() As Integer
@@ -41,15 +30,5 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
                 name = value
             End Set
         End Property
-
-        Public Property _salary() As Integer
-            Get
-                Return salary
-            End Get
-            Set(ByVal value As Integer)
-                salary = value
-            End Set
-        End Property
     End Class
 End Namespace
-

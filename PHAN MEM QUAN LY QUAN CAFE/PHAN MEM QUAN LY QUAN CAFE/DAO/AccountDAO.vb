@@ -1,11 +1,4 @@
-﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE
-Imports System
-Imports System.Collections.Generic
-Imports System.Data
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
-Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
+﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
 
 Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
     Public Class AccountDAO

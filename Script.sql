@@ -55,7 +55,8 @@ CREATE TABLE ACCOUNTS
 	foreign key (idStaff) references STAFFS(id)
 )
 
-INSERT INTO ACCOUNTS(username, password, idStaff) values ('3121564645', 'bf8afd9c497d50ded529328378226458', 3)
+INSERT INTO ACCOUNTS(username, password, idStaff) values ('785605321', '123456', 4)
+INSERT INTO ACCOUNTS(username, password, idStaff) values ('3121564645', '123456', 3)
 
 -- Bảng Danh Mục
 CREATE TABLE CATEGORIES
@@ -63,6 +64,14 @@ CREATE TABLE CATEGORIES
 	id int identity(1,1) primary key,
 	name nvarchar(max) not null
 )
+
+INSERT CATEGORIES (name) VALUES (N'Hải sản')
+INSERT CATEGORIES (name) VALUES (N'Nông sản')
+INSERT CATEGORIES (name) VALUES (N'Lâm sản')
+INSERT CATEGORIES (name) VALUES (N'Sản sản')
+INSERT CATEGORIES (name) VALUES (N'Nước')
+
+SELECT * FROM CATEGORIES
 
 -- Bảng Sản Phẩm (Mỗi danh mục có chứa nhiều sản phẩm)
 CREATE TABLE ITEMS
@@ -75,6 +84,14 @@ CREATE TABLE ITEMS
 	foreign key (idCategory) references CATEGORIES(id)
 )
 
+INSERT ITEMS (name, idCategory, price) VALUES (N'Mực một nắng nước sa tế', 1, 120000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'Nghêu hấp xả', 1, 50000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'Dú dê nướng sữa', 2, 60000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'Heo rừng nướng muối ớt', 3, 75000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'Cơm chiên mushi', 4, 999999)
+INSERT ITEMS (name, idCategory, price) VALUES (N'7Up', 5, 15000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'Cafe', 5, 12000)
+
 -- Bảng Bàn Ăn
 CREATE TABLE TABLES
 (
@@ -83,17 +100,26 @@ CREATE TABLE TABLES
 	status nvarchar(max) not null
 )
 
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 0', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 1', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 2', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 3', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 4', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 5', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 6', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 7', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 8', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 9', N'Trống')
-INSERT TABLES ([name], [status]) VALUES (N'Bàn 10', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 0', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 1', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 2', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 3', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 4', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 5', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 6', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 7', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 8', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 9', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 10', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 11', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 12', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 13', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 14', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 15', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 16', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 17', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 18', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 19', N'Trống')
 
 -- Bảng Khách Hàng
 CREATE TABLE CUSTOMERS
@@ -113,7 +139,7 @@ CREATE TABLE BILLS
 (
 	id int identity(1,1) primary key,
 	idTable int not null,
-	idCustomer int not null,
+	idCustomer int null,
 	dateCheckIn date not null, 
 	dateCheckOut date not null,
 	status int not null,

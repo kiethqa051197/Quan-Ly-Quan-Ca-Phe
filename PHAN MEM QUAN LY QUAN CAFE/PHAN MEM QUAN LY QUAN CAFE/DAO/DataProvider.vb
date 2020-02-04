@@ -1,10 +1,4 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
-Imports System.Data
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 
 Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
     Public Class DataProvider

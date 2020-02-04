@@ -3,7 +3,7 @@ Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
 
 Public Class FormDangNhap
     Private Sub btnThoat_Click(sender As Object, e As EventArgs) Handles btnThoat.Click
-        Application.[Exit]()
+        Application.Exit()
     End Sub
 
     Private Sub btnDangNhap_Click(sender As Object, e As EventArgs) Handles btnDangNhap.Click
@@ -13,6 +13,7 @@ Public Class FormDangNhap
         If Login(username, password) Then
             Dim loginAccount As Accounts = AccountDAO._Instance.GetAccountByUserName(username)
             Me.Hide()
+
             Dim f As FormBanHang = New FormBanHang
             f.Show()
         Else

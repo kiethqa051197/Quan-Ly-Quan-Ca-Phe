@@ -1,11 +1,4 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Data
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
-
-Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
+﻿Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
     Public Class Staffs
 
         Private id As Integer

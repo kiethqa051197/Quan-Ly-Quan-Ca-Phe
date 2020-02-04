@@ -84,10 +84,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.vb" />
+    <Compile Include="DAO\BillsDAO.vb" />
+    <Compile Include="DAO\BillInfosDAO.vb" />
+    <Compile Include="DAO\CategoriesDAO.vb" />
     <Compile Include="DAO\DataProvider.vb" />
+    <Compile Include="DAO\ItemsDAO.vb" />
+    <Compile Include="DAO\MenuDAO.vb" />
     <Compile Include="DAO\TableDAO.vb" />
     <Compile Include="DTO\Accounts.vb" />
-    <Compile Include="DTO\Position.vb" />
+    <Compile Include="DTO\Bills.vb" />
+    <Compile Include="DTO\BillInfos.vb" />
+    <Compile Include="DTO\Categories.vb" />
+    <Compile Include="DTO\Items.vb" />
+    <Compile Include="DTO\Menu.vb" />
+    <Compile Include="DTO\Positions.vb" />
     <Compile Include="DTO\Staffs.vb" />
     <Compile Include="DTO\Tables.vb" />
     <Compile Include="FormAdmin.Designer.vb">

@@ -34,6 +34,7 @@ Partial Class FormDangNhap
         '
         'txtTenDangNhap
         '
+        Me.txtTenDangNhap.EditValue = "3121564645"
         Me.txtTenDangNhap.Location = New System.Drawing.Point(109, 12)
         Me.txtTenDangNhap.Name = "txtTenDangNhap"
         Me.txtTenDangNhap.Size = New System.Drawing.Size(156, 20)
@@ -41,6 +42,7 @@ Partial Class FormDangNhap
         '
         'txtMatKhau
         '
+        Me.txtMatKhau.EditValue = "123456"
         Me.txtMatKhau.Location = New System.Drawing.Point(109, 48)
         Me.txtMatKhau.Name = "txtMatKhau"
         Me.txtMatKhau.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
