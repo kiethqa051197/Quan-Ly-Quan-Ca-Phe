@@ -29,13 +29,13 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return -1
         End Function
 
-        Public Sub CheckOut(ByVal id As Integer, ByVal discount As Integer, ByVal totalPrice As Single)
-            Dim query As String = "UPDATE BILLS SET dateCheckout = GETDATE(), status = 1," & "discount = " & discount & ", totalPrice = " & totalPrice & " WHERE id = " & id
+        Public Sub CheckOut(ByVal id As Integer, ByVal idCustomer As Integer, ByVal discount As Integer, ByVal idStaff As Integer)
+            Dim query As String = "UPDATE BILLS SET idCustomer = " & idCustomer & ", dateCheckout = GETDATE(), status = 1," & "discount = " & discount & ", idStaff = " & idStaff & " WHERE id = " & id
             DataProvider._Instance.ExecuteNoneQuery(query)
         End Sub
 
-        Public Sub InsertBill(ByVal id As Integer)
-            DataProvider._Instance.ExecuteNoneQuery("EXEC USP_InsertBill @idTable", New Object() {id})
+        Public Sub InsertBill(ByVal idTable As Integer, ByVal idStaff As Integer)
+            DataProvider._Instance.ExecuteNoneQuery("EXEC PC_InsertBill @idTb , @idSt ", New Object() {idTable, idStaff})
         End Sub
 
         Public Function GetBillListByDate(ByVal checkIn As DateTime, ByVal checkOut As DateTime) As DataTable

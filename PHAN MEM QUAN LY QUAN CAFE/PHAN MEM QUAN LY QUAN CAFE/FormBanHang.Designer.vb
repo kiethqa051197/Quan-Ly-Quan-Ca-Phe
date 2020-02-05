@@ -22,15 +22,13 @@ Partial Class FormBanHang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MenuStrip = New System.Windows.Forms.MenuStrip()
-        Me.AdminStripMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AccountInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PersonalInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl45 = New DevExpress.XtraEditors.LabelControl()
+        Me.nmCount = New DevExpress.XtraEditors.SpinEdit()
         Me.cbObject = New System.Windows.Forms.ComboBox()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
-        Me.nmCount = New DevExpress.XtraEditors.SpinEdit()
         Me.btnAddObject = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.listBill = New System.Windows.Forms.ListView()
@@ -39,14 +37,19 @@ Partial Class FormBanHang
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
+        Me.cbSwichTable = New System.Windows.Forms.ComboBox()
         Me.btnCheckOut = New DevExpress.XtraEditors.SimpleButton()
         Me.txtTotal = New DevExpress.XtraEditors.TextEdit()
         Me.nmDiscount = New DevExpress.XtraEditors.SpinEdit()
         Me.btnDiscount = New DevExpress.XtraEditors.SimpleButton()
         Me.btnSwichTable = New DevExpress.XtraEditors.SimpleButton()
         Me.tableLayout = New System.Windows.Forms.FlowLayoutPanel()
-        Me.cbSwichTable = New System.Windows.Forms.ComboBox()
-        Me.MenuStrip.SuspendLayout()
+        Me.AdminStripMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccountInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PersonalInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuStrip = New System.Windows.Forms.MenuStrip()
+        Me.KháchHàngToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,85 +59,82 @@ Partial Class FormBanHang
         Me.PanelControl3.SuspendLayout()
         CType(Me.txtTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'MenuStrip
-        '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdminStripMenu, Me.AccountInfoToolStripMenu})
-        Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(800, 24)
-        Me.MenuStrip.TabIndex = 0
-        Me.MenuStrip.Text = "MenuStrip1"
-        '
-        'AdminStripMenu
-        '
-        Me.AdminStripMenu.Name = "AdminStripMenu"
-        Me.AdminStripMenu.Size = New System.Drawing.Size(55, 20)
-        Me.AdminStripMenu.Text = "Admin"
-        '
-        'AccountInfoToolStripMenu
-        '
-        Me.AccountInfoToolStripMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonalInfoToolStripMenu, Me.LogOutToolStripMenuItem})
-        Me.AccountInfoToolStripMenu.Name = "AccountInfoToolStripMenu"
-        Me.AccountInfoToolStripMenu.Size = New System.Drawing.Size(122, 20)
-        Me.AccountInfoToolStripMenu.Text = "Thông tin tài khoản"
-        '
-        'PersonalInfoToolStripMenu
-        '
-        Me.PersonalInfoToolStripMenu.Name = "PersonalInfoToolStripMenu"
-        Me.PersonalInfoToolStripMenu.Size = New System.Drawing.Size(170, 22)
-        Me.PersonalInfoToolStripMenu.Text = "Thông tin cá nhân"
-        '
-        'LogOutToolStripMenuItem
-        '
-        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.LogOutToolStripMenuItem.Text = "Đăng xuất"
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.LabelControl2)
+        Me.PanelControl1.Controls.Add(Me.LabelControl1)
+        Me.PanelControl1.Controls.Add(Me.LabelControl45)
+        Me.PanelControl1.Controls.Add(Me.nmCount)
         Me.PanelControl1.Controls.Add(Me.cbObject)
         Me.PanelControl1.Controls.Add(Me.cbCategory)
-        Me.PanelControl1.Controls.Add(Me.nmCount)
         Me.PanelControl1.Controls.Add(Me.btnAddObject)
         Me.PanelControl1.Location = New System.Drawing.Point(456, 30)
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(332, 59)
         Me.PanelControl1.TabIndex = 2
         '
-        'cbObject
+        'LabelControl2
         '
-        Me.cbObject.FormattingEnabled = True
-        Me.cbObject.Location = New System.Drawing.Point(5, 33)
-        Me.cbObject.Name = "cbObject"
-        Me.cbObject.Size = New System.Drawing.Size(187, 21)
-        Me.cbObject.TabIndex = 6
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.LabelControl2.Location = New System.Drawing.Point(7, 36)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(45, 13)
+        Me.LabelControl2.TabIndex = 12
+        Me.LabelControl2.Text = "Tên món:"
         '
-        'cbCategory
+        'LabelControl1
         '
-        Me.cbCategory.FormattingEnabled = True
-        Me.cbCategory.Location = New System.Drawing.Point(5, 6)
-        Me.cbCategory.Name = "cbCategory"
-        Me.cbCategory.Size = New System.Drawing.Size(187, 21)
-        Me.cbCategory.TabIndex = 1
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.LabelControl1.Location = New System.Drawing.Point(6, 9)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(51, 13)
+        Me.LabelControl1.TabIndex = 11
+        Me.LabelControl1.Text = "Danh mục:"
+        '
+        'LabelControl45
+        '
+        Me.LabelControl45.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.LabelControl45.Location = New System.Drawing.Point(202, 9)
+        Me.LabelControl45.Name = "LabelControl45"
+        Me.LabelControl45.Size = New System.Drawing.Size(46, 13)
+        Me.LabelControl45.TabIndex = 10
+        Me.LabelControl45.Text = "Số lượng:"
         '
         'nmCount
         '
         Me.nmCount.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.nmCount.Location = New System.Drawing.Point(282, 20)
+        Me.nmCount.Location = New System.Drawing.Point(202, 28)
         Me.nmCount.Name = "nmCount"
         Me.nmCount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.nmCount.Properties.IsFloatValue = False
         Me.nmCount.Properties.Mask.EditMask = "N00"
         Me.nmCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
         Me.nmCount.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.nmCount.Size = New System.Drawing.Size(35, 20)
-        Me.nmCount.TabIndex = 4
+        Me.nmCount.Size = New System.Drawing.Size(46, 20)
+        Me.nmCount.TabIndex = 9
+        '
+        'cbObject
+        '
+        Me.cbObject.FormattingEnabled = True
+        Me.cbObject.Location = New System.Drawing.Point(60, 33)
+        Me.cbObject.Name = "cbObject"
+        Me.cbObject.Size = New System.Drawing.Size(132, 21)
+        Me.cbObject.TabIndex = 6
+        '
+        'cbCategory
+        '
+        Me.cbCategory.FormattingEnabled = True
+        Me.cbCategory.Location = New System.Drawing.Point(60, 6)
+        Me.cbCategory.Name = "cbCategory"
+        Me.cbCategory.Size = New System.Drawing.Size(132, 21)
+        Me.cbCategory.TabIndex = 1
         '
         'btnAddObject
         '
-        Me.btnAddObject.Location = New System.Drawing.Point(198, 6)
+        Me.btnAddObject.Location = New System.Drawing.Point(254, 5)
         Me.btnAddObject.Name = "btnAddObject"
         Me.btnAddObject.Size = New System.Drawing.Size(73, 48)
         Me.btnAddObject.TabIndex = 5
@@ -151,10 +151,11 @@ Partial Class FormBanHang
         'listBill
         '
         Me.listBill.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.listBill.Dock = System.Windows.Forms.DockStyle.Fill
         Me.listBill.GridLines = True
-        Me.listBill.Location = New System.Drawing.Point(3, 3)
+        Me.listBill.Location = New System.Drawing.Point(2, 2)
         Me.listBill.Name = "listBill"
-        Me.listBill.Size = New System.Drawing.Size(326, 299)
+        Me.listBill.Size = New System.Drawing.Size(328, 302)
         Me.listBill.TabIndex = 0
         Me.listBill.UseCompatibleStateImageBehavior = False
         Me.listBill.View = System.Windows.Forms.View.Details
@@ -162,7 +163,7 @@ Partial Class FormBanHang
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Tên món"
-        Me.ColumnHeader1.Width = 88
+        Me.ColumnHeader1.Width = 140
         '
         'ColumnHeader2
         '
@@ -191,6 +192,14 @@ Partial Class FormBanHang
         Me.PanelControl3.Size = New System.Drawing.Size(332, 60)
         Me.PanelControl3.TabIndex = 5
         '
+        'cbSwichTable
+        '
+        Me.cbSwichTable.FormattingEnabled = True
+        Me.cbSwichTable.Location = New System.Drawing.Point(3, 35)
+        Me.cbSwichTable.Name = "cbSwichTable"
+        Me.cbSwichTable.Size = New System.Drawing.Size(73, 21)
+        Me.cbSwichTable.TabIndex = 7
+        '
         'btnCheckOut
         '
         Me.btnCheckOut.Location = New System.Drawing.Point(254, 6)
@@ -202,13 +211,15 @@ Partial Class FormBanHang
         'txtTotal
         '
         Me.txtTotal.EditValue = "0"
-        Me.txtTotal.Location = New System.Drawing.Point(159, 19)
+        Me.txtTotal.Location = New System.Drawing.Point(160, 20)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.txtTotal.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.txtTotal.Properties.Appearance.ForeColor = System.Drawing.Color.Red
         Me.txtTotal.Properties.Appearance.Options.UseFont = True
+        Me.txtTotal.Properties.Appearance.Options.UseForeColor = True
         Me.txtTotal.Properties.ReadOnly = True
         Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotal.Size = New System.Drawing.Size(90, 24)
+        Me.txtTotal.Size = New System.Drawing.Size(90, 20)
         Me.txtTotal.TabIndex = 6
         '
         'nmDiscount
@@ -247,13 +258,45 @@ Partial Class FormBanHang
         Me.tableLayout.Size = New System.Drawing.Size(438, 432)
         Me.tableLayout.TabIndex = 1
         '
-        'cbSwichTable
+        'AdminStripMenu
         '
-        Me.cbSwichTable.FormattingEnabled = True
-        Me.cbSwichTable.Location = New System.Drawing.Point(3, 35)
-        Me.cbSwichTable.Name = "cbSwichTable"
-        Me.cbSwichTable.Size = New System.Drawing.Size(73, 21)
-        Me.cbSwichTable.TabIndex = 7
+        Me.AdminStripMenu.Name = "AdminStripMenu"
+        Me.AdminStripMenu.Size = New System.Drawing.Size(55, 20)
+        Me.AdminStripMenu.Text = "Admin"
+        '
+        'AccountInfoToolStripMenu
+        '
+        Me.AccountInfoToolStripMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonalInfoToolStripMenu, Me.LogOutToolStripMenuItem})
+        Me.AccountInfoToolStripMenu.Name = "AccountInfoToolStripMenu"
+        Me.AccountInfoToolStripMenu.Size = New System.Drawing.Size(122, 20)
+        Me.AccountInfoToolStripMenu.Text = "Thông tin tài khoản"
+        '
+        'PersonalInfoToolStripMenu
+        '
+        Me.PersonalInfoToolStripMenu.Name = "PersonalInfoToolStripMenu"
+        Me.PersonalInfoToolStripMenu.Size = New System.Drawing.Size(170, 22)
+        Me.PersonalInfoToolStripMenu.Text = "Thông tin cá nhân"
+        '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.LogOutToolStripMenuItem.Text = "Đăng xuất"
+        '
+        'MenuStrip
+        '
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdminStripMenu, Me.AccountInfoToolStripMenu, Me.KháchHàngToolStripMenuItem})
+        Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip.Name = "MenuStrip"
+        Me.MenuStrip.Size = New System.Drawing.Size(800, 24)
+        Me.MenuStrip.TabIndex = 0
+        Me.MenuStrip.Text = "MenuStrip1"
+        '
+        'KháchHàngToolStripMenuItem
+        '
+        Me.KháchHàngToolStripMenuItem.Name = "KháchHàngToolStripMenuItem"
+        Me.KháchHàngToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
+        Me.KháchHàngToolStripMenuItem.Text = "Khách hàng"
         '
         'FormBanHang
         '
@@ -271,10 +314,9 @@ Partial Class FormBanHang
         Me.Name = "FormBanHang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Phần mềm quản lý quán cafe"
-        Me.MenuStrip.ResumeLayout(False)
-        Me.MenuStrip.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
@@ -282,16 +324,14 @@ Partial Class FormBanHang
         Me.PanelControl3.ResumeLayout(False)
         CType(Me.txtTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip.ResumeLayout(False)
+        Me.MenuStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
-    Friend WithEvents AdminStripMenu As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AccountInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents nmCount As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents btnAddObject As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl3 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnSwichTable As DevExpress.XtraEditors.SimpleButton
@@ -304,10 +344,18 @@ Partial Class FormBanHang
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents PersonalInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tableLayout As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents cbCategory As System.Windows.Forms.ComboBox
     Friend WithEvents cbObject As System.Windows.Forms.ComboBox
     Friend WithEvents cbSwichTable As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents nmCount As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents AdminStripMenu As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AccountInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PersonalInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
+    Friend WithEvents KháchHàngToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

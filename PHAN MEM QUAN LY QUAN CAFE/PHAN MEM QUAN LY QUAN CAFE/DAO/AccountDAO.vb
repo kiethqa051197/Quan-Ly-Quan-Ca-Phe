@@ -67,7 +67,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         End Function
 
         Public Function ResetPass(ByVal username As String) As Boolean
-            Dim query As String = String.Format("Update ACCOUNTS SET password = N'1962026656160185351301320480154111117132155' where username = N'{0}'", username)
+            Dim query As String = String.Format("Update ACCOUNTS SET password = N'123456' where username = N'{0}'", username)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function

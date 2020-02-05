@@ -35,7 +35,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         End Function
 
         Public Sub InsertBillInfo(ByVal idBill As Integer, ByVal idFood As Integer, ByVal count As Integer)
-            DataProvider._Instance.ExecuteNoneQuery("EXEC USP_InsertBillInfo @idBill , @idFood , @count", New Object() {idBill, idFood, count})
+            DataProvider._Instance.ExecuteNoneQuery("EXEC PC_InsertBillInfo @idBill , @idFood , @count", New Object() {idBill, idFood, count})
         End Sub
     End Class
 End Namespace

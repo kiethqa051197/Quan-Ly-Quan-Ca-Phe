@@ -125,8 +125,6 @@ Partial Class FormAdmin
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         Me.btnShowStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl11 = New DevExpress.XtraEditors.PanelControl()
-        Me.cbPositionStaff = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.LabelControl33 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.txtPhoneStaff = New DevExpress.XtraEditors.TextEdit()
         Me.btnResetPass = New DevExpress.XtraEditors.SimpleButton()
@@ -320,7 +318,6 @@ Partial Class FormAdmin
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl11.SuspendLayout()
-        CType(Me.cbPositionStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbbSexStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1299,8 +1296,6 @@ Partial Class FormAdmin
         '
         'PanelControl11
         '
-        Me.PanelControl11.Controls.Add(Me.cbPositionStaff)
-        Me.PanelControl11.Controls.Add(Me.LabelControl33)
         Me.PanelControl11.Controls.Add(Me.LabelControl12)
         Me.PanelControl11.Controls.Add(Me.txtPhoneStaff)
         Me.PanelControl11.Controls.Add(Me.btnResetPass)
@@ -1322,24 +1317,6 @@ Partial Class FormAdmin
         Me.PanelControl11.Size = New System.Drawing.Size(318, 395)
         Me.PanelControl11.TabIndex = 7
         '
-        'cbPositionStaff
-        '
-        Me.cbPositionStaff.EditValue = "(Chưa chọn)"
-        Me.cbPositionStaff.Location = New System.Drawing.Point(119, 275)
-        Me.cbPositionStaff.Name = "cbPositionStaff"
-        Me.cbPositionStaff.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbPositionStaff.Size = New System.Drawing.Size(176, 20)
-        Me.cbPositionStaff.TabIndex = 11
-        '
-        'LabelControl33
-        '
-        Me.LabelControl33.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl33.Location = New System.Drawing.Point(14, 277)
-        Me.LabelControl33.Name = "LabelControl33"
-        Me.LabelControl33.Size = New System.Drawing.Size(54, 14)
-        Me.LabelControl33.TabIndex = 24
-        Me.LabelControl33.Text = "Chức vụ:"
-        '
         'LabelControl12
         '
         Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
@@ -1358,7 +1335,7 @@ Partial Class FormAdmin
         '
         'btnResetPass
         '
-        Me.btnResetPass.Location = New System.Drawing.Point(119, 337)
+        Me.btnResetPass.Location = New System.Drawing.Point(119, 325)
         Me.btnResetPass.Name = "btnResetPass"
         Me.btnResetPass.Size = New System.Drawing.Size(176, 37)
         Me.btnResetPass.TabIndex = 12
@@ -1436,7 +1413,7 @@ Partial Class FormAdmin
         '
         'btnSaveStaff
         '
-        Me.btnSaveStaff.Location = New System.Drawing.Point(119, 303)
+        Me.btnSaveStaff.Location = New System.Drawing.Point(119, 291)
         Me.btnSaveStaff.Name = "btnSaveStaff"
         Me.btnSaveStaff.Size = New System.Drawing.Size(85, 28)
         Me.btnSaveStaff.TabIndex = 11
@@ -1445,7 +1422,7 @@ Partial Class FormAdmin
         '
         'btnCancelStaff
         '
-        Me.btnCancelStaff.Location = New System.Drawing.Point(210, 303)
+        Me.btnCancelStaff.Location = New System.Drawing.Point(210, 291)
         Me.btnCancelStaff.Name = "btnCancelStaff"
         Me.btnCancelStaff.Size = New System.Drawing.Size(85, 28)
         Me.btnCancelStaff.TabIndex = 12
@@ -2491,7 +2468,6 @@ Partial Class FormAdmin
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl11.ResumeLayout(False)
         Me.PanelControl11.PerformLayout()
-        CType(Me.cbPositionStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbbSexStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2800,7 +2776,5 @@ Partial Class FormAdmin
     Friend WithEvents btnDeleteSuplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditSuplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddSuplier As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents cbPositionStaff As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents LabelControl33 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
 End Class

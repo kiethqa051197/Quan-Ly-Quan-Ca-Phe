@@ -4,19 +4,6 @@ CREATE DATABASE QUANCAFE;
 -- Sử dụng CSDL
 USE QUANCAFE;
 
--- Bảng Chức Vụ
-CREATE TABLE POSITIONS
-(
-	id int identity(1,1) primary key,
-	name nvarchar(max) not null,
-	salary int null
-)
-
-INSERT POSITIONS(name, salary) values (N'Nhân viên', 3000000)
-INSERT POSITIONS(name, salary) values(N'Giữ xe', 2000000)
-INSERT POSITIONS(name, salary) values( N'Thử việc', 1500000)
-INSERT POSITIONS(name, salary) values( N'Admin', null)
-
 -- Bảng Nhân Viên
 CREATE TABLE STAFFS
 (
@@ -26,23 +13,20 @@ CREATE TABLE STAFFS
 	 gender bit not null, -- 1 LÀ Nam, 0 là nữ
 	 idCard varchar(12) not null, 
 	 address nvarchar(max) not null,
-	 phone varchar(11) null,
-	 idPosition int not null,
-
-	 foreign key (idPosition) references POSITIONS(id)
+	 phone varchar(11) null
 )
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone, idPosition) 
-				  values(N'Lee Hoàng Giang', '1997-01-25', 1, '2721564645', N'Mộ Đức, Đà Nẵng', '0938540130', 1)
+INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
+				  values(N'Lee Hoàng Giang', '1997-01-25', 1, '2721564645', N'Mộ Đức, Đà Nẵng', '0938540130')
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone, idPosition) 
-				  values(N'Nguyễn An Bình', '1986-10-13', 1, '45615463221', N'An Giang', '0138562100', 2)
+INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
+				  values(N'Nguyễn An Bình', '1986-10-13', 1, '45615463221', N'An Giang', '0138562100')
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone, idPosition) 
-				  values(N'Lê Thị Kiều', '1999-08-19', 0, '785605321', N'Phú Yên', '0168552435', 3)
+INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
+				  values(N'Lê Thị Kiều', '1999-08-19', 0, '785605321', N'Phú Yên', '0168552435')
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone, idPosition) 
-				  values(N'Hà Quốc Anh Kiệt', '1997-11-05', 1, '3121564645', N'Đồng Nai', '0378834457', 4)
+INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
+				  values(N'Hà Quốc Anh Kiệt', '1997-11-05', 1, '3121564645', N'Đồng Nai', '0378834457')
 
 -- Bảng Tài khoản nhân viên
 CREATE TABLE ACCOUNTS
@@ -68,7 +52,6 @@ CREATE TABLE CATEGORIES
 INSERT CATEGORIES (name) VALUES (N'Hải sản')
 INSERT CATEGORIES (name) VALUES (N'Nông sản')
 INSERT CATEGORIES (name) VALUES (N'Lâm sản')
-INSERT CATEGORIES (name) VALUES (N'Sản sản')
 INSERT CATEGORIES (name) VALUES (N'Nước')
 
 SELECT * FROM CATEGORIES
@@ -88,8 +71,7 @@ INSERT ITEMS (name, idCategory, price) VALUES (N'Mực một nắng nước sa t
 INSERT ITEMS (name, idCategory, price) VALUES (N'Nghêu hấp xả', 1, 50000)
 INSERT ITEMS (name, idCategory, price) VALUES (N'Dú dê nướng sữa', 2, 60000)
 INSERT ITEMS (name, idCategory, price) VALUES (N'Heo rừng nướng muối ớt', 3, 75000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'Cơm chiên mushi', 4, 999999)
-INSERT ITEMS (name, idCategory, price) VALUES (N'7Up', 5, 15000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'7 Up', 5, 15000)
 INSERT ITEMS (name, idCategory, price) VALUES (N'Cafe', 5, 12000)
 
 -- Bảng Bàn Ăn
@@ -141,7 +123,7 @@ CREATE TABLE BILLS
 	idTable int not null,
 	idCustomer int null,
 	dateCheckIn date not null, 
-	dateCheckOut date not null,
+	dateCheckOut date null,
 	status int not null,
 	discount int null default 0,
 	idStaff int not null,
@@ -309,61 +291,47 @@ GO
 
 -- Thêm Hoá đơn
 CREATE PROC PC_InsertBill
-@idTable INT
+	   @idTable INT, 
+       @idStaff INT
 AS
 BEGIN
-	INSERT dbo.Bill 
-	        ( DateCheckIn ,
-	          DateCheckOut ,
-	          idTable ,
-	          status,
-	          discount
-	        )
-	VALUES  ( GETDATE() , -- DateCheckIn - date
-	          NULL , -- DateCheckOut - date
-	          @idTable , -- idTable - int
-	          0,  -- status - int
-	          0
-	        )
+	INSERT BILLS (idTable, idCustomer, dateCheckIn, dateCheckOut, discount, status, idStaff)
+	VALUES (@idTable, 3, GETDATE(), GETDATE(), 0, 0, @idStaff)
 END
 GO
 
 -- Thêm chi tiết hoá đơn
 CREATE PROC PC_InsertBillInfo
-@idBill INT, @idFood INT, @count INT
+@idBill INT, @idItems INT, @count INT
 AS
 BEGIN
 
 	DECLARE @isExitsBillInfo INT
-	DECLARE @foodCount INT = 1
+	DECLARE @itemCount INT = 1
 	
-	SELECT @isExitsBillInfo = id, @foodCount = b.count 
-	FROM dbo.BillInfo AS b 
-	WHERE idBill = @idBill AND idFood = @idFood
+	SELECT @isExitsBillInfo = id, @itemCount = b.count 
+	FROM BILLINFOS AS b 
+	WHERE idBill = @idBill AND idItems = @idItems
 
 	IF (@isExitsBillInfo > 0)
 	BEGIN
-		DECLARE @newCount INT = @foodCount + @count
+		DECLARE @newCount INT = @itemCount + @count
 		IF (@newCount > 0)
-			UPDATE dbo.BillInfo	SET count = @foodCount + @count WHERE idFood = @idFood
+			UPDATE BILLINFOS SET count = @itemCount + @count WHERE idItems = @idItems
 		ELSE
-			DELETE dbo.BillInfo WHERE idBill = @idBill AND idFood = @idFood
+			DELETE BILLINFOS WHERE idBill = @idBill AND idItems = @idItems
 	END
 	ELSE
 	BEGIN
-		INSERT	dbo.BillInfo
-        ( idBill, idFood, count )
-		VALUES  ( @idBill, -- idBill - int
-          @idFood, -- idFood - int
-          @count  -- count - int
-          )
+		INSERT BILLINFOS (idBill, idItems, count )
+		VALUES ( @idBill, @idItems, @count)
 	END
 END
 GO
 
 -- Chuyển bàn
-CREATE PROC PC_SwitchTabel
-@idTable1 INT, @idTable2 int
+CREATE PROC PC_SwitchTable
+@idTable1 INT, @idTable2 INT, @idStaff INT
 AS BEGIN
 
 	DECLARE @idFirstBill int
@@ -373,8 +341,8 @@ AS BEGIN
 	DECLARE @isSecondTablEmty INT = 1
 	
 	
-	SELECT @idSeconrdBill = id FROM dbo.Bill WHERE idTable = @idTable2 AND status = 0
-	SELECT @idFirstBill = id FROM dbo.Bill WHERE idTable = @idTable1 AND status = 0
+	SELECT @idSeconrdBill = id FROM BILLS WHERE idTable = @idTable2 AND status = 0
+	SELECT @idFirstBill = id FROM BILLS WHERE idTable = @idTable1 AND status = 0
 	
 	PRINT @idFirstBill
 	PRINT @idSeconrdBill
@@ -383,23 +351,14 @@ AS BEGIN
 	IF (@idFirstBill IS NULL)
 	BEGIN
 		PRINT '0000001'
-		INSERT dbo.Bill
-		        ( DateCheckIn ,
-		          DateCheckOut ,
-		          idTable ,
-		          status
-		        )
-		VALUES  ( GETDATE() , -- DateCheckIn - date
-		          NULL , -- DateCheckOut - date
-		          @idTable1 , -- idTable - int
-		          0  -- status - int
-		        )
+		INSERT BILLS(idTable, idCustomer, dateCheckIn, dateCheckOut, status, discount, idStaff)
+		VALUES (@idTable1, 3, GETDATE(), GETDATE(), 0, 0, @idStaff)
 		        
-		SELECT @idFirstBill = MAX(id) FROM dbo.Bill WHERE idTable = @idTable1 AND status = 0
+		SELECT @idFirstBill = MAX(id) FROM BILLS WHERE idTable = @idTable1 AND status = 0
 		
 	END
 	
-	SELECT @isFirstTablEmty = COUNT(*) FROM dbo.BillInfo WHERE idBill = @idFirstBill
+	SELECT @isFirstTablEmty = COUNT(*) FROM BILLINFOS WHERE idBill = @idFirstBill
 	
 	PRINT @idFirstBill
 	PRINT @idSeconrdBill
@@ -408,42 +367,38 @@ AS BEGIN
 	IF (@idSeconrdBill IS NULL)
 	BEGIN
 		PRINT '0000002'
-		INSERT dbo.Bill
-		        ( DateCheckIn ,
-		          DateCheckOut ,
-		          idTable ,
-		          status
-		        )
-		VALUES  ( GETDATE() , -- DateCheckIn - date
-		          NULL , -- DateCheckOut - date
-		          @idTable2 , -- idTable - int
-		          0  -- status - int
-		        )
-		SELECT @idSeconrdBill = MAX(id) FROM dbo.Bill WHERE idTable = @idTable2 AND status = 0
+
+		INSERT BILLS(idTable, idCustomer, dateCheckIn, dateCheckOut, status, discount, idStaff)
+		VALUES (@idTable2, 3, GETDATE(), GETDATE(), 0, 0, @idStaff)
+
+		SELECT @idSeconrdBill = MAX(id) FROM BILLS WHERE idTable = @idTable2 AND status = 0
 		
 	END
 	
-	SELECT @isSecondTablEmty = COUNT(*) FROM dbo.BillInfo WHERE idBill = @idSeconrdBill
+	SELECT @isSecondTablEmty = COUNT(*) FROM BILLINFOS WHERE idBill = @idSeconrdBill
 	
 	PRINT @idFirstBill
 	PRINT @idSeconrdBill
 	PRINT '-----------'
 
-	SELECT id INTO IDBillInfoTable FROM dbo.BillInfo WHERE idBill = @idSeconrdBill
+	SELECT id INTO IDBillInfoTable FROM BILLINFOS WHERE idBill = @idSeconrdBill
 	
-	UPDATE dbo.BillInfo SET idBill = @idSeconrdBill WHERE idBill = @idFirstBill
+	UPDATE BILLINFOS SET idBill = @idSeconrdBill WHERE idBill = @idFirstBill
 	
-	UPDATE dbo.BillInfo SET idBill = @idFirstBill WHERE id IN (SELECT * FROM IDBillInfoTable)
+	UPDATE BILLINFOS SET idBill = @idFirstBill WHERE id IN (SELECT * FROM IDBillInfoTable)
 	
 	DROP TABLE IDBillInfoTable
 	
 	IF (@isFirstTablEmty = 0)
-		UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable2
+		UPDATE TABLES SET status = N'Trống' WHERE id = @idTable2
+	ELSE 
+		UPDATE TABLES SET status = N'Có người' WHERE id = @idTable2
 		
 	IF (@isSecondTablEmty= 0)
-		UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable1
+		UPDATE TABLES SET status = N'Trống' WHERE id = @idTable1
+	ELSE 
+		UPDATE TABLES SET status = N'Có người' WHERE id = @idTable1
 END
 GO
 
-select p.name
-from POSITIONS as p
+UPDATE BILLS SET idCustomer = 3, dateCheckout = GETDATE(), status = 1, discount = 0, idStaff = 4 WHERE id = 23

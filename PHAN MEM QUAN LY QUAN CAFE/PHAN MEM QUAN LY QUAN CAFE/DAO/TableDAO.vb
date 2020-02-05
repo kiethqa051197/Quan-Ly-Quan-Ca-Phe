@@ -20,8 +20,8 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         Private Sub New()
         End Sub
 
-        Public Sub SwitchTable(ByVal id1 As Integer, ByVal id2 As Integer)
-            DataProvider._Instance.ExecuteQuery("PC_SwitchTable @idTable1 , @idTable2", New Object() {id1, id2})
+        Public Sub SwitchTable(ByVal id1 As Integer, ByVal id2 As Integer, ByVal idStaff As Integer)
+            DataProvider._Instance.ExecuteQuery("PC_SwitchTable @idTable1 , @idTable2 , @idStaff ", New Object() {id1, id2, idStaff})
         End Sub
 
         Public Function LoadTableList() As List(Of Tables)
@@ -57,6 +57,12 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function UpdateTableFood(ByVal id As Integer, ByVal name As String) As Boolean
             Dim query As String = String.Format("UPDATE TABLES SET name = N'{0}' WHERE id = {1}", name, id)
+            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
+            Return result > 0
+        End Function
+
+        Public Function UpdateStatusTable(ByVal id As Integer, ByVal status As String) As Boolean
+            Dim query As String = String.Format("UPDATE TABLES SET status = N'{0}' WHERE id = {1}", status, id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function

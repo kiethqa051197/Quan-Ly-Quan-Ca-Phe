@@ -1,30 +1,30 @@
 ﻿Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
     Public Class Menu
+        Private name As String
         Private count As Integer
         Private price As Single
         Private totalPrice As Single
-        Private itemName As String
 
-        Public Sub New(ByVal itemName As String, ByVal price As Integer, ByVal count As Single, Optional ByVal totalPrice As Single = 0)
-            Me.itemName = itemName
+        Public Sub New(ByVal name As String, ByVal price As Integer, ByVal count As Single, Optional ByVal totalPrice As Single = 0)
+            Me.name = name
             Me.price = price
             Me.count = count
             Me.totalPrice = totalPrice
         End Sub
 
         Public Sub New(ByVal row As DataRow)
-            Me.itemName = row("name").ToString()
+            Me.name = row("name").ToString()
             Me.count = CInt(row("count"))
             Me.price = CSng(Convert.ToDouble(row("price").ToString()))
             Me.totalPrice = CSng(Convert.ToDouble(row("totalPrice").ToString()))
         End Sub
 
-        Public Property _itemName As String
+        Public Property _name As String
             Get
-                Return itemName
+                Return name
             End Get
             Set(ByVal value As String)
-                itemName = value
+                name = value
             End Set
         End Property
 

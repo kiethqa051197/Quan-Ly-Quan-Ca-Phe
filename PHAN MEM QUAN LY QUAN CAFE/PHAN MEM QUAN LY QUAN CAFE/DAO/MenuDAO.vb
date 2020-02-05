@@ -19,7 +19,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function GetListMenuByTable(ByVal id As Integer) As List(Of Menu)
             Dim listMenu As List(Of Menu) = New List(Of Menu)()
-            Dim query As String = "SELECT f.name, bi.count, f.price, f.price*bi.count AS totalPrice FROM dbo.BillInfo AS bi, dbo.Bill AS b, dbo.Food AS f WHERE bi.idBill = b.id AND bi.idFood = f.id AND b.status = 0 AND b.idTable = " & id
+            Dim query As String = "SELECT i.name, bi.count, i.price, i.price*bi.count AS totalPrice FROM BILLINFOS AS bi, BILLS AS b, ITEMS AS i WHERE bi.idBill = b.id AND bi.idItems = i.id AND b.status = 0 AND b.idTable = " & id
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
 
             For Each item As DataRow In data.Rows

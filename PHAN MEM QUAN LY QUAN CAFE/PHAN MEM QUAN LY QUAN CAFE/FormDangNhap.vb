@@ -13,9 +13,8 @@ Public Class FormDangNhap
         If Login(username, password) Then
             Dim loginAccount As Accounts = AccountDAO._Instance.GetAccountByUserName(username)
             Me.Hide()
-
-            Dim f As FormBanHang = New FormBanHang
-            f.Show()
+            Dim f As New FormBanHang(loginAccount)
+            f.ShowDialog()
         Else
             MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!")
         End If
