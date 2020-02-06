@@ -4,7 +4,7 @@ Imports System.Globalization
 
 Public Class FormBanHang
 
-#Region "Initialize"
+#Region "KHỞI TẠO"
     Dim acc As Accounts
     Dim idStaff As Integer
 
@@ -24,7 +24,7 @@ Public Class FormBanHang
     End Sub
 #End Region
 
-#Region "method"
+#Region "CÁC HÀM CHỨC NĂNG"
 
 #Region "Load tất cả các bàn từ CSDL"
     Private Sub LoadTable()
@@ -107,7 +107,7 @@ Public Class FormBanHang
 
 #End Region
 
-#Region "event"
+#Region "BẮT SỰ KIỆN"
 
 #Region "Chọn danh mục"
     Private Sub cbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCategory.SelectedIndexChanged
@@ -147,7 +147,7 @@ Public Class FormBanHang
     End Sub
 #End Region
 
-#Region "Thực hiện tất cả các function khi load Form"
+#Region "Load form"
     Private Sub FormBanHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadTable()
         LoadListCategory()
@@ -155,7 +155,7 @@ Public Class FormBanHang
     End Sub
 #End Region
 
-#Region "Gọi món"
+#Region "Click nút thêm món"
     Private Sub btnAddObject_Click(sender As Object, e As EventArgs) Handles btnAddObject.Click
         Dim table As Tables = TryCast(listBill.Tag, Tables)
 
@@ -181,7 +181,7 @@ Public Class FormBanHang
     End Sub
 #End Region
 
-#Region "Thanh toán"
+#Region "Click nút Thanh toán"
     Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
         Dim table As Tables = TryCast(listBill.Tag, Tables)
         Dim idBill As Integer = BillsDAO._Instance.GetUncheckBillIDByTableID(table._id)
@@ -201,7 +201,7 @@ Public Class FormBanHang
     End Sub
 #End Region
 
-#Region "Chuyển bàn"
+#Region "Click nút Chuyển bàn"
     Private Sub btnSwichTable_Click(sender As Object, e As EventArgs) Handles btnSwichTable.Click
         Dim id1 As Integer = (TryCast(listBill.Tag, Tables))._id
         Dim id2 As Integer = (TryCast(cbSwichTable.SelectedItem, Tables))._id
@@ -213,6 +213,20 @@ Public Class FormBanHang
     End Sub
 #End Region
 
+#Region "Click menu 'Khách hàng'"
+    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
+        Dim f As FormKhachHang = New FormKhachHang()
+        f.ShowDialog()
+    End Sub
 #End Region
 
+#Region "Thông tin cá nhân (Chưa xong)"
+    Private Sub PersonalInfoToolStripMenu_Click(sender As Object, e As EventArgs) Handles PersonalInfoToolStripMenu.Click
+        Dim staff As Staffs = StaffDAO._Instance.GetInfoStaffById(idStaff)
+        Dim f As New FormThongTinNhanVien(staff)
+        f.ShowDialog()
+    End Sub
+#End Region
+
+#End Region
 End Class

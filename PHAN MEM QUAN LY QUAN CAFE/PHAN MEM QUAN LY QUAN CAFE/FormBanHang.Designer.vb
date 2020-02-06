@@ -49,7 +49,7 @@ Partial Class FormBanHang
         Me.PersonalInfoToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
-        Me.KháchHàngToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -285,18 +285,18 @@ Partial Class FormBanHang
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdminStripMenu, Me.AccountInfoToolStripMenu, Me.KháchHàngToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdminStripMenu, Me.AccountInfoToolStripMenu, Me.CustomerToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(800, 24)
         Me.MenuStrip.TabIndex = 0
         Me.MenuStrip.Text = "MenuStrip1"
         '
-        'KháchHàngToolStripMenuItem
+        'CustomerToolStripMenuItem
         '
-        Me.KháchHàngToolStripMenuItem.Name = "KháchHàngToolStripMenuItem"
-        Me.KháchHàngToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
-        Me.KháchHàngToolStripMenuItem.Text = "Khách hàng"
+        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
+        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
+        Me.CustomerToolStripMenuItem.Text = "Khách hàng"
         '
         'FormBanHang
         '
@@ -357,5 +357,5 @@ Partial Class FormBanHang
     Friend WithEvents PersonalInfoToolStripMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
-    Friend WithEvents KháchHàngToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CustomerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

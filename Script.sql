@@ -10,7 +10,7 @@ CREATE TABLE STAFFS
 	 id int identity(1,1) primary key,
 	 fullname nvarchar(max) not null,
 	 dateofbirth date not null,
-	 gender bit not null, -- 1 LÀ Nam, 0 là nữ
+	 gender bit not null, -- 1 Là Nam, 0 là Nữ
 	 idCard varchar(12) not null, 
 	 address nvarchar(max) not null,
 	 phone varchar(11) null
@@ -401,4 +401,13 @@ AS BEGIN
 END
 GO
 
-UPDATE BILLS SET idCustomer = 3, dateCheckout = GETDATE(), status = 1, discount = 0, idStaff = 4 WHERE id = 23
+-- Lấy tài khoản từ username
+CREATE PROC PC_GetInfoStaffByUserName
+@userName nvarchar(100)
+AS 
+BEGIN
+	SELECT s.fullname, s.dateofbirth, s.address, s.idCard, s.gender, s.phone
+	FROM ACCOUNTS as a JOIN STAFFS as s ON a.idStaff = s.id
+	WHERE username = @userName
+END
+GO

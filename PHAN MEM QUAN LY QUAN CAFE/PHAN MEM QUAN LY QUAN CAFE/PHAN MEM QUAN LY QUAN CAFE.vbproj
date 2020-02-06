@@ -87,6 +87,7 @@
     <Compile Include="DAO\BillsDAO.vb" />
     <Compile Include="DAO\BillsInfoDAO.vb" />
     <Compile Include="DAO\CategoriesDAO.vb" />
+    <Compile Include="DAO\StaffDAO.vb" />
     <Compile Include="DTO\Customers.vb" />
     <Compile Include="DAO\DataProvider.vb" />
     <Compile Include="DAO\ItemsDAO.vb" />
@@ -119,6 +120,18 @@
       <DependentUpon>FormDangNhap.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormKhachHang.Designer.vb">
+      <DependentUpon>FormKhachHang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormKhachHang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThongTinNhanVien.Designer.vb">
+      <DependentUpon>FormThongTinNhanVien.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormThongTinNhanVien.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -144,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKhachHang.resx">
+      <DependentUpon>FormKhachHang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThongTinNhanVien.resx">
+      <DependentUpon>FormThongTinNhanVien.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
