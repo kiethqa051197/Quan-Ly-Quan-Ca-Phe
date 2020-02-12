@@ -9,8 +9,8 @@
         Private discount As Integer
         Private idStaff As Integer
 
-        Public Sub New(ByVal id As Integer, ByVal idTable As Integer, ByVal idCustomer As Integer, ByVal dateCheckIn As DateTime?, ByVal dateCheckOut As DateTime?,
-                       ByVal status As Integer, ByVal idStaff As Integer, Optional ByVal discount As Integer = 0)
+        Public Sub New(id As Integer, idTable As Integer, idCustomer As Integer, dateCheckIn As DateTime?, dateCheckOut As DateTime?,
+                       status As Integer, idStaff As Integer, Optional discount As Integer = 0)
             Me.id = id
             Me.idTable = idTable
             Me.idCustomer = idCustomer
@@ -21,7 +21,7 @@
             Me.idStaff = idStaff
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.idTable = CInt(row("idTable"))
             Me.idCustomer = CInt(row("idCustomer"))
@@ -43,7 +43,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -52,7 +52,7 @@
             Get
                 Return idTable
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idTable = value
             End Set
         End Property
@@ -61,7 +61,7 @@
             Get
                 Return idCustomer
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idCustomer = value
             End Set
         End Property
@@ -70,7 +70,7 @@
             Get
                 Return dateCheckIn
             End Get
-            Set(ByVal value As DateTime?)
+            Set(value As DateTime?)
                 dateCheckIn = value
             End Set
         End Property
@@ -79,7 +79,7 @@
             Get
                 Return dateCheckOut
             End Get
-            Set(ByVal value As DateTime?)
+            Set(value As DateTime?)
                 dateCheckOut = value
             End Set
         End Property
@@ -88,7 +88,7 @@
             Get
                 Return status
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 status = value
             End Set
         End Property
@@ -97,7 +97,7 @@
             Get
                 Return discount
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 discount = value
             End Set
         End Property
@@ -106,7 +106,7 @@
             Get
                 Return idStaff
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idStaff = value
             End Set
         End Property

@@ -268,19 +268,19 @@ Partial Class FormBanHang
         '
         Me.AccountInfoToolStripMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonalInfoToolStripMenu, Me.LogOutToolStripMenuItem})
         Me.AccountInfoToolStripMenu.Name = "AccountInfoToolStripMenu"
-        Me.AccountInfoToolStripMenu.Size = New System.Drawing.Size(122, 20)
+        Me.AccountInfoToolStripMenu.Size = New System.Drawing.Size(123, 20)
         Me.AccountInfoToolStripMenu.Text = "Thông tin tài khoản"
         '
         'PersonalInfoToolStripMenu
         '
         Me.PersonalInfoToolStripMenu.Name = "PersonalInfoToolStripMenu"
-        Me.PersonalInfoToolStripMenu.Size = New System.Drawing.Size(170, 22)
+        Me.PersonalInfoToolStripMenu.Size = New System.Drawing.Size(171, 22)
         Me.PersonalInfoToolStripMenu.Text = "Thông tin cá nhân"
         '
         'LogOutToolStripMenuItem
         '
         Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.LogOutToolStripMenuItem.Text = "Đăng xuất"
         '
         'MenuStrip

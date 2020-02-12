@@ -103,6 +103,12 @@ INSERT TABLES (name, status) VALUES (N'Bàn 17', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 18', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 19', N'Trống')
 
+ALTER TABLE TABLES
+ADD CONSTRAINT df_status
+DEFAULT N'Trống' FOR status;
+
+ALTER TABLE TABLES DROP CONSTRAINT df_status;  
+
 -- Bảng Khách Hàng
 CREATE TABLE CUSTOMERS
 (
@@ -296,13 +302,13 @@ CREATE PROC PC_InsertBill
 AS
 BEGIN
 	INSERT BILLS (idTable, idCustomer, dateCheckIn, dateCheckOut, discount, status, idStaff)
-	VALUES (@idTable, 3, GETDATE(), GETDATE(), 0, 0, @idStaff)
+	VALUES (@idTable, 2, GETDATE(), GETDATE(), 0, 0, @idStaff)
 END
 GO
 
 -- Thêm chi tiết hoá đơn
 CREATE PROC PC_InsertBillInfo
-@idBill INT, @idItems INT, @count INT
+@idBill INT, @idItems INT, @price INT, @count INT
 AS
 BEGIN
 
@@ -317,14 +323,14 @@ BEGIN
 	BEGIN
 		DECLARE @newCount INT = @itemCount + @count
 		IF (@newCount > 0)
-			UPDATE BILLINFOS SET count = @itemCount + @count WHERE idItems = @idItems
+			UPDATE BILLINFOS SET price = @price, count = @itemCount + @count WHERE idItems = @idItems
 		ELSE
 			DELETE BILLINFOS WHERE idBill = @idBill AND idItems = @idItems
 	END
 	ELSE
 	BEGIN
-		INSERT BILLINFOS (idBill, idItems, count )
-		VALUES ( @idBill, @idItems, @count)
+		INSERT BILLINFOS (idBill, idItems, price, count )
+		VALUES ( @idBill, @idItems, @price, @count)
 	END
 END
 GO
@@ -352,7 +358,7 @@ AS BEGIN
 	BEGIN
 		PRINT '0000001'
 		INSERT BILLS(idTable, idCustomer, dateCheckIn, dateCheckOut, status, discount, idStaff)
-		VALUES (@idTable1, 3, GETDATE(), GETDATE(), 0, 0, @idStaff)
+		VALUES (@idTable1, 2, GETDATE(), GETDATE(), 0, 0, @idStaff)
 		        
 		SELECT @idFirstBill = MAX(id) FROM BILLS WHERE idTable = @idTable1 AND status = 0
 		
@@ -369,7 +375,7 @@ AS BEGIN
 		PRINT '0000002'
 
 		INSERT BILLS(idTable, idCustomer, dateCheckIn, dateCheckOut, status, discount, idStaff)
-		VALUES (@idTable2, 3, GETDATE(), GETDATE(), 0, 0, @idStaff)
+		VALUES (@idTable2, 2, GETDATE(), GETDATE(), 0, 0, @idStaff)
 
 		SELECT @idSeconrdBill = MAX(id) FROM BILLS WHERE idTable = @idTable2 AND status = 0
 		
@@ -401,13 +407,54 @@ AS BEGIN
 END
 GO
 
--- Lấy tài khoản từ username
-CREATE PROC PC_GetInfoStaffByUserName
-@userName nvarchar(100)
+CREATE FUNCTION [dbo].[fuConvertToUnsign1] ( @strInput NVARCHAR(4000) ) 
+	RETURNS NVARCHAR(4000) 
 AS 
-BEGIN
-	SELECT s.fullname, s.dateofbirth, s.address, s.idCard, s.gender, s.phone
-	FROM ACCOUNTS as a JOIN STAFFS as s ON a.idStaff = s.id
-	WHERE username = @userName
+BEGIN 
+	IF @strInput IS NULL RETURN @strInput 
+
+	IF @strInput = '' RETURN @strInput DECLARE @RT NVARCHAR(4000) 
+
+	DECLARE @SIGN_CHARS NCHAR(136) 
+	DECLARE @UNSIGN_CHARS NCHAR (136) SET @SIGN_CHARS = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệế ìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵý ĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍ ÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ' + NCHAR(272) + NCHAR(208) SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeee iiiiiooooooooooooooouuuuuuuuuuyyyyy AADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIII OOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD' 
+	DECLARE @COUNTER int 
+	DECLARE @COUNTER1 int SET @COUNTER = 1 WHILE (@COUNTER <=LEN(@strInput)) 
+	BEGIN SET @COUNTER1 = 1 WHILE (@COUNTER1 <=LEN(@SIGN_CHARS)+1) 
+		BEGIN IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) ) 
+			BEGIN IF @COUNTER=1 SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1) 
+			ELSE SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER) 
+				BREAK END SET @COUNTER1 = @COUNTER1 +1 END SET @COUNTER = @COUNTER +1 END SET @strInput = replace(@strInput,' ','-') RETURN @strInput 
 END
-GO
+
+/* 
+
+2020 tháng 1 - món x :  (Tồn đầu kỳ ; Tồn cuối kỳ) :  100 ly cafe (20k/1)
+- Nhập vô 100, Bán được 80 (cafe) : 7k/1 (còn 20)
+- Nhập vô 100, Bán được 70 (đường) : 8k/1 (còn 30)
+.................  
+- Tồn đầu kỳ = 0 + 0 = 0
+- tồn cuối kỳ : (100 + 100 + 0) - (80 + 70) => tồn tháng 1 = 50
+Giá trị Trung bình (all món) = (0 * 7 + 0 * 8 + 100 * 7 + 100 * 8 ) / (100 + 100 + 0 + 0)  = 7.5
+ 
+1 ly cafe = ? cafe + ? đường
+Lợi Nhuận = (20 * 100) - (7.5 * 80 + 7.5 * 70) = 875k
+
+tháng 2 - món x :  100 ly cafe (20k/1)
+- Nhập vô 90, Bán được 90 (cafe) : 8k/1 (0)
+- Nhập vô 110, Bán được 60 (đường) : 6k/1 (còn 50)
+- tồn đầu kỳ = tồn cuối tháng 1 (20 + 30 = 50)
+- tồn cuối kỳ : 0 + 50 = 50
+Giá trị Trung bình (all món) = (20 * 8 + 30 * 6 + 90 * 8 + 110 * 6 ) / (90 + 110 + 0 + 50)  = 6.88
+Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60) = 3032k
+
+tháng 3 - món x :  (.......)
+..........
+- discount
+- lương staff 
+- .......
+Bình quân gia quyền
+Lợi Nhuận = Tổng Trị giá bán - (Tổng trị giá nhập + Trị giá tồn + discount + lượng + .....)
+
+Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60 + 20 * 8 + 30 * 6) = ....k
+
+*/

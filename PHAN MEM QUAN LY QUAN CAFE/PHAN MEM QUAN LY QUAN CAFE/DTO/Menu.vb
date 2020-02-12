@@ -5,14 +5,14 @@
         Private price As Single
         Private totalPrice As Single
 
-        Public Sub New(ByVal name As String, ByVal price As Integer, ByVal count As Single, Optional ByVal totalPrice As Single = 0)
+        Public Sub New(name As String, price As Integer, count As Single, Optional totalPrice As Single = 0)
             Me.name = name
             Me.price = price
             Me.count = count
             Me.totalPrice = totalPrice
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.name = row("name").ToString()
             Me.count = CInt(row("count"))
             Me.price = CSng(Convert.ToDouble(row("price").ToString()))
@@ -23,7 +23,7 @@
             Get
                 Return name
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 name = value
             End Set
         End Property
@@ -32,7 +32,7 @@
             Get
                 Return count
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 count = value
             End Set
         End Property
@@ -41,7 +41,7 @@
             Get
                 Return price
             End Get
-            Set(ByVal value As Single)
+            Set(value As Single)
                 price = value
             End Set
         End Property
@@ -50,7 +50,7 @@
             Get
                 Return totalPrice
             End Get
-            Set(ByVal value As Single)
+            Set(value As Single)
                 totalPrice = value
             End Set
         End Property

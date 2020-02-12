@@ -29,11 +29,6 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return result.Rows.Count > 0
         End Function
 
-        Public Function UpdateAccount(ByVal userName As String, ByVal displayName As String, ByVal pass As String, ByVal newPass As String) As Boolean
-            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery("EXEC USP_UpdateAccount @userName , @displayName , @password , @newPassword ", New Object() {userName, displayName, pass, newPass})
-            Return result > 0
-        End Function
-
         Public Function GetAccountByUserName(ByVal userName As String) As Accounts
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery("SELECT * FROM ACCOUNTS WHERE userName = '" & userName & "'")
 
@@ -49,13 +44,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         End Function
 
         Public Function InsertAccount(ByVal username As String, ByVal displayname As String, ByVal type As Integer) As Boolean
-            Dim query As String = String.Format("INSERT INTO dbo.ACCOUNTS ( username, displayname, type, password ) VALUES  ( N'{0}', N'{1}', {2}, N'{3}')", username, displayname, type, "1962026656160185351301320480154111117132155")
-            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
-            Return result > 0
-        End Function
-
-        Public Function UpdateAccount(ByVal username As String, ByVal displayname As String, ByVal type As Integer) As Boolean
-            Dim query As String = String.Format("UPDATE dbo.ACCOUNTS SET displayname = N'{1}', type = {2} WHERE username = N'{0}'", username, displayname, type)
+            Dim query As String = String.Format("INSERT INTO ACCOUNTS ( username, displayname, type, password ) VALUES  ( N'{0}', N'{1}', {2}, N'{3}')", username, displayname, type, "1962026656160185351301320480154111117132155")
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
@@ -68,6 +57,12 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function ResetPass(ByVal username As String) As Boolean
             Dim query As String = String.Format("Update ACCOUNTS SET password = N'123456' where username = N'{0}'", username)
+            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
+            Return result > 0
+        End Function
+
+        Public Function UpdateAccountStaff(id As Integer, username As String, password As String, idStaff As Integer, type As Integer) As Boolean
+            Dim query As String = String.Format("Update ACCOUNTS SET username = N'{1}' , password = N'{2}' , idStaff = {3} , type = {4} where id = {0}", id, username, password, idStaff, type)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function

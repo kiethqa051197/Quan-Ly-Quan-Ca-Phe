@@ -9,7 +9,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
                 If instance Is Nothing Then instance = New CategoriesDAO()
                 Return CategoriesDAO.instance
             End Get
-            Private Set(ByVal value As CategoriesDAO)
+            Private Set(value As CategoriesDAO)
                 CategoriesDAO.instance = value
             End Set
         End Property
@@ -30,7 +30,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return list
         End Function
 
-        Public Function GetCategoryByID(ByVal id As Integer) As Categories
+        Public Function GetCategoryByID(id As Integer) As Categories
             Dim category As Categories = Nothing
             Dim query As String = "SELECT * FROM CATEGORIES WHERE id = " & id
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
@@ -43,19 +43,19 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return category
         End Function
 
-        Public Function InsertCategory(ByVal name As String) As Boolean
+        Public Function InsertCategory(name As String) As Boolean
             Dim query As String = String.Format("INSERT INTO CATEGORIES ( name ) VALUES  ( N'{0}' )", name)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
 
-        Public Function UpdateCategory(ByVal id As Integer, ByVal name As String) As Boolean
+        Public Function UpdateCategory(id As Integer, name As String) As Boolean
             Dim query As String = String.Format("UPDATE CATEGORIES SET name = N'{0}' WHERE id = {1}", name, id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
 
-        Public Function DeleteCategory(ByVal id As Integer) As Boolean
+        Public Function DeleteCategory(id As Integer) As Boolean
             Dim query As String = String.Format("DELETE CATEGORIES where id = {0}", id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0

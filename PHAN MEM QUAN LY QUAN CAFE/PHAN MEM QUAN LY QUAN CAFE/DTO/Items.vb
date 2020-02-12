@@ -5,14 +5,14 @@
         Private price As Single
         Private idCategory As Integer
 
-        Public Sub New(ByVal id As Integer, ByVal name As String, ByVal price As Single, ByVal idCategory As Integer)
+        Public Sub New(id As Integer, name As String, price As Single, idCategory As Integer)
             Me.id = id
             Me.name = name
             Me.price = price
             Me.idCategory = idCategory
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.name = row("name").ToString()
             Me.price = CSng(Convert.ToDouble(row("price").ToString()))
@@ -23,7 +23,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -32,7 +32,7 @@
             Get
                 Return name
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 name = value
             End Set
         End Property
@@ -41,7 +41,7 @@
             Get
                 Return price
             End Get
-            Set(ByVal value As Single)
+            Set(value As Single)
                 price = value
             End Set
         End Property
@@ -50,7 +50,7 @@
             Get
                 Return idCategory
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idCategory = value
             End Set
         End Property

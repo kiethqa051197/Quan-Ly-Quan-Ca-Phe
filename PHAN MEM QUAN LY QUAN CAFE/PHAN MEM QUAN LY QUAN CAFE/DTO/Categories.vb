@@ -3,12 +3,12 @@
         Private id As Integer
         Private name As String
 
-        Public Sub New(ByVal id As Integer, ByVal name As String)
+        Public Sub New(id As Integer, name As String)
             Me.id = id
             Me.name = name
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.name = row("name").ToString()
         End Sub
@@ -17,7 +17,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -26,7 +26,7 @@
             Get
                 Return name
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 name = value
             End Set
         End Property

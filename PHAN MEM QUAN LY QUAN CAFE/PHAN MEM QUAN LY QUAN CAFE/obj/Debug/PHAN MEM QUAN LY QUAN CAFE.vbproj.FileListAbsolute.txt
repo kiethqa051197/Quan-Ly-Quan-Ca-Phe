@@ -25,3 +25,18 @@ D:\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAF
 D:\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.xml
 D:\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.pdb
 D:\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.FormKhachHang.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\bin\Debug\PHAN MEM QUAN LY QUAN CAFE.exe.config
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\bin\Debug\PHAN MEM QUAN LY QUAN CAFE.exe
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\bin\Debug\PHAN MEM QUAN LY QUAN CAFE.pdb
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\bin\Debug\PHAN MEM QUAN LY QUAN CAFE.xml
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.FormAdmin.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.FormBanHang.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.FormDangNhap.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.FormKhachHang.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.FormThongTinNhanVien.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN_MEM_QUAN_LY_QUAN_CAFE.Resources.resources
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.vbproj.GenerateResource.Cache
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.exe.licenses
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.exe
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.xml
+C:\Users\Monkey\Documents\Kiet\Quan-Ly-Quan-Ca-Phe\PHAN MEM QUAN LY QUAN CAFE\PHAN MEM QUAN LY QUAN CAFE\obj\Debug\PHAN MEM QUAN LY QUAN CAFE.pdb

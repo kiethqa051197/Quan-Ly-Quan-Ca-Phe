@@ -41,42 +41,48 @@ Partial Class FormAdmin
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl5 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl50 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDTable = New DevExpress.XtraEditors.TextEdit()
         Me.btnSave = New DevExpress.XtraEditors.SimpleButton()
         Me.btnCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.txtTableName = New DevExpress.XtraEditors.TextEdit()
-        Me.txtStatus = New DevExpress.XtraEditors.TextEdit()
+        Me.txtStatusTable = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl4 = New DevExpress.XtraEditors.PanelControl()
         Me.btnDeleteTable = New DevExpress.XtraEditors.SimpleButton()
         Me.btnEditTable = New DevExpress.XtraEditors.SimpleButton()
         Me.btnAddTable = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvTable = New DevExpress.XtraGrid.GridControl()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.gridTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.tpCategory = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl24 = New DevExpress.XtraEditors.PanelControl()
         Me.TextEdit3 = New DevExpress.XtraEditors.TextEdit()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl8 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl47 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDCategory = New DevExpress.XtraEditors.TextEdit()
         Me.btnSaveCategory = New DevExpress.XtraEditors.SimpleButton()
         Me.btnCancelCategory = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtCategory = New DevExpress.XtraEditors.TextEdit()
+        Me.txtNameCategory = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl7 = New DevExpress.XtraEditors.PanelControl()
-        Me.dgvDanhMuc = New DevExpress.XtraGrid.GridControl()
-        Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.dgvCategory = New DevExpress.XtraGrid.GridControl()
+        Me.gridCategory = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.PanelControl6 = New DevExpress.XtraEditors.PanelControl()
         Me.btnDeleteCategory = New DevExpress.XtraEditors.SimpleButton()
         Me.btnEditCategory = New DevExpress.XtraEditors.SimpleButton()
         Me.btnAddCategory = New DevExpress.XtraEditors.SimpleButton()
         Me.tpFood = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl15 = New DevExpress.XtraEditors.PanelControl()
-        Me.nmPrices = New DevExpress.XtraEditors.SpinEdit()
+        Me.LabelControl33 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDFood = New DevExpress.XtraEditors.TextEdit()
+        Me.cbCategoryFood = New System.Windows.Forms.ComboBox()
+        Me.nmPriceFood = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
-        Me.cbCategoryFood = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.btnSaveFood = New DevExpress.XtraEditors.SimpleButton()
         Me.btnCancelFood = New DevExpress.XtraEditors.SimpleButton()
@@ -85,7 +91,7 @@ Partial Class FormAdmin
         Me.txtNameFood = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl16 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvFood = New DevExpress.XtraGrid.GridControl()
-        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.gridFood = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.PanelControl13 = New DevExpress.XtraEditors.PanelControl()
         Me.txtSearchFood = New DevExpress.XtraEditors.TextEdit()
         Me.btnSearchFood = New DevExpress.XtraEditors.SimpleButton()
@@ -128,7 +134,6 @@ Partial Class FormAdmin
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.txtPhoneStaff = New DevExpress.XtraEditors.TextEdit()
         Me.btnResetPass = New DevExpress.XtraEditors.SimpleButton()
-        Me.cbbSexStaff = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.txtAddressStaff = New System.Windows.Forms.TextBox()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
@@ -245,6 +250,7 @@ Partial Class FormAdmin
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
+        Me.cbbGenderStaff = New System.Windows.Forms.ComboBox()
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcAdmin.SuspendLayout()
         Me.tpBill.SuspendLayout()
@@ -260,37 +266,39 @@ Partial Class FormAdmin
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl5.SuspendLayout()
+        CType(Me.txtIDTable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTableName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtStatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtStatusTable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl4.SuspendLayout()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
         CType(Me.dgvTable, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpCategory.SuspendLayout()
         CType(Me.PanelControl24, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl24.SuspendLayout()
         CType(Me.TextEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl8.SuspendLayout()
-        CType(Me.txtCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIDCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNameCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl7.SuspendLayout()
-        CType(Me.dgvDanhMuc, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridCategory, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl6.SuspendLayout()
         Me.tpFood.SuspendLayout()
         CType(Me.PanelControl15, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl15.SuspendLayout()
-        CType(Me.nmPrices.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbCategoryFood.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIDFood.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nmPriceFood.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNameFood.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl16, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl16.SuspendLayout()
         CType(Me.dgvFood, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridFood, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl13, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl13.SuspendLayout()
         CType(Me.txtSearchFood.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -319,7 +327,6 @@ Partial Class FormAdmin
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl11.SuspendLayout()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbbSexStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtStaffName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl10, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -552,17 +559,35 @@ Partial Class FormAdmin
         '
         'PanelControl5
         '
+        Me.PanelControl5.Controls.Add(Me.LabelControl50)
+        Me.PanelControl5.Controls.Add(Me.txtIDTable)
         Me.PanelControl5.Controls.Add(Me.btnSave)
         Me.PanelControl5.Controls.Add(Me.btnCancel)
         Me.PanelControl5.Controls.Add(Me.LabelControl1)
         Me.PanelControl5.Controls.Add(Me.LabelControl3)
         Me.PanelControl5.Controls.Add(Me.LabelControl2)
         Me.PanelControl5.Controls.Add(Me.txtTableName)
-        Me.PanelControl5.Controls.Add(Me.txtStatus)
+        Me.PanelControl5.Controls.Add(Me.txtStatusTable)
         Me.PanelControl5.Location = New System.Drawing.Point(418, 66)
         Me.PanelControl5.Name = "PanelControl5"
         Me.PanelControl5.Size = New System.Drawing.Size(318, 374)
         Me.PanelControl5.TabIndex = 4
+        '
+        'LabelControl50
+        '
+        Me.LabelControl50.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl50.Location = New System.Drawing.Point(20, 101)
+        Me.LabelControl50.Name = "LabelControl50"
+        Me.LabelControl50.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl50.TabIndex = 10
+        Me.LabelControl50.Text = "ID:"
+        '
+        'txtIDTable
+        '
+        Me.txtIDTable.Location = New System.Drawing.Point(119, 99)
+        Me.txtIDTable.Name = "txtIDTable"
+        Me.txtIDTable.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDTable.TabIndex = 11
         '
         'btnSave
         '
@@ -616,12 +641,12 @@ Partial Class FormAdmin
         Me.txtTableName.Size = New System.Drawing.Size(176, 20)
         Me.txtTableName.TabIndex = 6
         '
-        'txtStatus
+        'txtStatusTable
         '
-        Me.txtStatus.Location = New System.Drawing.Point(119, 172)
-        Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.Size = New System.Drawing.Size(176, 20)
-        Me.txtStatus.TabIndex = 7
+        Me.txtStatusTable.Location = New System.Drawing.Point(119, 172)
+        Me.txtStatusTable.Name = "txtStatusTable"
+        Me.txtStatusTable.Size = New System.Drawing.Size(176, 20)
+        Me.txtStatusTable.TabIndex = 7
         '
         'PanelControl4
         '
@@ -670,16 +695,16 @@ Partial Class FormAdmin
         Me.dgvTable.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvTable.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvTable.Location = New System.Drawing.Point(2, 2)
-        Me.dgvTable.MainView = Me.GridView2
+        Me.dgvTable.MainView = Me.gridTable
         Me.dgvTable.Name = "dgvTable"
         Me.dgvTable.Size = New System.Drawing.Size(405, 370)
         Me.dgvTable.TabIndex = 2
-        Me.dgvTable.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
+        Me.dgvTable.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridTable})
         '
-        'GridView2
+        'gridTable
         '
-        Me.GridView2.GridControl = Me.dgvTable
-        Me.GridView2.Name = "GridView2"
+        Me.gridTable.GridControl = Me.dgvTable
+        Me.gridTable.Name = "gridTable"
         '
         'tpCategory
         '
@@ -717,15 +742,33 @@ Partial Class FormAdmin
         '
         'PanelControl8
         '
+        Me.PanelControl8.Controls.Add(Me.LabelControl47)
+        Me.PanelControl8.Controls.Add(Me.txtIDCategory)
         Me.PanelControl8.Controls.Add(Me.btnSaveCategory)
         Me.PanelControl8.Controls.Add(Me.btnCancelCategory)
         Me.PanelControl8.Controls.Add(Me.LabelControl4)
         Me.PanelControl8.Controls.Add(Me.LabelControl6)
-        Me.PanelControl8.Controls.Add(Me.txtCategory)
+        Me.PanelControl8.Controls.Add(Me.txtNameCategory)
         Me.PanelControl8.Location = New System.Drawing.Point(418, 66)
         Me.PanelControl8.Name = "PanelControl8"
         Me.PanelControl8.Size = New System.Drawing.Size(318, 374)
         Me.PanelControl8.TabIndex = 6
+        '
+        'LabelControl47
+        '
+        Me.LabelControl47.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl47.Location = New System.Drawing.Point(20, 128)
+        Me.LabelControl47.Name = "LabelControl47"
+        Me.LabelControl47.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl47.TabIndex = 9
+        Me.LabelControl47.Text = "ID:"
+        '
+        'txtIDCategory
+        '
+        Me.txtIDCategory.Location = New System.Drawing.Point(119, 126)
+        Me.txtIDCategory.Name = "txtIDCategory"
+        Me.txtIDCategory.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDCategory.TabIndex = 10
         '
         'btnSaveCategory
         '
@@ -763,36 +806,36 @@ Partial Class FormAdmin
         Me.LabelControl6.TabIndex = 6
         Me.LabelControl6.Text = "Tên danh mục:"
         '
-        'txtCategory
+        'txtNameCategory
         '
-        Me.txtCategory.Location = New System.Drawing.Point(119, 154)
-        Me.txtCategory.Name = "txtCategory"
-        Me.txtCategory.Size = New System.Drawing.Size(176, 20)
-        Me.txtCategory.TabIndex = 6
+        Me.txtNameCategory.Location = New System.Drawing.Point(119, 154)
+        Me.txtNameCategory.Name = "txtNameCategory"
+        Me.txtNameCategory.Size = New System.Drawing.Size(176, 20)
+        Me.txtNameCategory.TabIndex = 6
         '
         'PanelControl7
         '
-        Me.PanelControl7.Controls.Add(Me.dgvDanhMuc)
+        Me.PanelControl7.Controls.Add(Me.dgvCategory)
         Me.PanelControl7.Location = New System.Drawing.Point(3, 65)
         Me.PanelControl7.Name = "PanelControl7"
         Me.PanelControl7.Size = New System.Drawing.Size(409, 374)
         Me.PanelControl7.TabIndex = 5
         '
-        'dgvDanhMuc
+        'dgvCategory
         '
-        Me.dgvDanhMuc.Cursor = System.Windows.Forms.Cursors.Default
-        Me.dgvDanhMuc.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvDanhMuc.Location = New System.Drawing.Point(2, 2)
-        Me.dgvDanhMuc.MainView = Me.GridView3
-        Me.dgvDanhMuc.Name = "dgvDanhMuc"
-        Me.dgvDanhMuc.Size = New System.Drawing.Size(405, 370)
-        Me.dgvDanhMuc.TabIndex = 2
-        Me.dgvDanhMuc.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
+        Me.dgvCategory.Cursor = System.Windows.Forms.Cursors.Default
+        Me.dgvCategory.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvCategory.Location = New System.Drawing.Point(2, 2)
+        Me.dgvCategory.MainView = Me.gridCategory
+        Me.dgvCategory.Name = "dgvCategory"
+        Me.dgvCategory.Size = New System.Drawing.Size(405, 370)
+        Me.dgvCategory.TabIndex = 2
+        Me.dgvCategory.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridCategory})
         '
-        'GridView3
+        'gridCategory
         '
-        Me.GridView3.GridControl = Me.dgvDanhMuc
-        Me.GridView3.Name = "GridView3"
+        Me.gridCategory.GridControl = Me.dgvCategory
+        Me.gridCategory.Name = "gridCategory"
         '
         'PanelControl6
         '
@@ -840,9 +883,11 @@ Partial Class FormAdmin
         '
         'PanelControl15
         '
-        Me.PanelControl15.Controls.Add(Me.nmPrices)
-        Me.PanelControl15.Controls.Add(Me.LabelControl13)
+        Me.PanelControl15.Controls.Add(Me.LabelControl33)
+        Me.PanelControl15.Controls.Add(Me.txtIDFood)
         Me.PanelControl15.Controls.Add(Me.cbCategoryFood)
+        Me.PanelControl15.Controls.Add(Me.nmPriceFood)
+        Me.PanelControl15.Controls.Add(Me.LabelControl13)
         Me.PanelControl15.Controls.Add(Me.LabelControl14)
         Me.PanelControl15.Controls.Add(Me.btnSaveFood)
         Me.PanelControl15.Controls.Add(Me.btnCancelFood)
@@ -854,40 +899,56 @@ Partial Class FormAdmin
         Me.PanelControl15.Size = New System.Drawing.Size(318, 379)
         Me.PanelControl15.TabIndex = 1
         '
-        'nmPrices
+        'LabelControl33
         '
-        Me.nmPrices.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.nmPrices.Location = New System.Drawing.Point(119, 137)
-        Me.nmPrices.Name = "nmPrices"
-        Me.nmPrices.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.nmPrices.Properties.IsFloatValue = False
-        Me.nmPrices.Properties.Mask.EditMask = "N00"
-        Me.nmPrices.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.nmPrices.Size = New System.Drawing.Size(176, 20)
-        Me.nmPrices.TabIndex = 8
+        Me.LabelControl33.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl33.Location = New System.Drawing.Point(13, 96)
+        Me.LabelControl33.Name = "LabelControl33"
+        Me.LabelControl33.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl33.TabIndex = 29
+        Me.LabelControl33.Text = "ID:"
+        '
+        'txtIDFood
+        '
+        Me.txtIDFood.Location = New System.Drawing.Point(119, 95)
+        Me.txtIDFood.Name = "txtIDFood"
+        Me.txtIDFood.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDFood.TabIndex = 30
+        '
+        'cbCategoryFood
+        '
+        Me.cbCategoryFood.FormattingEnabled = True
+        Me.cbCategoryFood.Items.AddRange(New Object() {"Nam", "Nữ"})
+        Me.cbCategoryFood.Location = New System.Drawing.Point(120, 154)
+        Me.cbCategoryFood.Name = "cbCategoryFood"
+        Me.cbCategoryFood.Size = New System.Drawing.Size(176, 21)
+        Me.cbCategoryFood.TabIndex = 28
+        '
+        'nmPriceFood
+        '
+        Me.nmPriceFood.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.nmPriceFood.Location = New System.Drawing.Point(120, 182)
+        Me.nmPriceFood.Name = "nmPriceFood"
+        Me.nmPriceFood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.nmPriceFood.Properties.IsFloatValue = False
+        Me.nmPriceFood.Properties.Mask.EditMask = "N00"
+        Me.nmPriceFood.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.nmPriceFood.Size = New System.Drawing.Size(176, 20)
+        Me.nmPriceFood.TabIndex = 8
         '
         'LabelControl13
         '
         Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl13.Location = New System.Drawing.Point(14, 139)
+        Me.LabelControl13.Location = New System.Drawing.Point(15, 184)
         Me.LabelControl13.Name = "LabelControl13"
         Me.LabelControl13.Size = New System.Drawing.Size(49, 14)
         Me.LabelControl13.TabIndex = 27
         Me.LabelControl13.Text = "Giá bán:"
         '
-        'cbCategoryFood
-        '
-        Me.cbCategoryFood.EditValue = "(Chưa chọn)"
-        Me.cbCategoryFood.Location = New System.Drawing.Point(119, 107)
-        Me.cbCategoryFood.Name = "cbCategoryFood"
-        Me.cbCategoryFood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbCategoryFood.Size = New System.Drawing.Size(176, 20)
-        Me.cbCategoryFood.TabIndex = 7
-        '
         'LabelControl14
         '
         Me.LabelControl14.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl14.Location = New System.Drawing.Point(12, 110)
+        Me.LabelControl14.Location = New System.Drawing.Point(13, 155)
         Me.LabelControl14.Name = "LabelControl14"
         Me.LabelControl14.Size = New System.Drawing.Size(65, 14)
         Me.LabelControl14.TabIndex = 24
@@ -895,7 +956,7 @@ Partial Class FormAdmin
         '
         'btnSaveFood
         '
-        Me.btnSaveFood.Location = New System.Drawing.Point(119, 179)
+        Me.btnSaveFood.Location = New System.Drawing.Point(120, 224)
         Me.btnSaveFood.Name = "btnSaveFood"
         Me.btnSaveFood.Size = New System.Drawing.Size(85, 28)
         Me.btnSaveFood.TabIndex = 9
@@ -904,7 +965,7 @@ Partial Class FormAdmin
         '
         'btnCancelFood
         '
-        Me.btnCancelFood.Location = New System.Drawing.Point(210, 179)
+        Me.btnCancelFood.Location = New System.Drawing.Point(211, 224)
         Me.btnCancelFood.Name = "btnCancelFood"
         Me.btnCancelFood.Size = New System.Drawing.Size(85, 28)
         Me.btnCancelFood.TabIndex = 10
@@ -923,7 +984,7 @@ Partial Class FormAdmin
         'LabelControl19
         '
         Me.LabelControl19.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl19.Location = New System.Drawing.Point(13, 82)
+        Me.LabelControl19.Location = New System.Drawing.Point(14, 127)
         Me.LabelControl19.Name = "LabelControl19"
         Me.LabelControl19.Size = New System.Drawing.Size(78, 14)
         Me.LabelControl19.TabIndex = 6
@@ -931,7 +992,7 @@ Partial Class FormAdmin
         '
         'txtNameFood
         '
-        Me.txtNameFood.Location = New System.Drawing.Point(119, 81)
+        Me.txtNameFood.Location = New System.Drawing.Point(120, 126)
         Me.txtNameFood.Name = "txtNameFood"
         Me.txtNameFood.Size = New System.Drawing.Size(176, 20)
         Me.txtNameFood.TabIndex = 6
@@ -949,16 +1010,16 @@ Partial Class FormAdmin
         Me.dgvFood.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvFood.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvFood.Location = New System.Drawing.Point(2, 2)
-        Me.dgvFood.MainView = Me.GridView5
+        Me.dgvFood.MainView = Me.gridFood
         Me.dgvFood.Name = "dgvFood"
         Me.dgvFood.Size = New System.Drawing.Size(405, 370)
         Me.dgvFood.TabIndex = 2
-        Me.dgvFood.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
+        Me.dgvFood.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridFood})
         '
-        'GridView5
+        'gridFood
         '
-        Me.GridView5.GridControl = Me.dgvFood
-        Me.GridView5.Name = "GridView5"
+        Me.gridFood.GridControl = Me.dgvFood
+        Me.gridFood.Name = "gridFood"
         '
         'PanelControl13
         '
@@ -1296,10 +1357,10 @@ Partial Class FormAdmin
         '
         'PanelControl11
         '
+        Me.PanelControl11.Controls.Add(Me.cbbGenderStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl12)
         Me.PanelControl11.Controls.Add(Me.txtPhoneStaff)
         Me.PanelControl11.Controls.Add(Me.btnResetPass)
-        Me.PanelControl11.Controls.Add(Me.cbbSexStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl11)
         Me.PanelControl11.Controls.Add(Me.txtAddressStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl10)
@@ -1341,16 +1402,6 @@ Partial Class FormAdmin
         Me.btnResetPass.TabIndex = 12
         Me.btnResetPass.Text = "Đặt lại tài khoản"
         Me.btnResetPass.Visible = False
-        '
-        'cbbSexStaff
-        '
-        Me.cbbSexStaff.EditValue = "(Chưa chọn)"
-        Me.cbbSexStaff.Location = New System.Drawing.Point(120, 215)
-        Me.cbbSexStaff.Name = "cbbSexStaff"
-        Me.cbbSexStaff.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbbSexStaff.Properties.Items.AddRange(New Object() {"Nam", "Nữ"})
-        Me.cbbSexStaff.Size = New System.Drawing.Size(176, 20)
-        Me.cbbSexStaff.TabIndex = 9
         '
         'LabelControl11
         '
@@ -2378,6 +2429,14 @@ Partial Class FormAdmin
         Me.XtraTabPage6.Name = "XtraTabPage6"
         Me.XtraTabPage6.Size = New System.Drawing.Size(294, 272)
         '
+        'cbbGenderStaff
+        '
+        Me.cbbGenderStaff.FormattingEnabled = True
+        Me.cbbGenderStaff.Location = New System.Drawing.Point(119, 213)
+        Me.cbbGenderStaff.Name = "cbbGenderStaff"
+        Me.cbbGenderStaff.Size = New System.Drawing.Size(176, 21)
+        Me.cbbGenderStaff.TabIndex = 24
+        '
         'FormAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2406,14 +2465,15 @@ Partial Class FormAdmin
         CType(Me.PanelControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl5.ResumeLayout(False)
         Me.PanelControl5.PerformLayout()
+        CType(Me.txtIDTable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTableName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtStatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtStatusTable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl4.ResumeLayout(False)
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
         CType(Me.dgvTable, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpCategory.ResumeLayout(False)
         CType(Me.PanelControl24, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl24.ResumeLayout(False)
@@ -2421,24 +2481,25 @@ Partial Class FormAdmin
         CType(Me.PanelControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl8.ResumeLayout(False)
         Me.PanelControl8.PerformLayout()
-        CType(Me.txtCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIDCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNameCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl7.ResumeLayout(False)
-        CType(Me.dgvDanhMuc, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridCategory, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl6.ResumeLayout(False)
         Me.tpFood.ResumeLayout(False)
         CType(Me.PanelControl15, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl15.ResumeLayout(False)
         Me.PanelControl15.PerformLayout()
-        CType(Me.nmPrices.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbCategoryFood.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIDFood.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nmPriceFood.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNameFood.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl16, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl16.ResumeLayout(False)
         CType(Me.dgvFood, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridFood, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl13, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl13.ResumeLayout(False)
         CType(Me.txtSearchFood.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2469,7 +2530,6 @@ Partial Class FormAdmin
         Me.PanelControl11.ResumeLayout(False)
         Me.PanelControl11.PerformLayout()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbbSexStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtStaffName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl10, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2573,21 +2633,21 @@ Partial Class FormAdmin
     Friend WithEvents PanelControl4 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents PanelControl3 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvTable As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridTable As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents btnDeleteTable As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditTable As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddTable As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl5 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtTableName As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtStatus As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtStatusTable As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btnCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnSave As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl7 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents dgvDanhMuc As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView3 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents dgvCategory As DevExpress.XtraGrid.GridControl
+    Friend WithEvents gridCategory As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents PanelControl6 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnDeleteCategory As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditCategory As DevExpress.XtraEditors.SimpleButton
@@ -2597,7 +2657,7 @@ Partial Class FormAdmin
     Friend WithEvents btnCancelCategory As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtCategory As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtNameCategory As DevExpress.XtraEditors.TextEdit
     Friend WithEvents tpStaff As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents PanelControl9 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnDeleteStaff As DevExpress.XtraEditors.SimpleButton
@@ -2619,7 +2679,6 @@ Partial Class FormAdmin
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtIDStaff As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cbbSexStaff As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents btnResetPass As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPhoneStaff As DevExpress.XtraEditors.TextEdit
@@ -2634,7 +2693,7 @@ Partial Class FormAdmin
     Friend WithEvents txtNameFood As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PanelControl16 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvFood As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridFood As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents PanelControl13 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtSearchFood As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnSearchFood As DevExpress.XtraEditors.SimpleButton
@@ -2643,9 +2702,8 @@ Partial Class FormAdmin
     Friend WithEvents btnEditFood As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddFood As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cbCategoryFood As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents nmPrices As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents nmPriceFood As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents XtraTabPage2 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPage5 As DevExpress.XtraTab.XtraTabPage
@@ -2777,4 +2835,12 @@ Partial Class FormAdmin
     Friend WithEvents btnEditSuplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddSuplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cbCategoryFood As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelControl33 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDFood As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl50 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDTable As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl47 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDCategory As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cbbGenderStaff As System.Windows.Forms.ComboBox
 End Class

@@ -10,8 +10,8 @@
         Private phone As String
         Private createDate As Date
 
-        Public Sub New(ByVal id As Integer, ByVal gender As Boolean, ByVal name As String, ByVal idCard As Integer,
-                       ByVal dateofbirth As Date, ByVal address As String, ByVal phone As String, ByVal createDate As Date)
+        Public Sub New(id As Integer, gender As Boolean, name As String, idCard As Integer,
+                       dateofbirth As Date, address As String, phone As String, createDate As Date)
             Me.id = id
             Me.gender = gender
             Me.name = name
@@ -22,7 +22,7 @@
             Me.createDate = createDate
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.gender = CBool(row("gender"))
             Me.name = row("name").ToString()
@@ -37,7 +37,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -46,7 +46,7 @@
             Get
                 Return gender
             End Get
-            Set(ByVal value As Boolean)
+            Set(value As Boolean)
                 gender = value
             End Set
         End Property
@@ -55,7 +55,7 @@
             Get
                 Return name
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 name = value
             End Set
         End Property
@@ -64,7 +64,7 @@
             Get
                 Return idCard
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idCard = value
             End Set
         End Property
@@ -73,7 +73,7 @@
             Get
                 Return dateofbirth
             End Get
-            Set(ByVal value As Date)
+            Set(value As Date)
                 dateofbirth = value
             End Set
         End Property
@@ -82,7 +82,7 @@
             Get
                 Return address
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 address = value
             End Set
         End Property
@@ -91,7 +91,7 @@
             Get
                 Return phone
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 phone = value
             End Set
         End Property
@@ -100,7 +100,7 @@
             Get
                 Return createDate
             End Get
-            Set(ByVal value As Date)
+            Set(value As Date)
                 createDate = value
             End Set
         End Property

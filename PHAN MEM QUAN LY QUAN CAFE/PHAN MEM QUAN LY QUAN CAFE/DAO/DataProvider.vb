@@ -9,7 +9,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
                 If instance Is Nothing Then instance = New DataProvider()
                 Return DataProvider.instance
             End Get
-            Private Set(ByVal value As DataProvider)
+            Private Set(value As DataProvider)
                 DataProvider.instance = value
             End Set
         End Property
@@ -17,9 +17,9 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         Private Sub New()
         End Sub
 
-        Private connectionSTR As String = "Data Source=BANHANG2\SQL2K16;Initial Catalog=QUANCAFE;Integrated security=False;User ID=sa;Password=htl"
+        Private connectionSTR As String = "Data Source=MONKEY-HP;Initial Catalog=QUANCAFE;Integrated security=true"
 
-        Public Function ExecuteQuery(ByVal query As String, Optional ByVal parameter As Object() = Nothing) As DataTable
+        Public Function ExecuteQuery(query As String, Optional parameter As Object() = Nothing) As DataTable
             Dim data As DataTable = New DataTable()
 
             Using connection As SqlConnection = New SqlConnection(connectionSTR)
@@ -47,7 +47,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return data
         End Function
 
-        Public Function ExecuteNoneQuery(ByVal query As String, Optional ByVal parameter As Object() = Nothing) As Integer
+        Public Function ExecuteNoneQuery(query As String, Optional parameter As Object() = Nothing) As Integer
             Dim data As Integer = 0
 
             Using connection As SqlConnection = New SqlConnection(connectionSTR)
@@ -74,7 +74,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return data
         End Function
 
-        Public Function ExecuteScalar(ByVal query As String, Optional ByVal parameter As Object() = Nothing) As Object
+        Public Function ExecuteScalar(query As String, Optional parameter As Object() = Nothing) As Object
             Dim data As Object = 0
 
             Using connection As SqlConnection = New SqlConnection(connectionSTR)

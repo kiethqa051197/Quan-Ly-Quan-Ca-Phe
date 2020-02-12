@@ -4,19 +4,22 @@
         Private id As Integer
         Private idBill As Integer
         Private idItems As Integer
+        Private price As Single
         Private count As Integer
 
-        Public Sub New(ByVal id As Integer, ByVal idBill As Integer, ByVal idItems As Integer, ByVal count As Integer)
+        Public Sub New(id As Integer, idBill As Integer, idItems As Integer, price As Single, count As Integer)
             Me.id = id
             Me.idBill = idBill
             Me.idItems = idItems
+            Me.price = price
             Me.count = count
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.idBill = CInt(row("idBill"))
             Me.idItems = CInt(row("idItems"))
+            Me.price = CSng(Convert.ToDouble(row("price").ToString()))
             Me.count = CInt(row("count"))
         End Sub
 
@@ -24,7 +27,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -33,7 +36,7 @@
             Get
                 Return idBill
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idBill = value
             End Set
         End Property
@@ -42,8 +45,17 @@
             Get
                 Return idItems
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idItems = value
+            End Set
+        End Property
+
+        Public Property _price() As Single
+            Get
+                Return price
+            End Get
+            Set(value As Single)
+                price = value
             End Set
         End Property
 
@@ -51,7 +63,7 @@
             Get
                 Return count
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 count = value
             End Set
         End Property

@@ -6,7 +6,7 @@
         Private idStaff As Integer
         Private type As Integer
 
-        Public Sub New(ByVal id As Integer, ByVal username As String, ByVal password As String, ByVal idStaff As Integer, ByVal type As Integer)
+        Public Sub New(id As Integer, username As String, password As String, idStaff As Integer, type As Integer)
             Me.id = id
             Me.username = username
             Me.passWord = password
@@ -14,7 +14,7 @@
             Me.type = type
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.username = row("username").ToString()
             Me.passWord = row("passWord").ToString()
@@ -26,7 +26,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -35,7 +35,7 @@
             Get
                 Return username
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 username = value
             End Set
         End Property
@@ -44,7 +44,7 @@
             Get
                 Return passWord
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 passWord = value
             End Set
         End Property
@@ -53,7 +53,7 @@
             Get
                 Return idStaff
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 idStaff = value
             End Set
         End Property
@@ -62,7 +62,7 @@
             Get
                 Return type
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 type = value
             End Set
         End Property

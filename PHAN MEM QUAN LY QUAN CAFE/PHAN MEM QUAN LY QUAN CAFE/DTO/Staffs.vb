@@ -5,12 +5,12 @@
         Private fullname As String
         Private dateofbirth As Date
         Private gender As Boolean
-        Private idCard As Integer
+        Private idCard As String
         Private address As String
         Private phone As String
 
-        Public Sub New(ByVal id As Integer, ByVal fullname As String, ByVal dateofbirth As Date, ByVal gender As Boolean,
-                       ByVal idCard As Integer, ByVal address As String, ByVal phone As String)
+        Public Sub New(id As Integer, fullname As String, dateofbirth As Date, gender As Boolean,
+                       idCard As String, address As String, phone As String)
             Me.id = id
             Me.fullname = fullname
             Me.dateofbirth = dateofbirth
@@ -20,12 +20,12 @@
             Me.phone = phone
         End Sub
 
-        Public Sub New(ByVal row As DataRow)
+        Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.fullname = row("fullname").ToString()
             Me.dateofbirth = CType(row("dateofbirth"), Date)
             Me.gender = CBool(row("gender"))
-            Me.idCard = CInt(row("idCard"))
+            Me.idCard = row("idCard").ToString()
             Me.address = row("address").ToString()
             Me.phone = row("phone").ToString()
         End Sub
@@ -34,7 +34,7 @@
             Get
                 Return id
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 id = value
             End Set
         End Property
@@ -43,7 +43,7 @@
             Get
                 Return fullname
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 fullname = value
             End Set
         End Property
@@ -52,7 +52,7 @@
             Get
                 Return dateofbirth
             End Get
-            Set(ByVal value As Date)
+            Set(value As Date)
                 dateofbirth = value
             End Set
         End Property
@@ -61,16 +61,16 @@
             Get
                 Return gender
             End Get
-            Set(ByVal value As Boolean)
+            Set(value As Boolean)
                 gender = value
             End Set
         End Property
 
-        Public Property _idCard() As Integer
+        Public Property _idCard() As String
             Get
                 Return idCard
             End Get
-            Set(ByVal value As Integer)
+            Set(value As String)
                 idCard = value
             End Set
         End Property
@@ -79,7 +79,7 @@
             Get
                 Return address
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 address = value
             End Set
         End Property
@@ -88,7 +88,7 @@
             Get
                 Return phone
             End Get
-            Set(ByVal value As String)
+            Set(value As String)
                 phone = value
             End Set
         End Property

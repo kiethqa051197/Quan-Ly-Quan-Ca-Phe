@@ -5,6 +5,7 @@ Imports System.Globalization
 Public Class FormBanHang
 
 #Region "KHỞI TẠO"
+
     Dim acc As Accounts
     Dim idStaff As Integer
 
@@ -12,21 +13,22 @@ Public Class FormBanHang
         Get
             Return acc
         End Get
-        Set(ByVal value As Accounts)
+        Set(value As Accounts)
             acc = value
             ChangeAccount(acc._type)
         End Set
     End Property
 
-    Public Sub New(ByVal loginAcc As Accounts)
+    Public Sub New(loginAcc As Accounts)
         InitializeComponent()
         Me._acc = loginAcc
     End Sub
+
 #End Region
 
 #Region "CÁC HÀM CHỨC NĂNG"
 
-#Region "Load tất cả các bàn từ CSDL"
+    'Load tất cả các bàn từ CSDL
     Private Sub LoadTable()
         tableLayout.Controls.Clear()
         Dim tableList As List(Of Tables) = TableDAO._Instance.LoadTableList()
@@ -52,41 +54,36 @@ Public Class FormBanHang
             tableLayout.Controls.Add(btn)
         Next
     End Sub
-#End Region
 
-#Region "Change Account"
-    Private Sub ChangeAccount(ByVal type As Integer)
+    'Change Account
+    Private Sub ChangeAccount(type As Integer)
         AdminStripMenu.Visible = type = 1
         PersonalInfoToolStripMenu.Text += " (" + acc._username + ")"
         idStaff = acc._idStaff
     End Sub
-#End Region
 
-#Region "Lấy danh sách danh mục sản phẩm"
+    'Lấy danh sách danh mục sản phẩm
     Private Sub LoadListCategory()
         Dim listCategory As List(Of Categories) = CategoriesDAO._Instance.GetListCategory()
         cbCategory.DataSource = listCategory
         cbCategory.DisplayMember = "_name"
     End Sub
-#End Region
 
-#Region "Lấy danh sách các món ăn theo mã danh mục"
-    Private Sub LoadFoodListByCategoryID(ByVal id As Integer)
+    'Lấy danh sách các món ăn theo mã danh mục
+    Private Sub LoadFoodListByCategoryID(id As Integer)
         Dim listFood As List(Of Items) = ItemsDAO._Instance.GetListCategoryID(id)
         cbObject.DataSource = listFood
         cbObject.DisplayMember = "_name"
     End Sub
-#End Region
 
-#Region "Lấy danh sách tất cả các bàn"
-    Private Sub LoadComboboxTable(ByVal cb As ComboBox)
+    'Lấy danh sách tất cả các bàn
+    Private Sub LoadComboboxTable(cb As ComboBox)
         cb.DataSource = TableDAO._Instance.LoadTableList()
         cb.DisplayMember = "_name"
     End Sub
-#End Region
 
-#Region "Hiển thị món đã gọi"
-    Private Sub ShowBill(ByVal id As Integer)
+    'Hiển thị món đã gọi
+    Private Sub ShowBill(id As Integer)
         listBill.Items.Clear()
         Dim listBillInfo As List(Of Menu) = MenuDAO._Instance.GetListMenuByTable(id)
         Dim totalPrice As Single = 0
@@ -103,13 +100,12 @@ Public Class FormBanHang
         Dim culture As CultureInfo = New CultureInfo("vi-VN")
         txtTotal.Text = totalPrice.ToString("c", culture)
     End Sub
-#End Region
 
 #End Region
 
 #Region "BẮT SỰ KIỆN"
 
-#Region "Chọn danh mục"
+    'Chọn danh mục trong combobox danh mục
     Private Sub cbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCategory.SelectedIndexChanged
         Dim id As Integer = 0
         Dim cb As ComboBox = TryCast(sender, ComboBox)
@@ -118,44 +114,51 @@ Public Class FormBanHang
         id = selected._id
         LoadFoodListByCategoryID(id)
     End Sub
-#End Region
 
-#Region "Click menu đăng xuất"
+    'Click menu đăng xuất
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
         Me.Hide()
         FormDangNhap.Show()
     End Sub
-#End Region
 
-#Region "Click menu Admin"
+
+    'Click menu Admin
     Private Sub AdminStripMenu_Click(sender As Object, e As EventArgs) Handles AdminStripMenu.Click
-        FormAdmin.Show()
-    End Sub
-#End Region
+        Dim f As FormAdmin = New FormAdmin
 
-#Region "Chức năng click cho mỗi nút được tạo trong Flow Panel"
-    Private Sub btn_Click(ByVal sender As Object, ByVal e As EventArgs)
+        AddHandler f.InsertFoods, AddressOf f_InsertFood
+        AddHandler f.DeleteFoods, AddressOf f_DeleteFood
+        AddHandler f.UpdateFoods, AddressOf f_UpdateFood
+        AddHandler f.InsertCategoryFoods, AddressOf f_InsertCategoryFood
+        AddHandler f.DeleteCategoryFoods, AddressOf f_DeleteCategoryFood
+        AddHandler f.UpdateCategoryFoods, AddressOf f_UpdateCategoryFood
+        AddHandler f.InsertTables, AddressOf f_InsertTableFood
+        AddHandler f.DeleteTables, AddressOf f_DeleteTableFood
+        AddHandler f.UpdateTables, AddressOf f_UpdateTableFood
+
+        f.ShowDialog()
+    End Sub
+
+    'Chức năng click cho mỗi nút được tạo trong Flow Panel
+    Private Sub btn_Click(sender As Object, e As EventArgs)
         Dim tableID As Integer = (TryCast((TryCast(sender, Button)).Tag, Tables))._id
         listBill.Tag = (TryCast(sender, Button)).Tag
         ShowBill(tableID)
     End Sub
-#End Region
 
-#Region "Đóng form"
+    'Đóng form
     Private Sub FormBanHang_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Application.Exit()
     End Sub
-#End Region
 
-#Region "Load form"
+    'Load form
     Private Sub FormBanHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadTable()
         LoadListCategory()
         LoadComboboxTable(cbSwichTable)
     End Sub
-#End Region
 
-#Region "Click nút thêm món"
+    'Click nút thêm món
     Private Sub btnAddObject_Click(sender As Object, e As EventArgs) Handles btnAddObject.Click
         Dim table As Tables = TryCast(listBill.Tag, Tables)
 
@@ -165,23 +168,23 @@ Public Class FormBanHang
         End If
 
         Dim idBill As Integer = BillsDAO._Instance.GetUncheckBillIDByTableID(table._id)
-        Dim foodID As Integer = (TryCast(cbObject.SelectedItem, Items))._id
+        Dim idItem As Integer = (TryCast(cbObject.SelectedItem, Items))._id
+        Dim price As Integer = (TryCast(cbObject.SelectedItem, Items))._price
         Dim count As Integer = CInt(nmCount.Value)
 
         If idBill = -1 Then
             BillsDAO._Instance.InsertBill(table._id, idStaff)
-            BillsInfoDAO._Instance.InsertBillInfo(BillsDAO._Instance.GetMaxIDBill(), foodID, count)
+            BillsInfoDAO._Instance.InsertBillInfo(BillsDAO._Instance.GetMaxIDBill(), idItem, price, count)
             TableDAO._Instance.UpdateStatusTable(table._id, "Có người")
         Else
-            BillsInfoDAO._Instance.InsertBillInfo(idBill, foodID, count)
+            BillsInfoDAO._Instance.InsertBillInfo(idBill, idItem, price, count)
         End If
 
         ShowBill(table._id)
         LoadTable()
     End Sub
-#End Region
 
-#Region "Click nút Thanh toán"
+    'Click nút Thanh toán"
     Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
         Dim table As Tables = TryCast(listBill.Tag, Tables)
         Dim idBill As Integer = BillsDAO._Instance.GetUncheckBillIDByTableID(table._id)
@@ -192,16 +195,15 @@ Public Class FormBanHang
         If idBill <> -1 Then
 
             If MessageBox.Show(String.Format("Bạn có chắc thanh toán hoá đơn cho bàn {0}" & vbLf & "Tổng tiền - (Tổng tiền / 100) x Giảm giá" & vbLf & " => {1}000 - ({1}000 / 100) x {2} = {3}000", table._name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-                BillsDAO._Instance.CheckOut(idBill, 3, discount, idStaff)
+                BillsDAO._Instance.CheckOut(idBill, 2, discount, idStaff)
                 TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
                 ShowBill(table._id)
                 LoadTable()
             End If
         End If
     End Sub
-#End Region
 
-#Region "Click nút Chuyển bàn"
+    'Click nút Chuyển bàn
     Private Sub btnSwichTable_Click(sender As Object, e As EventArgs) Handles btnSwichTable.Click
         Dim id1 As Integer = (TryCast(listBill.Tag, Tables))._id
         Dim id2 As Integer = (TryCast(cbSwichTable.SelectedItem, Tables))._id
@@ -211,22 +213,83 @@ Public Class FormBanHang
             LoadTable()
         End If
     End Sub
-#End Region
 
-#Region "Click menu 'Khách hàng'"
+    'Click menu 'Khách hàng' (chưa xong)
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
         Dim f As FormKhachHang = New FormKhachHang()
         f.ShowDialog()
     End Sub
-#End Region
 
-#Region "Thông tin cá nhân (Chưa xong)"
+    'Thông tin cá nhân
     Private Sub PersonalInfoToolStripMenu_Click(sender As Object, e As EventArgs) Handles PersonalInfoToolStripMenu.Click
         Dim staff As Staffs = StaffDAO._Instance.GetInfoStaffById(idStaff)
-        Dim f As New FormThongTinNhanVien(staff)
+
+        Dim f As FormThongTinNhanVien = New FormThongTinNhanVien(staff)
+        AddHandler f.updateAccount, AddressOf f_UpdateAccount
         f.ShowDialog()
     End Sub
-#End Region
+
+    'Change text thông tin tài khoản
+    Private Sub f_UpdateAccount(sender As Object, e As AccountEvent)
+        PersonalInfoToolStripMenu.Text = "Thông tin tài khoản (" & e._acc._username & ")"
+    End Sub
+
+    'Cập nhật bàn ăn
+    Private Sub f_UpdateTableFood(sender As Object, e As EventArgs)
+        LoadTable()
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+    End Sub
+
+    'Xóa bàn ăn
+    Private Sub f_DeleteTableFood(sender As Object, e As EventArgs)
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+        LoadTable()
+    End Sub
+
+    'Thêm bàn ăn
+    Private Sub f_InsertTableFood(sender As Object, e As EventArgs)
+        LoadTable()
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+    End Sub
+
+    'Cập nhât danh mục
+    Private Sub f_UpdateCategoryFood(sender As Object, e As EventArgs)
+        LoadListCategory()
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+    End Sub
+
+    'Xóa danh mục
+    Private Sub f_DeleteCategoryFood(sender As Object, e As EventArgs)
+        LoadListCategory()
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+        LoadTable()
+    End Sub
+
+    'Thêm danh mục
+    Private Sub f_InsertCategoryFood(sender As Object, e As EventArgs)
+        LoadListCategory()
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+    End Sub
+
+    'Cập nhật món ăn
+    Private Sub f_UpdateFood(sender As Object, e As EventArgs)
+        LoadFoodListByCategoryID((TryCast(cbCategory.SelectedItem, Categories))._id)
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+    End Sub
+
+    'Xóa món ăn
+    Private Sub f_DeleteFood(sender As Object, e As EventArgs)
+        LoadFoodListByCategoryID((TryCast(cbCategory.SelectedItem, Categories))._id)
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+        LoadTable()
+    End Sub
+
+    'Thêm món ăn
+    Private Sub f_InsertFood(sender As Object, e As EventArgs)
+        LoadFoodListByCategoryID((TryCast(cbCategory.SelectedItem, Categories))._id)
+        If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
+    End Sub
 
 #End Region
+
 End Class

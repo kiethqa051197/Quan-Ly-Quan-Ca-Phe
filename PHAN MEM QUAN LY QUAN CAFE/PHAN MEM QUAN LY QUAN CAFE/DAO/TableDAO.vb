@@ -9,7 +9,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
                 If instance Is Nothing Then instance = New TableDAO()
                 Return TableDAO.instance
             End Get
-            Private Set(ByVal value As TableDAO)
+            Private Set(value As TableDAO)
                 TableDAO.instance = value
             End Set
         End Property
@@ -20,7 +20,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         Private Sub New()
         End Sub
 
-        Public Sub SwitchTable(ByVal id1 As Integer, ByVal id2 As Integer, ByVal idStaff As Integer)
+        Public Sub SwitchTable(id1 As Integer, id2 As Integer, idStaff As Integer)
             DataProvider._Instance.ExecuteQuery("PC_SwitchTable @idTable1 , @idTable2 , @idStaff ", New Object() {id1, id2, idStaff})
         End Sub
 
@@ -49,25 +49,25 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return list
         End Function
 
-        Public Function InsertTableFood(ByVal name As String) As Boolean
+        Public Function InsertTableFood(name As String) As Boolean
             Dim query As String = String.Format("INSERT INTO TABLES ( name ) VALUES  ( N'{0}' )", name)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
 
-        Public Function UpdateTableFood(ByVal id As Integer, ByVal name As String) As Boolean
+        Public Function UpdateTableFood(id As Integer, name As String) As Boolean
             Dim query As String = String.Format("UPDATE TABLES SET name = N'{0}' WHERE id = {1}", name, id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
 
-        Public Function UpdateStatusTable(ByVal id As Integer, ByVal status As String) As Boolean
+        Public Function UpdateStatusTable(id As Integer, status As String) As Boolean
             Dim query As String = String.Format("UPDATE TABLES SET status = N'{0}' WHERE id = {1}", status, id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
 
-        Public Function DeleteTableFood(ByVal id As Integer) As Boolean
+        Public Function DeleteTableFood(id As Integer) As Boolean
             Dim query As String = String.Format("DELETE TABLES where id = {0}", id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0

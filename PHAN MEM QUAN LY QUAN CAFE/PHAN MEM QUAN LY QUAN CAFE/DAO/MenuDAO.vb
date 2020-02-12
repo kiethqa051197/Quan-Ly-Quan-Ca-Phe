@@ -9,7 +9,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
                 If instance Is Nothing Then instance = New MenuDAO()
                 Return instance
             End Get
-            Private Set(ByVal value As MenuDAO)
+            Private Set(value As MenuDAO)
                 MenuDAO.instance = value
             End Set
         End Property
@@ -17,7 +17,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         Private Sub New()
         End Sub
 
-        Public Function GetListMenuByTable(ByVal id As Integer) As List(Of Menu)
+        Public Function GetListMenuByTable(id As Integer) As List(Of Menu)
             Dim listMenu As List(Of Menu) = New List(Of Menu)()
             Dim query As String = "SELECT i.name, bi.count, i.price, i.price*bi.count AS totalPrice FROM BILLINFOS AS bi, BILLS AS b, ITEMS AS i WHERE bi.idBill = b.id AND bi.idItems = i.id AND b.status = 0 AND b.idTable = " & id
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
