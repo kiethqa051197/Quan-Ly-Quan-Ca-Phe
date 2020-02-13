@@ -8,7 +8,7 @@ Public Class FormAdmin
     Private foodList As BindingSource = New BindingSource()
     Private categoryFoodList As BindingSource = New BindingSource()
     Private tableFoodList As BindingSource = New BindingSource()
-    Private accountList As BindingSource = New BindingSource()
+    Private staffList As BindingSource = New BindingSource()
 
     Public loginAccount As Accounts
 
@@ -26,7 +26,7 @@ Public Class FormAdmin
         dgvFood.DataSource = foodList
         dgvCategory.DataSource = categoryFoodList
         dgvTable.DataSource = tableFoodList
-        'dgvAccount.DataSource = accountList
+        dgvStaff.DataSource = staffList
         'LoadDateTimePickerBill()
         'LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value)
         LoadListFood()
@@ -36,8 +36,8 @@ Public Class FormAdmin
         AddCategoryFoodBindding()
         LoadListTableFood()
         AddTableFoodBindding()
-        'LoadAccount()
-        'AddAccountBindding()
+        LoadStaff()
+        AddStaffBindding()
 
         ChangeColumnName()
     End Sub
@@ -47,16 +47,6 @@ Public Class FormAdmin
         Dim listFood As List(Of Items) = ItemsDAO._Instance.SearchFoodByName(name)
         Return listFood
     End Function
-
-    'Private Sub LoadDateTimePickerBill()
-    '    Dim today As DateTime = DateTime.Now
-    '    dtpkFromDate.Value = New DateTime(today.Year, today.Month, 1)
-    '    dtpkToDate.Value = dtpkFromDate.Value.AddMonths(1).AddDays(-1)
-    'End Sub
-
-    'Private Sub LoadListBillByDate(checkIn As DateTime, checkOut As DateTime)
-    '    dgvBill.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut)
-    'End Sub
 
     'Load Danh Mục lên combobox
     Private Sub LoadCatagoryIntoCombobox(cb As ComboBox)
@@ -87,11 +77,15 @@ Public Class FormAdmin
         txtStatusTable.DataBindings.Add(New Binding("Text", dgvTable.DataSource, "_status", True, DataSourceUpdateMode.Never))
     End Sub
 
-    'Private Sub AddAccountBindding()
-    '    txtUserName.DataBindings.Add(New Binding("Text", dgvAccount.DataSource, "userName", True, DataSourceUpdateMode.Never))
-    '    txtDisplayName.DataBindings.Add(New Binding("Text", dgvAccount.DataSource, "displayName", True, DataSourceUpdateMode.Never))
-    '    nmAccountType.DataBindings.Add(New Binding("Value", dgvAccount.DataSource, "type", True, DataSourceUpdateMode.Never))
-    'End Sub
+    'Nhân viên
+    Private Sub AddStaffBindding()
+        txtIDStaff.DataBindings.Add(New Binding("Text", dgvStaff.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameStaff.DataBindings.Add(New Binding("Text", dgvStaff.DataSource, "_fullname", True, DataSourceUpdateMode.Never))
+        dtpDOBStaff.DataBindings.Add(New Binding("Value", dgvStaff.DataSource, "_dateofbirth", True, DataSourceUpdateMode.Never))
+        txtIDCardStaff.DataBindings.Add(New Binding("Text", dgvStaff.DataSource, "_idCard", True, DataSourceUpdateMode.Never))
+        txtAddressStaff.DataBindings.Add(New Binding("Text", dgvStaff.DataSource, "_address", True, DataSourceUpdateMode.Never))
+        txtPhoneStaff.DataBindings.Add(New Binding("Text", dgvStaff.DataSource, "_phone", True, DataSourceUpdateMode.Never))
+    End Sub
 
 #End Region
 
@@ -105,15 +99,17 @@ Public Class FormAdmin
         categoryFoodList.DataSource = CategoriesDAO._Instance.GetListCategory()
     End Sub
 
-    'Lấy sanh sách bàn ăn
+    'Lấy danh sách bàn ăn
     Private Sub LoadListTableFood()
         tableFoodList.DataSource = TableDAO._Instance.GetListTable()
     End Sub
 
-    'Private Sub LoadAccount()
-    '    accountList.DataSource = AccountDAO.Instance.GetListAccount()
-    'End Sub
+    'Lấy danh sách nhân viên
+    Private Sub LoadStaff()
+        staffList.DataSource = StaffDAO._Instance.GetListStaff()
+    End Sub
 
+    'Thêm nhân viên
     Private Sub AddStaff(fullname As String, dateofbirth As String, gender As Integer, idCard As String, address As String, phone As String)
         If StaffDAO._Instance.InsertStaff(fullname, dateofbirth, gender, idCard, address, phone) Then
             MessageBox.Show("Thêm tài khoản thành công")
@@ -121,43 +117,8 @@ Public Class FormAdmin
             MessageBox.Show("Thêm tài khoản thất bại")
         End If
 
-        'LoadAccount()
+        LoadStaff()
     End Sub
-
-    'Private Sub EditAcount(username As String, displayname As String, type As Integer)
-    '    If AccountDAO.Instance.UpdateAccount(username, displayname, type) Then
-    '        MessageBox.Show("Cập nhật tài khoản thành công")
-    '    Else
-    '        MessageBox.Show("Cập nhật tài khoản thất bại")
-    '    End If
-
-    '    LoadAccount()
-    'End Sub
-
-    'Private Sub DeleteAcount(username As String)
-    '    If loginAccount.UserName.Equals(username) Then
-    '        MessageBox.Show("Đừng xoá tài khoản của bạn chớ!!")
-    '        Return
-    '    End If
-
-    '    If AccountDAO.Instance.DeleteAccount(username) Then
-    '        MessageBox.Show("Xoá tài khoản thành công")
-    '    Else
-    '        MessageBox.Show("Xoá tài khoản thất bại")
-    '    End If
-
-    '    LoadAccount()
-    'End Sub
-
-    'Private Sub ResetPass(username As String)
-    '    If AccountDAO.Instance.ResetPass(username) Then
-    '        MessageBox.Show("Đặt lại mật khẩu tài khoản thành công")
-    '    Else
-    '        MessageBox.Show("Đặt lại mật khẩu tài khoản thất bại")
-    '    End If
-    'End Sub
-
-    'Thêm bàn ăn    
 
     Private Sub AddTableFood(name As String)
         If TableDAO._Instance.InsertTableFood(name) Then
@@ -243,6 +204,15 @@ Public Class FormAdmin
         gridTable.Columns(0).Caption = "Mã bàn"
         gridTable.Columns(1).Caption = "Tên bàn"
         gridTable.Columns(2).Caption = "Trạng thái"
+
+        'Bảng Nhân Viên
+        gridStaff.Columns(0).Caption = "Mã nhân viên"
+        gridStaff.Columns(1).Caption = "Tên nhân viên"
+        gridStaff.Columns(2).Caption = "Ngày sinh"
+        gridStaff.Columns(3).Caption = "Giớ tính"
+        gridStaff.Columns(4).Caption = "CMND/CCCD"
+        gridStaff.Columns(5).Caption = "Địa Chỉ"
+        gridStaff.Columns(6).Caption = "SĐT"
     End Sub
 
 #End Region
@@ -294,6 +264,7 @@ Public Class FormAdmin
     End Event
 
     'Thêm sửa xóa Danh Mục
+
     Public Custom Event InsertCategoryFoods As EventHandler
         AddHandler(value As EventHandler)
             Me.Events.AddHandler("InsertCategoryFood", value)
@@ -337,6 +308,7 @@ Public Class FormAdmin
     End Event
 
     'Thêm sửa xóa Bàn Ăn
+
     Public Custom Event InsertTables As EventHandler
         AddHandler(value As EventHandler)
             Me.Events.AddHandler("InsertTable", value)
@@ -382,9 +354,6 @@ Public Class FormAdmin
 #End Region
 
 #Region "Bắt sự kiện"
-    'Private Sub btnViewBill_Click(sender As Object, e As EventArgs)
-    '    LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value)
-    'End Sub
 
     'Nút thêm Món Ăn
     Private Sub btnAddFood_Click(sender As Object, e As EventArgs) Handles btnAddFood.Click
@@ -473,12 +442,9 @@ Public Class FormAdmin
         foodList.DataSource = SearchFoodByName(txtSearchFood.Text)
     End Sub
 
-    'Private Sub btnShowAccount_Click(sender As Object, e As EventArgs)
-    '    LoadAccount()
-    'End Sub
-
+    'Nút thêm nhân viên
     Private Sub btnAddStaff_Click(sender As Object, e As EventArgs) Handles btnAddStaff.Click
-        Dim fullname As String = txtStaffName.Text
+        Dim fullname As String = txtNameStaff.Text
         Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
 
         Dim gender As Integer
@@ -489,58 +455,12 @@ Public Class FormAdmin
             gender = 1
         End If
 
-        Dim idCard As String = txtIDStaff.Text
+        Dim idCard As String = txtIDCardStaff.Text
         Dim address As String = txtAddressStaff.Text
         Dim phone As String = txtPhoneStaff.Text
 
         AddStaff(fullname, dob, gender, idCard, address, phone)
     End Sub
-
-    'Private Sub btnEditAccount_Click(sender As Object, e As EventArgs)
-    '    Dim username As String = txtUserName.Text
-    '    Dim displayname As String = txtDisplayName.Text
-    '    Dim type As Integer = CInt(nmAccountType.Value)
-    '    EditAcount(username, displayname, type)
-    'End Sub
-
-    'Private Sub btnDeleteAccount_Click(sender As Object, e As EventArgs)
-    '    Dim username As String = txtUserName.Text
-    '    DeleteAcount(username)
-    'End Sub
-
-    'Private Sub btnResetPassWord_Click(sender As Object, e As EventArgs)
-    '    Dim username As String = txtUserName.Text
-    '    ResetPass(username)
-    'End Sub
-
-    'Private Sub btnFirstPage_Click(sender As Object, e As EventArgs)
-    '    txtPageView.Text = "1"
-    'End Sub
-
-    'Private Sub btnLastPage_Click(sender As Object, e As EventArgs)
-    '    Dim sumRecord As Integer = BillDAO.Instance.GetNumBillByDate(dtpkFromDate.Value, dtpkToDate.Value)
-    '    Dim lastPage As Integer = sumRecord / 10
-    '    If sumRecord Mod 10 <> 0 Then lastPage += 1
-    '    txtPageView.Text = lastPage.ToString()
-    'End Sub
-
-    'Private Sub txtPageView_TextChanged(sender As Object, e As EventArgs)
-    '    dgvBill.DataSource = BillDAO.Instance.GetBillListByDateAndPage(dtpkFromDate.Value, dtpkToDate.Value, Convert.ToInt32(txtPageView.Text))
-    'End Sub
-
-    'Private Sub btnPreviousPage_Click(sender As Object, e As EventArgs)
-    '    Dim page As Integer = Convert.ToInt32(txtPageView.Text)
-    '    If page > 1 Then page -= 1
-    '    txtPageView.Text = page.ToString()
-    'End Sub
-
-    'Private Sub btnNextPage_Click(sender As Object, e As EventArgs)
-    '    Dim page As Integer = Convert.ToInt32(txtPageView.Text)
-    '    Dim sumRecord As Integer = BillDAO.Instance.GetNumBillByDate(dtpkFromDate.Value, dtpkToDate.Value)
-    '    If page < sumRecord Then page += 1
-    '    txtPageView.Text = page.ToString()
-    'End Sub
-
 
     'Thay đổi tên hiển thị danh mục khi ID món ăn thay đổi
     Private Sub txtIDFood_TextChanged(sender As Object, e As EventArgs) Handles txtIDFood.TextChanged
@@ -571,6 +491,24 @@ Public Class FormAdmin
         End Try
     End Sub
 
+    'Thay đổi text combobox giới tính
+    Private Sub txtIDStaff_TextChanged(sender As Object, e As EventArgs) Handles txtIDStaff.TextChanged
+        Try
+            If gridStaff.SelectedRowsCount > 0 Then
+                Dim owningRow As Integer() = gridStaff.GetSelectedRows()
+                Dim id As Integer = gridStaff.GetRowCellValue(owningRow(0), gridStaff.Columns(0))
+
+                Dim staff As Staffs = StaffDAO._Instance.GetInfoStaffById(id)
+
+                If staff._gender <> True Then
+                    cbbGenderStaff.SelectedIndex = 1
+                Else
+                    cbbGenderStaff.SelectedIndex = 0
+                End If
+            End If
+        Catch
+        End Try
+    End Sub
 #End Region
 
 End Class

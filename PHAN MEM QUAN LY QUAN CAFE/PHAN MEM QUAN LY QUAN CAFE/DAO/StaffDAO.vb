@@ -46,6 +46,19 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Dim result As DataTable = DataProvider._Instance.ExecuteQuery(query, New Object() {fullname, dateofbirth, gender, idCard, address, phone})
             Return result.Rows.Count > 0
         End Function
+
+        Public Function GetListStaff() As List(Of Staffs)
+            Dim list As List(Of Staffs) = New List(Of Staffs)()
+            Dim query As String = "SELECT * FROM dbo.STAFFS EXCEPT SELECT * FROM dbo.STAFFS WHERE id = 1"
+            Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
+
+            For Each item As DataRow In data.Rows
+                Dim staff As Staffs = New Staffs(item)
+                list.Add(staff)
+            Next
+
+            Return list
+        End Function
     End Class
 End Namespace
 

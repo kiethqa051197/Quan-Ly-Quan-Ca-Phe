@@ -58,8 +58,8 @@ Public Class FormBanHang
     'Change Account
     Private Sub ChangeAccount(type As Integer)
         AdminStripMenu.Visible = type = 1
-        PersonalInfoToolStripMenu.Text += " (" + acc._username + ")"
-        idStaff = acc._idStaff
+        PersonalInfoToolStripMenu.Text += " (" + _acc._username + ")"
+        idStaff = _acc._idStaff
     End Sub
 
     'Lấy danh sách danh mục sản phẩm
@@ -77,9 +77,12 @@ Public Class FormBanHang
     End Sub
 
     'Lấy danh sách tất cả các bàn
-    Private Sub LoadComboboxTable(cb As ComboBox)
+    Private Sub LoadComboboxTable(cb As ComboBox, lookUpEdit As DevExpress.XtraEditors.LookUpEdit)
         cb.DataSource = TableDAO._Instance.LoadTableList()
         cb.DisplayMember = "_name"
+
+        lookUpEdit.Properties.DataSource = TableDAO._Instance.LoadTableList()
+        lookUpEdit.Properties.DisplayMember = "_name"
     End Sub
 
     'Hiển thị món đã gọi
@@ -155,7 +158,7 @@ Public Class FormBanHang
     Private Sub FormBanHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadTable()
         LoadListCategory()
-        LoadComboboxTable(cbSwichTable)
+        LoadComboboxTable(cbSwichTable, cbbtable)
     End Sub
 
     'Click nút thêm món
@@ -206,9 +209,16 @@ Public Class FormBanHang
     'Click nút Chuyển bàn
     Private Sub btnSwichTable_Click(sender As Object, e As EventArgs) Handles btnSwichTable.Click
         Dim id1 As Integer = (TryCast(listBill.Tag, Tables))._id
-        Dim id2 As Integer = (TryCast(cbSwichTable.SelectedItem, Tables))._id
+        'Dim id2 As Integer = (TryCast(cbSwichTable.SelectedItem, Tables))._id
 
-        If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbSwichTable.SelectedItem, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+        'If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbSwichTable.SelectedItem, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+        '    TableDAO._Instance.SwitchTable(id1, id2, idStaff)
+        '    LoadTable()
+        'End If
+
+        Dim id2 As Integer = (TryCast(cbbtable.EditValue, Tables))._id
+
+        If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbbtable.EditValue, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
             TableDAO._Instance.SwitchTable(id1, id2, idStaff)
             LoadTable()
         End If

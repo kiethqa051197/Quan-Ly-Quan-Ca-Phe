@@ -223,8 +223,8 @@ CREATE TABLE OUTPUTINFOS
 GO
 
 -- Đăng nhập
-CREATE PROCEDURE PC_Login
-@userName nvarchar(100), @passWord nvarchar(100)
+CREATE PROCEDURE PC_Logins
+	@userName nvarchar(100), @passWord nvarchar(100)
 AS
 BEGIN
 	SELECT * FROM ACCOUNTS WHERE username = @userName AND password = @passWord
@@ -233,7 +233,7 @@ GO
 
 -- Lấy tài khoản từ username
 CREATE PROC PC_GetAccountByUserName
-@userName nvarchar(100)
+	@userName nvarchar(100)
 AS 
 BEGIN
 	SELECT * FROM ACCOUNTS WHERE username = @userName
@@ -247,7 +247,7 @@ GO
 
 -- Lấy tổng số hoá đơn theo ngày
 CREATE PROC PC_GetNumBillByDate
-@checkIn date, @checkOut date
+	@checkIn date, @checkOut date
 AS 
 BEGIN
 	SELECT COUNT(*)
@@ -259,7 +259,7 @@ GO
 
 -- Lấy danh sách hoá đơn theo ngày cho report
 CREATE PROC PC_GetListBillByDateForReport
-@checkIn date, @checkOut date
+	@checkIn date, @checkOut date
 AS 
 BEGIN
 	SELECT t.name, dateCheckIn, dateCheckOut, discount
@@ -270,7 +270,7 @@ GO
 
 -- Phân trang
 CREATE PROC PC_GetListBillByDateAndPage
-@checkIn date, @checkOut date, @page int
+	@checkIn date, @checkOut date, @page int
 AS 
 BEGIN
 	DECLARE @pageRows INT = 10
@@ -337,7 +337,7 @@ GO
 
 -- Chuyển bàn
 CREATE PROC PC_SwitchTable
-@idTable1 INT, @idTable2 INT, @idStaff INT
+	@idTable1 INT, @idTable2 INT, @idStaff INT
 AS BEGIN
 
 	DECLARE @idFirstBill int
@@ -407,6 +407,9 @@ AS BEGIN
 END
 GO
 
+-- bỏ dấu chữ nhập vào
+DROP FUNCTION dbo.fuConvertToUnsign1
+
 CREATE FUNCTION [dbo].[fuConvertToUnsign1] ( @strInput NVARCHAR(4000) ) 
 	RETURNS NVARCHAR(4000) 
 AS 
@@ -423,11 +426,75 @@ BEGIN
 		BEGIN IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) ) 
 			BEGIN IF @COUNTER=1 SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1) 
 			ELSE SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER) 
-				BREAK END SET @COUNTER1 = @COUNTER1 +1 END SET @COUNTER = @COUNTER +1 END SET @strInput = replace(@strInput,' ','-') RETURN @strInput 
+				BREAK END SET @COUNTER1 = @COUNTER1 +1 END SET @COUNTER = @COUNTER +1 END SET @strInput = replace(@strInput,' ','') RETURN @strInput 
 END
 
-/* 
+--- Thêm nhân viên mới đồng thời cũng tạo tài khoản mới cho nhân viên đó
+DROP PROC PC_AddNewStaff
 
+CREATE PROC PC_AddNewStaff
+	@fullname NVARCHAR(MAX), 
+	@dateofbirth DATE, 
+	@gender BIT,
+	@idCard VARCHAR(MAX) = NULL, 
+	@address NVARCHAR(MAX) = NULL, 
+	@phone VARCHAR(MAX) = NULL
+AS
+BEGIN	
+	INSERT dbo.STAFFS 
+	        ( fullname ,
+	          dateofbirth ,
+	          gender ,
+	          idCard ,
+	          address ,
+	          phone
+	        )
+	VALUES  ( @fullname , -- fullname - nvarchar(max)
+	          @dateofbirth, -- dateofbirth - date
+	          @gender , -- gender - bit
+	          @idCard , -- idCard - varchar(12)
+	          @address , -- address - nvarchar(max)
+	          @phone -- phone - varchar(11)
+	        )
+
+	DECLARE @idStaff INT = 0
+	DECLARE @username VARCHAR(MAX) = ''
+	
+	SELECT @username = dbo.fuConvertToUnsign1(@fullname)
+	SELECT @idStaff = id FROM dbo.STAFFS WHERE id=( SELECT max(id) FROM dbo.STAFFS)
+
+	IF @idCard IS NOT NULL
+		INSERT dbo.ACCOUNTS ( username, password, idStaff, type ) VALUES  ( @idCard, '123456', @idStaff, 0)
+	ELSE 
+	BEGIN
+		IF @phone IS NOT NULL 
+			INSERT dbo.ACCOUNTS ( username, password, idStaff, type ) VALUES  ( @phone, '123456', @idStaff, 0)
+		ELSE
+			INSERT dbo.ACCOUNTS ( username, password, idStaff, type ) VALUES  ( @username, '123456', @idStaff, 0)
+	END
+END
+GO
+
+-- Xóa Nhân viên 
+DROP PROC PC_DeleteStaff
+
+CREATE PROC PC_DeleteStaff
+	@id INT
+AS	
+BEGIN
+	UPDATE dbo.BILLS SET idStaff = 1 WHERE id = @id
+	
+	DELETE dbo.ACCOUNTS WHERE idStaff = @id
+	DELETE dbo.STAFFS WHERE id = @id
+END	
+GO
+
+SELECT * FROM dbo.STAFFS EXCEPT SELECT * FROM dbo.STAFFS WHERE id = 1
+
+SELECT *
+FROM dbo.BILLS WHERE idStaff = 4
+
+/* 
 2020 tháng 1 - món x :  (Tồn đầu kỳ ; Tồn cuối kỳ) :  100 ly cafe (20k/1)
 - Nhập vô 100, Bán được 80 (cafe) : 7k/1 (còn 20)
 - Nhập vô 100, Bán được 70 (đường) : 8k/1 (còn 30)
@@ -456,5 +523,4 @@ Bình quân gia quyền
 Lợi Nhuận = Tổng Trị giá bán - (Tổng trị giá nhập + Trị giá tồn + discount + lượng + .....)
 
 Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60 + 20 * 8 + 30 * 6) = ....k
-
 */

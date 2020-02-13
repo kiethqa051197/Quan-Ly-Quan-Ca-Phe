@@ -5,19 +5,23 @@ Public Class FormThongTinNhanVien
 
 #Region "KHỞI TẠO"
 
-    Dim staff As Staffs
+    Private staff As Staffs
+    Private acc As Accounts
 
-    Dim FROM_HEIGH_OLD As Integer = 463
-    Dim FROM_HEIGH_NEW As Integer = 564
+    Private isChangeInfo As Boolean = False
+    Private isChangePass As Boolean = False
 
-    Dim PANEL_HEIGH_OLD As Integer = 400
-    Dim PANEL_HEIGH_NEW As Integer = 505
+    Private FROM_HEIGH_OLD As Integer = 463
+    Private FROM_HEIGH_NEW As Integer = 564
 
-    Dim BTN_LOCATION_OLD As New Point(129, 341)
-    Dim BTN_LOCATION_NEW As New Point(165, 450)
+    Private PANEL_HEIGH_OLD As Integer = 400
+    Private PANEL_HEIGH_NEW As Integer = 505
 
-    Dim BTN_WIDTH_OLD As Integer = 177
-    Dim BTN_WIDTH_NEW As Integer = 141
+    Private BTN_LOCATION_OLD As New Point(129, 341)
+    Private BTN_LOCATION_NEW As New Point(165, 450)
+
+    Private BTN_WIDTH_OLD As Integer = 177
+    Private BTN_WIDTH_NEW As Integer = 141
 
     Public Property _staff As Staffs
         Get
@@ -78,10 +82,17 @@ Public Class FormThongTinNhanVien
 
     'Cập nhật thông tin nhân viên
     Private Sub UpdateInfo()
-        Dim acc As Accounts = AccountDAO._Instance.GetAccountByUserName(_staff._idCard)
+        acc = AccountDAO._Instance.GetAccountByIdStaff(_staff._id)
+
+        Dim oldPassDatabase As String = acc._passWord
+        Dim oldPass As String = txtOldPass.Text.Trim
+        Dim newPass As String = txtNewPass.Text.Trim
+        Dim newPassRetype As String = txtRetypeNewPass.Text.Trim
+
+        Dim fullname As String = txtNameStaff.Text.Trim
+        Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
 
         Dim gender As Integer
-        Dim dob As String
 
         If cbGender.SelectedIndex = 1 Then
             gender = 0
@@ -89,88 +100,132 @@ Public Class FormThongTinNhanVien
             gender = 1
         End If
 
-        dob = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
+        Dim address As String = txtAddressStaff.Text.Trim
+        Dim phone As String = txtPhoneStaff.Text.Trim
+        Dim idCard As String = txtIDStaff.Text.Trim
+        Dim idAccount As Integer = acc._id
 
-        If btnChangeInfo.Text = "Thay đổi thông tin cá nhân" Then
-            Enable(True)
-            btnChangeInfo.Text = "Cập nhật"
-        Else
-            'Xét trường hợp có check thay đổi mật khẩu hay không
-            'Nếu có thì có thêm hàm đổi pass ngược lại thì ko có
-            If checkboxChangePass.Checked = True Then
+        If isChangeInfo = True And isChangePass = True Then
+            If CheckEmpty(fullname) Or CheckEmpty(oldPass) Or CheckEmpty(newPass) Or CheckEmpty(newPassRetype) Then
+                MessageBox.Show("Vui lòng nhập đủ thông tin!!!")
+            Else
+                If oldPass.Equals(oldPassDatabase) Then
+                    If newPassRetype.Equals(newPass) Then
+                        If (StaffDAO._Instance.UpdateInfoStaff(_staff._id, fullname, dob, gender, idCard, address, phone)) Then
+                            If (AccountDAO._Instance.UpdateAccountStaff(idAccount, idCard, newPass, _staff._id)) Then
+                                MessageBox.Show("Cập nhật thành công")
 
-                'So sánh pass cũ đang nhập vào với pass cũ xem có trùng nhau hay không 
-                'nếu trùng thì xét if tiếp không thì cho nhập lại
-                If txtOldPass.Text = acc._passWord Then
+                                isChangeInfo = False
+                                isChangePass = False
 
-                    'Kiểm tra mật khẩu mới có trùng nhau không 
-                    'nếu trùng thì xét if tiếp theo, không thì cho nhập lại
-                    If txtRetypeNewPass.Text = txtNewPass.Text Then
-
-                        'So sánh pass mới với pass cũ xem có trùng nhau hay không 
-                        'nếu trùng thì không cho đổi và ngược lại
-                        If txtNewPass.Text <> txtOldPass.Text Then
-                            If StaffDAO._Instance.UpdateInfoStaff(_staff._id, txtNameStaff.Text, dob, gender, txtIDStaff.Text, txtAddressStaff.Text, txtPhoneStaff.Text) Then
-                                If AccountDAO._Instance.UpdateAccountStaff(acc._id, txtIDStaff.Text, txtNewPass.Text, _staff._id, acc._type) Then
-                                    MessageBox.Show("Cập nhật thành công!")
-                                    Enable(False)
-
-                                    RaiseEvent updateAccount(Me, New AccountEvent(AccountDAO._Instance.GetAccountByUserName(txtIDStaff.Text)))
-                                Else
-                                    MessageBox.Show("Cập nhật thất bại!")
-                                End If
+                                RaiseEvent updateAccount(Me, New AccountEvent(AccountDAO._Instance.GetAccountByIdStaff(acc._idStaff)))
+                                ChangeText()
                             Else
-                                MessageBox.Show("Cập nhật thất bại!")
+                                MessageBox.Show("Cập nhật thất bại")
                             End If
-                        Else
-                            MessageBox.Show("Mật khẩu mới của bạn trùng với mật khẩu cũ!!! Vui lòng nhập mật khẩu mới")
-                            txtNewPass.Select()
                         End If
                     Else
-                        MessageBox.Show("Mật khẩu mới của bạn nhập không khớp nhau!!!")
-                        txtRetypeNewPass.Select()
+                        MessageBox.Show("Vui lòng nhập đúng mật khẩu mới")
                     End If
                 Else
-                    MessageBox.Show("Mật khẩu cũ của bạn không đúng!!!")
-                    txtRetypeNewPass.Select()
-                End If
-            Else
-                If StaffDAO._Instance.UpdateInfoStaff(_staff._id, txtNameStaff.Text, dob, gender, txtIDStaff.Text, txtAddressStaff.Text, txtPhoneStaff.Text) Then
-                    RaiseEvent updateAccount(Me, New AccountEvent(AccountDAO._Instance.GetAccountByUserName(txtIDStaff.Text)))
-                Else
-                    MessageBox.Show("Cập nhật thất bại!")
+                    MessageBox.Show("Bạn nhập sai mật khẩu cũ!!!")
                 End If
             End If
+        ElseIf isChangeInfo = False And isChangePass = True Then
+            If CheckEmpty(oldPass) Or CheckEmpty(newPass) Or CheckEmpty(newPassRetype) Then
+                MessageBox.Show("Vui lòng nhập đủ thông tin!!!")
+            Else
+                If oldPass.Equals(oldPassDatabase) Then
+                    If newPassRetype.Equals(newPass) Then
+                        If (AccountDAO._Instance.UpdateAccountStaff(idAccount, idCard, newPass, _staff._id)) Then
+                            MessageBox.Show("Cập nhật thành công")
 
-            btnChangeInfo.Text = "Thay đổi thông tin cá nhân"
+                            isChangeInfo = False
+                            isChangePass = False
+
+                            RaiseEvent updateAccount(Me, New AccountEvent(AccountDAO._Instance.GetAccountByIdStaff(acc._idStaff)))
+                            ChangeText()
+                        Else
+                            MessageBox.Show("Cập nhật thất bại")
+                        End If
+                    Else
+                        MessageBox.Show("Vui lòng nhập đúng mật khẩu mới")
+                    End If
+                Else
+                    MessageBox.Show("Mật khẩu cũ của bạn không đúng")
+                End If
+            End If
+        ElseIf isChangeInfo = True And isChangePass = False Then
+            If CheckEmpty(fullname) Then
+                MessageBox.Show("Không được bỏ trống tên!!!")
+            Else
+                If (StaffDAO._Instance.UpdateInfoStaff(_staff._id, fullname, dob, gender, idCard, address, phone)) Then
+                    If (AccountDAO._Instance.UpdateUsernameAccountStaff(idAccount, idCard)) Then
+                        MessageBox.Show("Cập nhật thành công")
+
+                        isChangeInfo = False
+                        isChangePass = False
+
+                        RaiseEvent updateAccount(Me, New AccountEvent(AccountDAO._Instance.GetAccountByIdStaff(acc._idStaff)))
+                        ChangeText()
+                    Else
+                        MessageBox.Show("Cập nhật thất bại")
+                    End If
+                Else
+                    MessageBox.Show("Cập nhật thất bại")
+                End If
+            End If
         End If
     End Sub
 
+    'Change text
+    Public Sub ChangeText()
+        If isChangeInfo = False Then
+            Enable(False)
+            If isChangePass = False Then
+                btnChangeInfo.Text = "Thay đổi thông tin cá nhân"
+            Else
+                btnChangeInfo.Text = "Lưu"
+            End If
+        Else
+            Enable(True)
+            btnChangeInfo.Text = "Lưu"
+        End If
+    End Sub
 
+    'Xet rong 
+    Private Function CheckEmpty(text As String) As Boolean
+        If text.Equals("") Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 #End Region
 
 #Region "BẮT SỰ KIỆN"
 
-    'Combobox giới tính
+    'Checkbox thay đổi mật khẩu
     Private Sub checkboxChangePass_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxChangePass.CheckedChanged
         If checkboxChangePass.Checked = True Then
+            isChangePass = True
+            ChangeText()
             ResizeForm(FROM_HEIGH_NEW, PANEL_HEIGH_NEW, True, BTN_LOCATION_NEW, BTN_WIDTH_NEW)
-
-            If btnChangeInfo.Text = "Thay đổi thông tin cá nhân" Then
-                btnChangeInfo.Text = "Cập nhật"
-            End If
         Else
+            isChangePass = False
+            ChangeText()
             ResizeForm(FROM_HEIGH_OLD, PANEL_HEIGH_OLD, False, BTN_LOCATION_OLD, BTN_WIDTH_OLD)
-
-            If btnChangeInfo.Text = "Cập nhật" Then
-                btnChangeInfo.Text = "Thay đổi thông tin cá nhân"
-            End If
         End If
     End Sub
 
     'Nút thay đổi thông tin"
     Private Sub btnChangeInfo_Click(sender As Object, e As EventArgs) Handles btnChangeInfo.Click
-        UpdateInfo()
+        If btnChangeInfo.Text.Equals("Thay đổi thông tin cá nhân") Then
+            isChangeInfo = True
+            ChangeText()
+        Else
+            UpdateInfo()
+        End If
     End Sub
 
 #End Region

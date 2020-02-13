@@ -38,22 +38,23 @@ Partial Class FormThongTinNhanVien
         Me.checkboxChangePass = New System.Windows.Forms.CheckBox()
         Me.panelInfoStaff = New DevExpress.XtraEditors.PanelControl()
         Me.cbGender = New System.Windows.Forms.ComboBox()
-        Me.panelChangePass = New System.Windows.Forms.Panel()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtNewPass = New DevExpress.XtraEditors.TextEdit()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtOldPass = New DevExpress.XtraEditors.TextEdit()
-        Me.txtRetypeNewPass = New DevExpress.XtraEditors.TextEdit()
+        Me.panelChangePass = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtRetypeNewPass = New DevExpress.XtraEditors.TextEdit()
+        Me.txtOldPass = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtNewPass = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txtNameStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.panelInfoStaff, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelInfoStaff.SuspendLayout()
+        CType(Me.panelChangePass, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelChangePass.SuspendLayout()
-        CType(Me.txtNewPass.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOldPass.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtRetypeNewPass.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtOldPass.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNewPass.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtNameStaff
@@ -97,7 +98,7 @@ Partial Class FormThongTinNhanVien
         Me.dtpDOBStaff.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpDOBStaff.Location = New System.Drawing.Point(129, 88)
         Me.dtpDOBStaff.Name = "dtpDOBStaff"
-        Me.dtpDOBStaff.Size = New System.Drawing.Size(176, 21)
+        Me.dtpDOBStaff.Size = New System.Drawing.Size(176, 20)
         Me.dtpDOBStaff.TabIndex = 6
         '
         'LabelControl9
@@ -182,6 +183,7 @@ Partial Class FormThongTinNhanVien
         '
         'panelInfoStaff
         '
+        Me.panelInfoStaff.Controls.Add(Me.panelChangePass)
         Me.panelInfoStaff.Controls.Add(Me.cbGender)
         Me.panelInfoStaff.Controls.Add(Me.checkboxChangePass)
         Me.panelInfoStaff.Controls.Add(Me.btnChangeInfo)
@@ -214,76 +216,75 @@ Partial Class FormThongTinNhanVien
         '
         'panelChangePass
         '
-        Me.panelChangePass.BackColor = System.Drawing.Color.Transparent
+        Me.panelChangePass.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.panelChangePass.Controls.Add(Me.LabelControl3)
         Me.panelChangePass.Controls.Add(Me.txtRetypeNewPass)
         Me.panelChangePass.Controls.Add(Me.txtOldPass)
         Me.panelChangePass.Controls.Add(Me.LabelControl1)
         Me.panelChangePass.Controls.Add(Me.txtNewPass)
         Me.panelChangePass.Controls.Add(Me.LabelControl2)
-        Me.panelChangePass.Location = New System.Drawing.Point(18, 342)
+        Me.panelChangePass.Location = New System.Drawing.Point(5, 330)
         Me.panelChangePass.Name = "panelChangePass"
         Me.panelChangePass.Size = New System.Drawing.Size(318, 110)
         Me.panelChangePass.TabIndex = 30
         Me.panelChangePass.Visible = False
         '
-        'LabelControl2
+        'LabelControl3
         '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl2.Location = New System.Drawing.Point(10, 12)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(80, 14)
-        Me.LabelControl2.TabIndex = 35
-        Me.LabelControl2.Text = "Mật khẩu cũ:"
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl3.Location = New System.Drawing.Point(15, 81)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(140, 14)
+        Me.LabelControl3.TabIndex = 45
+        Me.LabelControl3.Text = "Nhập lại mật khẩu mới:"
         '
-        'txtNewPass
+        'txtRetypeNewPass
         '
-        Me.txtNewPass.Location = New System.Drawing.Point(155, 43)
-        Me.txtNewPass.Name = "txtNewPass"
-        Me.txtNewPass.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtNewPass.Size = New System.Drawing.Size(141, 20)
-        Me.txtNewPass.TabIndex = 34
+        Me.txtRetypeNewPass.Location = New System.Drawing.Point(162, 79)
+        Me.txtRetypeNewPass.Name = "txtRetypeNewPass"
+        Me.txtRetypeNewPass.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtRetypeNewPass.Size = New System.Drawing.Size(140, 20)
+        Me.txtRetypeNewPass.TabIndex = 44
+        '
+        'txtOldPass
+        '
+        Me.txtOldPass.Location = New System.Drawing.Point(162, 11)
+        Me.txtOldPass.Name = "txtOldPass"
+        Me.txtOldPass.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtOldPass.Size = New System.Drawing.Size(141, 20)
+        Me.txtOldPass.TabIndex = 43
         '
         'LabelControl1
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl1.Location = New System.Drawing.Point(9, 45)
+        Me.LabelControl1.Location = New System.Drawing.Point(16, 46)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(88, 14)
-        Me.LabelControl1.TabIndex = 36
+        Me.LabelControl1.TabIndex = 42
         Me.LabelControl1.Text = "Mật khẩu mới:"
         '
-        'txtOldPass
+        'txtNewPass
         '
-        Me.txtOldPass.Location = New System.Drawing.Point(155, 10)
-        Me.txtOldPass.Name = "txtOldPass"
-        Me.txtOldPass.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtOldPass.Size = New System.Drawing.Size(141, 20)
-        Me.txtOldPass.TabIndex = 37
+        Me.txtNewPass.Location = New System.Drawing.Point(162, 44)
+        Me.txtNewPass.Name = "txtNewPass"
+        Me.txtNewPass.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtNewPass.Size = New System.Drawing.Size(141, 20)
+        Me.txtNewPass.TabIndex = 40
         '
-        'txtRetypeNewPass
+        'LabelControl2
         '
-        Me.txtRetypeNewPass.Location = New System.Drawing.Point(155, 78)
-        Me.txtRetypeNewPass.Name = "txtRetypeNewPass"
-        Me.txtRetypeNewPass.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtRetypeNewPass.Size = New System.Drawing.Size(140, 20)
-        Me.txtRetypeNewPass.TabIndex = 38
-        '
-        'LabelControl3
-        '
-        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl3.Location = New System.Drawing.Point(8, 80)
-        Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(140, 14)
-        Me.LabelControl3.TabIndex = 39
-        Me.LabelControl3.Text = "Nhập lại mật khẩu mới:"
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl2.Location = New System.Drawing.Point(17, 13)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(80, 14)
+        Me.LabelControl2.TabIndex = 41
+        Me.LabelControl2.Text = "Mật khẩu cũ:"
         '
         'FormThongTinNhanVien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(351, 424)
-        Me.Controls.Add(Me.panelChangePass)
         Me.Controls.Add(Me.panelInfoStaff)
         Me.MaximumSize = New System.Drawing.Size(367, 564)
         Me.MinimumSize = New System.Drawing.Size(367, 463)
@@ -296,11 +297,12 @@ Partial Class FormThongTinNhanVien
         CType(Me.panelInfoStaff, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelInfoStaff.ResumeLayout(False)
         Me.panelInfoStaff.PerformLayout()
+        CType(Me.panelChangePass, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelChangePass.ResumeLayout(False)
         Me.panelChangePass.PerformLayout()
-        CType(Me.txtNewPass.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOldPass.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtRetypeNewPass.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtOldPass.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNewPass.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -320,7 +322,7 @@ Partial Class FormThongTinNhanVien
     Friend WithEvents checkboxChangePass As System.Windows.Forms.CheckBox
     Friend WithEvents panelInfoStaff As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cbGender As System.Windows.Forms.ComboBox
-    Friend WithEvents panelChangePass As System.Windows.Forms.Panel
+    Friend WithEvents panelChangePass As DevExpress.XtraEditors.PanelControl
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtRetypeNewPass As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtOldPass As DevExpress.XtraEditors.TextEdit

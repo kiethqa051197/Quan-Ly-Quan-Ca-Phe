@@ -29,8 +29,18 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return result.Rows.Count > 0
         End Function
 
-        Public Function GetAccountByUserName(ByVal userName As String) As Accounts
-            Dim data As DataTable = DataProvider._Instance.ExecuteQuery("SELECT * FROM ACCOUNTS WHERE userName = '" & userName & "'")
+        Public Function GetAccountByIdStaff(ByVal idStaff As Integer) As Accounts
+            Dim data As DataTable = DataProvider._Instance.ExecuteQuery("SELECT * FROM ACCOUNTS WHERE idStaff = " & idStaff)
+
+            For Each item As DataRow In data.Rows
+                Return New Accounts(item)
+            Next
+
+            Return Nothing
+        End Function
+
+        Public Function GetAccountByUsername(ByVal username As String) As Accounts
+            Dim data As DataTable = DataProvider._Instance.ExecuteQuery("SELECT * FROM ACCOUNTS WHERE username = '" & username & "'")
 
             For Each item As DataRow In data.Rows
                 Return New Accounts(item)
@@ -61,8 +71,14 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return result > 0
         End Function
 
-        Public Function UpdateAccountStaff(id As Integer, username As String, password As String, idStaff As Integer, type As Integer) As Boolean
-            Dim query As String = String.Format("Update ACCOUNTS SET username = N'{1}' , password = N'{2}' , idStaff = {3} , type = {4} where id = {0}", id, username, password, idStaff, type)
+        Public Function UpdateAccountStaff(id As Integer, username As String, password As String, idStaff As Integer) As Boolean
+            Dim query As String = String.Format("Update ACCOUNTS SET username = N'{1}' , password = N'{2}' , idStaff = {3} where id = {0}", id, username, password, idStaff)
+            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
+            Return result > 0
+        End Function
+
+        Public Function UpdateUsernameAccountStaff(id As Integer, username As String) As Boolean
+            Dim query As String = String.Format("Update ACCOUNTS SET username = N'{1}' where id = {0}", id, username)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function

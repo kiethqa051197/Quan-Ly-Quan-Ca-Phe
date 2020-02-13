@@ -50,6 +50,7 @@ Partial Class FormBanHang
         Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cbbtable = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,6 +61,7 @@ Partial Class FormBanHang
         CType(Me.txtTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip.SuspendLayout()
+        CType(Me.cbbtable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -181,6 +183,7 @@ Partial Class FormBanHang
         '
         'PanelControl3
         '
+        Me.PanelControl3.Controls.Add(Me.cbbtable)
         Me.PanelControl3.Controls.Add(Me.cbSwichTable)
         Me.PanelControl3.Controls.Add(Me.btnCheckOut)
         Me.PanelControl3.Controls.Add(Me.txtTotal)
@@ -298,6 +301,14 @@ Partial Class FormBanHang
         Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
         Me.CustomerToolStripMenuItem.Text = "Khách hàng"
         '
+        'cbbtable
+        '
+        Me.cbbtable.Location = New System.Drawing.Point(3, 35)
+        Me.cbbtable.Name = "cbbtable"
+        Me.cbbtable.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbbtable.Size = New System.Drawing.Size(74, 20)
+        Me.cbbtable.TabIndex = 11
+        '
         'FormBanHang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -326,6 +337,7 @@ Partial Class FormBanHang
         CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
+        CType(Me.cbbtable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -358,4 +370,5 @@ Partial Class FormBanHang
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents CustomerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents cbbtable As DevExpress.XtraEditors.LookUpEdit
 End Class

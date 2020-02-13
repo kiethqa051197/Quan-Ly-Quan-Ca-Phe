@@ -131,13 +131,14 @@ Partial Class FormAdmin
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         Me.btnShowStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl11 = New DevExpress.XtraEditors.PanelControl()
+        Me.cbbGenderStaff = New System.Windows.Forms.ComboBox()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.txtPhoneStaff = New DevExpress.XtraEditors.TextEdit()
         Me.btnResetPass = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.txtAddressStaff = New System.Windows.Forms.TextBox()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtIDStaff = New DevExpress.XtraEditors.TextEdit()
+        Me.txtIDCardStaff = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.dtpDOBStaff = New System.Windows.Forms.DateTimePicker()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
@@ -145,10 +146,10 @@ Partial Class FormAdmin
         Me.btnCancelStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtStaffName = New DevExpress.XtraEditors.TextEdit()
+        Me.txtNameStaff = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl10 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvStaff = New DevExpress.XtraGrid.GridControl()
-        Me.GridView4 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.gridStaff = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.PanelControl9 = New DevExpress.XtraEditors.PanelControl()
         Me.btnDeleteStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.btnEditStaff = New DevExpress.XtraEditors.SimpleButton()
@@ -250,7 +251,8 @@ Partial Class FormAdmin
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
-        Me.cbbGenderStaff = New System.Windows.Forms.ComboBox()
+        Me.LabelControl51 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDStaff = New DevExpress.XtraEditors.TextEdit()
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcAdmin.SuspendLayout()
         Me.tpBill.SuspendLayout()
@@ -327,12 +329,12 @@ Partial Class FormAdmin
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl11.SuspendLayout()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtStaffName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIDCardStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNameStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl10.SuspendLayout()
         CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridStaff, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl9.SuspendLayout()
         Me.tpInventoryManagement.SuspendLayout()
@@ -402,6 +404,7 @@ Partial Class FormAdmin
         CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage2.SuspendLayout()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tcAdmin
@@ -1357,6 +1360,8 @@ Partial Class FormAdmin
         '
         'PanelControl11
         '
+        Me.PanelControl11.Controls.Add(Me.LabelControl51)
+        Me.PanelControl11.Controls.Add(Me.txtIDStaff)
         Me.PanelControl11.Controls.Add(Me.cbbGenderStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl12)
         Me.PanelControl11.Controls.Add(Me.txtPhoneStaff)
@@ -1364,7 +1369,7 @@ Partial Class FormAdmin
         Me.PanelControl11.Controls.Add(Me.LabelControl11)
         Me.PanelControl11.Controls.Add(Me.txtAddressStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl10)
-        Me.PanelControl11.Controls.Add(Me.txtIDStaff)
+        Me.PanelControl11.Controls.Add(Me.txtIDCardStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl9)
         Me.PanelControl11.Controls.Add(Me.dtpDOBStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl8)
@@ -1372,16 +1377,25 @@ Partial Class FormAdmin
         Me.PanelControl11.Controls.Add(Me.btnCancelStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl5)
         Me.PanelControl11.Controls.Add(Me.LabelControl7)
-        Me.PanelControl11.Controls.Add(Me.txtStaffName)
+        Me.PanelControl11.Controls.Add(Me.txtNameStaff)
         Me.PanelControl11.Location = New System.Drawing.Point(418, 66)
         Me.PanelControl11.Name = "PanelControl11"
         Me.PanelControl11.Size = New System.Drawing.Size(318, 395)
         Me.PanelControl11.TabIndex = 7
         '
+        'cbbGenderStaff
+        '
+        Me.cbbGenderStaff.FormattingEnabled = True
+        Me.cbbGenderStaff.Items.AddRange(New Object() {"Nam", "Nữ"})
+        Me.cbbGenderStaff.Location = New System.Drawing.Point(119, 236)
+        Me.cbbGenderStaff.Name = "cbbGenderStaff"
+        Me.cbbGenderStaff.Size = New System.Drawing.Size(176, 21)
+        Me.cbbGenderStaff.TabIndex = 24
+        '
         'LabelControl12
         '
         Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl12.Location = New System.Drawing.Point(14, 248)
+        Me.LabelControl12.Location = New System.Drawing.Point(14, 271)
         Me.LabelControl12.Name = "LabelControl12"
         Me.LabelControl12.Size = New System.Drawing.Size(86, 14)
         Me.LabelControl12.TabIndex = 23
@@ -1389,14 +1403,14 @@ Partial Class FormAdmin
         '
         'txtPhoneStaff
         '
-        Me.txtPhoneStaff.Location = New System.Drawing.Point(119, 246)
+        Me.txtPhoneStaff.Location = New System.Drawing.Point(119, 269)
         Me.txtPhoneStaff.Name = "txtPhoneStaff"
         Me.txtPhoneStaff.Size = New System.Drawing.Size(176, 20)
         Me.txtPhoneStaff.TabIndex = 10
         '
         'btnResetPass
         '
-        Me.btnResetPass.Location = New System.Drawing.Point(119, 325)
+        Me.btnResetPass.Location = New System.Drawing.Point(120, 333)
         Me.btnResetPass.Name = "btnResetPass"
         Me.btnResetPass.Size = New System.Drawing.Size(176, 37)
         Me.btnResetPass.TabIndex = 12
@@ -1406,7 +1420,7 @@ Partial Class FormAdmin
         'LabelControl11
         '
         Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl11.Location = New System.Drawing.Point(15, 215)
+        Me.LabelControl11.Location = New System.Drawing.Point(15, 238)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(55, 14)
         Me.LabelControl11.TabIndex = 19
@@ -1414,32 +1428,32 @@ Partial Class FormAdmin
         '
         'txtAddressStaff
         '
-        Me.txtAddressStaff.Location = New System.Drawing.Point(120, 101)
+        Me.txtAddressStaff.Location = New System.Drawing.Point(120, 140)
         Me.txtAddressStaff.Multiline = True
         Me.txtAddressStaff.Name = "txtAddressStaff"
-        Me.txtAddressStaff.Size = New System.Drawing.Size(176, 67)
+        Me.txtAddressStaff.Size = New System.Drawing.Size(176, 51)
         Me.txtAddressStaff.TabIndex = 7
         '
         'LabelControl10
         '
         Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl10.Location = New System.Drawing.Point(15, 183)
+        Me.LabelControl10.Location = New System.Drawing.Point(15, 206)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(88, 14)
         Me.LabelControl10.TabIndex = 16
         Me.LabelControl10.Text = "CMND / CCCD:"
         '
-        'txtIDStaff
+        'txtIDCardStaff
         '
-        Me.txtIDStaff.Location = New System.Drawing.Point(120, 181)
-        Me.txtIDStaff.Name = "txtIDStaff"
-        Me.txtIDStaff.Size = New System.Drawing.Size(176, 20)
-        Me.txtIDStaff.TabIndex = 8
+        Me.txtIDCardStaff.Location = New System.Drawing.Point(120, 204)
+        Me.txtIDCardStaff.Name = "txtIDCardStaff"
+        Me.txtIDCardStaff.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDCardStaff.TabIndex = 8
         '
         'LabelControl9
         '
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl9.Location = New System.Drawing.Point(15, 103)
+        Me.LabelControl9.Location = New System.Drawing.Point(15, 140)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(44, 14)
         Me.LabelControl9.TabIndex = 14
@@ -1448,7 +1462,7 @@ Partial Class FormAdmin
         'dtpDOBStaff
         '
         Me.dtpDOBStaff.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDOBStaff.Location = New System.Drawing.Point(120, 66)
+        Me.dtpDOBStaff.Location = New System.Drawing.Point(121, 102)
         Me.dtpDOBStaff.Name = "dtpDOBStaff"
         Me.dtpDOBStaff.Size = New System.Drawing.Size(176, 20)
         Me.dtpDOBStaff.TabIndex = 6
@@ -1456,7 +1470,7 @@ Partial Class FormAdmin
         'LabelControl8
         '
         Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl8.Location = New System.Drawing.Point(15, 68)
+        Me.LabelControl8.Location = New System.Drawing.Point(16, 104)
         Me.LabelControl8.Name = "LabelControl8"
         Me.LabelControl8.Size = New System.Drawing.Size(63, 14)
         Me.LabelControl8.TabIndex = 11
@@ -1464,7 +1478,7 @@ Partial Class FormAdmin
         '
         'btnSaveStaff
         '
-        Me.btnSaveStaff.Location = New System.Drawing.Point(119, 291)
+        Me.btnSaveStaff.Location = New System.Drawing.Point(120, 299)
         Me.btnSaveStaff.Name = "btnSaveStaff"
         Me.btnSaveStaff.Size = New System.Drawing.Size(85, 28)
         Me.btnSaveStaff.TabIndex = 11
@@ -1473,7 +1487,7 @@ Partial Class FormAdmin
         '
         'btnCancelStaff
         '
-        Me.btnCancelStaff.Location = New System.Drawing.Point(210, 291)
+        Me.btnCancelStaff.Location = New System.Drawing.Point(211, 299)
         Me.btnCancelStaff.Name = "btnCancelStaff"
         Me.btnCancelStaff.Size = New System.Drawing.Size(85, 28)
         Me.btnCancelStaff.TabIndex = 12
@@ -1492,18 +1506,18 @@ Partial Class FormAdmin
         'LabelControl7
         '
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl7.Location = New System.Drawing.Point(14, 33)
+        Me.LabelControl7.Location = New System.Drawing.Point(15, 69)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(90, 14)
         Me.LabelControl7.TabIndex = 6
         Me.LabelControl7.Text = "Tên nhân viên:"
         '
-        'txtStaffName
+        'txtNameStaff
         '
-        Me.txtStaffName.Location = New System.Drawing.Point(120, 32)
-        Me.txtStaffName.Name = "txtStaffName"
-        Me.txtStaffName.Size = New System.Drawing.Size(176, 20)
-        Me.txtStaffName.TabIndex = 5
+        Me.txtNameStaff.Location = New System.Drawing.Point(121, 68)
+        Me.txtNameStaff.Name = "txtNameStaff"
+        Me.txtNameStaff.Size = New System.Drawing.Size(176, 20)
+        Me.txtNameStaff.TabIndex = 5
         '
         'PanelControl10
         '
@@ -1518,16 +1532,16 @@ Partial Class FormAdmin
         Me.dgvStaff.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvStaff.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvStaff.Location = New System.Drawing.Point(2, 2)
-        Me.dgvStaff.MainView = Me.GridView4
+        Me.dgvStaff.MainView = Me.gridStaff
         Me.dgvStaff.Name = "dgvStaff"
         Me.dgvStaff.Size = New System.Drawing.Size(405, 370)
         Me.dgvStaff.TabIndex = 2
-        Me.dgvStaff.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView4})
+        Me.dgvStaff.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridStaff})
         '
-        'GridView4
+        'gridStaff
         '
-        Me.GridView4.GridControl = Me.dgvStaff
-        Me.GridView4.Name = "GridView4"
+        Me.gridStaff.GridControl = Me.dgvStaff
+        Me.gridStaff.Name = "gridStaff"
         '
         'PanelControl9
         '
@@ -2429,13 +2443,21 @@ Partial Class FormAdmin
         Me.XtraTabPage6.Name = "XtraTabPage6"
         Me.XtraTabPage6.Size = New System.Drawing.Size(294, 272)
         '
-        'cbbGenderStaff
+        'LabelControl51
         '
-        Me.cbbGenderStaff.FormattingEnabled = True
-        Me.cbbGenderStaff.Location = New System.Drawing.Point(119, 213)
-        Me.cbbGenderStaff.Name = "cbbGenderStaff"
-        Me.cbbGenderStaff.Size = New System.Drawing.Size(176, 21)
-        Me.cbbGenderStaff.TabIndex = 24
+        Me.LabelControl51.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl51.Location = New System.Drawing.Point(14, 38)
+        Me.LabelControl51.Name = "LabelControl51"
+        Me.LabelControl51.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl51.TabIndex = 26
+        Me.LabelControl51.Text = "ID:"
+        '
+        'txtIDStaff
+        '
+        Me.txtIDStaff.Location = New System.Drawing.Point(120, 37)
+        Me.txtIDStaff.Name = "txtIDStaff"
+        Me.txtIDStaff.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDStaff.TabIndex = 25
         '
         'FormAdmin
         '
@@ -2530,12 +2552,12 @@ Partial Class FormAdmin
         Me.PanelControl11.ResumeLayout(False)
         Me.PanelControl11.PerformLayout()
         CType(Me.txtPhoneStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtStaffName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIDCardStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNameStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl10.ResumeLayout(False)
         CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridStaff, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl9.ResumeLayout(False)
         Me.tpInventoryManagement.ResumeLayout(False)
@@ -2611,6 +2633,7 @@ Partial Class FormAdmin
         CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage2.ResumeLayout(False)
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2665,19 +2688,19 @@ Partial Class FormAdmin
     Friend WithEvents btnAddStaff As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl10 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvStaff As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView4 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridStaff As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents PanelControl11 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnSaveStaff As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnCancelStaff As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtStaffName As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtNameStaff As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents dtpDOBStaff As System.Windows.Forms.DateTimePicker
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtAddressStaff As System.Windows.Forms.TextBox
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtIDStaff As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtIDCardStaff As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btnResetPass As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
@@ -2843,4 +2866,6 @@ Partial Class FormAdmin
     Friend WithEvents LabelControl47 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtIDCategory As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cbbGenderStaff As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelControl51 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDStaff As DevExpress.XtraEditors.TextEdit
 End Class
