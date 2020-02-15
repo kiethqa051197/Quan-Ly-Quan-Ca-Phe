@@ -148,6 +148,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Ultils.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormAdmin.resx">

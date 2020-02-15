@@ -65,22 +65,19 @@ Public Class FormBanHang
     'Lấy danh sách danh mục sản phẩm
     Private Sub LoadListCategory()
         Dim listCategory As List(Of Categories) = CategoriesDAO._Instance.GetListCategory()
-        cbCategory.DataSource = listCategory
-        cbCategory.DisplayMember = "_name"
+        cbbCategory.Properties.DataSource = listCategory
+        cbbCategory.Properties.DisplayMember = "_name"
     End Sub
 
     'Lấy danh sách các món ăn theo mã danh mục
     Private Sub LoadFoodListByCategoryID(id As Integer)
         Dim listFood As List(Of Items) = ItemsDAO._Instance.GetListCategoryID(id)
-        cbObject.DataSource = listFood
-        cbObject.DisplayMember = "_name"
+        cbbFoodName.Properties.DataSource = listFood
+        cbbFoodName.Properties.DisplayMember = "_name"
     End Sub
 
     'Lấy danh sách tất cả các bàn
-    Private Sub LoadComboboxTable(cb As ComboBox, lookUpEdit As DevExpress.XtraEditors.LookUpEdit)
-        cb.DataSource = TableDAO._Instance.LoadTableList()
-        cb.DisplayMember = "_name"
-
+    Private Sub LoadComboboxTable(lookUpEdit As DevExpress.XtraEditors.LookUpEdit)
         lookUpEdit.Properties.DataSource = TableDAO._Instance.LoadTableList()
         lookUpEdit.Properties.DisplayMember = "_name"
     End Sub
@@ -109,11 +106,11 @@ Public Class FormBanHang
 #Region "BẮT SỰ KIỆN"
 
     'Chọn danh mục trong combobox danh mục
-    Private Sub cbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCategory.SelectedIndexChanged
+    Private Sub cbbCategory_EditValueChanged(sender As Object, e As EventArgs) Handles cbbCategory.EditValueChanged
         Dim id As Integer = 0
-        Dim cb As ComboBox = TryCast(sender, ComboBox)
-        If cb.SelectedItem Is Nothing Then Return
-        Dim selected As Categories = TryCast(cb.SelectedItem, Categories)
+        Dim cb As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+        If cb.EditValue Is Nothing Then Return
+        Dim selected As Categories = TryCast(cb.EditValue, Categories)
         id = selected._id
         LoadFoodListByCategoryID(id)
     End Sub
@@ -123,7 +120,6 @@ Public Class FormBanHang
         Me.Hide()
         FormDangNhap.Show()
     End Sub
-
 
     'Click menu Admin
     Private Sub AdminStripMenu_Click(sender As Object, e As EventArgs) Handles AdminStripMenu.Click
@@ -158,7 +154,7 @@ Public Class FormBanHang
     Private Sub FormBanHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadTable()
         LoadListCategory()
-        LoadComboboxTable(cbSwichTable, cbbtable)
+        LoadComboboxTable(cbbSwitchTable)
     End Sub
 
     'Click nút thêm món
@@ -171,8 +167,8 @@ Public Class FormBanHang
         End If
 
         Dim idBill As Integer = BillsDAO._Instance.GetUncheckBillIDByTableID(table._id)
-        Dim idItem As Integer = (TryCast(cbObject.SelectedItem, Items))._id
-        Dim price As Integer = (TryCast(cbObject.SelectedItem, Items))._price
+        Dim idItem As Integer = (TryCast(cbbFoodName.EditValue, Items))._id
+        Dim price As Integer = (TryCast(cbbFoodName.EditValue, Items))._price
         Dim count As Integer = CInt(nmCount.Value)
 
         If idBill = -1 Then
@@ -209,16 +205,9 @@ Public Class FormBanHang
     'Click nút Chuyển bàn
     Private Sub btnSwichTable_Click(sender As Object, e As EventArgs) Handles btnSwichTable.Click
         Dim id1 As Integer = (TryCast(listBill.Tag, Tables))._id
-        'Dim id2 As Integer = (TryCast(cbSwichTable.SelectedItem, Tables))._id
+        Dim id2 As Integer = (TryCast(cbbSwitchTable.EditValue, Tables))._id
 
-        'If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbSwichTable.SelectedItem, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-        '    TableDAO._Instance.SwitchTable(id1, id2, idStaff)
-        '    LoadTable()
-        'End If
-
-        Dim id2 As Integer = (TryCast(cbbtable.EditValue, Tables))._id
-
-        If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbbtable.EditValue, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+        If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbbSwitchTable.EditValue, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
             TableDAO._Instance.SwitchTable(id1, id2, idStaff)
             LoadTable()
         End If
@@ -283,20 +272,20 @@ Public Class FormBanHang
 
     'Cập nhật món ăn
     Private Sub f_UpdateFood(sender As Object, e As EventArgs)
-        LoadFoodListByCategoryID((TryCast(cbCategory.SelectedItem, Categories))._id)
+        LoadFoodListByCategoryID((TryCast(cbbCategory.EditValue, Categories))._id)
         If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
     End Sub
 
     'Xóa món ăn
     Private Sub f_DeleteFood(sender As Object, e As EventArgs)
-        LoadFoodListByCategoryID((TryCast(cbCategory.SelectedItem, Categories))._id)
+        LoadFoodListByCategoryID((TryCast(cbbCategory.EditValue, Categories))._id)
         If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
         LoadTable()
     End Sub
 
     'Thêm món ăn
     Private Sub f_InsertFood(sender As Object, e As EventArgs)
-        LoadFoodListByCategoryID((TryCast(cbCategory.SelectedItem, Categories))._id)
+        LoadFoodListByCategoryID((TryCast(cbbCategory.EditValue, Categories))._id)
         If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
     End Sub
 

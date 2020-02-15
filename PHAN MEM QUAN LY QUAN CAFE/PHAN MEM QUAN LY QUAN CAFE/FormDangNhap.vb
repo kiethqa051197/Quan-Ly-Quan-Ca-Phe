@@ -1,5 +1,6 @@
 ﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
+Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.Ultils
 
 Public Class FormDangNhap
 
@@ -15,13 +16,18 @@ Public Class FormDangNhap
         Dim username As String = txtTenDangNhap.Text
         Dim password As String = txtMatKhau.Text
 
-        If Login(username, password) Then
-            Dim loginAccount As Accounts = AccountDAO._Instance.GetAccountByUserName(username)
-            Me.Hide()
-            Dim f As New FormBanHang(loginAccount)
-            f.ShowDialog()
+        If CheckEmpty(username) Or CheckEmpty(password) Then
+            MessageBox.Show("Vui lòng nhập đầy đủ thông tin!")
         Else
-            MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!")
+            If Login(username, password) Then
+                Dim loginAccount As Accounts = AccountDAO._Instance.GetAccountByUsername(username)
+                Me.Hide()
+
+                Dim f As New FormBanHang(loginAccount)
+                f.ShowDialog()
+            Else
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!")
+            End If
         End If
     End Sub
 

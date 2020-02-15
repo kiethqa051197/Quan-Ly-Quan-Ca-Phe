@@ -1,5 +1,6 @@
 ﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
 Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
+Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.Ultils
 
 Public Class FormThongTinNhanVien
 
@@ -193,14 +194,6 @@ Public Class FormThongTinNhanVien
         End If
     End Sub
 
-    'Xet rong 
-    Private Function CheckEmpty(text As String) As Boolean
-        If text.Equals("") Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
 #End Region
 
 #Region "BẮT SỰ KIỆN"

@@ -120,6 +120,7 @@ Public Class FormAdmin
         LoadStaff()
     End Sub
 
+    'Thêm bàn ăn
     Private Sub AddTableFood(name As String)
         If TableDAO._Instance.InsertTableFood(name) Then
             MessageBox.Show("Thêm thành công")
