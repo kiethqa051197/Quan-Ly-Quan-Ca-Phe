@@ -8,9 +8,10 @@
         Private idCard As String
         Private address As String
         Private phone As String
+        Private status As Integer
 
         Public Sub New(id As Integer, fullname As String, dateofbirth As Date, gender As Boolean,
-                       idCard As String, address As String, phone As String)
+                       idCard As String, address As String, phone As String, status As Integer)
             Me.id = id
             Me.fullname = fullname
             Me.dateofbirth = dateofbirth
@@ -18,6 +19,7 @@
             Me.idCard = idCard
             Me.address = address
             Me.phone = phone
+            Me.status = status
         End Sub
 
         Public Sub New(row As DataRow)
@@ -28,6 +30,7 @@
             Me.idCard = row("idCard").ToString()
             Me.address = row("address").ToString()
             Me.phone = row("phone").ToString()
+            Me.status = CInt(row("status"))
         End Sub
 
         Public Property _id() As Integer
@@ -90,6 +93,15 @@
             End Get
             Set(value As String)
                 phone = value
+            End Set
+        End Property
+
+        Public Property _status() As Integer
+            Get
+                Return status
+            End Get
+            Set(value As Integer)
+                status = value
             End Set
         End Property
     End Class

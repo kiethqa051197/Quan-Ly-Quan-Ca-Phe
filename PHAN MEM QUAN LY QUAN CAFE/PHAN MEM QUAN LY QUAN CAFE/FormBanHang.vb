@@ -194,7 +194,7 @@ Public Class FormBanHang
         If idBill <> -1 Then
 
             If MessageBox.Show(String.Format("Bạn có chắc thanh toán hoá đơn cho bàn {0}" & vbLf & "Tổng tiền - (Tổng tiền / 100) x Giảm giá" & vbLf & " => {1}000 - ({1}000 / 100) x {2} = {3}000", table._name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-                BillsDAO._Instance.CheckOut(idBill, 2, discount, idStaff)
+                BillsDAO._Instance.CheckOut(idBill, 3, discount, idStaff)
                 TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
                 ShowBill(table._id)
                 LoadTable()

@@ -10,6 +10,9 @@ Public Class FormAdmin
     Private tableFoodList As BindingSource = New BindingSource()
     Private staffList As BindingSource = New BindingSource()
 
+    Private isUpdateTable As Boolean = False
+    Private isAddTable As Boolean = False
+
     Public loginAccount As Accounts
 
     Public Sub New()
@@ -72,9 +75,8 @@ Public Class FormAdmin
 
     'Bàn ăn
     Private Sub AddTableFoodBindding()
-        txtIDTable.DataBindings.Add(New Binding("Text", dgvFood.DataSource, "_id", True, DataSourceUpdateMode.Never))
-        txtTableName.DataBindings.Add(New Binding("Text", dgvTable.DataSource, "_name", True, DataSourceUpdateMode.Never))
-        txtStatusTable.DataBindings.Add(New Binding("Text", dgvTable.DataSource, "_status", True, DataSourceUpdateMode.Never))
+        txtIDTable.DataBindings.Add(New Binding("Text", dgvTable.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameTable.DataBindings.Add(New Binding("Text", dgvTable.DataSource, "_name", True, DataSourceUpdateMode.Never))
     End Sub
 
     'Nhân viên
@@ -125,6 +127,10 @@ Public Class FormAdmin
         If TableDAO._Instance.InsertTableFood(name) Then
             MessageBox.Show("Thêm thành công")
             LoadListTableFood()
+
+            isAddTable = False
+            Enable()
+
             RaiseEvent InsertTables(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi thêm")
@@ -136,6 +142,10 @@ Public Class FormAdmin
         If TableDAO._Instance.UpdateTableFood(id, name) Then
             MessageBox.Show("Sửa thành công")
             LoadListTableFood()
+
+            isUpdateTable = False
+            Enable()
+
             RaiseEvent UpdateTables(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi sửa")
@@ -214,6 +224,22 @@ Public Class FormAdmin
         gridStaff.Columns(4).Caption = "CMND/CCCD"
         gridStaff.Columns(5).Caption = "Địa Chỉ"
         gridStaff.Columns(6).Caption = "SĐT"
+    End Sub
+
+    'Mở/Đóng các items
+    Private Sub Enable()
+        If isAddTable = True Or isUpdateTable = True Then
+            txtNameTable.Enabled = True
+            btnSaveTable.Enabled = True
+            btnCancelTable.Enabled = True
+
+            txtNameCategory.Text = ""
+            txtIDTable.Text = "Mã bàn được lấy tự động"
+        ElseIf isAddTable = False Or isUpdateTable = False Then
+            txtNameTable.Enabled = False
+            btnSaveTable.Enabled = False
+            btnCancelTable.Enabled = False
+        End If
     End Sub
 
 #End Region
@@ -427,15 +453,18 @@ Public Class FormAdmin
 
     'Nút Câp nhật Bàn Ăn
     Private Sub btnEditTable_Click(sender As Object, e As EventArgs) Handles btnEditTable.Click
-        Dim name As String = txtTableName.Text
-        Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
-        EditTableFood(id, name)
+        isAddTable = False
+        isUpdateTable = True
+
+        Enable()
     End Sub
 
     'Nút Thêm Bàn Ăn
     Private Sub btnAddTable_Click(sender As Object, e As EventArgs) Handles btnAddTable.Click
-        Dim name As String = txtTableName.Text
-        AddTableFood(name)
+        isAddTable = True
+        isUpdateTable = False
+
+        Enable()
     End Sub
 
     'Nút Tìm Kiếm Món Ăn
@@ -512,4 +541,21 @@ Public Class FormAdmin
     End Sub
 #End Region
 
+    Private Sub btnSaveTable_Click(sender As Object, e As EventArgs) Handles btnSaveTable.Click
+        If isAddTable = True Then
+            Dim name As String = txtNameTable.Text
+            AddTableFood(name)
+        ElseIf isUpdateTable = True Then
+            Dim name As String = txtNameTable.Text
+            Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
+            EditTableFood(id, name)
+        End If
+    End Sub
+
+    Private Sub btnCancelTable_Click(sender As Object, e As EventArgs) Handles btnCancelTable.Click
+        isAddTable = False
+        isUpdateTable = False
+
+        Enable()
+    End Sub
 End Class

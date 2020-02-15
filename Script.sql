@@ -54,7 +54,11 @@ INSERT CATEGORIES (name) VALUES (N'Nông sản')
 INSERT CATEGORIES (name) VALUES (N'Lâm sản')
 INSERT CATEGORIES (name) VALUES (N'Nước')
 
-SELECT * FROM CATEGORIES
+ALTER TABLE CATEGORIES
+ADD CONSTRAINT df_StatusCategories
+DEFAULT 1 FOR status;
+
+ALTER TABLE CATEGORIES DROP CONSTRAINT df_status;  
 
 -- Bảng Sản Phẩm (Mỗi danh mục có chứa nhiều sản phẩm)
 CREATE TABLE ITEMS
@@ -71,8 +75,8 @@ INSERT ITEMS (name, idCategory, price) VALUES (N'Mực một nắng nước sa t
 INSERT ITEMS (name, idCategory, price) VALUES (N'Nghêu hấp xả', 1, 50000)
 INSERT ITEMS (name, idCategory, price) VALUES (N'Dú dê nướng sữa', 2, 60000)
 INSERT ITEMS (name, idCategory, price) VALUES (N'Heo rừng nướng muối ớt', 3, 75000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'7 Up', 5, 15000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'Cafe', 5, 12000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'7 Up', 4, 15000)
+INSERT ITEMS (name, idCategory, price) VALUES (N'Cafe', 4, 12000)
 
 -- Bảng Bàn Ăn
 CREATE TABLE TABLES
@@ -82,7 +86,6 @@ CREATE TABLE TABLES
 	status nvarchar(max) not null
 )
 
-INSERT TABLES (name, status) VALUES (N'Bàn 0', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 1', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 2', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 3', N'Trống')
@@ -102,6 +105,7 @@ INSERT TABLES (name, status) VALUES (N'Bàn 16', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 17', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 18', N'Trống')
 INSERT TABLES (name, status) VALUES (N'Bàn 19', N'Trống')
+INSERT TABLES (name, status) VALUES (N'Bàn 20', N'Trống')
 
 ALTER TABLE TABLES
 ADD CONSTRAINT df_status
@@ -223,7 +227,7 @@ CREATE TABLE OUTPUTINFOS
 GO
 
 -- Đăng nhập
-CREATE PROCEDURE PC_Logins
+CREATE PROCEDURE PC_Login
 	@userName nvarchar(100), @passWord nvarchar(100)
 AS
 BEGIN
@@ -301,8 +305,12 @@ CREATE PROC PC_InsertBill
        @idStaff INT
 AS
 BEGIN
+	DECLARE @idCustomer INT
+
+	SELECT @idCustomer = id FROM CUSTOMERS WHERE createDate = '1991-01-01' and NAME = N'Mặc định' and gender = 1
+
 	INSERT BILLS (idTable, idCustomer, dateCheckIn, dateCheckOut, discount, status, idStaff)
-	VALUES (@idTable, 2, GETDATE(), GETDATE(), 0, 0, @idStaff)
+	VALUES (@idTable, @idCustomer, GETDATE(), GETDATE(), 0, 0, @idStaff)
 END
 GO
 
@@ -346,7 +354,9 @@ AS BEGIN
 	DECLARE @isFirstTablEmty INT = 1
 	DECLARE @isSecondTablEmty INT = 1
 	
-	
+	DECLARE @idCustomer INT
+
+	SELECT @idCustomer = id FROM CUSTOMERS WHERE createDate = '1991-01-01' and NAME = N'Mặc định' and gender = 1
 	SELECT @idSeconrdBill = id FROM BILLS WHERE idTable = @idTable2 AND status = 0
 	SELECT @idFirstBill = id FROM BILLS WHERE idTable = @idTable1 AND status = 0
 	
@@ -358,7 +368,7 @@ AS BEGIN
 	BEGIN
 		PRINT '0000001'
 		INSERT BILLS(idTable, idCustomer, dateCheckIn, dateCheckOut, status, discount, idStaff)
-		VALUES (@idTable1, 2, GETDATE(), GETDATE(), 0, 0, @idStaff)
+		VALUES (@idTable1, @idCustomer, GETDATE(), GETDATE(), 0, 0, @idStaff)
 		        
 		SELECT @idFirstBill = MAX(id) FROM BILLS WHERE idTable = @idTable1 AND status = 0
 		
@@ -375,7 +385,7 @@ AS BEGIN
 		PRINT '0000002'
 
 		INSERT BILLS(idTable, idCustomer, dateCheckIn, dateCheckOut, status, discount, idStaff)
-		VALUES (@idTable2, 2, GETDATE(), GETDATE(), 0, 0, @idStaff)
+		VALUES (@idTable2, @idCustomer, GETDATE(), GETDATE(), 0, 0, @idStaff)
 
 		SELECT @idSeconrdBill = MAX(id) FROM BILLS WHERE idTable = @idTable2 AND status = 0
 		
@@ -482,17 +492,18 @@ CREATE PROC PC_DeleteStaff
 	@id INT
 AS	
 BEGIN
-	UPDATE dbo.BILLS SET idStaff = 1 WHERE id = @id
+	DECLARE @idStaff INT
+
+	SELECT @idStaff = id FROM STAFFS WHERE fullname = N'Mặc định' AND dateofbirth = '1997-01-01' AND gender = 1
+
+	UPDATE dbo.BILLS SET idStaff = @idStaff WHERE id = @id
 	
 	DELETE dbo.ACCOUNTS WHERE idStaff = @id
-	DELETE dbo.STAFFS WHERE id = @id
+	UPDATE dbo.STAFFS SET status = 0 WHERE id = @id
 END	
 GO
 
 SELECT * FROM dbo.STAFFS EXCEPT SELECT * FROM dbo.STAFFS WHERE id = 1
-
-SELECT *
-FROM dbo.BILLS WHERE idStaff = 4
 
 /* 
 2020 tháng 1 - món x :  (Tồn đầu kỳ ; Tồn cuối kỳ) :  100 ly cafe (20k/1)
@@ -524,3 +535,5 @@ Lợi Nhuận = Tổng Trị giá bán - (Tổng trị giá nhập + Trị giá 
 
 Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60 + 20 * 8 + 30 * 6) = ....k
 */
+
+SELECT * FROM CATEGORIES WHERE STATUS = 1 EXCEPT (SELECT * FROM CATEGORIES WHERE id = 1)

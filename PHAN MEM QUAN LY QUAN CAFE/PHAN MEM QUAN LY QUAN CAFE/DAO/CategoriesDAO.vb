@@ -1,4 +1,5 @@
 ﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
+Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.Ultils
 
 Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
     Public Class CategoriesDAO
@@ -19,7 +20,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function GetListCategory() As List(Of Categories)
             Dim list As List(Of Categories) = New List(Of Categories)()
-            Dim query As String = "SELECT * FROM CATEGORIES"
+            Dim query As String = QuerySelectAllExcept("Categories")
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
 
             For Each item As DataRow In data.Rows
