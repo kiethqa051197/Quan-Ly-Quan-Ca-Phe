@@ -13,6 +13,12 @@ Public Class FormAdmin
     Private isUpdateTable As Boolean = False
     Private isAddTable As Boolean = False
 
+    Private isUpdateCategory As Boolean = False
+    Private isAddCategory As Boolean = False
+
+    Private isUpdateFood As Boolean = False
+    Private isAddFood As Boolean = False
+
     Public loginAccount As Accounts
 
     Public Sub New()
@@ -69,7 +75,7 @@ Public Class FormAdmin
 
     'Danh mục
     Private Sub AddCategoryFoodBindding()
-        txtIDCategory.DataBindings.Add(New Binding("Text", dgvFood.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtIDCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_id", True, DataSourceUpdateMode.Never))
         txtNameCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_name", True, DataSourceUpdateMode.Never))
     End Sub
 
@@ -169,6 +175,10 @@ Public Class FormAdmin
             MessageBox.Show("Thêm thành công")
             LoadListCategoryFood()
             LoadCatagoryIntoCombobox(cbCategoryFood)
+
+            isAddCategory = False
+            Enable()
+
             RaiseEvent InsertCategoryFoods(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi thêm")
@@ -181,6 +191,10 @@ Public Class FormAdmin
             MessageBox.Show("Sửa thành công")
             LoadListCategoryFood()
             LoadCatagoryIntoCombobox(cbCategoryFood)
+
+            isUpdateCategory = False
+            Enable()
+
             RaiseEvent UpdateCategoryFoods(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi sửa")
@@ -189,11 +203,41 @@ Public Class FormAdmin
 
     'Xóa danh mục
     Private Sub DeleteCategory(id As Integer)
-        If CategoriesDAO._Instance.DeleteCategory(id) Then
+        CategoriesDAO._Instance.DeleteCategory(id)
+        MessageBox.Show("Xoá thành công")
+        LoadListCategoryFood()
+        LoadCatagoryIntoCombobox(cbCategoryFood)
+        RaiseEvent DeleteCategoryFoods(Me, New EventArgs())
+    End Sub
+
+    'Thêm món ăn
+    Private Sub AddFood(name As String, price As Integer, categoryID As Integer)
+        If ItemsDAO._Instance.InsertFood(name, price, categoryID) Then
+            MessageBox.Show("Thêm thành công")
+            LoadListFood()
+            RaiseEvent InsertFoods(Me, New EventArgs())
+        Else
+            MessageBox.Show("Có lỗi khi thêm")
+        End If
+    End Sub
+
+    'Thêm món ăn
+    Private Sub EditFood(id As Integer, name As String, categoryID As Integer, price As Integer)
+        If ItemsDAO._Instance.UpdateFood(id, name, categoryID, price) Then
+            MessageBox.Show("Sửa thành công")
+            LoadListFood()
+            RaiseEvent UpdateFoods(Me, New EventArgs())
+        Else
+            MessageBox.Show("Có lỗi khi sửa")
+        End If
+    End Sub
+
+    'Xoá món ăn
+    Private Sub DeleteFood(id As Integer)
+        If ItemsDAO._Instance.DeleteFood(id) Then
             MessageBox.Show("Xoá thành công")
-            LoadListCategoryFood()
-            LoadCatagoryIntoCombobox(cbCategoryFood)
-            RaiseEvent DeleteCategoryFoods(Me, New EventArgs())
+            LoadListFood()
+            RaiseEvent DeleteFoods(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi xoá")
         End If
@@ -204,8 +248,10 @@ Public Class FormAdmin
         'Bảng Món Ăn
         gridFood.Columns(0).Caption = "Mã món"
         gridFood.Columns(1).Caption = "Tên món"
-        gridFood.Columns(2).Caption = "Mã danh mục"
-        gridFood.Columns(3).Caption = "Giá tiền"
+        gridFood.Columns(2).Caption = "Giá tiền"
+        gridFood.Columns(3).Caption = "Mã danh mục"
+        gridFood.Columns(4).Caption = "Đã xoá"
+        gridFood.BestFitColumns()
 
         'Bảng Danh Mục
         gridCategory.Columns(0).Caption = "Mã danh mục"
@@ -215,6 +261,7 @@ Public Class FormAdmin
         gridTable.Columns(0).Caption = "Mã bàn"
         gridTable.Columns(1).Caption = "Tên bàn"
         gridTable.Columns(2).Caption = "Trạng thái"
+        gridTable.Columns(3).Caption = "Đã xoá"
 
         'Bảng Nhân Viên
         gridStaff.Columns(0).Caption = "Mã nhân viên"
@@ -223,22 +270,73 @@ Public Class FormAdmin
         gridStaff.Columns(3).Caption = "CMND/CCCD"
         gridStaff.Columns(4).Caption = "Địa Chỉ"
         gridStaff.Columns(5).Caption = "SĐT"
+        gridStaff.Columns(6).Caption = "Đã xoá"
+        gridStaff.BestFitColumns()
     End Sub
 
     'Mở/Đóng các items
     Private Sub Enable()
         If isAddTable = True Or isUpdateTable = True Then
             txtNameTable.Enabled = True
-            btnSaveTable.Enabled = True
-            btnCancelTable.Enabled = True
 
-            txtNameCategory.Text = ""
-            txtIDTable.Text = "Mã bàn được lấy tự động"
+            EnableButton(False, True, btnAddTable, btnEditTable, btnDeleteTable, btnSaveTable, btnCancelTable)
+
+            If isAddTable = True Then
+                txtNameTable.Text = ""
+                txtIDTable.Text = "Mã bàn được lấy tự động"
+            End If
         ElseIf isAddTable = False Or isUpdateTable = False Then
             txtNameTable.Enabled = False
-            btnSaveTable.Enabled = False
-            btnCancelTable.Enabled = False
+
+            EnableButton(True, False, btnAddTable, btnEditTable, btnDeleteTable, btnSaveTable, btnCancelTable)
         End If
+
+        If isAddCategory = True Or isUpdateCategory = True Then
+            txtNameCategory.Enabled = True
+            EnableButton(False, True, btnAddCategory, btnEditCategory, btnDeleteCategory, btnSaveCategory, btnCancelCategory)
+
+            If isAddCategory = True Then
+                txtNameCategory.Text = ""
+                txtIDCategory.Text = "Mã danh mục được lấy tự động"
+            End If
+        ElseIf isAddCategory = False Or isUpdateCategory = False Then
+            txtNameCategory.Enabled = False
+            EnableButton(True, False, btnAddCategory, btnEditCategory, btnDeleteCategory, btnSaveCategory, btnCancelCategory)
+        End If
+
+        If isAddFood = True Or isUpdateFood = True Then
+            txtNameFood.Enabled = True
+            cbCategoryFood.Enabled = True
+            nmPriceFood.Enabled = True
+
+            EnableButton(False, True, btnAddFood, btnEditFood, btnDeleteFood, btnSaveFood, btnCancelFood)
+
+            If isAddFood = True Then
+                txtNameFood.Text = ""
+                txtIDFood.Text = "Mã thức ăn được lấy tự động"
+            End If
+        ElseIf isAddFood = False Or isUpdateFood = False Then
+            txtNameFood.Enabled = False
+            cbCategoryFood.Enabled = False
+            nmPriceFood.Enabled = False
+            EnableButton(True, False, btnAddFood, btnEditFood, btnDeleteFood, btnSaveFood, btnCancelFood)
+
+        End If
+    End Sub
+
+    Private Sub EnableButton(enableAED As Boolean, enableSC As Boolean,
+                             buttonAdd As DevExpress.XtraEditors.SimpleButton,
+                             buttonEdit As DevExpress.XtraEditors.SimpleButton,
+                             buttonDelete As DevExpress.XtraEditors.SimpleButton,
+                             buttonSave As DevExpress.XtraEditors.SimpleButton,
+                             buttonCancel As DevExpress.XtraEditors.SimpleButton)
+
+        buttonSave.Enabled = enableSC
+        buttonCancel.Enabled = enableSC
+
+        buttonAdd.Enabled = enableAED
+        buttonEdit.Enabled = enableAED
+        buttonDelete.Enabled = enableAED
     End Sub
 
 #End Region
@@ -383,59 +481,66 @@ Public Class FormAdmin
 
     'Nút thêm Món Ăn
     Private Sub btnAddFood_Click(sender As Object, e As EventArgs) Handles btnAddFood.Click
-        Dim name As String = txtNameFood.Text
-        Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
-        Dim price As Single = CSng(nmPriceFood.Value)
+        isAddFood = True
+        isUpdateFood = False
 
-        If ItemsDAO._Instance.InsertFood(name, categoryID, price) Then
-            MessageBox.Show("Thêm thành công")
-            LoadListFood()
-            RaiseEvent InsertFoods(Me, New EventArgs())
-        Else
-            MessageBox.Show("Có lỗi khi thêm")
-        End If
+        Enable()
     End Sub
 
     'Nút Cập nhật Món ăn
     Private Sub btnEditFood_Click(sender As Object, e As EventArgs) Handles btnEditFood.Click
-        Dim name As String = txtNameFood.Text
-        Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
-        Dim price As Single = CSng(nmPriceFood.Value)
-        Dim id As Integer = Convert.ToInt32(txtIDFood.Text)
+        isAddFood = False
+        isUpdateFood = True
 
-        If ItemsDAO._Instance.UpdateFood(id, name, categoryID, price) Then
-            MessageBox.Show("Sửa thành công")
-            LoadListFood()
-            RaiseEvent UpdateFoods(Me, New EventArgs())
-        Else
-            MessageBox.Show("Có lỗi khi sửa")
-        End If
+        Enable()
     End Sub
 
     'Nút Xóa Món Ăn
     Private Sub btnDeleteFood_Click(sender As Object, e As EventArgs) Handles btnDeleteFood.Click
         Dim id As Integer = Convert.ToInt32(txtIDFood.Text)
+        DeleteFood(id)
+    End Sub
 
-        If ItemsDAO._Instance.DeleteFood(id) Then
-            MessageBox.Show("Xoá thành công")
-            LoadListFood()
-            RaiseEvent DeleteFoods(Me, New EventArgs())
-        Else
-            MessageBox.Show("Có lỗi khi xoá")
+    'Nút Lưu Món ăn
+    Private Sub btnSaveFood_Click(sender As Object, e As EventArgs) Handles btnSaveFood.Click
+        If isAddFood = True Then
+            Dim name As String = txtNameFood.Text
+            Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
+            Dim price As Integer = Convert.ToInt32(nmPriceFood.Value)
+
+            AddFood(name, price, categoryID)
+        ElseIf isUpdateFood = True Then
+            Dim name As String = txtNameFood.Text
+            Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
+            Dim price As Single = CSng(nmPriceFood.Value)
+            Dim id As Integer = Convert.ToInt32(txtIDFood.Text)
+
+            EditFood(id, name, categoryID, price)
         End If
     End Sub
 
-    'Nút thêm Danh Mục
+    'Nút Huỷ Món ăn
+    Private Sub btnCancelFood_Click(sender As Object, e As EventArgs) Handles btnCancelFood.Click
+        isAddFood = False
+        isUpdateFood = False
+
+        Enable()
+    End Sub
+
+    'Nút Thêm Danh Mục
     Private Sub btnAddCategory_Click(sender As Object, e As EventArgs) Handles btnAddCategory.Click
-        Dim name As String = txtNameCategory.Text
-        AddCategoryFood(name)
+        isAddCategory = True
+        isUpdateCategory = False
+
+        Enable()
     End Sub
 
     'Nút Cập nhật Danh Mục
     Private Sub btnEditCategory_Click(sender As Object, e As EventArgs) Handles btnEditCategory.Click
-        Dim name As String = txtNameCategory.Text
-        Dim id As Integer = Convert.ToInt32(txtIDCategory.Text)
-        EditCategory(id, name)
+        isAddCategory = False
+        isUpdateCategory = True
+
+        Enable()
     End Sub
 
     'Nút Xóa Danh Mục
@@ -444,16 +549,22 @@ Public Class FormAdmin
         DeleteCategory(id)
     End Sub
 
-    'Nút Xóa Bàn Ăn
-    Private Sub btnDeleteTable_Click(sender As Object, e As EventArgs) Handles btnDeleteTable.Click
-        Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
-        DeleteTable(id)
+    'Nút Lưu Danh Mục
+    Private Sub btnSaveCategory_Click(sender As Object, e As EventArgs) Handles btnSaveCategory.Click
+        If isAddCategory = True Then
+            Dim name As String = txtNameCategory.Text
+            AddCategoryFood(name)
+        ElseIf isUpdateCategory = True Then
+            Dim name As String = txtNameCategory.Text
+            Dim id As Integer = Convert.ToInt32(txtIDCategory.Text)
+            EditCategory(id, name)
+        End If
     End Sub
 
-    'Nút Câp nhật Bàn Ăn
-    Private Sub btnEditTable_Click(sender As Object, e As EventArgs) Handles btnEditTable.Click
-        isAddTable = False
-        isUpdateTable = True
+    'Nút Huỷ Danh Mục
+    Private Sub btnCancelCategory_Click(sender As Object, e As EventArgs) Handles btnCancelCategory.Click
+        isAddCategory = False
+        isUpdateCategory = False
 
         Enable()
     End Sub
@@ -466,12 +577,46 @@ Public Class FormAdmin
         Enable()
     End Sub
 
+    'Nút Câp nhật Bàn Ăn
+    Private Sub btnEditTable_Click(sender As Object, e As EventArgs) Handles btnEditTable.Click
+        isAddTable = False
+        isUpdateTable = True
+
+        Enable()
+    End Sub
+
+    'Nút Xóa Bàn Ăn
+    Private Sub btnDeleteTable_Click(sender As Object, e As EventArgs) Handles btnDeleteTable.Click
+        Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
+        DeleteTable(id)
+    End Sub
+
+    'Nút Lưu Bàn Ăn
+    Private Sub btnSaveTable_Click(sender As Object, e As EventArgs) Handles btnSaveTable.Click
+        If isAddTable = True Then
+            Dim name As String = txtNameTable.Text
+            AddTableFood(name)
+        ElseIf isUpdateTable = True Then
+            Dim name As String = txtNameTable.Text
+            Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
+            EditTableFood(id, name)
+        End If
+    End Sub
+
+    'Nút Huỷ Bàn Ăn
+    Private Sub btnCancelTable_Click(sender As Object, e As EventArgs) Handles btnCancelTable.Click
+        isAddTable = False
+        isUpdateTable = False
+
+        Enable()
+    End Sub
+
     'Nút Tìm Kiếm Món Ăn
     Private Sub btnSearchFood_Click(sender As Object, e As EventArgs) Handles btnSearchFood.Click
         foodList.DataSource = SearchFoodByName(txtSearchFood.Text)
     End Sub
 
-    'Nút thêm nhân viên
+    'Nút Thêm nhân viên
     Private Sub btnAddStaff_Click(sender As Object, e As EventArgs) Handles btnAddStaff.Click
         Dim fullname As String = txtNameStaff.Text
         Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
@@ -525,27 +670,10 @@ Public Class FormAdmin
         End Try
     End Sub
 
-    Private Sub btnSaveTable_Click(sender As Object, e As EventArgs) Handles btnSaveTable.Click
-        If isAddTable = True Then
-            Dim name As String = txtNameTable.Text
-            AddTableFood(name)
-        ElseIf isUpdateTable = True Then
-            Dim name As String = txtNameTable.Text
-            Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
-            EditTableFood(id, name)
-        End If
-    End Sub
-
-    Private Sub btnCancelTable_Click(sender As Object, e As EventArgs) Handles btnCancelTable.Click
-        isAddTable = False
-        isUpdateTable = False
-
-        Enable()
-    End Sub
-
 #End Region
 
     Private Sub btnAddCustomer_Click(sender As Object, e As EventArgs) Handles btnAddCustomer.Click
 
     End Sub
+
 End Class

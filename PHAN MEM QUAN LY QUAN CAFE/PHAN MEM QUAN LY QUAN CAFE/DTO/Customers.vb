@@ -2,15 +2,13 @@
     Public Class Customers
 
         Private id As Integer
-        Private gender As Boolean
         Private name As String
         Private phone As String
         Private createDate As Date
         Private status As Integer
 
-        Public Sub New(id As Integer, gender As Boolean, name As String, idCard As Integer, createDate As Date, status As Integer)
+        Public Sub New(id As Integer, name As String, phone As String, createDate As Date, status As Integer)
             Me.id = id
-            Me.gender = gender
             Me.name = name
             Me.phone = phone
             Me.createDate = createDate
@@ -19,7 +17,6 @@
 
         Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
-            Me.gender = CBool(row("gender"))
             Me.name = row("name").ToString()
             Me.phone = row("phone").ToString()
             Me.createDate = CType(row("createDate"), Date)
@@ -32,15 +29,6 @@
             End Get
             Set(value As Integer)
                 id = value
-            End Set
-        End Property
-
-        Public Property _gender() As Boolean
-            Get
-                Return gender
-            End Get
-            Set(value As Boolean)
-                gender = value
             End Set
         End Property
 

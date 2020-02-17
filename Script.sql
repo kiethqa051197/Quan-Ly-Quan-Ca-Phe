@@ -512,3 +512,17 @@ Lợi Nhuận = Tổng Trị giá bán - (Tổng trị giá nhập + Trị giá 
 
 Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60 + 20 * 8 + 30 * 6) = ....k
 */
+
+-- delete category 
+CREATE PROC PC_DELETE_CATEGORY
+	@idCategory int
+AS
+BEGIN
+	declare @count int = 0
+
+	Select @count = count(*) from ITEMS where idCategory = @idCategory
+	if	@count > 0
+		UPDATE ITEMS SET idCategory = 1 WHERE idCategory = @idCategory
+
+	Delete CATEGORIES WHERE id = @idCategory
+END

@@ -88,6 +88,7 @@
     <Compile Include="DAO\BillsDAO.vb" />
     <Compile Include="DAO\BillsInfoDAO.vb" />
     <Compile Include="DAO\CategoriesDAO.vb" />
+    <Compile Include="DAO\CustomerDAO.vb" />
     <Compile Include="DAO\StaffDAO.vb" />
     <Compile Include="DTO\Customers.vb" />
     <Compile Include="DAO\DataProvider.vb" />

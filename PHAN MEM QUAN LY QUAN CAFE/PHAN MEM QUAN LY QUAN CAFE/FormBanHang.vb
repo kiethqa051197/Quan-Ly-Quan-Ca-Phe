@@ -65,21 +65,28 @@ Public Class FormBanHang
     'Lấy danh sách danh mục sản phẩm
     Private Sub LoadListCategory()
         Dim listCategory As List(Of Categories) = CategoriesDAO._Instance.GetListCategory()
-        cbbCategory.Properties.DataSource = listCategory
-        cbbCategory.Properties.DisplayMember = "_name"
+        cbbCategory.DataSource = listCategory
+        cbbCategory.DisplayMember = "_name"
     End Sub
 
     'Lấy danh sách các món ăn theo mã danh mục
     Private Sub LoadFoodListByCategoryID(id As Integer)
         Dim listFood As List(Of Items) = ItemsDAO._Instance.GetListCategoryID(id)
-        cbbFoodName.Properties.DataSource = listFood
-        cbbFoodName.Properties.DisplayMember = "_name"
+        cbbFoodName.DataSource = listFood
+        cbbFoodName.DisplayMember = "_name"
     End Sub
 
     'Lấy danh sách tất cả các bàn
-    Private Sub LoadComboboxTable(lookUpEdit As DevExpress.XtraEditors.LookUpEdit)
-        lookUpEdit.Properties.DataSource = TableDAO._Instance.LoadTableList()
-        lookUpEdit.Properties.DisplayMember = "_name"
+    Private Sub LoadComboboxTable(cb As ComboBox)
+        cb.DataSource = TableDAO._Instance.LoadTableList()
+        cb.DisplayMember = "_name"
+    End Sub
+
+    'Lấy danh sách danh mục sản phẩm
+    Private Sub LoadListCustomer()
+        Dim listCustomer As List(Of Customers) = CustomerDAO._Instance.GetListCustomer()
+        cbbCustomer.DataSource = listCustomer
+        cbbCustomer.DisplayMember = "_name"
     End Sub
 
     'Hiển thị món đã gọi
@@ -106,11 +113,11 @@ Public Class FormBanHang
 #Region "BẮT SỰ KIỆN"
 
     'Chọn danh mục trong combobox danh mục
-    Private Sub cbbCategory_EditValueChanged(sender As Object, e As EventArgs) Handles cbbCategory.EditValueChanged
+    Private Sub cbbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbCategory.SelectedIndexChanged
         Dim id As Integer = 0
-        Dim cb As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
-        If cb.EditValue Is Nothing Then Return
-        Dim selected As Categories = TryCast(cb.EditValue, Categories)
+        Dim cb As ComboBox = TryCast(sender, ComboBox)
+        If cb.SelectedItem Is Nothing Then Return
+        Dim selected As Categories = TryCast(cb.SelectedItem, Categories)
         id = selected._id
         LoadFoodListByCategoryID(id)
     End Sub
@@ -155,6 +162,7 @@ Public Class FormBanHang
         LoadTable()
         LoadListCategory()
         LoadComboboxTable(cbbSwitchTable)
+        LoadListCustomer()
     End Sub
 
     'Click nút thêm món
@@ -167,8 +175,8 @@ Public Class FormBanHang
         End If
 
         Dim idBill As Integer = BillsDAO._Instance.GetUncheckBillIDByTableID(table._id)
-        Dim idItem As Integer = (TryCast(cbbFoodName.EditValue, Items))._id
-        Dim price As Integer = (TryCast(cbbFoodName.EditValue, Items))._price
+        Dim idItem As Integer = (TryCast(cbbFoodName.SelectedItem, Items))._id
+        Dim price As Integer = (TryCast(cbbFoodName.SelectedItem, Items))._price
         Dim count As Integer = CInt(nmCount.Value)
 
         If idBill = -1 Then
@@ -191,10 +199,13 @@ Public Class FormBanHang
         Dim totalPrice As Double = Convert.ToDouble(txtTotal.Text.Split(","c)(0))
         Dim finalTotalPrice As Double = totalPrice - (totalPrice / 100) * discount
 
+        Dim selectedCustomer As Customers = TryCast(cbbCustomer.SelectedItem, Customers)
+        Dim idCustomer = selectedCustomer._id
+
         If idBill <> -1 Then
 
             If MessageBox.Show(String.Format("Bạn có chắc thanh toán hoá đơn cho bàn {0}" & vbLf & "Tổng tiền - (Tổng tiền / 100) x Giảm giá" & vbLf & " => {1}000 - ({1}000 / 100) x {2} = {3}000", table._name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-                BillsDAO._Instance.CheckOut(idBill, 1, discount, idStaff)
+                BillsDAO._Instance.CheckOut(idBill, idCustomer, discount, idStaff)
                 TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
                 ShowBill(table._id)
                 LoadTable()
@@ -205,9 +216,9 @@ Public Class FormBanHang
     'Click nút Chuyển bàn
     Private Sub btnSwichTable_Click(sender As Object, e As EventArgs) Handles btnSwichTable.Click
         Dim id1 As Integer = (TryCast(listBill.Tag, Tables))._id
-        Dim id2 As Integer = (TryCast(cbbSwitchTable.EditValue, Tables))._id
+        Dim id2 As Integer = (TryCast(cbbSwitchTable.SelectedItem, Tables))._id
 
-        If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbbSwitchTable.EditValue, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+        If MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1}", (TryCast(listBill.Tag, Tables))._name, (TryCast(cbbSwitchTable.SelectedItem, Tables))._name), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
             TableDAO._Instance.SwitchTable(id1, id2, idStaff)
             LoadTable()
         End If
@@ -272,23 +283,33 @@ Public Class FormBanHang
 
     'Cập nhật món ăn
     Private Sub f_UpdateFood(sender As Object, e As EventArgs)
-        LoadFoodListByCategoryID((TryCast(cbbCategory.EditValue, Categories))._id)
+        LoadFoodListByCategoryID((TryCast(cbbCategory.SelectedItem, Categories))._id)
         If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
     End Sub
 
     'Xóa món ăn
     Private Sub f_DeleteFood(sender As Object, e As EventArgs)
-        LoadFoodListByCategoryID((TryCast(cbbCategory.EditValue, Categories))._id)
+        LoadFoodListByCategoryID((TryCast(cbbCategory.SelectedItem, Categories))._id)
         If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
         LoadTable()
     End Sub
 
     'Thêm món ăn
     Private Sub f_InsertFood(sender As Object, e As EventArgs)
-        LoadFoodListByCategoryID((TryCast(cbbCategory.EditValue, Categories))._id)
+        LoadFoodListByCategoryID((TryCast(cbbCategory.SelectedItem, Categories))._id)
         If listBill.Tag IsNot Nothing Then ShowBill((TryCast(listBill.Tag, Tables))._id)
     End Sub
 
-#End Region
+    'Thêm Khách hàng
+    Private Sub f_AddCustomer(sender As Object, e As EventArgs)
+        LoadListCustomer()
+    End Sub
 
+    'Thêm Khách hàng
+    Private Sub btnAddCustomer_Click(sender As Object, e As EventArgs) Handles btnAddCustomer.Click
+        Dim f As FormKhachHang = New FormKhachHang
+        AddHandler f.AddCustomer, AddressOf f_AddCustomer
+        f.ShowDialog()
+    End Sub
+#End Region
 End Class

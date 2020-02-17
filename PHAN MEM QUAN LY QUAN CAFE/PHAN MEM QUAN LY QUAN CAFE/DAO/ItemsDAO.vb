@@ -20,7 +20,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function GetListCategoryID(id As Integer) As List(Of Items)
             Dim list As List(Of Items) = New List(Of Items)()
-            Dim query As String = "SELECT * FROM ITEMS WHERE idCategory = " & id
+            Dim query As String = "SELECT * FROM ITEMS WHERE idCategory = " & id & " and status = 0"
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
 
             For Each item As DataRow In data.Rows
@@ -44,8 +44,8 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return list
         End Function
 
-        Public Function InsertFood(name As String, id As Integer, price As Single) As Boolean
-            Dim query As String = String.Format("INSERT INTO ITEMS ( name, idcategory, price ) VALUES  ( N'{0}', {1}, {2})", name, id, price)
+        Public Function InsertFood(name As String, price As Integer, id As Integer) As Boolean
+            Dim query As String = String.Format("INSERT INTO ITEMS ( name, price, idcategory) VALUES  ( N'{0}', {1}, {2})", name, price, id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
@@ -57,8 +57,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         End Function
 
         Public Function DeleteFood(idFood As Integer) As Boolean
-            'BillInfoDAO.Instance.DeleteBillInfo(idFood)
-            Dim query As String = String.Format("DELETE ITEMS where id = {0}", idFood)
+            Dim query As String = String.Format("UPDATE ITEMS SET status = 1 WHERE id = {0}", idFood)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function

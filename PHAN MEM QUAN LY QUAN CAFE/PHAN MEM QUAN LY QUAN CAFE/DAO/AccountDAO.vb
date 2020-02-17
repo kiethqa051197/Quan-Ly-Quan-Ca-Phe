@@ -53,18 +53,6 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return DataProvider._Instance.ExecuteQuery("SELECT userName, displayName, type FROM ACCOUNTS ")
         End Function
 
-        Public Function InsertAccount(ByVal username As String, ByVal displayname As String, ByVal type As Integer) As Boolean
-            Dim query As String = String.Format("INSERT INTO ACCOUNTS ( username, displayname, type, password ) VALUES  ( N'{0}', N'{1}', {2}, N'{3}')", username, displayname, type, "1962026656160185351301320480154111117132155")
-            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
-            Return result > 0
-        End Function
-
-        Public Function DeleteAccount(ByVal username As String) As Boolean
-            Dim query As String = String.Format("DELETE ACCOUNTS where username = N'{0}'", username)
-            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
-            Return result > 0
-        End Function
-
         Public Function ResetPass(ByVal username As String) As Boolean
             Dim query As String = String.Format("Update ACCOUNTS SET password = N'123456' where username = N'{0}'", username)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)

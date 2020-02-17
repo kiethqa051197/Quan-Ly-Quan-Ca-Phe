@@ -68,7 +68,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         End Function
 
         Public Function DeleteTableFood(id As Integer) As Boolean
-            Dim query As String = String.Format("DELETE TABLES where id = {0}", id)
+            Dim query As String = String.Format("UPDATE TABLES SET statusDel = 1 WHERE id = {0}", id)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function

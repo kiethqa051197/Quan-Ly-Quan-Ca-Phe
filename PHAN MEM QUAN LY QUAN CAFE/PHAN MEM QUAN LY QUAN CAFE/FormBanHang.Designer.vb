@@ -23,8 +23,8 @@ Partial Class FormBanHang
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.cbbFoodName = New DevExpress.XtraEditors.LookUpEdit()
-        Me.cbbCategory = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cbbFoodName = New System.Windows.Forms.ComboBox()
+        Me.cbbCategory = New System.Windows.Forms.ComboBox()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl45 = New DevExpress.XtraEditors.LabelControl()
@@ -37,7 +37,7 @@ Partial Class FormBanHang
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
-        Me.cbbSwitchTable = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cbbSwitchTable = New System.Windows.Forms.ComboBox()
         Me.btnCheckOut = New DevExpress.XtraEditors.SimpleButton()
         Me.txtTotal = New DevExpress.XtraEditors.TextEdit()
         Me.nmDiscount = New DevExpress.XtraEditors.SpinEdit()
@@ -50,16 +50,15 @@ Partial Class FormBanHang
         Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cbbCustomer = New System.Windows.Forms.ComboBox()
+        Me.btnAddCustomer = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
-        CType(Me.cbbFoodName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbbCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
-        CType(Me.cbbSwitchTable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip.SuspendLayout()
@@ -74,30 +73,26 @@ Partial Class FormBanHang
         Me.PanelControl1.Controls.Add(Me.LabelControl45)
         Me.PanelControl1.Controls.Add(Me.nmCount)
         Me.PanelControl1.Controls.Add(Me.btnAddObject)
-        Me.PanelControl1.Location = New System.Drawing.Point(456, 30)
+        Me.PanelControl1.Location = New System.Drawing.Point(408, 30)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(332, 59)
+        Me.PanelControl1.Size = New System.Drawing.Size(380, 59)
         Me.PanelControl1.TabIndex = 2
         '
         'cbbFoodName
         '
-        Me.cbbFoodName.Location = New System.Drawing.Point(60, 33)
+        Me.cbbFoodName.FormattingEnabled = True
+        Me.cbbFoodName.Location = New System.Drawing.Point(60, 31)
         Me.cbbFoodName.Name = "cbbFoodName"
-        Me.cbbFoodName.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbbFoodName.Properties.NullText = ""
-        Me.cbbFoodName.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.cbbFoodName.Size = New System.Drawing.Size(132, 20)
-        Me.cbbFoodName.TabIndex = 14
+        Me.cbbFoodName.Size = New System.Drawing.Size(132, 21)
+        Me.cbbFoodName.TabIndex = 13
         '
         'cbbCategory
         '
-        Me.cbbCategory.Location = New System.Drawing.Point(60, 7)
+        Me.cbbCategory.FormattingEnabled = True
+        Me.cbbCategory.Location = New System.Drawing.Point(60, 6)
         Me.cbbCategory.Name = "cbbCategory"
-        Me.cbbCategory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbbCategory.Properties.NullText = ""
-        Me.cbbCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.cbbCategory.Size = New System.Drawing.Size(132, 20)
-        Me.cbbCategory.TabIndex = 13
+        Me.cbbCategory.Size = New System.Drawing.Size(132, 21)
+        Me.cbbCategory.TabIndex = 1
         '
         'LabelControl2
         '
@@ -120,7 +115,7 @@ Partial Class FormBanHang
         'LabelControl45
         '
         Me.LabelControl45.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!)
-        Me.LabelControl45.Location = New System.Drawing.Point(202, 9)
+        Me.LabelControl45.Location = New System.Drawing.Point(202, 22)
         Me.LabelControl45.Name = "LabelControl45"
         Me.LabelControl45.Size = New System.Drawing.Size(46, 13)
         Me.LabelControl45.TabIndex = 10
@@ -129,7 +124,7 @@ Partial Class FormBanHang
         'nmCount
         '
         Me.nmCount.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.nmCount.Location = New System.Drawing.Point(202, 28)
+        Me.nmCount.Location = New System.Drawing.Point(250, 19)
         Me.nmCount.Name = "nmCount"
         Me.nmCount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.nmCount.Properties.IsFloatValue = False
@@ -141,7 +136,7 @@ Partial Class FormBanHang
         '
         'btnAddObject
         '
-        Me.btnAddObject.Location = New System.Drawing.Point(254, 5)
+        Me.btnAddObject.Location = New System.Drawing.Point(302, 5)
         Me.btnAddObject.Name = "btnAddObject"
         Me.btnAddObject.Size = New System.Drawing.Size(73, 48)
         Me.btnAddObject.TabIndex = 5
@@ -150,9 +145,9 @@ Partial Class FormBanHang
         'PanelControl2
         '
         Me.PanelControl2.Controls.Add(Me.listBill)
-        Me.PanelControl2.Location = New System.Drawing.Point(456, 92)
+        Me.PanelControl2.Location = New System.Drawing.Point(408, 95)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(332, 306)
+        Me.PanelControl2.Size = New System.Drawing.Size(380, 303)
         Me.PanelControl2.TabIndex = 3
         '
         'listBill
@@ -162,7 +157,7 @@ Partial Class FormBanHang
         Me.listBill.GridLines = True
         Me.listBill.Location = New System.Drawing.Point(2, 2)
         Me.listBill.Name = "listBill"
-        Me.listBill.Size = New System.Drawing.Size(328, 302)
+        Me.listBill.Size = New System.Drawing.Size(376, 299)
         Me.listBill.TabIndex = 0
         Me.listBill.UseCompatibleStateImageBehavior = False
         Me.listBill.View = System.Windows.Forms.View.Details
@@ -184,34 +179,34 @@ Partial Class FormBanHang
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Thành tiền"
-        Me.ColumnHeader4.Width = 69
+        Me.ColumnHeader4.Width = 119
         '
         'PanelControl3
         '
+        Me.PanelControl3.Controls.Add(Me.txtTotal)
+        Me.PanelControl3.Controls.Add(Me.btnAddCustomer)
+        Me.PanelControl3.Controls.Add(Me.cbbCustomer)
         Me.PanelControl3.Controls.Add(Me.cbbSwitchTable)
         Me.PanelControl3.Controls.Add(Me.btnCheckOut)
-        Me.PanelControl3.Controls.Add(Me.txtTotal)
         Me.PanelControl3.Controls.Add(Me.nmDiscount)
         Me.PanelControl3.Controls.Add(Me.btnDiscount)
         Me.PanelControl3.Controls.Add(Me.btnSwichTable)
-        Me.PanelControl3.Location = New System.Drawing.Point(456, 402)
+        Me.PanelControl3.Location = New System.Drawing.Point(408, 402)
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(332, 60)
+        Me.PanelControl3.Size = New System.Drawing.Size(380, 60)
         Me.PanelControl3.TabIndex = 5
         '
         'cbbSwitchTable
         '
-        Me.cbbSwitchTable.Location = New System.Drawing.Point(3, 35)
+        Me.cbbSwitchTable.FormattingEnabled = True
+        Me.cbbSwitchTable.Location = New System.Drawing.Point(4, 34)
         Me.cbbSwitchTable.Name = "cbbSwitchTable"
-        Me.cbbSwitchTable.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbbSwitchTable.Properties.NullText = ""
-        Me.cbbSwitchTable.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.cbbSwitchTable.Size = New System.Drawing.Size(74, 20)
+        Me.cbbSwitchTable.Size = New System.Drawing.Size(72, 21)
         Me.cbbSwitchTable.TabIndex = 11
         '
         'btnCheckOut
         '
-        Me.btnCheckOut.Location = New System.Drawing.Point(254, 6)
+        Me.btnCheckOut.Location = New System.Drawing.Point(302, 5)
         Me.btnCheckOut.Name = "btnCheckOut"
         Me.btnCheckOut.Size = New System.Drawing.Size(73, 48)
         Me.btnCheckOut.TabIndex = 10
@@ -220,7 +215,7 @@ Partial Class FormBanHang
         'txtTotal
         '
         Me.txtTotal.EditValue = "0"
-        Me.txtTotal.Location = New System.Drawing.Point(160, 20)
+        Me.txtTotal.Location = New System.Drawing.Point(161, 34)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.txtTotal.Properties.Appearance.ForeColor = System.Drawing.Color.Red
@@ -228,7 +223,7 @@ Partial Class FormBanHang
         Me.txtTotal.Properties.Appearance.Options.UseForeColor = True
         Me.txtTotal.Properties.ReadOnly = True
         Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotal.Size = New System.Drawing.Size(90, 20)
+        Me.txtTotal.Size = New System.Drawing.Size(135, 20)
         Me.txtTotal.TabIndex = 6
         '
         'nmDiscount
@@ -264,7 +259,7 @@ Partial Class FormBanHang
         Me.tableLayout.AutoScroll = True
         Me.tableLayout.Location = New System.Drawing.Point(12, 30)
         Me.tableLayout.Name = "tableLayout"
-        Me.tableLayout.Size = New System.Drawing.Size(438, 432)
+        Me.tableLayout.Size = New System.Drawing.Size(390, 430)
         Me.tableLayout.TabIndex = 1
         '
         'AdminStripMenu
@@ -277,19 +272,19 @@ Partial Class FormBanHang
         '
         Me.AccountInfoToolStripMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonalInfoToolStripMenu, Me.LogOutToolStripMenuItem})
         Me.AccountInfoToolStripMenu.Name = "AccountInfoToolStripMenu"
-        Me.AccountInfoToolStripMenu.Size = New System.Drawing.Size(123, 20)
+        Me.AccountInfoToolStripMenu.Size = New System.Drawing.Size(122, 20)
         Me.AccountInfoToolStripMenu.Text = "Thông tin tài khoản"
         '
         'PersonalInfoToolStripMenu
         '
         Me.PersonalInfoToolStripMenu.Name = "PersonalInfoToolStripMenu"
-        Me.PersonalInfoToolStripMenu.Size = New System.Drawing.Size(171, 22)
+        Me.PersonalInfoToolStripMenu.Size = New System.Drawing.Size(170, 22)
         Me.PersonalInfoToolStripMenu.Text = "Thông tin cá nhân"
         '
         'LogOutToolStripMenuItem
         '
         Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.LogOutToolStripMenuItem.Text = "Đăng xuất"
         '
         'MenuStrip
@@ -306,6 +301,22 @@ Partial Class FormBanHang
         Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
         Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
         Me.CustomerToolStripMenuItem.Text = "Khách hàng"
+        '
+        'cbbCustomer
+        '
+        Me.cbbCustomer.FormattingEnabled = True
+        Me.cbbCustomer.Location = New System.Drawing.Point(161, 7)
+        Me.cbbCustomer.Name = "cbbCustomer"
+        Me.cbbCustomer.Size = New System.Drawing.Size(109, 21)
+        Me.cbbCustomer.TabIndex = 14
+        '
+        'btnAddCustomer
+        '
+        Me.btnAddCustomer.Location = New System.Drawing.Point(276, 7)
+        Me.btnAddCustomer.Name = "btnAddCustomer"
+        Me.btnAddCustomer.Size = New System.Drawing.Size(20, 21)
+        Me.btnAddCustomer.TabIndex = 15
+        Me.btnAddCustomer.Text = "+"
         '
         'FormBanHang
         '
@@ -325,14 +336,11 @@ Partial Class FormBanHang
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
-        CType(Me.cbbFoodName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbbCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nmCount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
-        CType(Me.cbbSwitchTable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nmDiscount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip.ResumeLayout(False)
@@ -366,7 +374,9 @@ Partial Class FormBanHang
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents CustomerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cbbSwitchTable As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cbbCategory As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cbbFoodName As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents cbbFoodName As System.Windows.Forms.ComboBox
+    Friend WithEvents cbbCategory As System.Windows.Forms.ComboBox
+    Friend WithEvents cbbSwitchTable As System.Windows.Forms.ComboBox
+    Friend WithEvents btnAddCustomer As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbbCustomer As System.Windows.Forms.ComboBox
 End Class
