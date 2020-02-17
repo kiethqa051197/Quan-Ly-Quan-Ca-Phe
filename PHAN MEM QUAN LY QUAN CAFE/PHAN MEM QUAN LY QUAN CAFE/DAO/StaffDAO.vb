@@ -33,17 +33,15 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return Nothing
         End Function
 
-        Public Function UpdateInfoStaff(id As Integer, name As String, dateofbirth As String, gender As Integer, idCard As String,
-                                        address As String, phone As String) As Boolean
-            Dim query As String = String.Format("Update STAFFS SET fullname = N'{1}' , dateofbirth = '{2}' , gender = {3} , idCard = '{4}' , address = N'{5}' , phone = '{6}' where id = {0}", id, name, dateofbirth, gender, idCard, address, phone)
+        Public Function UpdateInfoStaff(id As Integer, name As String, dateofbirth As String, idCard As String, address As String, phone As String) As Boolean
+            Dim query As String = String.Format("Update STAFFS SET fullname = N'{1}' , dateofbirth = '{2}' , idCard = '{3}' , address = N'{4}' , phone = '{5}' where id = {0}", id, name, dateofbirth, idCard, address, phone)
             Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
             Return result > 0
         End Function
 
-        Public Function InsertStaff(fullname As String, dateofbirth As String, gender As Integer, idCard As String,
-                                        address As String, phone As String) As Boolean
-            Dim query As String = "PC_AddNewStaff @fullname , @dateofbirth , @gender , @idCard , @address , @phone "
-            Dim result As DataTable = DataProvider._Instance.ExecuteQuery(query, New Object() {fullname, dateofbirth, gender, idCard, address, phone})
+        Public Function InsertStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String) As Boolean
+            Dim query As String = "PC_AddNewStaff @fullname , @dateofbirth , @idCard , @address , @phone "
+            Dim result As DataTable = DataProvider._Instance.ExecuteQuery(query, New Object() {fullname, dateofbirth, idCard, address, phone})
             Return result.Rows.Count > 0
         End Function
 

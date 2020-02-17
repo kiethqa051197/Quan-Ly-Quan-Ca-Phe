@@ -33,7 +33,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function GetListFood() As List(Of Items)
             Dim list As List(Of Items) = New List(Of Items)()
-            Dim query As String = QuerySelectAllExcept("ITEMS")
+            Dim query As String = "SELECT * FROM ITEMS WHERE STATUS = 0"
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
 
             For Each item As DataRow In data.Rows

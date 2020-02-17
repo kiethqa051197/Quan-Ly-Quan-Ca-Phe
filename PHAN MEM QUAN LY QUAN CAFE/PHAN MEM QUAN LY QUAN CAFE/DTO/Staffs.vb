@@ -4,18 +4,15 @@
         Private id As Integer
         Private fullname As String
         Private dateofbirth As Date
-        Private gender As Boolean
         Private idCard As String
         Private address As String
         Private phone As String
         Private status As Integer
 
-        Public Sub New(id As Integer, fullname As String, dateofbirth As Date, gender As Boolean,
-                       idCard As String, address As String, phone As String, status As Integer)
+        Public Sub New(id As Integer, fullname As String, dateofbirth As Date, idCard As String, address As String, phone As String, status As Integer)
             Me.id = id
             Me.fullname = fullname
             Me.dateofbirth = dateofbirth
-            Me.gender = gender
             Me.idCard = idCard
             Me.address = address
             Me.phone = phone
@@ -26,7 +23,6 @@
             Me.id = CInt(row("id"))
             Me.fullname = row("fullname").ToString()
             Me.dateofbirth = CType(row("dateofbirth"), Date)
-            Me.gender = CBool(row("gender"))
             Me.idCard = row("idCard").ToString()
             Me.address = row("address").ToString()
             Me.phone = row("phone").ToString()
@@ -57,15 +53,6 @@
             End Get
             Set(value As Date)
                 dateofbirth = value
-            End Set
-        End Property
-
-        Public Property _gender() As Boolean
-            Get
-                Return gender
-            End Get
-            Set(value As Boolean)
-                gender = value
             End Set
         End Property
 

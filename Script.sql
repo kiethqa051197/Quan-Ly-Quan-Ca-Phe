@@ -10,55 +10,54 @@ CREATE TABLE STAFFS
 	 id int identity(1,1) primary key,
 	 fullname nvarchar(max) not null,
 	 dateofbirth date not null,
-	 gender bit not null, -- 1 Là Nam, 0 là Nữ
-	 idCard varchar(12) not null, 
-	 address nvarchar(max) not null,
-	 phone varchar(11) null
+	 idCard varchar(12) null, 
+	 address nvarchar(max) null,
+	 phone varchar(11) NULL,
+     status INT NOT NULL DEFAULT 0
 )
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
-				  values(N'Lee Hoàng Giang', '1997-01-25', 1, '2721564645', N'Mộ Đức, Đà Nẵng', '0938540130')
+INSERT STAFFS(fullname, dateofbirth, idCard, address, phone, status) 
+				  values(N'Lee Hoàng Giang', '1997-01-25', '2721564645', N'Mộ Đức, Đà Nẵng', '0938540130', 0)
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
-				  values(N'Nguyễn An Bình', '1986-10-13', 1, '45615463221', N'An Giang', '0138562100')
+INSERT STAFFS(fullname, dateofbirth, idCard, address, phone, status) 
+				  values(N'Nguyễn An Bình', '1986-10-13', '45615463221', N'An Giang', '0138562100', 0)
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
-				  values(N'Lê Thị Kiều', '1999-08-19', 0, '785605321', N'Phú Yên', '0168552435')
+INSERT STAFFS(fullname, dateofbirth, idCard, address, phone, status) 
+				  values(N'Lê Thị Kiều', '1999-08-19', '785605321', N'Phú Yên', '0168552435', 0)
 
-INSERT STAFFS(fullname, dateofbirth, gender, idCard, address, phone) 
-				  values(N'Hà Quốc Anh Kiệt', '1997-11-05', 1, '3121564645', N'Đồng Nai', '0378834457')
+INSERT STAFFS(fullname, dateofbirth, idCard, address, phone, status) 
+				  values(N'Hà Quốc Anh Kiệt', '1997-11-05', '3121564645', N'Đồng Nai', '0378834457', 0)
 
 -- Bảng Tài khoản nhân viên
+DROP TABLE ACCOUNTS
+
 CREATE TABLE ACCOUNTS
 (
 	id int identity(1,1) primary key,
 	username varchar(max) not null,
 	password varchar(max) not null,
-	idStaff int not null, 
+	idStaff int not null,
+	type INT NOT NULL DEFAULT 0
 
 	foreign key (idStaff) references STAFFS(id)
 )
 
-INSERT INTO ACCOUNTS(username, password, idStaff) values ('785605321', '123456', 4)
-INSERT INTO ACCOUNTS(username, password, idStaff) values ('3121564645', '123456', 3)
+INSERT INTO ACCOUNTS(username, password, idStaff, type) values ('785605321', '123456', 3, 0)
+INSERT INTO ACCOUNTS(username, password, idStaff, type) values ('3121564645', '123456', 4, 1)
 
 -- Bảng Danh Mục
 CREATE TABLE CATEGORIES
 (
 	id int identity(1,1) primary key,
-	name nvarchar(max) not null
+	name nvarchar(max) NOT NULL,
+	status INT NOT NULL DEFAULT 0
 )
 
-INSERT CATEGORIES (name) VALUES (N'Hải sản')
-INSERT CATEGORIES (name) VALUES (N'Nông sản')
-INSERT CATEGORIES (name) VALUES (N'Lâm sản')
-INSERT CATEGORIES (name) VALUES (N'Nước')
-
-ALTER TABLE CATEGORIES
-ADD CONSTRAINT df_StatusCategories
-DEFAULT 1 FOR status;
-
-ALTER TABLE CATEGORIES DROP CONSTRAINT df_status;  
+INSERT CATEGORIES (name, status) VALUES (N'Khác', 0)
+INSERT CATEGORIES (name, status) VALUES (N'Hải sản', 0)
+INSERT CATEGORIES (name, status) VALUES (N'Nông sản', 0)
+INSERT CATEGORIES (name, status) VALUES (N'Lâm sản', 0)
+INSERT CATEGORIES (name, status) VALUES (N'Nước', 0)
 
 -- Bảng Sản Phẩm (Mỗi danh mục có chứa nhiều sản phẩm)
 CREATE TABLE ITEMS
@@ -67,64 +66,49 @@ CREATE TABLE ITEMS
 	name nvarchar(max) not null,
 	price float not null,
 	idCategory int not null,
+	status INT NOT NULL DEFAULT 0
 
 	foreign key (idCategory) references CATEGORIES(id)
 )
 
-INSERT ITEMS (name, idCategory, price) VALUES (N'Mực một nắng nước sa tế', 1, 120000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'Nghêu hấp xả', 1, 50000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'Dú dê nướng sữa', 2, 60000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'Heo rừng nướng muối ớt', 3, 75000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'7 Up', 4, 15000)
-INSERT ITEMS (name, idCategory, price) VALUES (N'Cafe', 4, 12000)
+INSERT ITEMS (name, idCategory, price, status) VALUES (N'Mực một nắng nước sa tế', 2, 120000, 0)
+INSERT ITEMS (name, idCategory, price, status) VALUES (N'Nghêu hấp xả', 2, 50000, 0)
+INSERT ITEMS (name, idCategory, price, status) VALUES (N'Dú dê nướng sữa', 3, 60000, 0)
+INSERT ITEMS (name, idCategory, price, status) VALUES (N'Heo rừng nướng muối ớt', 4, 75000, 0)
+INSERT ITEMS (name, idCategory, price, status) VALUES (N'7 Up', 5, 15000, 0)
+INSERT ITEMS (name, idCategory, price, status) VALUES (N'Cafe', 5, 12000, 0)
 
 -- Bảng Bàn Ăn
 CREATE TABLE TABLES
 (
 	id int identity(1,1) primary key,
 	name nvarchar(max) not null,
-	status nvarchar(max) not null
+	status nvarchar(max) not NULL DEFAULT N'Trống',
+	statusDel INT NOT NULL DEFAULT 0
 )
 
-INSERT TABLES (name, status) VALUES (N'Bàn 1', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 2', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 3', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 4', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 5', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 6', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 7', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 8', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 9', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 10', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 11', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 12', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 13', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 14', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 15', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 16', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 17', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 18', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 19', N'Trống')
-INSERT TABLES (name, status) VALUES (N'Bàn 20', N'Trống')
-
-ALTER TABLE TABLES
-ADD CONSTRAINT df_status
-DEFAULT N'Trống' FOR status;
-
-ALTER TABLE TABLES DROP CONSTRAINT df_status;  
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 1', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 2', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 3', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 4', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 5', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 6', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 7', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 8', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 9', N'Trống', 0)
+INSERT TABLES (name, status, statusDel) VALUES (N'Bàn 10', N'Trống', 0)
 
 -- Bảng Khách Hàng
 CREATE TABLE CUSTOMERS
 (
 	id int identity(1,1) primary key,
-	sex int not null,
 	name nvarchar(max) not null,
-	idCard varchar(max) not null,
-	dateofbirth date not null,
-	address nvarchar(max) not null,
 	phone nvarchar(20) null,
-	createDate dateTime not null
+	createDate dateTime not NULL DEFAULT GETDATE(),
+	status INT NOT NULL DEFAULT 0
 )
+
+INSERT CUSTOMERS (name) VALUES (N'Mặc định')
 
 -- Bảng Hoá đơn
 CREATE TABLE BILLS
@@ -149,6 +133,7 @@ CREATE TABLE BILLINFOS
 	id int identity(1,1) primary key,
 	idBill int not null,
 	idItems int not null,
+	price FLOAT NOT NULL, 
 	count int not null,
 
 	foreign key (idBill) references BILLS(id),
@@ -159,7 +144,8 @@ CREATE TABLE BILLINFOS
 CREATE TABLE UNITS
 (
 	id int identity(1,1) primary key,
-	name nvarchar(max) not null
+	name nvarchar(max) not NULL,
+	status INT NOT NULL DEFAULT 0
 )
 
 -- Bảng Nhà cung cấp
@@ -169,7 +155,8 @@ CREATE TABLE SUPPLIERS
 	name nvarchar(max) not null,
 	address nvarchar(max) not null,
 	phone nvarchar(20) null,
-	email nvarchar(200) null
+	email nvarchar(200) NULL,
+	status INT NOT NULL DEFAULT 0
 )
 
 -- Bảng đối tượng
@@ -179,6 +166,7 @@ CREATE TABLE OBJECTS
 	name nvarchar(max) not null,
 	idUnit int not null,
 	idSupplier int not null,
+	status INT NOT NULL DEFAULT 0
 
 	foreign key(idUnit) references UNITS(id),
 	foreign key(idSupplier) references SUPPLIERS(id),
@@ -246,7 +234,7 @@ GO
 
 -- Lấy danh sách bàn
 CREATE PROC PC_GetTableList
-AS SELECT * FROM TABLES
+AS SELECT * FROM dbo.TABLES WHERE statusDel = 0
 GO
 
 -- Lấy tổng số hoá đơn theo ngày
@@ -307,7 +295,7 @@ AS
 BEGIN
 	DECLARE @idCustomer INT
 
-	SELECT @idCustomer = id FROM CUSTOMERS WHERE createDate = '1991-01-01' and NAME = N'Mặc định' and gender = 1
+	SELECT @idCustomer = id FROM CUSTOMERS WHERE id = 1
 
 	INSERT BILLS (idTable, idCustomer, dateCheckIn, dateCheckOut, discount, status, idStaff)
 	VALUES (@idTable, @idCustomer, GETDATE(), GETDATE(), 0, 0, @idStaff)
@@ -356,7 +344,7 @@ AS BEGIN
 	
 	DECLARE @idCustomer INT
 
-	SELECT @idCustomer = id FROM CUSTOMERS WHERE createDate = '1991-01-01' and NAME = N'Mặc định' and gender = 1
+	SELECT @idCustomer = id FROM CUSTOMERS WHERE id = 1
 	SELECT @idSeconrdBill = id FROM BILLS WHERE idTable = @idTable2 AND status = 0
 	SELECT @idFirstBill = id FROM BILLS WHERE idTable = @idTable1 AND status = 0
 	
@@ -445,7 +433,6 @@ DROP PROC PC_AddNewStaff
 CREATE PROC PC_AddNewStaff
 	@fullname NVARCHAR(MAX), 
 	@dateofbirth DATE, 
-	@gender BIT,
 	@idCard VARCHAR(MAX) = NULL, 
 	@address NVARCHAR(MAX) = NULL, 
 	@phone VARCHAR(MAX) = NULL
@@ -454,14 +441,12 @@ BEGIN
 	INSERT dbo.STAFFS 
 	        ( fullname ,
 	          dateofbirth ,
-	          gender ,
 	          idCard ,
 	          address ,
 	          phone
 	        )
 	VALUES  ( @fullname , -- fullname - nvarchar(max)
 	          @dateofbirth, -- dateofbirth - date
-	          @gender , -- gender - bit
 	          @idCard , -- idCard - varchar(12)
 	          @address , -- address - nvarchar(max)
 	          @phone -- phone - varchar(11)
@@ -492,18 +477,10 @@ CREATE PROC PC_DeleteStaff
 	@id INT
 AS	
 BEGIN
-	DECLARE @idStaff INT
-
-	SELECT @idStaff = id FROM STAFFS WHERE fullname = N'Mặc định' AND dateofbirth = '1997-01-01' AND gender = 1
-
-	UPDATE dbo.BILLS SET idStaff = @idStaff WHERE id = @id
-	
 	DELETE dbo.ACCOUNTS WHERE idStaff = @id
-	UPDATE dbo.STAFFS SET status = 0 WHERE id = @id
+	UPDATE dbo.STAFFS SET status = 1 WHERE id = @id
 END	
 GO
-
-SELECT * FROM dbo.STAFFS EXCEPT SELECT * FROM dbo.STAFFS WHERE id = 1
 
 /* 
 2020 tháng 1 - món x :  (Tồn đầu kỳ ; Tồn cuối kỳ) :  100 ly cafe (20k/1)
@@ -535,5 +512,3 @@ Lợi Nhuận = Tổng Trị giá bán - (Tổng trị giá nhập + Trị giá 
 
 Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60 + 20 * 8 + 30 * 6) = ....k
 */
-
-SELECT * FROM CATEGORIES WHERE STATUS = 1 EXCEPT (SELECT * FROM CATEGORIES WHERE id = 1)

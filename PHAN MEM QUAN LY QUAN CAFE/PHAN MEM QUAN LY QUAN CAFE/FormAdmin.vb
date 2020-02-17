@@ -112,8 +112,8 @@ Public Class FormAdmin
     End Sub
 
     'Thêm nhân viên
-    Private Sub AddStaff(fullname As String, dateofbirth As String, gender As Integer, idCard As String, address As String, phone As String)
-        If StaffDAO._Instance.InsertStaff(fullname, dateofbirth, gender, idCard, address, phone) Then
+    Private Sub AddStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
+        If StaffDAO._Instance.InsertStaff(fullname, dateofbirth, idCard, address, phone) Then
             MessageBox.Show("Thêm tài khoản thành công")
         Else
             MessageBox.Show("Thêm tài khoản thất bại")
@@ -220,10 +220,9 @@ Public Class FormAdmin
         gridStaff.Columns(0).Caption = "Mã nhân viên"
         gridStaff.Columns(1).Caption = "Tên nhân viên"
         gridStaff.Columns(2).Caption = "Ngày sinh"
-        gridStaff.Columns(3).Caption = "Giớ tính"
-        gridStaff.Columns(4).Caption = "CMND/CCCD"
-        gridStaff.Columns(5).Caption = "Địa Chỉ"
-        gridStaff.Columns(6).Caption = "SĐT"
+        gridStaff.Columns(3).Caption = "CMND/CCCD"
+        gridStaff.Columns(4).Caption = "Địa Chỉ"
+        gridStaff.Columns(5).Caption = "SĐT"
     End Sub
 
     'Mở/Đóng các items
@@ -477,19 +476,11 @@ Public Class FormAdmin
         Dim fullname As String = txtNameStaff.Text
         Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
 
-        Dim gender As Integer
-
-        If cbbGenderStaff.SelectedIndex = 1 Then
-            gender = 0
-        Else
-            gender = 1
-        End If
-
         Dim idCard As String = txtIDCardStaff.Text
         Dim address As String = txtAddressStaff.Text
         Dim phone As String = txtPhoneStaff.Text
 
-        AddStaff(fullname, dob, gender, idCard, address, phone)
+        AddStaff(fullname, dob, idCard, address, phone)
     End Sub
 
     'Thay đổi tên hiển thị danh mục khi ID món ăn thay đổi
@@ -529,17 +520,10 @@ Public Class FormAdmin
                 Dim id As Integer = gridStaff.GetRowCellValue(owningRow(0), gridStaff.Columns(0))
 
                 Dim staff As Staffs = StaffDAO._Instance.GetInfoStaffById(id)
-
-                If staff._gender <> True Then
-                    cbbGenderStaff.SelectedIndex = 1
-                Else
-                    cbbGenderStaff.SelectedIndex = 0
-                End If
             End If
         Catch
         End Try
     End Sub
-#End Region
 
     Private Sub btnSaveTable_Click(sender As Object, e As EventArgs) Handles btnSaveTable.Click
         If isAddTable = True Then
@@ -557,5 +541,11 @@ Public Class FormAdmin
         isUpdateTable = False
 
         Enable()
+    End Sub
+
+#End Region
+
+    Private Sub btnAddCustomer_Click(sender As Object, e As EventArgs) Handles btnAddCustomer.Click
+
     End Sub
 End Class

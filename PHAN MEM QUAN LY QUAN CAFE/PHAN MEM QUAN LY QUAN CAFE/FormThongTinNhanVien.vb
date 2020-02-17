@@ -50,12 +50,6 @@ Public Class FormThongTinNhanVien
         txtAddressStaff.Text = _staff._address
         txtIDStaff.Text = _staff._idCard
 
-        If _staff._gender <> True Then
-            cbGender.SelectedIndex = 1
-        Else
-            cbGender.SelectedIndex = 0
-        End If
-
         txtPhoneStaff.Text = _staff._phone
     End Sub
 
@@ -77,7 +71,6 @@ Public Class FormThongTinNhanVien
         dtpDOBStaff.Enabled = enable
         txtAddressStaff.Enabled = enable
         txtIDStaff.Enabled = enable
-        cbGender.Enabled = enable
         txtPhoneStaff.Enabled = enable
     End Sub
 
@@ -93,14 +86,6 @@ Public Class FormThongTinNhanVien
         Dim fullname As String = txtNameStaff.Text.Trim
         Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
 
-        Dim gender As Integer
-
-        If cbGender.SelectedIndex = 1 Then
-            gender = 0
-        Else
-            gender = 1
-        End If
-
         Dim address As String = txtAddressStaff.Text.Trim
         Dim phone As String = txtPhoneStaff.Text.Trim
         Dim idCard As String = txtIDStaff.Text.Trim
@@ -112,7 +97,7 @@ Public Class FormThongTinNhanVien
             Else
                 If oldPass.Equals(oldPassDatabase) Then
                     If newPassRetype.Equals(newPass) Then
-                        If (StaffDAO._Instance.UpdateInfoStaff(_staff._id, fullname, dob, gender, idCard, address, phone)) Then
+                        If (StaffDAO._Instance.UpdateInfoStaff(_staff._id, fullname, dob, idCard, address, phone)) Then
                             If (AccountDAO._Instance.UpdateAccountStaff(idAccount, idCard, newPass, _staff._id)) Then
                                 MessageBox.Show("Cập nhật thành công")
 
@@ -160,7 +145,7 @@ Public Class FormThongTinNhanVien
             If CheckEmpty(fullname) Then
                 MessageBox.Show("Không được bỏ trống tên!!!")
             Else
-                If (StaffDAO._Instance.UpdateInfoStaff(_staff._id, fullname, dob, gender, idCard, address, phone)) Then
+                If (StaffDAO._Instance.UpdateInfoStaff(_staff._id, fullname, dob, idCard, address, phone)) Then
                     If (AccountDAO._Instance.UpdateUsernameAccountStaff(idAccount, idCard)) Then
                         MessageBox.Show("Cập nhật thành công")
 

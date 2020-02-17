@@ -4,20 +4,20 @@
         Private id As Integer
         Private name As String
         Private status As String
-        Private statusDelete As Integer
+        Private statusDel As Integer
 
-        Public Sub New(id As Integer, name As String, status As String, statusDelete As Integer)
+        Public Sub New(id As Integer, name As String, status As String, statusDel As Integer)
             Me.id = id
             Me.name = name
             Me.status = status
-            Me.statusDelete = statusDelete
+            Me.statusDel = statusDel
         End Sub
 
         Public Sub New(row As DataRow)
             Me.id = CInt(row("id"))
             Me.name = row("name").ToString()
             Me.status = row("status").ToString()
-            Me.id = CInt(row("statusDelete"))
+            Me.statusDel = CInt(row("statusDel"))
         End Sub
 
         Public Property _id() As Integer
@@ -47,12 +47,12 @@
             End Set
         End Property
 
-        Public Property _statusDelete() As Integer
+        Public Property _statusDel() As Integer
             Get
-                Return statusDelete
+                Return statusDel
             End Get
             Set(value As Integer)
-                statusDelete = value
+                statusDel = value
             End Set
         End Property
     End Class

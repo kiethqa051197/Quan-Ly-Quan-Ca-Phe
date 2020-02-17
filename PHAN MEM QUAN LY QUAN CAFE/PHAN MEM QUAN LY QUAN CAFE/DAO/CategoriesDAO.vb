@@ -20,7 +20,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 
         Public Function GetListCategory() As List(Of Categories)
             Dim list As List(Of Categories) = New List(Of Categories)()
-            Dim query As String = QuerySelectAllExcept("Categories")
+            Dim query As String = "SELECT * FROM CATEGORIES WHERE STATUS = 0 EXCEPT (SELECT * FROM CATEGORIES WHERE name = 'Khác' AND id = 1)"
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
 
             For Each item As DataRow In data.Rows

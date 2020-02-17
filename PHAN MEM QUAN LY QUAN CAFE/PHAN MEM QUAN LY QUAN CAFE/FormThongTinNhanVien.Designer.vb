@@ -31,13 +31,11 @@ Partial Class FormThongTinNhanVien
         Me.txtIDStaff = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.txtAddressStaff = New System.Windows.Forms.TextBox()
-        Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.txtPhoneStaff = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.btnChangeInfo = New DevExpress.XtraEditors.SimpleButton()
         Me.checkboxChangePass = New System.Windows.Forms.CheckBox()
         Me.panelInfoStaff = New DevExpress.XtraEditors.PanelControl()
-        Me.cbGender = New System.Windows.Forms.ComboBox()
         Me.panelChangePass = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.txtRetypeNewPass = New DevExpress.XtraEditors.TextEdit()
@@ -113,7 +111,7 @@ Partial Class FormThongTinNhanVien
         'txtIDStaff
         '
         Me.txtIDStaff.Enabled = False
-        Me.txtIDStaff.Location = New System.Drawing.Point(129, 203)
+        Me.txtIDStaff.Location = New System.Drawing.Point(128, 226)
         Me.txtIDStaff.Name = "txtIDStaff"
         Me.txtIDStaff.Size = New System.Drawing.Size(176, 20)
         Me.txtIDStaff.TabIndex = 8
@@ -121,7 +119,7 @@ Partial Class FormThongTinNhanVien
         'LabelControl10
         '
         Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl10.Location = New System.Drawing.Point(18, 205)
+        Me.LabelControl10.Location = New System.Drawing.Point(17, 228)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(88, 14)
         Me.LabelControl10.TabIndex = 16
@@ -133,17 +131,8 @@ Partial Class FormThongTinNhanVien
         Me.txtAddressStaff.Location = New System.Drawing.Point(129, 123)
         Me.txtAddressStaff.Multiline = True
         Me.txtAddressStaff.Name = "txtAddressStaff"
-        Me.txtAddressStaff.Size = New System.Drawing.Size(176, 67)
+        Me.txtAddressStaff.Size = New System.Drawing.Size(176, 97)
         Me.txtAddressStaff.TabIndex = 7
-        '
-        'LabelControl11
-        '
-        Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl11.Location = New System.Drawing.Point(18, 237)
-        Me.LabelControl11.Name = "LabelControl11"
-        Me.LabelControl11.Size = New System.Drawing.Size(55, 14)
-        Me.LabelControl11.TabIndex = 19
-        Me.LabelControl11.Text = "Giới tính:"
         '
         'txtPhoneStaff
         '
@@ -184,12 +173,10 @@ Partial Class FormThongTinNhanVien
         'panelInfoStaff
         '
         Me.panelInfoStaff.Controls.Add(Me.panelChangePass)
-        Me.panelInfoStaff.Controls.Add(Me.cbGender)
         Me.panelInfoStaff.Controls.Add(Me.checkboxChangePass)
         Me.panelInfoStaff.Controls.Add(Me.btnChangeInfo)
         Me.panelInfoStaff.Controls.Add(Me.LabelControl12)
         Me.panelInfoStaff.Controls.Add(Me.txtPhoneStaff)
-        Me.panelInfoStaff.Controls.Add(Me.LabelControl11)
         Me.panelInfoStaff.Controls.Add(Me.txtAddressStaff)
         Me.panelInfoStaff.Controls.Add(Me.LabelControl10)
         Me.panelInfoStaff.Controls.Add(Me.txtIDStaff)
@@ -203,16 +190,6 @@ Partial Class FormThongTinNhanVien
         Me.panelInfoStaff.Name = "panelInfoStaff"
         Me.panelInfoStaff.Size = New System.Drawing.Size(328, 400)
         Me.panelInfoStaff.TabIndex = 11
-        '
-        'cbGender
-        '
-        Me.cbGender.Enabled = False
-        Me.cbGender.FormattingEnabled = True
-        Me.cbGender.Items.AddRange(New Object() {"Nam", "Nữ"})
-        Me.cbGender.Location = New System.Drawing.Point(128, 237)
-        Me.cbGender.Name = "cbGender"
-        Me.cbGender.Size = New System.Drawing.Size(176, 21)
-        Me.cbGender.TabIndex = 29
         '
         'panelChangePass
         '
@@ -315,13 +292,11 @@ Partial Class FormThongTinNhanVien
     Friend WithEvents txtIDStaff As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtAddressStaff As System.Windows.Forms.TextBox
-    Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPhoneStaff As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btnChangeInfo As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents checkboxChangePass As System.Windows.Forms.CheckBox
     Friend WithEvents panelInfoStaff As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents cbGender As System.Windows.Forms.ComboBox
     Friend WithEvents panelChangePass As DevExpress.XtraEditors.PanelControl
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtRetypeNewPass As DevExpress.XtraEditors.TextEdit
