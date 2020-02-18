@@ -57,5 +57,9 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
                 Return 1
             End Try
         End Function
+
+        Public Function PrintReport(id As Integer) As DataTable
+            Return DataProvider._Instance.ExecuteQuery("EXEC PC_REPORT_BILLS @idBill ", New Object() {id})
+        End Function
     End Class
 End Namespace

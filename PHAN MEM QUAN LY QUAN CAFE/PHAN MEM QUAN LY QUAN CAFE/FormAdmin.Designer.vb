@@ -99,7 +99,12 @@ Partial Class FormAdmin
         Me.txtSearchCustomer = New DevExpress.XtraEditors.TextEdit()
         Me.btnSearchCustomer = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl18 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDCustomer = New DevExpress.XtraEditors.TextEdit()
+        Me.btnDeleteCustomer = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnEditCustomer = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
+        Me.btnAddCustomer = New DevExpress.XtraEditors.SimpleButton()
         Me.txtPhoneCustomer = New DevExpress.XtraEditors.TextEdit()
         Me.btnSaveCustomer = New DevExpress.XtraEditors.SimpleButton()
         Me.btnCancelCustomer = New DevExpress.XtraEditors.SimpleButton()
@@ -108,10 +113,7 @@ Partial Class FormAdmin
         Me.txtNameCustomer = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl19 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvCustomer = New DevExpress.XtraGrid.GridControl()
-        Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.btnDeleteCustomer = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnEditCustomer = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnAddCustomer = New DevExpress.XtraEditors.SimpleButton()
+        Me.gridCustomer = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.tpStaff = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl12 = New DevExpress.XtraEditors.PanelControl()
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
@@ -289,12 +291,13 @@ Partial Class FormAdmin
         CType(Me.txtSearchCustomer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl18, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl18.SuspendLayout()
+        CType(Me.txtIDCustomer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPhoneCustomer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNameCustomer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl19.SuspendLayout()
         CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridCustomer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpStaff.SuspendLayout()
         CType(Me.PanelControl12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl12.SuspendLayout()
@@ -1053,6 +1056,8 @@ Partial Class FormAdmin
         '
         'PanelControl18
         '
+        Me.PanelControl18.Controls.Add(Me.LabelControl3)
+        Me.PanelControl18.Controls.Add(Me.txtIDCustomer)
         Me.PanelControl18.Controls.Add(Me.btnDeleteCustomer)
         Me.PanelControl18.Controls.Add(Me.btnEditCustomer)
         Me.PanelControl18.Controls.Add(Me.LabelControl15)
@@ -1068,18 +1073,60 @@ Partial Class FormAdmin
         Me.PanelControl18.Size = New System.Drawing.Size(318, 372)
         Me.PanelControl18.TabIndex = 11
         '
+        'LabelControl3
+        '
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl3.Location = New System.Drawing.Point(13, 71)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl3.TabIndex = 24
+        Me.LabelControl3.Text = "ID:"
+        '
+        'txtIDCustomer
+        '
+        Me.txtIDCustomer.Enabled = False
+        Me.txtIDCustomer.Location = New System.Drawing.Point(128, 70)
+        Me.txtIDCustomer.Name = "txtIDCustomer"
+        Me.txtIDCustomer.Size = New System.Drawing.Size(167, 20)
+        Me.txtIDCustomer.TabIndex = 25
+        '
+        'btnDeleteCustomer
+        '
+        Me.btnDeleteCustomer.Location = New System.Drawing.Point(210, 210)
+        Me.btnDeleteCustomer.Name = "btnDeleteCustomer"
+        Me.btnDeleteCustomer.Size = New System.Drawing.Size(85, 45)
+        Me.btnDeleteCustomer.TabIndex = 3
+        Me.btnDeleteCustomer.Text = "Xoá"
+        '
+        'btnEditCustomer
+        '
+        Me.btnEditCustomer.Location = New System.Drawing.Point(110, 210)
+        Me.btnEditCustomer.Name = "btnEditCustomer"
+        Me.btnEditCustomer.Size = New System.Drawing.Size(85, 45)
+        Me.btnEditCustomer.TabIndex = 2
+        Me.btnEditCustomer.Text = "Sửa"
+        '
         'LabelControl15
         '
         Me.LabelControl15.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl15.Location = New System.Drawing.Point(14, 121)
+        Me.LabelControl15.Location = New System.Drawing.Point(14, 145)
         Me.LabelControl15.Name = "LabelControl15"
         Me.LabelControl15.Size = New System.Drawing.Size(86, 14)
         Me.LabelControl15.TabIndex = 23
         Me.LabelControl15.Text = "Số điện thoại:"
         '
+        'btnAddCustomer
+        '
+        Me.btnAddCustomer.Location = New System.Drawing.Point(13, 210)
+        Me.btnAddCustomer.Name = "btnAddCustomer"
+        Me.btnAddCustomer.Size = New System.Drawing.Size(85, 45)
+        Me.btnAddCustomer.TabIndex = 1
+        Me.btnAddCustomer.Text = "Thêm"
+        '
         'txtPhoneCustomer
         '
-        Me.txtPhoneCustomer.Location = New System.Drawing.Point(128, 119)
+        Me.txtPhoneCustomer.Enabled = False
+        Me.txtPhoneCustomer.Location = New System.Drawing.Point(128, 143)
         Me.txtPhoneCustomer.Name = "txtPhoneCustomer"
         Me.txtPhoneCustomer.Size = New System.Drawing.Size(167, 20)
         Me.txtPhoneCustomer.TabIndex = 11
@@ -1112,7 +1159,7 @@ Partial Class FormAdmin
         'LabelControl23
         '
         Me.LabelControl23.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl23.Location = New System.Drawing.Point(13, 82)
+        Me.LabelControl23.Location = New System.Drawing.Point(13, 106)
         Me.LabelControl23.Name = "LabelControl23"
         Me.LabelControl23.Size = New System.Drawing.Size(101, 14)
         Me.LabelControl23.TabIndex = 6
@@ -1120,7 +1167,8 @@ Partial Class FormAdmin
         '
         'txtNameCustomer
         '
-        Me.txtNameCustomer.Location = New System.Drawing.Point(128, 81)
+        Me.txtNameCustomer.Enabled = False
+        Me.txtNameCustomer.Location = New System.Drawing.Point(128, 105)
         Me.txtNameCustomer.Name = "txtNameCustomer"
         Me.txtNameCustomer.Size = New System.Drawing.Size(167, 20)
         Me.txtNameCustomer.TabIndex = 6
@@ -1138,40 +1186,16 @@ Partial Class FormAdmin
         Me.dgvCustomer.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCustomer.Location = New System.Drawing.Point(2, 2)
-        Me.dgvCustomer.MainView = Me.GridView6
+        Me.dgvCustomer.MainView = Me.gridCustomer
         Me.dgvCustomer.Name = "dgvCustomer"
         Me.dgvCustomer.Size = New System.Drawing.Size(405, 430)
         Me.dgvCustomer.TabIndex = 2
-        Me.dgvCustomer.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView6})
+        Me.dgvCustomer.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridCustomer})
         '
-        'GridView6
+        'gridCustomer
         '
-        Me.GridView6.GridControl = Me.dgvCustomer
-        Me.GridView6.Name = "GridView6"
-        '
-        'btnDeleteCustomer
-        '
-        Me.btnDeleteCustomer.Location = New System.Drawing.Point(210, 210)
-        Me.btnDeleteCustomer.Name = "btnDeleteCustomer"
-        Me.btnDeleteCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteCustomer.TabIndex = 3
-        Me.btnDeleteCustomer.Text = "Xoá"
-        '
-        'btnEditCustomer
-        '
-        Me.btnEditCustomer.Location = New System.Drawing.Point(110, 210)
-        Me.btnEditCustomer.Name = "btnEditCustomer"
-        Me.btnEditCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditCustomer.TabIndex = 2
-        Me.btnEditCustomer.Text = "Sửa"
-        '
-        'btnAddCustomer
-        '
-        Me.btnAddCustomer.Location = New System.Drawing.Point(13, 210)
-        Me.btnAddCustomer.Name = "btnAddCustomer"
-        Me.btnAddCustomer.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddCustomer.TabIndex = 1
-        Me.btnAddCustomer.Text = "Thêm"
+        Me.gridCustomer.GridControl = Me.dgvCustomer
+        Me.gridCustomer.Name = "gridCustomer"
         '
         'tpStaff
         '
@@ -1269,7 +1293,6 @@ Partial Class FormAdmin
         Me.btnResetPass.Size = New System.Drawing.Size(176, 37)
         Me.btnResetPass.TabIndex = 12
         Me.btnResetPass.Text = "Đặt lại tài khoản"
-        Me.btnResetPass.Visible = False
         '
         'txtAddressStaff
         '
@@ -1328,7 +1351,6 @@ Partial Class FormAdmin
         Me.btnSaveStaff.Size = New System.Drawing.Size(85, 28)
         Me.btnSaveStaff.TabIndex = 11
         Me.btnSaveStaff.Text = "Lưu"
-        Me.btnSaveStaff.Visible = False
         '
         'btnCancelStaff
         '
@@ -1337,7 +1359,6 @@ Partial Class FormAdmin
         Me.btnCancelStaff.Size = New System.Drawing.Size(85, 28)
         Me.btnCancelStaff.TabIndex = 12
         Me.btnCancelStaff.Text = "Huỷ"
-        Me.btnCancelStaff.Visible = False
         '
         'LabelControl5
         '
@@ -2356,12 +2377,13 @@ Partial Class FormAdmin
         CType(Me.PanelControl18, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl18.ResumeLayout(False)
         Me.PanelControl18.PerformLayout()
+        CType(Me.txtIDCustomer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPhoneCustomer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNameCustomer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl19.ResumeLayout(False)
         CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridCustomer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpStaff.ResumeLayout(False)
         CType(Me.PanelControl12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl12.ResumeLayout(False)
@@ -2549,7 +2571,7 @@ Partial Class FormAdmin
     Friend WithEvents txtNameCustomer As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PanelControl19 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvCustomer As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView6 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridCustomer As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents btnDeleteCustomer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditCustomer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddCustomer As DevExpress.XtraEditors.SimpleButton
@@ -2670,4 +2692,6 @@ Partial Class FormAdmin
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtNameTable As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDCustomer As DevExpress.XtraEditors.TextEdit
 End Class

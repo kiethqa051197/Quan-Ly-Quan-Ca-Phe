@@ -6,7 +6,448 @@ PHANMEMQUANLYQUANCAFE
 </name>
 </assembly>
 <members>
-<member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.My.Resources.Resources.ResourceManager">
+<member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreviewLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Customize">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_CustomizeLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Document">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMap">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMapLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHF">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHFLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsv">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsvLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportFile">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportFileLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphic">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphicLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtm">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtmLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportMht">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportMhtLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdf">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdfLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtf">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtfLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxt">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxtLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportXls">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsx">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsxLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_FillBackground">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_FillBackgroundLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Find">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_FindLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_HandTool">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Magnifier">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePages">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePagesLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Open">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_OpenLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageMargins">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsModerate">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsNarrow">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsNormal">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsWide">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientation">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationLandscape">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationPortrait">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PageSetupDialog">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A3">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A4">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A5">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A6">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Executive">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Legal">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Letter">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Tabloid">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperSize">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PaperSizeLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Parameters">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ParametersLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Pointer">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Print">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirect">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirectLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PrintLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PrintSetup">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_PrintSetupLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Save">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SaveLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Scale">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ScaleLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendCsv">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendCsvLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendFile">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendFileLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphic">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphicLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendMht">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendMhtLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendPdf">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendPdfLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendRtf">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendRtfLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendTxt">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendTxtLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendXls">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsx">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsxLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPageLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPageLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPageLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPageLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Watermark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_WatermarkLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_Zoom">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ZoomIn">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ZoomInLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ZoomLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOut">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOutLarge">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>

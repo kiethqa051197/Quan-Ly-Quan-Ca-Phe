@@ -1,6 +1,7 @@
 ﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
 Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 Imports System.Globalization
+Imports DevExpress.XtraReports.UI
 
 Public Class FormBanHang
 
@@ -141,6 +142,9 @@ Public Class FormBanHang
         AddHandler f.InsertTables, AddressOf f_InsertTableFood
         AddHandler f.DeleteTables, AddressOf f_DeleteTableFood
         AddHandler f.UpdateTables, AddressOf f_UpdateTableFood
+        AddHandler f.AddCustomers, AddressOf f_AddCustomer
+        AddHandler f.UpdateCustomers, AddressOf f_UpdateCustomer
+        AddHandler f.DeleteCustomers, AddressOf f_DeleteCustomer
 
         f.ShowDialog()
     End Sub
@@ -209,6 +213,9 @@ Public Class FormBanHang
                 TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
                 ShowBill(table._id)
                 LoadTable()
+
+                'Dim report As New FormHoaDon
+                'report.ShowDialog()
             End If
         End If
     End Sub
@@ -222,12 +229,6 @@ Public Class FormBanHang
             TableDAO._Instance.SwitchTable(id1, id2, idStaff)
             LoadTable()
         End If
-    End Sub
-
-    'Click menu 'Khách hàng' (chưa xong)
-    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
-        Dim f As FormKhachHang = New FormKhachHang()
-        f.ShowDialog()
     End Sub
 
     'Thông tin cá nhân
@@ -306,10 +307,21 @@ Public Class FormBanHang
     End Sub
 
     'Thêm Khách hàng
+    Private Sub f_UpdateCustomer(sender As Object, e As EventArgs)
+        LoadListCustomer()
+    End Sub
+
+    'Thêm Khách hàng
+    Private Sub f_DeleteCustomer(sender As Object, e As EventArgs)
+        LoadListCustomer()
+    End Sub
+
+    'Thêm Khách hàng
     Private Sub btnAddCustomer_Click(sender As Object, e As EventArgs) Handles btnAddCustomer.Click
         Dim f As FormKhachHang = New FormKhachHang
         AddHandler f.AddCustomer, AddressOf f_AddCustomer
         f.ShowDialog()
     End Sub
+
 #End Region
 End Class

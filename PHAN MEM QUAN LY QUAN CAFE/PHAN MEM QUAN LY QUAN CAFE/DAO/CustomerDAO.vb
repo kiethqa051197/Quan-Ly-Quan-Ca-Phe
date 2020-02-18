@@ -35,4 +35,16 @@ Public Class CustomerDAO
         Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
         Return result > 0
     End Function
+
+    Public Function UpdateCustomer(id As Integer, name As String, phone As String) As Boolean
+        Dim query As String = String.Format("UPDATE CUSTOMERS SET name = N'{1}' , phone = '{2}' WHERE id = {0}", id, name, phone)
+        Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
+        Return result > 0
+    End Function
+
+    Public Function DeleteCustomer(id As Integer) As Boolean
+        Dim query As String = String.Format("Update CUSTOMERS SET status = 1 WHERE id = {0}", id)
+        Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
+        Return result > 0
+    End Function
 End Class

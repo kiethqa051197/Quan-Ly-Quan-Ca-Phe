@@ -526,3 +526,17 @@ BEGIN
 
 	Delete CATEGORIES WHERE id = @idCategory
 END
+GO
+
+--- 
+CREATE PROC PC_REPORT_BILLS 
+	@idBill int
+AS 
+Begin
+	SELECT b.id, i.name, bi.price, bi.count, s.fullname, b.dateCheckOut
+	FROM BILLS AS b 
+	JOIN BILLINFOS AS bi ON b.id = bi.idBill
+	JOIN STAFFS AS s ON s.id = b.idStaff
+	JOIN ITEMS AS i ON i.id = bi.idItems
+	WHERE b.id = @idBill
+End

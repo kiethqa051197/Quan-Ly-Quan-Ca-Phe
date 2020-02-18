@@ -9,6 +9,7 @@ Public Class FormAdmin
     Private categoryFoodList As BindingSource = New BindingSource()
     Private tableFoodList As BindingSource = New BindingSource()
     Private staffList As BindingSource = New BindingSource()
+    Private customerList As BindingSource = New BindingSource()
 
     Private isUpdateTable As Boolean = False
     Private isAddTable As Boolean = False
@@ -18,6 +19,12 @@ Public Class FormAdmin
 
     Private isUpdateFood As Boolean = False
     Private isAddFood As Boolean = False
+
+    Private isUpdateCustomer As Boolean = False
+    Private isAddCustomer As Boolean = False
+
+    Private isUpdateStaff As Boolean = False
+    Private isAddStaff As Boolean = False
 
     Public loginAccount As Accounts
 
@@ -36,6 +43,8 @@ Public Class FormAdmin
         dgvCategory.DataSource = categoryFoodList
         dgvTable.DataSource = tableFoodList
         dgvStaff.DataSource = staffList
+        dgvCustomer.DataSource = customerList
+
         'LoadDateTimePickerBill()
         'LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value)
         LoadListFood()
@@ -47,6 +56,8 @@ Public Class FormAdmin
         AddTableFoodBindding()
         LoadStaff()
         AddStaffBindding()
+        LoadListCustomer()
+        AddCustomerBindding()
 
         ChangeColumnName()
     End Sub
@@ -62,7 +73,6 @@ Public Class FormAdmin
         cb.DataSource = CategoriesDAO._Instance.GetListCategory()
         cb.DisplayMember = "_name"
     End Sub
-
 
 #Region "Đưa dữ liệu lên các textbox tương ứng"
 
@@ -95,6 +105,13 @@ Public Class FormAdmin
         txtPhoneStaff.DataBindings.Add(New Binding("Text", dgvStaff.DataSource, "_phone", True, DataSourceUpdateMode.Never))
     End Sub
 
+    'Khách hàng
+    Private Sub AddCustomerBindding()
+        txtIDCustomer.DataBindings.Add(New Binding("Text", dgvCustomer.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameCustomer.DataBindings.Add(New Binding("Text", dgvCustomer.DataSource, "_name", True, DataSourceUpdateMode.Never))
+        txtPhoneCustomer.DataBindings.Add(New Binding("Text", dgvCustomer.DataSource, "_phone", True, DataSourceUpdateMode.Never))
+    End Sub
+
 #End Region
 
     ' Lấy danh sách các món ăn
@@ -115,6 +132,11 @@ Public Class FormAdmin
     'Lấy danh sách nhân viên
     Private Sub LoadStaff()
         staffList.DataSource = StaffDAO._Instance.GetListStaff()
+    End Sub
+
+    'Lấy danh sách khách hàng
+    Private Sub LoadListCustomer()
+        customerList.DataSource = CustomerDAO._Instance.GetListCustomer()
     End Sub
 
     'Thêm nhân viên
@@ -185,7 +207,7 @@ Public Class FormAdmin
         End If
     End Sub
 
-    ' Chỉnh sửa danh mục
+    'Chỉnh sửa danh mục
     Private Sub EditCategory(id As Integer, name As String)
         If CategoriesDAO._Instance.UpdateCategory(id, name) Then
             MessageBox.Show("Sửa thành công")
@@ -221,7 +243,7 @@ Public Class FormAdmin
         End If
     End Sub
 
-    'Thêm món ăn
+    'Chỉnh sửa món ăn
     Private Sub EditFood(id As Integer, name As String, categoryID As Integer, price As Integer)
         If ItemsDAO._Instance.UpdateFood(id, name, categoryID, price) Then
             MessageBox.Show("Sửa thành công")
@@ -243,6 +265,39 @@ Public Class FormAdmin
         End If
     End Sub
 
+    'Thêm khách hàng
+    Private Sub AddCustomer(name As String, phone As String)
+        If CustomerDAO._Instance.InsertCustomer(name, phone) Then
+            MessageBox.Show("Thêm thành công")
+            LoadListCustomer()
+            RaiseEvent AddCustomers(Me, New EventArgs())
+        Else
+            MessageBox.Show("Có lỗi khi thêm")
+        End If
+    End Sub
+
+    'Chỉnh sửa khách hàng
+    Private Sub EditCustomer(id As Integer, name As String, phone As String)
+        If CustomerDAO._Instance.UpdateCustomer(id, name, phone) Then
+            MessageBox.Show("Sửa thành công")
+            LoadListCustomer()
+            RaiseEvent UpdateCustomers(Me, New EventArgs())
+        Else
+            MessageBox.Show("Có lỗi khi sửa")
+        End If
+    End Sub
+
+    'Xoá khách hàng
+    Private Sub DeleteCustomer(id As Integer)
+        If CustomerDAO._Instance.DeleteCustomer(id) Then
+            MessageBox.Show("Xoá thành công")
+            LoadListCustomer()
+            RaiseEvent DeleteCustomers(Me, New EventArgs())
+        Else
+            MessageBox.Show("Có lỗi khi xoá")
+        End If
+    End Sub
+
     'Đổi tên Column
     Private Sub ChangeColumnName()
         'Bảng Món Ăn
@@ -256,12 +311,14 @@ Public Class FormAdmin
         'Bảng Danh Mục
         gridCategory.Columns(0).Caption = "Mã danh mục"
         gridCategory.Columns(1).Caption = "Tên danh mục"
+        gridCategory.BestFitColumns()
 
         'Bảng Bàn Ăn
         gridTable.Columns(0).Caption = "Mã bàn"
         gridTable.Columns(1).Caption = "Tên bàn"
         gridTable.Columns(2).Caption = "Trạng thái"
         gridTable.Columns(3).Caption = "Đã xoá"
+        gridTable.BestFitColumns()
 
         'Bảng Nhân Viên
         gridStaff.Columns(0).Caption = "Mã nhân viên"
@@ -272,6 +329,15 @@ Public Class FormAdmin
         gridStaff.Columns(5).Caption = "SĐT"
         gridStaff.Columns(6).Caption = "Đã xoá"
         gridStaff.BestFitColumns()
+
+        'Bảng Danh Mục
+        gridCustomer.Columns(0).Caption = "Mã khách hàng"
+        gridCustomer.Columns(1).Caption = "Tên khách hàng"
+        gridCustomer.Columns(2).Caption = "SĐT"
+        gridCustomer.Columns(3).Caption = "Ngày tạo"
+        gridCustomer.Columns(4).Caption = "Đã Xoá"
+
+        gridCustomer.BestFitColumns()
     End Sub
 
     'Mở/Đóng các items
@@ -320,7 +386,24 @@ Public Class FormAdmin
             cbCategoryFood.Enabled = False
             nmPriceFood.Enabled = False
             EnableButton(True, False, btnAddFood, btnEditFood, btnDeleteFood, btnSaveFood, btnCancelFood)
+        End If
 
+        If isAddCustomer = True Or isUpdateCustomer = True Then
+            txtNameCustomer.Enabled = True
+            txtPhoneCustomer.Enabled = True
+
+            EnableButton(False, True, btnAddCustomer, btnEditCustomer, btnDeleteCustomer, btnSaveCustomer, btnCancelCustomer)
+
+            If isAddCustomer = True Then
+                txtNameCustomer.Text = ""
+                txtPhoneCustomer.Text = ""
+                txtIDCustomer.Text = "Mã khách hàng được lấy tự động"
+            End If
+        ElseIf isAddCustomer = False Or isUpdateCustomer = False Then
+            txtNameCustomer.Enabled = False
+            txtPhoneCustomer.Enabled = False
+
+            EnableButton(True, False, btnAddCustomer, btnEditCustomer, btnDeleteCustomer, btnSaveCustomer, btnCancelCustomer)
         End If
     End Sub
 
@@ -338,142 +421,6 @@ Public Class FormAdmin
         buttonEdit.Enabled = enableAED
         buttonDelete.Enabled = enableAED
     End Sub
-
-#End Region
-
-#Region "CUSTOM EVENT"
-
-    'Thêm sửa xóa Thức Ăn
-
-    Public Custom Event InsertFoods As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("InsertFood", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("InsertFood", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("InsertFood"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    Public Custom Event UpdateFoods As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("UpdateFood", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("UpdateFood", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("UpdateFood"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    Public Custom Event DeleteFoods As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("DeleteFood", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("DeleteFood", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("DeleteFood"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    'Thêm sửa xóa Danh Mục
-
-    Public Custom Event InsertCategoryFoods As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("InsertCategoryFood", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("InsertCategoryFood", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("InsertCategoryFood"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    Public Custom Event UpdateCategoryFoods As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("UpdateCategoryFood", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("UpdateCategoryFood", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("UpdateCategoryFood"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    Public Custom Event DeleteCategoryFoods As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("DeleteCategoryFood", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("DeleteCategoryFood", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("DeleteCategoryFood"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    'Thêm sửa xóa Bàn Ăn
-
-    Public Custom Event InsertTables As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("InsertTable", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("InsertTable", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("InsertTable"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    Public Custom Event UpdateTables As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("UpdateTable", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("UpdateTable", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("UpdateTable"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
-
-    Public Custom Event DeleteTables As EventHandler
-        AddHandler(value As EventHandler)
-            Me.Events.AddHandler("DeleteTable", value)
-        End AddHandler
-
-        RemoveHandler(value As EventHandler)
-            Me.Events.RemoveHandler("DeleteTable", value)
-        End RemoveHandler
-
-        RaiseEvent(sender As Object, e As System.EventArgs)
-            CType(Me.Events("DeleteTable"), EventHandler).Invoke(sender, e)
-        End RaiseEvent
-    End Event
 
 #End Region
 
@@ -611,6 +558,50 @@ Public Class FormAdmin
         Enable()
     End Sub
 
+    'Thêm khách hàng
+    Private Sub btnAddCustomer_Click(sender As Object, e As EventArgs) Handles btnAddCustomer.Click
+        isAddCustomer = True
+        isUpdateCustomer = False
+
+        Enable()
+    End Sub
+
+    'Lưu khách hàng
+    Private Sub btnSaveCustomer_Click(sender As Object, e As EventArgs) Handles btnSaveCustomer.Click
+        If isAddCustomer = True Then
+            Dim name As String = txtNameCustomer.Text
+            Dim phone As String = txtPhoneCustomer.Text
+            AddCustomer(name, phone)
+        ElseIf isUpdateCustomer = True Then
+            Dim name As String = txtNameCustomer.Text
+            Dim phone As String = txtPhoneCustomer.Text
+            Dim id As Integer = Convert.ToInt32(txtIDCustomer.Text)
+            EditCustomer(id, name, phone)
+        End If
+    End Sub
+
+    'Chỉnh sửa khách hàng
+    Private Sub btnEditCustomer_Click(sender As Object, e As EventArgs) Handles btnEditCustomer.Click
+        isAddCustomer = False
+        isUpdateCustomer = True
+
+        Enable()
+    End Sub
+
+    'Xoá khách hàng
+    Private Sub btnDeleteCustomer_Click(sender As Object, e As EventArgs) Handles btnDeleteCustomer.Click
+        Dim id As Integer = Convert.ToInt32(txtIDCustomer.Text)
+        DeleteCustomer(id)
+    End Sub
+
+    'Nút huỷ quy trình khách hàng
+    Private Sub btnCancelCustomer_Click(sender As Object, e As EventArgs) Handles btnCancelCustomer.Click
+        isAddCustomer = False
+        isUpdateCustomer = False
+
+        Enable()
+    End Sub
+
     'Nút Tìm Kiếm Món Ăn
     Private Sub btnSearchFood_Click(sender As Object, e As EventArgs) Handles btnSearchFood.Click
         foodList.DataSource = SearchFoodByName(txtSearchFood.Text)
@@ -618,6 +609,11 @@ Public Class FormAdmin
 
     'Nút Thêm nhân viên
     Private Sub btnAddStaff_Click(sender As Object, e As EventArgs) Handles btnAddStaff.Click
+        isAddStaff = True
+        isUpdateStaff = False
+
+        Enable()
+
         Dim fullname As String = txtNameStaff.Text
         Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
 
@@ -669,11 +665,185 @@ Public Class FormAdmin
         Catch
         End Try
     End Sub
-
 #End Region
 
-    Private Sub btnAddCustomer_Click(sender As Object, e As EventArgs) Handles btnAddCustomer.Click
+#Region "CUSTOM EVENT"
 
-    End Sub
+    'Thêm sửa xóa Thức Ăn
+
+    Public Custom Event InsertFoods As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("InsertFood", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("InsertFood", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("InsertFood"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event UpdateFoods As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("UpdateFood", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("UpdateFood", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("UpdateFood"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event DeleteFoods As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("DeleteFood", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("DeleteFood", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("DeleteFood"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    'Thêm sửa xóa Danh Mục
+
+    Public Custom Event InsertCategoryFoods As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("InsertCategoryFood", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("InsertCategoryFood", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("InsertCategoryFood"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event UpdateCategoryFoods As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("UpdateCategoryFood", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("UpdateCategoryFood", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("UpdateCategoryFood"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event DeleteCategoryFoods As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("DeleteCategoryFood", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("DeleteCategoryFood", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("DeleteCategoryFood"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    'Thêm sửa xóa Bàn Ăn
+
+    Public Custom Event InsertTables As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("InsertTable", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("InsertTable", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("InsertTable"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event UpdateTables As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("UpdateTable", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("UpdateTable", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("UpdateTable"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event DeleteTables As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("DeleteTable", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("DeleteTable", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("DeleteTable"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    'Thêm sửa xoá khách hàng
+
+    Public Custom Event AddCustomers As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("addCustomer", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("addCustomer", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("addCustomer"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event UpdateCustomers As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("updateCustomer", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("updateCustomer", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("updateCustomer"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
+    Public Custom Event DeleteCustomers As EventHandler
+        AddHandler(value As EventHandler)
+            Me.Events.AddHandler("deleteCustomer", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler)
+            Me.Events.RemoveHandler("deleteCustomer", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("deleteCustomer"), EventHandler).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+#End Region
 
 End Class
