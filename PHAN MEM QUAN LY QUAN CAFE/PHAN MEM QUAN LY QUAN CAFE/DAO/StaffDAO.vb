@@ -39,15 +39,19 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
             Return result > 0
         End Function
 
-        Public Function InsertStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String) As Boolean
-            Dim query As String = "Exec PC_AddNewStaff @fullname , @dateofbirth , @idCard , @address , @phone "
-            Dim result As DataTable = DataProvider._Instance.ExecuteQuery(query, New Object() {fullname, dateofbirth, idCard, address, phone})
-            Return result.Rows.Count > 0
+        Public Function DeleteStaff(id As Integer) As Boolean
+            Dim query As String = String.Format("Update STAFFS SET status = 1 where id = {0}", id)
+            Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
+            Return result > 0
         End Function
+
+        Public Sub InsertStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
+            DataProvider._Instance.ExecuteNoneQuery("Exec PC_AddNewStaff @fullname , @dateofbirth , @idCard , @address , @phone ", New Object() {fullname, dateofbirth, idCard, address, phone})
+        End Sub
 
         Public Function GetListStaff() As List(Of Staffs)
             Dim list As List(Of Staffs) = New List(Of Staffs)()
-            Dim query As String = "SELECT * FROM dbo.STAFFS EXCEPT SELECT * FROM dbo.STAFFS WHERE id = 1"
+            Dim query As String = "SELECT * FROM dbo.STAFFS WHERE status = 0 EXCEPT SELECT * FROM dbo.STAFFS WHERE id = 1"
             Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
 
             For Each item As DataRow In data.Rows

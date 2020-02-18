@@ -27,10 +27,13 @@ Public Class FormAdmin
     Private isAddStaff As Boolean = False
 
     Public loginAccount As Accounts
+    Private _idStaff As Integer
 
-    Public Sub New()
+    Public Sub New(idStaff As Integer)
         InitializeComponent()
         LoadData()
+
+        _idStaff = idStaff
     End Sub
 
 #End Region
@@ -141,13 +144,39 @@ Public Class FormAdmin
 
     'Thêm nhân viên
     Private Sub AddStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
-        If StaffDAO._Instance.InsertStaff(fullname, dateofbirth, idCard, address, phone) Then
-            MessageBox.Show("Thêm tài khoản thành công")
-        Else
-            MessageBox.Show("Thêm tài khoản thất bại")
-        End If
-
+        StaffDAO._Instance.InsertStaff(fullname, dateofbirth, idCard, address, phone)
+        MessageBox.Show("Thêm tài khoản thành công")
         LoadStaff()
+
+        isAddStaff = False
+        Enable()
+
+    End Sub
+
+    Private Sub DeleteStaff(id As Integer)
+        If StaffDAO._Instance.DeleteStaff(id) Then
+            MessageBox.Show("Xóa thành công")
+            LoadStaff()
+        Else
+            MessageBox.Show("Xóa thất bại")
+        End If
+    End Sub
+
+    Private Sub UpdateStaff(id As Integer, fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
+        If StaffDAO._Instance.UpdateInfoStaff(id, fullname, dateofbirth, idCard, address, phone) Then
+            Dim acc As Accounts = AccountDAO._Instance.GetAccountByIdStaff(id)
+            If AccountDAO._Instance.UpdateUsernameAccountStaff(acc._id, idCard) Then
+                MessageBox.Show("Sửa thành công")
+                LoadStaff()
+
+                isUpdateStaff = False
+                Enable()
+
+                RaiseEvent updateAccount(Me, New AccountEvent(AccountDAO._Instance.GetAccountByIdStaff(acc._idStaff)))
+            End If
+        Else
+            MessageBox.Show("Sửa thất bại")
+        End If
     End Sub
 
     'Thêm bàn ăn
@@ -237,6 +266,10 @@ Public Class FormAdmin
         If ItemsDAO._Instance.InsertFood(name, price, categoryID) Then
             MessageBox.Show("Thêm thành công")
             LoadListFood()
+
+            isAddFood = False
+            Enable()
+
             RaiseEvent InsertFoods(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi thêm")
@@ -248,6 +281,10 @@ Public Class FormAdmin
         If ItemsDAO._Instance.UpdateFood(id, name, categoryID, price) Then
             MessageBox.Show("Sửa thành công")
             LoadListFood()
+
+            isUpdateFood = False
+            Enable()
+
             RaiseEvent UpdateFoods(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi sửa")
@@ -270,6 +307,10 @@ Public Class FormAdmin
         If CustomerDAO._Instance.InsertCustomer(name, phone) Then
             MessageBox.Show("Thêm thành công")
             LoadListCustomer()
+
+            isAddCustomer = False
+            Enable()
+
             RaiseEvent AddCustomers(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi thêm")
@@ -281,6 +322,10 @@ Public Class FormAdmin
         If CustomerDAO._Instance.UpdateCustomer(id, name, phone) Then
             MessageBox.Show("Sửa thành công")
             LoadListCustomer()
+
+            isUpdateFood = False
+            Enable()
+
             RaiseEvent UpdateCustomers(Me, New EventArgs())
         Else
             MessageBox.Show("Có lỗi khi sửa")
@@ -404,6 +449,34 @@ Public Class FormAdmin
             txtPhoneCustomer.Enabled = False
 
             EnableButton(True, False, btnAddCustomer, btnEditCustomer, btnDeleteCustomer, btnSaveCustomer, btnCancelCustomer)
+        End If
+
+        If isAddStaff = True Or isUpdateStaff = True Then
+            txtNameStaff.Enabled = True
+            dtpDOBStaff.Enabled = True
+            txtAddressStaff.Enabled = True
+            txtIDCardStaff.Enabled = True
+            txtPhoneStaff.Enabled = True
+
+            EnableButton(False, True, btnAddStaff, btnEditStaff, btnDeleteStaff, btnSaveStaff, btnCancelStaff)
+            btnResetPass.Enabled = False
+
+            If isAddStaff = True Then
+                txtNameStaff.Text = ""
+                txtAddressStaff.Text = ""
+                txtIDCardStaff.Text = ""
+                txtPhoneStaff.Text = ""
+                txtIDStaff.Text = "Mã nhân viên được lấy tự động"
+            End If
+        ElseIf isAddStaff = False Or isUpdateStaff = False Then
+            txtNameStaff.Enabled = False
+            dtpDOBStaff.Enabled = False
+            txtAddressStaff.Enabled = False
+            txtIDCardStaff.Enabled = False
+            txtPhoneStaff.Enabled = False
+
+            EnableButton(True, False, btnAddStaff, btnEditStaff, btnDeleteStaff, btnSaveStaff, btnCancelStaff)
+            btnResetPass.Enabled = True
         End If
     End Sub
 
@@ -613,15 +686,6 @@ Public Class FormAdmin
         isUpdateStaff = False
 
         Enable()
-
-        Dim fullname As String = txtNameStaff.Text
-        Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
-
-        Dim idCard As String = txtIDCardStaff.Text
-        Dim address As String = txtAddressStaff.Text
-        Dim phone As String = txtPhoneStaff.Text
-
-        AddStaff(fullname, dob, idCard, address, phone)
     End Sub
 
     'Thay đổi tên hiển thị danh mục khi ID món ăn thay đổi
@@ -664,6 +728,24 @@ Public Class FormAdmin
             End If
         Catch
         End Try
+    End Sub
+
+    Private Sub btnEditStaff_Click(sender As Object, e As EventArgs) Handles btnEditStaff.Click
+        isAddStaff = False
+        isUpdateStaff = True
+
+        Enable()
+    End Sub
+
+    Private Sub btnResetPass_Click(sender As Object, e As EventArgs) Handles btnResetPass.Click
+        If MessageBox.Show(String.Format("Bạn có chắc muốn đổi mật khẩu cho tài khoản này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            Dim username As String = txtIDCardStaff.Text
+            If (AccountDAO._Instance.ResetPass(username)) Then
+                MessageBox.Show("Mật khẩu của tài khoản này đã được đặt lại")
+            Else
+                MessageBox.Show("Có lỗi xảy ra")
+            End If
+        End If
     End Sub
 #End Region
 
@@ -844,6 +926,62 @@ Public Class FormAdmin
             CType(Me.Events("deleteCustomer"), EventHandler).Invoke(sender, e)
         End RaiseEvent
     End Event
+
+    'Chỉnh sửa nhân viên
+
+    'Sự kiện ở đây được định nghĩa là nếu có chỉnh sửa từ phía form bên đây thì form bán hàng sẽ thay đổi theo
+    Public Custom Event updateAccount As EventHandler(Of AccountEvent)
+        AddHandler(value As EventHandler(Of AccountEvent))
+            Me.Events.AddHandler("updatedAccount", value)
+        End AddHandler
+
+        RemoveHandler(value As EventHandler(Of AccountEvent))
+            Me.Events.RemoveHandler("updatedAccount", value)
+        End RemoveHandler
+
+        RaiseEvent(sender As Object, e As System.EventArgs)
+            CType(Me.Events("updatedAccount"), EventHandler(Of AccountEvent)).Invoke(sender, e)
+        End RaiseEvent
+    End Event
+
 #End Region
 
+    Private Sub btnDeleteStaff_Click(sender As Object, e As EventArgs) Handles btnDeleteStaff.Click
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa nhân viên này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            Dim id As Integer = Convert.ToInt32(txtIDStaff.Text)
+            If id = _idStaff Then
+                MessageBox.Show("Không được xóa bạn chứ!!!")
+            Else
+                If (StaffDAO._Instance.DeleteStaff(id)) Then
+                    MessageBox.Show("Xóa thành công")
+                    LoadStaff()
+                Else
+                    MessageBox.Show("Có lỗi khi xóa")
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub btnSaveStaff_Click(sender As Object, e As EventArgs) Handles btnSaveStaff.Click
+        Dim fullname As String = txtNameStaff.Text
+        Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
+
+        Dim idCard As String = txtIDCardStaff.Text
+        Dim address As String = txtAddressStaff.Text
+        Dim phone As String = txtPhoneStaff.Text
+
+        If isAddStaff = True Then
+            AddStaff(fullname, dob, idCard, address, phone)
+        ElseIf isUpdateStaff = True Then
+            Dim id As Integer = Convert.ToInt32(txtIDStaff.Text)
+            UpdateStaff(id, fullname, dob, idCard, address, phone)
+        End If
+    End Sub
+
+    Private Sub btnCancelStaff_Click(sender As Object, e As EventArgs) Handles btnCancelStaff.Click
+        isAddStaff = False
+        isUpdateStaff = False
+
+        Enable()
+    End Sub
 End Class

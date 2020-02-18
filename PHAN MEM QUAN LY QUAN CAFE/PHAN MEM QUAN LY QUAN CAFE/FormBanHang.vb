@@ -131,7 +131,7 @@ Public Class FormBanHang
 
     'Click menu Admin
     Private Sub AdminStripMenu_Click(sender As Object, e As EventArgs) Handles AdminStripMenu.Click
-        Dim f As FormAdmin = New FormAdmin
+        Dim f As New FormAdmin(idStaff)
 
         AddHandler f.InsertFoods, AddressOf f_InsertFood
         AddHandler f.DeleteFoods, AddressOf f_DeleteFood
@@ -145,6 +145,7 @@ Public Class FormBanHang
         AddHandler f.AddCustomers, AddressOf f_AddCustomer
         AddHandler f.UpdateCustomers, AddressOf f_UpdateCustomer
         AddHandler f.DeleteCustomers, AddressOf f_DeleteCustomer
+        AddHandler f.updateAccount, AddressOf f_UpdateAccount
 
         f.ShowDialog()
     End Sub
@@ -324,4 +325,5 @@ Public Class FormBanHang
     End Sub
 
 #End Region
+
 End Class

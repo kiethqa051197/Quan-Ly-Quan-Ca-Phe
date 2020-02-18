@@ -115,12 +115,12 @@ Partial Class FormAdmin
         Me.dgvCustomer = New DevExpress.XtraGrid.GridControl()
         Me.gridCustomer = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.tpStaff = New DevExpress.XtraTab.XtraTabPage()
-        Me.PanelControl12 = New DevExpress.XtraEditors.PanelControl()
-        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
-        Me.btnShowStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl11 = New DevExpress.XtraEditors.PanelControl()
+        Me.btnDeleteStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl51 = New DevExpress.XtraEditors.LabelControl()
+        Me.btnEditStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.txtIDStaff = New DevExpress.XtraEditors.TextEdit()
+        Me.btnAddStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.txtPhoneStaff = New DevExpress.XtraEditors.TextEdit()
         Me.btnResetPass = New DevExpress.XtraEditors.SimpleButton()
@@ -138,10 +138,6 @@ Partial Class FormAdmin
         Me.PanelControl10 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvStaff = New DevExpress.XtraGrid.GridControl()
         Me.gridStaff = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.PanelControl9 = New DevExpress.XtraEditors.PanelControl()
-        Me.btnDeleteStaff = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnEditStaff = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnAddStaff = New DevExpress.XtraEditors.SimpleButton()
         Me.tpInventoryManagement = New DevExpress.XtraTab.XtraTabPage()
         Me.LabelControl30 = New DevExpress.XtraEditors.LabelControl()
         Me.PanelControl22 = New DevExpress.XtraEditors.PanelControl()
@@ -299,9 +295,6 @@ Partial Class FormAdmin
         CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridCustomer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpStaff.SuspendLayout()
-        CType(Me.PanelControl12, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl12.SuspendLayout()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl11.SuspendLayout()
         CType(Me.txtIDStaff.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -312,8 +305,6 @@ Partial Class FormAdmin
         Me.PanelControl10.SuspendLayout()
         CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridStaff, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl9, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl9.SuspendLayout()
         Me.tpInventoryManagement.SuspendLayout()
         CType(Me.PanelControl22, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl22.SuspendLayout()
@@ -1199,42 +1190,19 @@ Partial Class FormAdmin
         '
         'tpStaff
         '
-        Me.tpStaff.Controls.Add(Me.PanelControl12)
         Me.tpStaff.Controls.Add(Me.PanelControl11)
         Me.tpStaff.Controls.Add(Me.PanelControl10)
-        Me.tpStaff.Controls.Add(Me.PanelControl9)
         Me.tpStaff.Name = "tpStaff"
         Me.tpStaff.Size = New System.Drawing.Size(740, 445)
         Me.tpStaff.Text = "Nhân viên"
         '
-        'PanelControl12
-        '
-        Me.PanelControl12.Controls.Add(Me.TextEdit2)
-        Me.PanelControl12.Controls.Add(Me.btnShowStaff)
-        Me.PanelControl12.Location = New System.Drawing.Point(418, 5)
-        Me.PanelControl12.Name = "PanelControl12"
-        Me.PanelControl12.Size = New System.Drawing.Size(318, 55)
-        Me.PanelControl12.TabIndex = 8
-        '
-        'TextEdit2
-        '
-        Me.TextEdit2.Location = New System.Drawing.Point(14, 18)
-        Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Size = New System.Drawing.Size(190, 20)
-        Me.TextEdit2.TabIndex = 3
-        '
-        'btnShowStaff
-        '
-        Me.btnShowStaff.Location = New System.Drawing.Point(228, 5)
-        Me.btnShowStaff.Name = "btnShowStaff"
-        Me.btnShowStaff.Size = New System.Drawing.Size(85, 45)
-        Me.btnShowStaff.TabIndex = 4
-        Me.btnShowStaff.Text = "Tìm"
-        '
         'PanelControl11
         '
+        Me.PanelControl11.Controls.Add(Me.btnDeleteStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl51)
+        Me.PanelControl11.Controls.Add(Me.btnEditStaff)
         Me.PanelControl11.Controls.Add(Me.txtIDStaff)
+        Me.PanelControl11.Controls.Add(Me.btnAddStaff)
         Me.PanelControl11.Controls.Add(Me.LabelControl12)
         Me.PanelControl11.Controls.Add(Me.txtPhoneStaff)
         Me.PanelControl11.Controls.Add(Me.btnResetPass)
@@ -1249,10 +1217,18 @@ Partial Class FormAdmin
         Me.PanelControl11.Controls.Add(Me.LabelControl5)
         Me.PanelControl11.Controls.Add(Me.LabelControl7)
         Me.PanelControl11.Controls.Add(Me.txtNameStaff)
-        Me.PanelControl11.Location = New System.Drawing.Point(418, 66)
+        Me.PanelControl11.Location = New System.Drawing.Point(418, 5)
         Me.PanelControl11.Name = "PanelControl11"
-        Me.PanelControl11.Size = New System.Drawing.Size(318, 395)
+        Me.PanelControl11.Size = New System.Drawing.Size(318, 432)
         Me.PanelControl11.TabIndex = 7
+        '
+        'btnDeleteStaff
+        '
+        Me.btnDeleteStaff.Location = New System.Drawing.Point(211, 290)
+        Me.btnDeleteStaff.Name = "btnDeleteStaff"
+        Me.btnDeleteStaff.Size = New System.Drawing.Size(85, 45)
+        Me.btnDeleteStaff.TabIndex = 2
+        Me.btnDeleteStaff.Text = "Xoá"
         '
         'LabelControl51
         '
@@ -1263,12 +1239,29 @@ Partial Class FormAdmin
         Me.LabelControl51.TabIndex = 26
         Me.LabelControl51.Text = "ID:"
         '
+        'btnEditStaff
+        '
+        Me.btnEditStaff.Location = New System.Drawing.Point(113, 290)
+        Me.btnEditStaff.Name = "btnEditStaff"
+        Me.btnEditStaff.Size = New System.Drawing.Size(85, 45)
+        Me.btnEditStaff.TabIndex = 1
+        Me.btnEditStaff.Text = "Sửa"
+        '
         'txtIDStaff
         '
+        Me.txtIDStaff.Enabled = False
         Me.txtIDStaff.Location = New System.Drawing.Point(120, 37)
         Me.txtIDStaff.Name = "txtIDStaff"
         Me.txtIDStaff.Size = New System.Drawing.Size(176, 20)
         Me.txtIDStaff.TabIndex = 25
+        '
+        'btnAddStaff
+        '
+        Me.btnAddStaff.Location = New System.Drawing.Point(13, 290)
+        Me.btnAddStaff.Name = "btnAddStaff"
+        Me.btnAddStaff.Size = New System.Drawing.Size(85, 45)
+        Me.btnAddStaff.TabIndex = 0
+        Me.btnAddStaff.Text = "Thêm"
         '
         'LabelControl12
         '
@@ -1281,6 +1274,7 @@ Partial Class FormAdmin
         '
         'txtPhoneStaff
         '
+        Me.txtPhoneStaff.Enabled = False
         Me.txtPhoneStaff.Location = New System.Drawing.Point(120, 256)
         Me.txtPhoneStaff.Name = "txtPhoneStaff"
         Me.txtPhoneStaff.Size = New System.Drawing.Size(176, 20)
@@ -1288,14 +1282,15 @@ Partial Class FormAdmin
         '
         'btnResetPass
         '
-        Me.btnResetPass.Location = New System.Drawing.Point(120, 333)
+        Me.btnResetPass.Location = New System.Drawing.Point(13, 386)
         Me.btnResetPass.Name = "btnResetPass"
-        Me.btnResetPass.Size = New System.Drawing.Size(176, 37)
+        Me.btnResetPass.Size = New System.Drawing.Size(283, 37)
         Me.btnResetPass.TabIndex = 12
         Me.btnResetPass.Text = "Đặt lại tài khoản"
         '
         'txtAddressStaff
         '
+        Me.txtAddressStaff.Enabled = False
         Me.txtAddressStaff.Location = New System.Drawing.Point(120, 140)
         Me.txtAddressStaff.Multiline = True
         Me.txtAddressStaff.Name = "txtAddressStaff"
@@ -1313,6 +1308,7 @@ Partial Class FormAdmin
         '
         'txtIDCardStaff
         '
+        Me.txtIDCardStaff.Enabled = False
         Me.txtIDCardStaff.Location = New System.Drawing.Point(119, 218)
         Me.txtIDCardStaff.Name = "txtIDCardStaff"
         Me.txtIDCardStaff.Size = New System.Drawing.Size(176, 20)
@@ -1329,6 +1325,7 @@ Partial Class FormAdmin
         '
         'dtpDOBStaff
         '
+        Me.dtpDOBStaff.Enabled = False
         Me.dtpDOBStaff.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpDOBStaff.Location = New System.Drawing.Point(121, 102)
         Me.dtpDOBStaff.Name = "dtpDOBStaff"
@@ -1346,17 +1343,17 @@ Partial Class FormAdmin
         '
         'btnSaveStaff
         '
-        Me.btnSaveStaff.Location = New System.Drawing.Point(120, 299)
+        Me.btnSaveStaff.Location = New System.Drawing.Point(13, 341)
         Me.btnSaveStaff.Name = "btnSaveStaff"
-        Me.btnSaveStaff.Size = New System.Drawing.Size(85, 28)
+        Me.btnSaveStaff.Size = New System.Drawing.Size(135, 39)
         Me.btnSaveStaff.TabIndex = 11
         Me.btnSaveStaff.Text = "Lưu"
         '
         'btnCancelStaff
         '
-        Me.btnCancelStaff.Location = New System.Drawing.Point(211, 299)
+        Me.btnCancelStaff.Location = New System.Drawing.Point(154, 341)
         Me.btnCancelStaff.Name = "btnCancelStaff"
-        Me.btnCancelStaff.Size = New System.Drawing.Size(85, 28)
+        Me.btnCancelStaff.Size = New System.Drawing.Size(142, 39)
         Me.btnCancelStaff.TabIndex = 12
         Me.btnCancelStaff.Text = "Huỷ"
         '
@@ -1380,6 +1377,7 @@ Partial Class FormAdmin
         '
         'txtNameStaff
         '
+        Me.txtNameStaff.Enabled = False
         Me.txtNameStaff.Location = New System.Drawing.Point(121, 68)
         Me.txtNameStaff.Name = "txtNameStaff"
         Me.txtNameStaff.Size = New System.Drawing.Size(176, 20)
@@ -1388,9 +1386,9 @@ Partial Class FormAdmin
         'PanelControl10
         '
         Me.PanelControl10.Controls.Add(Me.dgvStaff)
-        Me.PanelControl10.Location = New System.Drawing.Point(3, 65)
+        Me.PanelControl10.Location = New System.Drawing.Point(3, 5)
         Me.PanelControl10.Name = "PanelControl10"
-        Me.PanelControl10.Size = New System.Drawing.Size(409, 374)
+        Me.PanelControl10.Size = New System.Drawing.Size(409, 434)
         Me.PanelControl10.TabIndex = 6
         '
         'dgvStaff
@@ -1400,7 +1398,7 @@ Partial Class FormAdmin
         Me.dgvStaff.Location = New System.Drawing.Point(2, 2)
         Me.dgvStaff.MainView = Me.gridStaff
         Me.dgvStaff.Name = "dgvStaff"
-        Me.dgvStaff.Size = New System.Drawing.Size(405, 370)
+        Me.dgvStaff.Size = New System.Drawing.Size(405, 430)
         Me.dgvStaff.TabIndex = 2
         Me.dgvStaff.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridStaff})
         '
@@ -1408,40 +1406,6 @@ Partial Class FormAdmin
         '
         Me.gridStaff.GridControl = Me.dgvStaff
         Me.gridStaff.Name = "gridStaff"
-        '
-        'PanelControl9
-        '
-        Me.PanelControl9.Controls.Add(Me.btnDeleteStaff)
-        Me.PanelControl9.Controls.Add(Me.btnEditStaff)
-        Me.PanelControl9.Controls.Add(Me.btnAddStaff)
-        Me.PanelControl9.Location = New System.Drawing.Point(3, 5)
-        Me.PanelControl9.Name = "PanelControl9"
-        Me.PanelControl9.Size = New System.Drawing.Size(409, 55)
-        Me.PanelControl9.TabIndex = 5
-        '
-        'btnDeleteStaff
-        '
-        Me.btnDeleteStaff.Location = New System.Drawing.Point(310, 5)
-        Me.btnDeleteStaff.Name = "btnDeleteStaff"
-        Me.btnDeleteStaff.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteStaff.TabIndex = 2
-        Me.btnDeleteStaff.Text = "Xoá"
-        '
-        'btnEditStaff
-        '
-        Me.btnEditStaff.Location = New System.Drawing.Point(160, 5)
-        Me.btnEditStaff.Name = "btnEditStaff"
-        Me.btnEditStaff.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditStaff.TabIndex = 1
-        Me.btnEditStaff.Text = "Sửa"
-        '
-        'btnAddStaff
-        '
-        Me.btnAddStaff.Location = New System.Drawing.Point(10, 5)
-        Me.btnAddStaff.Name = "btnAddStaff"
-        Me.btnAddStaff.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddStaff.TabIndex = 0
-        Me.btnAddStaff.Text = "Thêm"
         '
         'tpInventoryManagement
         '
@@ -2385,9 +2349,6 @@ Partial Class FormAdmin
         CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gridCustomer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpStaff.ResumeLayout(False)
-        CType(Me.PanelControl12, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl12.ResumeLayout(False)
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl11.ResumeLayout(False)
         Me.PanelControl11.PerformLayout()
@@ -2399,8 +2360,6 @@ Partial Class FormAdmin
         Me.PanelControl10.ResumeLayout(False)
         CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gridStaff, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl9, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl9.ResumeLayout(False)
         Me.tpInventoryManagement.ResumeLayout(False)
         Me.tpInventoryManagement.PerformLayout()
         CType(Me.PanelControl22, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2509,7 +2468,6 @@ Partial Class FormAdmin
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtNameCategory As DevExpress.XtraEditors.TextEdit
     Friend WithEvents tpStaff As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents PanelControl9 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnDeleteStaff As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditStaff As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddStaff As DevExpress.XtraEditors.SimpleButton
@@ -2531,9 +2489,6 @@ Partial Class FormAdmin
     Friend WithEvents btnResetPass As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPhoneStaff As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents PanelControl12 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents TextEdit2 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents btnShowStaff As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl15 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnSaveFood As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnCancelFood As DevExpress.XtraEditors.SimpleButton

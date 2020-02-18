@@ -539,4 +539,5 @@ Begin
 	JOIN STAFFS AS s ON s.id = b.idStaff
 	JOIN ITEMS AS i ON i.id = bi.idItems
 	WHERE b.id = @idBill
-End
+END
+
