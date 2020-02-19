@@ -1,16 +1,18 @@
-﻿
-Public Class Categories
+﻿Public Class Units
     Private id As Integer
     Private name As String
+    Private status As String
 
-    Public Sub New(id As Integer, name As String)
+    Public Sub New(id As Integer, name As String, status As String)
         Me.id = id
         Me.name = name
+        Me.status = status
     End Sub
 
     Public Sub New(row As DataRow)
         Me.id = CInt(row("id"))
         Me.name = row("name").ToString()
+        Me.status = row("status").ToString()
     End Sub
 
     Public Property _id() As Integer
@@ -28,6 +30,15 @@ Public Class Categories
         End Get
         Set(value As String)
             name = value
+        End Set
+    End Property
+
+    Public Property _status() As String
+        Get
+            Return status
+        End Get
+        Set(value As String)
+            status = value
         End Set
     End Property
 End Class

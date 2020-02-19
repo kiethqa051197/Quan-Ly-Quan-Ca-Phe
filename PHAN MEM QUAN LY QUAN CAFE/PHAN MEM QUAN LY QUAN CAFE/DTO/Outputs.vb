@@ -1,16 +1,15 @@
-﻿
-Public Class Categories
+﻿Public Class Outputs
     Private id As Integer
-    Private name As String
+    Private dateOutput As DateTime
 
-    Public Sub New(id As Integer, name As String)
+    Public Sub New(id As Integer, dateOutput As DateTime)
         Me.id = id
-        Me.name = name
+        Me.dateOutput = dateOutput
     End Sub
 
     Public Sub New(row As DataRow)
         Me.id = CInt(row("id"))
-        Me.name = row("name").ToString()
+        Me.dateOutput = CType(row("dateOutput"), DateTime)
     End Sub
 
     Public Property _id() As Integer
@@ -22,12 +21,13 @@ Public Class Categories
         End Set
     End Property
 
-    Public Property _name() As String
+    Public Property _dateOutput() As DateTime
         Get
-            Return name
+            Return dateOutput
         End Get
-        Set(value As String)
-            name = value
+        Set(value As DateTime)
+            dateOutput = value
         End Set
     End Property
 End Class
+

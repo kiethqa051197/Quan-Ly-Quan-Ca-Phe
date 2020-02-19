@@ -17,7 +17,7 @@ Namespace PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
         Private Sub New()
         End Sub
 
-        Private connectionSTR As String = "Data Source=192.168.1.5,1433;Initial Catalog=QUANCAFE;Integrated security=False;User ID=kiet;Password=123456"
+        Private connectionSTR As String = "Data Source=BANHANG2\SQL2K16;Initial Catalog=QUANCAFE;Integrated security=False;User ID=sa;Password=htl"
 
         Public Function ExecuteQuery(query As String, Optional parameter As Object() = Nothing) As DataTable
             Dim data As DataTable = New DataTable()

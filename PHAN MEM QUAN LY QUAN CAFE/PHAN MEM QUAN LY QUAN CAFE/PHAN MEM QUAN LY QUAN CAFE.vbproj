@@ -106,7 +106,10 @@
     <Compile Include="DAO\BillsInfoDAO.vb" />
     <Compile Include="DAO\CategoriesDAO.vb" />
     <Compile Include="DAO\CustomerDAO.vb" />
+    <Compile Include="DAO\InputDAO.vb" />
     <Compile Include="DAO\StaffDAO.vb" />
+    <Compile Include="DAO\SuppilerDAO.vb" />
+    <Compile Include="DAO\UnitDAO.vb" />
     <Compile Include="DTO\Customers.vb" />
     <Compile Include="DAO\DataProvider.vb" />
     <Compile Include="DAO\ItemsDAO.vb" />
@@ -116,10 +119,17 @@
     <Compile Include="DTO\Bills.vb" />
     <Compile Include="DTO\BillInfos.vb" />
     <Compile Include="DTO\Categories.vb" />
+    <Compile Include="DTO\InputInfos.vb" />
+    <Compile Include="DTO\Inputs.vb" />
     <Compile Include="DTO\Items.vb" />
     <Compile Include="DTO\Menu.vb" />
+    <Compile Include="DTO\Objects.vb" />
+    <Compile Include="DTO\OutputInfo.vb" />
+    <Compile Include="DTO\Outputs.vb" />
     <Compile Include="DTO\Staffs.vb" />
+    <Compile Include="DTO\Suppliers.vb" />
     <Compile Include="DTO\Tables.vb" />
+    <Compile Include="DTO\Units.vb" />
     <Compile Include="FormAdmin.Designer.vb">
       <DependentUpon>FormAdmin.vb</DependentUpon>
     </Compile>

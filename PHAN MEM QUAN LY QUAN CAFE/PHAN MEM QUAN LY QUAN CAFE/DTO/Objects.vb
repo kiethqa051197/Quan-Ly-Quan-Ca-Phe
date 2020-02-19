@@ -1,29 +1,27 @@
-﻿
-Public Class Customers
-
+﻿Public Class Objects
     Private id As Integer
     Private name As String
-    Private phone As String
-    Private createDate As Date
+    Private idUnit As Integer
+    Private idSupplier As Integer
     Private status As Integer
 
-    Public Sub New(id As Integer, name As String, phone As String, createDate As Date, status As Integer)
+    Public Sub New(id As Integer, name As String, idUnit As Integer, idSupplier As Integer, status As Integer)
         Me.id = id
         Me.name = name
-        Me.phone = phone
-        Me.createDate = createDate
+        Me.idUnit = idUnit
+        Me.idSupplier = idSupplier
         Me.status = status
     End Sub
 
     Public Sub New(row As DataRow)
         Me.id = CInt(row("id"))
         Me.name = row("name").ToString()
-        Me.phone = row("phone").ToString()
-        Me.createDate = CType(row("createDate"), Date)
+        Me.idUnit = CInt(row("idUnit"))
+        Me.idSupplier = CInt(row("idSupplier"))
         Me.status = CInt(row("status"))
     End Sub
 
-    Public Property _id() As Integer
+    Public Property _id As Integer
         Get
             Return id
         End Get
@@ -32,7 +30,7 @@ Public Class Customers
         End Set
     End Property
 
-    Public Property _name() As String
+    Public Property _name As String
         Get
             Return name
         End Get
@@ -41,25 +39,26 @@ Public Class Customers
         End Set
     End Property
 
-    Public Property _phone() As String
+    Public Property _idUnit As Integer
         Get
-            Return phone
+            Return idUnit
         End Get
-        Set(value As String)
-            phone = value
+        Set(value As Integer)
+            idUnit = value
         End Set
     End Property
 
-    Public Property _createDate() As Date
+  
+    Public Property _idSupplier As Integer
         Get
-            Return createDate
+            Return idSupplier
         End Get
-        Set(value As Date)
-            createDate = value
+        Set(value As Integer)
+            idSupplier = value
         End Set
     End Property
 
-    Public Property _status() As Integer
+    Public Property _status As Integer
         Get
             Return status
         End Get
@@ -67,5 +66,4 @@ Public Class Customers
             status = value
         End Set
     End Property
-
 End Class

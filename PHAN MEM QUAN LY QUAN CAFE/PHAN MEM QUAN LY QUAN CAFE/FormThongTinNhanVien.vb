@@ -1,5 +1,4 @@
-﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
-Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
+﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
 Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.Ultils
 
 Public Class FormThongTinNhanVien
@@ -203,6 +202,19 @@ Public Class FormThongTinNhanVien
             ChangeText()
         Else
             UpdateInfo()
+        End If
+    End Sub
+
+    'Không cho phép nhập chữ
+    Private Sub txtIDStaff_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIDStaff.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtPhoneStaff_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPhoneStaff.KeyPress
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
         End If
     End Sub
 

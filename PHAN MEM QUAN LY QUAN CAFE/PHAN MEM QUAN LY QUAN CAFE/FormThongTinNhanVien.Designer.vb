@@ -111,7 +111,7 @@ Partial Class FormThongTinNhanVien
         'txtIDStaff
         '
         Me.txtIDStaff.Enabled = False
-        Me.txtIDStaff.Location = New System.Drawing.Point(128, 226)
+        Me.txtIDStaff.Location = New System.Drawing.Point(128, 235)
         Me.txtIDStaff.Name = "txtIDStaff"
         Me.txtIDStaff.Size = New System.Drawing.Size(176, 20)
         Me.txtIDStaff.TabIndex = 8
@@ -119,7 +119,7 @@ Partial Class FormThongTinNhanVien
         'LabelControl10
         '
         Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl10.Location = New System.Drawing.Point(17, 228)
+        Me.LabelControl10.Location = New System.Drawing.Point(17, 237)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(88, 14)
         Me.LabelControl10.TabIndex = 16

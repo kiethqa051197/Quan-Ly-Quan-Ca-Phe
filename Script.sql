@@ -148,6 +148,8 @@ CREATE TABLE UNITS
 	status INT NOT NULL DEFAULT 0
 )
 
+Insert UNITS (name) values ('Kg')
+
 -- Bảng Nhà cung cấp
 CREATE TABLE SUPPLIERS
 (
@@ -159,10 +161,13 @@ CREATE TABLE SUPPLIERS
 	status INT NOT NULL DEFAULT 0
 )
 
+insert SUPPLIERS (name, address, phone, email) values (N'Tạp Hoá ABC', N'Xuân Lộc', '025142112', 'abc@gmail.com')
+insert SUPPLIERS (name, address, phone, email) values (N'Tạp Hoá XYZ', N'Long Khánh', '025142112', 'xyz@gmail.com')
+
 -- Bảng đối tượng
 CREATE TABLE OBJECTS
 (
-	id nvarchar(128) primary key,
+	id int identity(1,1) primary key not null,
 	name nvarchar(max) not null,
 	idUnit int not null,
 	idSupplier int not null,
@@ -172,19 +177,24 @@ CREATE TABLE OBJECTS
 	foreign key(idSupplier) references SUPPLIERS(id),
 )
 
+insert OBJECTS (name, idUnit, idSupplier) values (N'Cà phê', 1, 1)
+insert OBJECTS (name, idUnit, idSupplier) values (N'Đường', 1, 1)
+
 -- Bảng nhập kho
 CREATE TABLE INPUTS
 (
-	id nvarchar(128) primary key,
-	dateInput DateTime not null
+	id int identity(1,1) primary key,
+	dateInput DateTime not null DEFAULT GETDATE()
 )
+
+INSERT INPUTS(dateInput) VALUES (GETDATE())
 
 -- Bảng Chi Tiết Nhập kho
 CREATE TABLE INPUTINFOS
 (
-	id nvarchar(128) primary key,
-	idObject nvarchar(128) not null,
-	idInput nvarchar(128) not null,
+	id int identity(1,1) primary key,
+	idObject int not null,
+	idInput int not null,
 	count int not null,
 	inputPrice float not null default 0,
 	status nvarchar(max) not null,
@@ -193,26 +203,33 @@ CREATE TABLE INPUTINFOS
 	foreign key (idInput) references INPUTS(id)
 )
 
+INSERT INPUTINFOS(idObject, idInput, count, inputPrice, status) VALUES (1, 1, 10, 35000, 'Đã thanh toán')
+INSERT INPUTINFOS(idObject, idInput, count, inputPrice, status) VALUES (2, 1, 5, 15000, 'Đã thanh toán')
+
 -- Bảng Xuất kho
 CREATE TABLE OUTPUTS
 (
-	id nvarchar(128) primary key,
-	dateOutput DateTime not null
+	id int identity(1,1) primary key,
+	dateOutput DateTime not null default GETDATE()
 )
+
+INSERT OUTPUTS(dateOutput) VALUES (GETDATE())
 
 -- Bảng Chi Tiết xuất kho
 CREATE TABLE OUTPUTINFOS
 (
-	id nvarchar(128) primary key,
+	id int identity(1,1) primary key,
 	idObject nvarchar(128) not null,
 	idOutput nvarchar(128) not null,
-	count int not null,	
-	status nvarchar(max) not null,
+	count int not null,
 
 	foreign key (idObject) references OBJECTS(id),
 	foreign key (idOutput) references OUTPUTS(id)
 )
 GO
+
+INSERT OUTPUTINFOS(idObject, idOutput, count) VALUES (1, 1, 5)
+INSERT OUTPUTINFOS(idObject, idOutput, count) VALUES (2, 1, 3)
 
 -- Đăng nhập
 CREATE PROCEDURE PC_Login
@@ -482,37 +499,6 @@ BEGIN
 END	
 GO
 
-/* 
-2020 tháng 1 - món x :  (Tồn đầu kỳ ; Tồn cuối kỳ) :  100 ly cafe (20k/1)
-- Nhập vô 100, Bán được 80 (cafe) : 7k/1 (còn 20)
-- Nhập vô 100, Bán được 70 (đường) : 8k/1 (còn 30)
-.................  
-- Tồn đầu kỳ = 0 + 0 = 0
-- tồn cuối kỳ : (100 + 100 + 0) - (80 + 70) => tồn tháng 1 = 50
-Giá trị Trung bình (all món) = (0 * 7 + 0 * 8 + 100 * 7 + 100 * 8 ) / (100 + 100 + 0 + 0)  = 7.5
- 
-1 ly cafe = ? cafe + ? đường
-Lợi Nhuận = (20 * 100) - (7.5 * 80 + 7.5 * 70) = 875k
-
-tháng 2 - món x :  100 ly cafe (20k/1)
-- Nhập vô 90, Bán được 90 (cafe) : 8k/1 (0)
-- Nhập vô 110, Bán được 60 (đường) : 6k/1 (còn 50)
-- tồn đầu kỳ = tồn cuối tháng 1 (20 + 30 = 50)
-- tồn cuối kỳ : 0 + 50 = 50
-Giá trị Trung bình (all món) = (20 * 8 + 30 * 6 + 90 * 8 + 110 * 6 ) / (90 + 110 + 0 + 50)  = 6.88
-Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60) = 3032k
-
-tháng 3 - món x :  (.......)
-..........
-- discount
-- lương staff 
-- .......
-Bình quân gia quyền
-Lợi Nhuận = Tổng Trị giá bán - (Tổng trị giá nhập + Trị giá tồn + discount + lượng + .....)
-
-Lợi Nhuận = (20 * 100) - (6.88 * 90 + 6.88 * 60 + 20 * 8 + 30 * 6) = ....k
-*/
-
 -- delete category 
 CREATE PROC PC_DELETE_CATEGORY
 	@idCategory int
@@ -528,16 +514,14 @@ BEGIN
 END
 GO
 
---- 
-CREATE PROC PC_REPORT_BILLS 
-	@idBill int
-AS 
-Begin
-	SELECT b.id, i.name, bi.price, bi.count, s.fullname, b.dateCheckOut
-	FROM BILLS AS b 
-	JOIN BILLINFOS AS bi ON b.id = bi.idBill
-	JOIN STAFFS AS s ON s.id = b.idStaff
-	JOIN ITEMS AS i ON i.id = bi.idItems
-	WHERE b.id = @idBill
-END
-
+create proc PC_AddInput
+	@idObject int,
+	@count int,
+	@inputPrice float,
+	@status nvarchar(max)
+as
+begin
+	  Declare @idInput int
+	  Select @idInput = MAX(id) from INPUTS
+	  Insert INPUTINFOS (idObject, idInput, count, inputPrice, status) values (@idObject, @idInput, @count, @inputPrice, @status)
+End

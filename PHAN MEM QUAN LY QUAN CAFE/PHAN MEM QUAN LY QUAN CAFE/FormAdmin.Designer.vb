@@ -139,41 +139,63 @@ Partial Class FormAdmin
         Me.dgvStaff = New DevExpress.XtraGrid.GridControl()
         Me.gridStaff = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.tpInventoryManagement = New DevExpress.XtraTab.XtraTabPage()
-        Me.LabelControl30 = New DevExpress.XtraEditors.LabelControl()
         Me.PanelControl22 = New DevExpress.XtraEditors.PanelControl()
-        Me.XtraTabControl2 = New DevExpress.XtraTab.XtraTabControl()
+        Me.tcInputOutput = New DevExpress.XtraTab.XtraTabControl()
         Me.tpInput = New DevExpress.XtraTab.XtraTabPage()
         Me.panelTotal = New DevExpress.XtraEditors.PanelControl()
-        Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
+        Me.PanelControl6 = New DevExpress.XtraEditors.PanelControl()
+        Me.btnAddObjectInput = New DevExpress.XtraEditors.SimpleButton()
+        Me.cbbInputStatus = New System.Windows.Forms.ComboBox()
+        Me.cbbInputObject = New System.Windows.Forms.ComboBox()
         Me.LabelControl28 = New DevExpress.XtraEditors.LabelControl()
-        Me.cbInputStatus = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl27 = New DevExpress.XtraEditors.LabelControl()
         Me.nmInputPrice = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl26 = New DevExpress.XtraEditors.LabelControl()
         Me.nmInputCount = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl25 = New DevExpress.XtraEditors.LabelControl()
-        Me.cbInputObject = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.PanelControl4 = New DevExpress.XtraEditors.PanelControl()
+        Me.SimpleButton14 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
         Me.dgvInput = New DevExpress.XtraGrid.GridControl()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LabelControl24 = New DevExpress.XtraEditors.LabelControl()
         Me.dtpInput = New System.Windows.Forms.DateTimePicker()
         Me.tpOutput = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl21 = New DevExpress.XtraEditors.PanelControl()
-        Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
+        Me.PanelControl12 = New DevExpress.XtraEditors.PanelControl()
+        Me.cbOutputStatus = New System.Windows.Forms.ComboBox()
+        Me.cbbOutputObject = New System.Windows.Forms.ComboBox()
         Me.LabelControl32 = New DevExpress.XtraEditors.LabelControl()
-        Me.cbOutputStatus = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl34 = New DevExpress.XtraEditors.LabelControl()
         Me.nmOutputCount = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl35 = New DevExpress.XtraEditors.LabelControl()
-        Me.cbOutputObject = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.PanelControl9 = New DevExpress.XtraEditors.PanelControl()
+        Me.SimpleButton16 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton9 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton11 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton12 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton13 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
         Me.dgvOutput = New DevExpress.XtraGrid.GridControl()
         Me.GridView8 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LabelControl36 = New DevExpress.XtraEditors.LabelControl()
         Me.dtpOutput = New System.Windows.Forms.DateTimePicker()
         Me.tpObject = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl29 = New DevExpress.XtraEditors.PanelControl()
-        Me.cbUnit = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.cbSuplier = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.btnAddSupplierObject = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnDeleteObject = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl16 = New DevExpress.XtraEditors.LabelControl()
+        Me.btnEditObject = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtIDObject = New DevExpress.XtraEditors.TextEdit()
+        Me.btnAddObject = New DevExpress.XtraEditors.SimpleButton()
+        Me.cbbUnitObject = New System.Windows.Forms.ComboBox()
+        Me.cbbSuplierObject = New System.Windows.Forms.ComboBox()
         Me.LabelControl42 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl41 = New DevExpress.XtraEditors.LabelControl()
         Me.btnSaveObject = New DevExpress.XtraEditors.SimpleButton()
@@ -183,16 +205,17 @@ Partial Class FormAdmin
         Me.txtNameObject = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl30 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvObject = New DevExpress.XtraGrid.GridControl()
-        Me.GridView10 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.gridObject = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.PanelControl31 = New DevExpress.XtraEditors.PanelControl()
         Me.txtSearchObject = New DevExpress.XtraEditors.TextEdit()
         Me.btnSearchObject = New DevExpress.XtraEditors.SimpleButton()
-        Me.PanelControl32 = New DevExpress.XtraEditors.PanelControl()
-        Me.btnDeleteObject = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnEditObject = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnAddObject = New DevExpress.XtraEditors.SimpleButton()
-        Me.XtraTabPage7 = New DevExpress.XtraTab.XtraTabPage()
+        Me.tpUnit = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl27 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDUnit = New DevExpress.XtraEditors.TextEdit()
+        Me.btnAddUnit = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnEditUnit = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnDeleteUnit = New DevExpress.XtraEditors.SimpleButton()
         Me.btnSaveUnit = New DevExpress.XtraEditors.SimpleButton()
         Me.btnCancelUnit = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl39 = New DevExpress.XtraEditors.LabelControl()
@@ -200,41 +223,39 @@ Partial Class FormAdmin
         Me.txtNameUnit = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl28 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvUnit = New DevExpress.XtraGrid.GridControl()
-        Me.GridView9 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.gridUnit = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.PanelControl25 = New DevExpress.XtraEditors.PanelControl()
         Me.txtSearchUnit = New DevExpress.XtraEditors.TextEdit()
         Me.btnSearchUnit = New DevExpress.XtraEditors.SimpleButton()
-        Me.PanelControl26 = New DevExpress.XtraEditors.PanelControl()
-        Me.btnDeleteUnit = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnEditUnit = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnAddUnit = New DevExpress.XtraEditors.SimpleButton()
-        Me.XtraTabPage8 = New DevExpress.XtraTab.XtraTabPage()
+        Me.tpSupplier = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl33 = New DevExpress.XtraEditors.PanelControl()
         Me.txtSearchSuplier = New DevExpress.XtraEditors.TextEdit()
         Me.btnSearchSuplier = New DevExpress.XtraEditors.SimpleButton()
-        Me.PanelControl36 = New DevExpress.XtraEditors.PanelControl()
-        Me.btnDeleteSuplier = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnEditSuplier = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnAddSuplier = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl34 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl17 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtIDSupplier = New DevExpress.XtraEditors.TextEdit()
+        Me.btnAddSupplier = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnEditSupplier = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnDeleteSupplier = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl44 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtEmailSuplier = New DevExpress.XtraEditors.TextEdit()
+        Me.txtEmailSupplier = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl43 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtPhoneSuplier = New DevExpress.XtraEditors.TextEdit()
-        Me.txtAddressSuplier = New System.Windows.Forms.TextBox()
+        Me.txtPhoneSupplier = New DevExpress.XtraEditors.TextEdit()
+        Me.txtAddressSupplier = New System.Windows.Forms.TextBox()
         Me.LabelControl46 = New DevExpress.XtraEditors.LabelControl()
-        Me.btnSaveSuplier = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnCancelSuplier = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnSaveSupplier = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnCancelSupplier = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl48 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl49 = New DevExpress.XtraEditors.LabelControl()
-        Me.txtNameSuplier = New DevExpress.XtraEditors.TextEdit()
+        Me.txtNameSupplier = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl35 = New DevExpress.XtraEditors.PanelControl()
         Me.dgvSuplier = New DevExpress.XtraGrid.GridControl()
-        Me.GridView11 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.gridSupplier = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
+        Me.btnAddUnitObject = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcAdmin.SuspendLayout()
         Me.tpBill.SuspendLayout()
@@ -308,78 +329,78 @@ Partial Class FormAdmin
         Me.tpInventoryManagement.SuspendLayout()
         CType(Me.PanelControl22, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl22.SuspendLayout()
-        CType(Me.XtraTabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabControl2.SuspendLayout()
+        CType(Me.tcInputOutput, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tcInputOutput.SuspendLayout()
         Me.tpInput.SuspendLayout()
         CType(Me.panelTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelTotal.SuspendLayout()
-        CType(Me.cbInputStatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl6.SuspendLayout()
         CType(Me.nmInputPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nmInputCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbInputObject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl4.SuspendLayout()
         CType(Me.dgvInput, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpOutput.SuspendLayout()
         CType(Me.PanelControl21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl21.SuspendLayout()
-        CType(Me.cbOutputStatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl12, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl12.SuspendLayout()
         CType(Me.nmOutputCount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbOutputObject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl9, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl9.SuspendLayout()
         CType(Me.dgvOutput, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpObject.SuspendLayout()
         CType(Me.PanelControl29, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl29.SuspendLayout()
-        CType(Me.cbUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbSuplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIDObject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNameObject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl30, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl30.SuspendLayout()
         CType(Me.dgvObject, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridObject, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl31, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl31.SuspendLayout()
         CType(Me.txtSearchObject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl32, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl32.SuspendLayout()
-        Me.XtraTabPage7.SuspendLayout()
+        Me.tpUnit.SuspendLayout()
         CType(Me.PanelControl27, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl27.SuspendLayout()
+        CType(Me.txtIDUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNameUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl28, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl28.SuspendLayout()
         CType(Me.dgvUnit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridUnit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl25, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl25.SuspendLayout()
         CType(Me.txtSearchUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl26, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl26.SuspendLayout()
-        Me.XtraTabPage8.SuspendLayout()
+        Me.tpSupplier.SuspendLayout()
         CType(Me.PanelControl33, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl33.SuspendLayout()
         CType(Me.txtSearchSuplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl36, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl36.SuspendLayout()
         CType(Me.PanelControl34, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl34.SuspendLayout()
-        CType(Me.txtEmailSuplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPhoneSuplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtNameSuplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtIDSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtEmailSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPhoneSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNameSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl35, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl35.SuspendLayout()
         CType(Me.dgvSuplier, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gridSupplier, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage2.SuspendLayout()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tcAdmin
         '
-        Me.tcAdmin.Location = New System.Drawing.Point(12, 12)
+        Me.tcAdmin.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tcAdmin.Location = New System.Drawing.Point(0, 0)
         Me.tcAdmin.Name = "tcAdmin"
         Me.tcAdmin.SelectedTabPage = Me.tpBill
-        Me.tcAdmin.Size = New System.Drawing.Size(746, 473)
+        Me.tcAdmin.Size = New System.Drawing.Size(751, 473)
         Me.tcAdmin.TabIndex = 0
         Me.tcAdmin.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tpBill, Me.tpTable, Me.tpCategory, Me.tpFood, Me.tpCustomer, Me.tpStaff, Me.tpInventoryManagement})
         '
@@ -393,13 +414,13 @@ Partial Class FormAdmin
         Me.tpBill.Controls.Add(Me.PanelControl2)
         Me.tpBill.Controls.Add(Me.PanelControl1)
         Me.tpBill.Name = "tpBill"
-        Me.tpBill.Size = New System.Drawing.Size(740, 445)
+        Me.tpBill.Size = New System.Drawing.Size(745, 445)
         Me.tpBill.Text = "Doanh thu"
         '
         'LabelControl45
         '
         Me.LabelControl45.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl45.Location = New System.Drawing.Point(373, 414)
+        Me.LabelControl45.Location = New System.Drawing.Point(373, 416)
         Me.LabelControl45.Name = "LabelControl45"
         Me.LabelControl45.Size = New System.Drawing.Size(8, 14)
         Me.LabelControl45.TabIndex = 7
@@ -407,7 +428,7 @@ Partial Class FormAdmin
         '
         'btnEnd
         '
-        Me.btnEnd.Location = New System.Drawing.Point(523, 411)
+        Me.btnEnd.Location = New System.Drawing.Point(523, 413)
         Me.btnEnd.Name = "btnEnd"
         Me.btnEnd.Size = New System.Drawing.Size(75, 23)
         Me.btnEnd.TabIndex = 5
@@ -415,7 +436,7 @@ Partial Class FormAdmin
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(442, 411)
+        Me.btnNext.Location = New System.Drawing.Point(442, 413)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(75, 23)
         Me.btnNext.TabIndex = 4
@@ -423,7 +444,7 @@ Partial Class FormAdmin
         '
         'btnPrevious
         '
-        Me.btnPrevious.Location = New System.Drawing.Point(221, 411)
+        Me.btnPrevious.Location = New System.Drawing.Point(221, 413)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(75, 23)
         Me.btnPrevious.TabIndex = 3
@@ -431,7 +452,7 @@ Partial Class FormAdmin
         '
         'btnFirst
         '
-        Me.btnFirst.Location = New System.Drawing.Point(140, 411)
+        Me.btnFirst.Location = New System.Drawing.Point(140, 413)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(75, 23)
         Me.btnFirst.TabIndex = 2
@@ -499,7 +520,7 @@ Partial Class FormAdmin
         Me.tpTable.Controls.Add(Me.PanelControl5)
         Me.tpTable.Controls.Add(Me.PanelControl3)
         Me.tpTable.Name = "tpTable"
-        Me.tpTable.Size = New System.Drawing.Size(740, 445)
+        Me.tpTable.Size = New System.Drawing.Size(745, 445)
         Me.tpTable.Text = "Bàn ăn"
         '
         'PanelControl23
@@ -657,7 +678,7 @@ Partial Class FormAdmin
         Me.tpCategory.Controls.Add(Me.PanelControl8)
         Me.tpCategory.Controls.Add(Me.PanelControl7)
         Me.tpCategory.Name = "tpCategory"
-        Me.tpCategory.Size = New System.Drawing.Size(740, 445)
+        Me.tpCategory.Size = New System.Drawing.Size(745, 445)
         Me.tpCategory.Text = "Danh mục"
         '
         'PanelControl24
@@ -720,7 +741,7 @@ Partial Class FormAdmin
         'LabelControl47
         '
         Me.LabelControl47.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl47.Location = New System.Drawing.Point(20, 80)
+        Me.LabelControl47.Location = New System.Drawing.Point(20, 111)
         Me.LabelControl47.Name = "LabelControl47"
         Me.LabelControl47.Size = New System.Drawing.Size(18, 14)
         Me.LabelControl47.TabIndex = 9
@@ -737,7 +758,7 @@ Partial Class FormAdmin
         'txtIDCategory
         '
         Me.txtIDCategory.Enabled = False
-        Me.txtIDCategory.Location = New System.Drawing.Point(119, 78)
+        Me.txtIDCategory.Location = New System.Drawing.Point(119, 109)
         Me.txtIDCategory.Name = "txtIDCategory"
         Me.txtIDCategory.Size = New System.Drawing.Size(176, 20)
         Me.txtIDCategory.TabIndex = 10
@@ -772,7 +793,7 @@ Partial Class FormAdmin
         'LabelControl6
         '
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl6.Location = New System.Drawing.Point(20, 108)
+        Me.LabelControl6.Location = New System.Drawing.Point(20, 139)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(90, 14)
         Me.LabelControl6.TabIndex = 6
@@ -781,7 +802,7 @@ Partial Class FormAdmin
         'txtNameCategory
         '
         Me.txtNameCategory.Enabled = False
-        Me.txtNameCategory.Location = New System.Drawing.Point(119, 106)
+        Me.txtNameCategory.Location = New System.Drawing.Point(119, 137)
         Me.txtNameCategory.Name = "txtNameCategory"
         Me.txtNameCategory.Size = New System.Drawing.Size(176, 20)
         Me.txtNameCategory.TabIndex = 6
@@ -816,7 +837,7 @@ Partial Class FormAdmin
         Me.tpFood.Controls.Add(Me.PanelControl16)
         Me.tpFood.Controls.Add(Me.PanelControl13)
         Me.tpFood.Name = "tpFood"
-        Me.tpFood.Size = New System.Drawing.Size(740, 445)
+        Me.tpFood.Size = New System.Drawing.Size(745, 445)
         Me.tpFood.Text = "Thức ăn"
         '
         'PanelControl15
@@ -1018,7 +1039,7 @@ Partial Class FormAdmin
         Me.tpCustomer.Controls.Add(Me.PanelControl18)
         Me.tpCustomer.Controls.Add(Me.PanelControl19)
         Me.tpCustomer.Name = "tpCustomer"
-        Me.tpCustomer.Size = New System.Drawing.Size(740, 445)
+        Me.tpCustomer.Size = New System.Drawing.Size(745, 445)
         Me.tpCustomer.Text = "Khách hàng"
         '
         'PanelControl17
@@ -1193,7 +1214,7 @@ Partial Class FormAdmin
         Me.tpStaff.Controls.Add(Me.PanelControl11)
         Me.tpStaff.Controls.Add(Me.PanelControl10)
         Me.tpStaff.Name = "tpStaff"
-        Me.tpStaff.Size = New System.Drawing.Size(740, 445)
+        Me.tpStaff.Size = New System.Drawing.Size(745, 445)
         Me.tpStaff.Text = "Nhân viên"
         '
         'PanelControl11
@@ -1409,160 +1430,228 @@ Partial Class FormAdmin
         '
         'tpInventoryManagement
         '
-        Me.tpInventoryManagement.Controls.Add(Me.LabelControl30)
         Me.tpInventoryManagement.Controls.Add(Me.PanelControl22)
         Me.tpInventoryManagement.Name = "tpInventoryManagement"
-        Me.tpInventoryManagement.Size = New System.Drawing.Size(740, 445)
+        Me.tpInventoryManagement.Size = New System.Drawing.Size(745, 445)
         Me.tpInventoryManagement.Text = "Quản lý kho"
-        '
-        'LabelControl30
-        '
-        Me.LabelControl30.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl30.Location = New System.Drawing.Point(326, 9)
-        Me.LabelControl30.Name = "LabelControl30"
-        Me.LabelControl30.Size = New System.Drawing.Size(95, 14)
-        Me.LabelControl30.TabIndex = 18
-        Me.LabelControl30.Text = "THÔNG TIN KHO"
         '
         'PanelControl22
         '
-        Me.PanelControl22.Controls.Add(Me.XtraTabControl2)
-        Me.PanelControl22.Location = New System.Drawing.Point(3, 31)
+        Me.PanelControl22.Controls.Add(Me.tcInputOutput)
+        Me.PanelControl22.Location = New System.Drawing.Point(3, 3)
         Me.PanelControl22.Name = "PanelControl22"
-        Me.PanelControl22.Size = New System.Drawing.Size(734, 411)
+        Me.PanelControl22.Size = New System.Drawing.Size(734, 439)
         Me.PanelControl22.TabIndex = 2
         '
-        'XtraTabControl2
+        'tcInputOutput
         '
-        Me.XtraTabControl2.Location = New System.Drawing.Point(5, 5)
-        Me.XtraTabControl2.Name = "XtraTabControl2"
-        Me.XtraTabControl2.SelectedTabPage = Me.tpInput
-        Me.XtraTabControl2.Size = New System.Drawing.Size(724, 401)
-        Me.XtraTabControl2.TabIndex = 0
-        Me.XtraTabControl2.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tpInput, Me.tpOutput, Me.tpObject, Me.XtraTabPage7, Me.XtraTabPage8})
+        Me.tcInputOutput.Location = New System.Drawing.Point(5, 5)
+        Me.tcInputOutput.Name = "tcInputOutput"
+        Me.tcInputOutput.SelectedTabPage = Me.tpInput
+        Me.tcInputOutput.Size = New System.Drawing.Size(724, 429)
+        Me.tcInputOutput.TabIndex = 0
+        Me.tcInputOutput.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tpInput, Me.tpOutput, Me.tpObject, Me.tpUnit, Me.tpSupplier})
         '
         'tpInput
         '
         Me.tpInput.Controls.Add(Me.panelTotal)
         Me.tpInput.Name = "tpInput"
-        Me.tpInput.Size = New System.Drawing.Size(718, 373)
+        Me.tpInput.Size = New System.Drawing.Size(718, 401)
         Me.tpInput.Text = "Nhập kho"
         '
         'panelTotal
         '
+        Me.panelTotal.Controls.Add(Me.PanelControl6)
+        Me.panelTotal.Controls.Add(Me.PanelControl4)
         Me.panelTotal.Controls.Add(Me.LabelControl29)
-        Me.panelTotal.Controls.Add(Me.LabelControl28)
-        Me.panelTotal.Controls.Add(Me.cbInputStatus)
-        Me.panelTotal.Controls.Add(Me.LabelControl27)
-        Me.panelTotal.Controls.Add(Me.nmInputPrice)
-        Me.panelTotal.Controls.Add(Me.LabelControl26)
-        Me.panelTotal.Controls.Add(Me.nmInputCount)
-        Me.panelTotal.Controls.Add(Me.LabelControl25)
-        Me.panelTotal.Controls.Add(Me.cbInputObject)
         Me.panelTotal.Controls.Add(Me.dgvInput)
         Me.panelTotal.Controls.Add(Me.LabelControl24)
         Me.panelTotal.Controls.Add(Me.dtpInput)
-        Me.panelTotal.Location = New System.Drawing.Point(3, 3)
+        Me.panelTotal.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelTotal.Location = New System.Drawing.Point(0, 0)
         Me.panelTotal.Name = "panelTotal"
-        Me.panelTotal.Size = New System.Drawing.Size(712, 367)
+        Me.panelTotal.Size = New System.Drawing.Size(718, 401)
         Me.panelTotal.TabIndex = 4
         '
-        'LabelControl29
+        'PanelControl6
         '
-        Me.LabelControl29.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl29.Location = New System.Drawing.Point(301, 13)
-        Me.LabelControl29.Name = "LabelControl29"
-        Me.LabelControl29.Size = New System.Drawing.Size(133, 14)
-        Me.LabelControl29.TabIndex = 17
-        Me.LabelControl29.Text = "THÔNG TIN NHẬP KHO"
+        Me.PanelControl6.Controls.Add(Me.btnAddObjectInput)
+        Me.PanelControl6.Controls.Add(Me.cbbInputStatus)
+        Me.PanelControl6.Controls.Add(Me.cbbInputObject)
+        Me.PanelControl6.Controls.Add(Me.LabelControl28)
+        Me.PanelControl6.Controls.Add(Me.LabelControl27)
+        Me.PanelControl6.Controls.Add(Me.nmInputPrice)
+        Me.PanelControl6.Controls.Add(Me.LabelControl26)
+        Me.PanelControl6.Controls.Add(Me.nmInputCount)
+        Me.PanelControl6.Controls.Add(Me.LabelControl25)
+        Me.PanelControl6.Location = New System.Drawing.Point(5, 41)
+        Me.PanelControl6.Name = "PanelControl6"
+        Me.PanelControl6.Size = New System.Drawing.Size(451, 88)
+        Me.PanelControl6.TabIndex = 32
+        '
+        'btnAddObjectInput
+        '
+        Me.btnAddObjectInput.Location = New System.Drawing.Point(208, 18)
+        Me.btnAddObjectInput.Name = "btnAddObjectInput"
+        Me.btnAddObjectInput.Size = New System.Drawing.Size(26, 21)
+        Me.btnAddObjectInput.TabIndex = 30
+        Me.btnAddObjectInput.Text = "+"
+        '
+        'cbbInputStatus
+        '
+        Me.cbbInputStatus.FormattingEnabled = True
+        Me.cbbInputStatus.Location = New System.Drawing.Point(319, 49)
+        Me.cbbInputStatus.Name = "cbbInputStatus"
+        Me.cbbInputStatus.Size = New System.Drawing.Size(121, 21)
+        Me.cbbInputStatus.TabIndex = 29
+        '
+        'cbbInputObject
+        '
+        Me.cbbInputObject.FormattingEnabled = True
+        Me.cbbInputObject.Location = New System.Drawing.Point(81, 18)
+        Me.cbbInputObject.Name = "cbbInputObject"
+        Me.cbbInputObject.Size = New System.Drawing.Size(121, 21)
+        Me.cbbInputObject.TabIndex = 28
         '
         'LabelControl28
         '
         Me.LabelControl28.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl28.Location = New System.Drawing.Point(16, 83)
+        Me.LabelControl28.Location = New System.Drawing.Point(248, 52)
         Me.LabelControl28.Name = "LabelControl28"
         Me.LabelControl28.Size = New System.Drawing.Size(60, 14)
-        Me.LabelControl28.TabIndex = 16
+        Me.LabelControl28.TabIndex = 27
         Me.LabelControl28.Text = "Trạng thái:"
-        '
-        'cbInputStatus
-        '
-        Me.cbInputStatus.EditValue = "(Chưa chọn)"
-        Me.cbInputStatus.Location = New System.Drawing.Point(87, 81)
-        Me.cbInputStatus.Name = "cbInputStatus"
-        Me.cbInputStatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbInputStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cbInputStatus.Size = New System.Drawing.Size(118, 20)
-        Me.cbInputStatus.TabIndex = 4
         '
         'LabelControl27
         '
         Me.LabelControl27.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl27.Location = New System.Drawing.Point(270, 80)
+        Me.LabelControl27.Location = New System.Drawing.Point(248, 20)
         Me.LabelControl27.Name = "LabelControl27"
         Me.LabelControl27.Size = New System.Drawing.Size(44, 14)
-        Me.LabelControl27.TabIndex = 14
+        Me.LabelControl27.TabIndex = 26
         Me.LabelControl27.Text = "Giá bán:"
         '
         'nmInputPrice
         '
         Me.nmInputPrice.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.nmInputPrice.Location = New System.Drawing.Point(337, 79)
+        Me.nmInputPrice.Location = New System.Drawing.Point(319, 18)
         Me.nmInputPrice.Name = "nmInputPrice"
         Me.nmInputPrice.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.nmInputPrice.Properties.IsFloatValue = False
         Me.nmInputPrice.Properties.Mask.EditMask = "N00"
         Me.nmInputPrice.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.nmInputPrice.Size = New System.Drawing.Size(72, 20)
-        Me.nmInputPrice.TabIndex = 5
+        Me.nmInputPrice.Size = New System.Drawing.Size(121, 20)
+        Me.nmInputPrice.TabIndex = 23
         '
         'LabelControl26
         '
         Me.LabelControl26.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl26.Location = New System.Drawing.Point(269, 47)
+        Me.LabelControl26.Location = New System.Drawing.Point(10, 49)
         Me.LabelControl26.Name = "LabelControl26"
         Me.LabelControl26.Size = New System.Drawing.Size(53, 14)
-        Me.LabelControl26.TabIndex = 12
+        Me.LabelControl26.TabIndex = 25
         Me.LabelControl26.Text = "Số lượng:"
         '
         'nmInputCount
         '
         Me.nmInputCount.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.nmInputCount.Location = New System.Drawing.Point(337, 47)
+        Me.nmInputCount.Location = New System.Drawing.Point(81, 49)
         Me.nmInputCount.Name = "nmInputCount"
         Me.nmInputCount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.nmInputCount.Properties.IsFloatValue = False
         Me.nmInputCount.Properties.Mask.EditMask = "N00"
         Me.nmInputCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.nmInputCount.Size = New System.Drawing.Size(72, 20)
-        Me.nmInputCount.TabIndex = 2
+        Me.nmInputCount.Size = New System.Drawing.Size(121, 20)
+        Me.nmInputCount.TabIndex = 22
         '
         'LabelControl25
         '
         Me.LabelControl25.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl25.Location = New System.Drawing.Point(16, 47)
+        Me.LabelControl25.Location = New System.Drawing.Point(10, 20)
         Me.LabelControl25.Name = "LabelControl25"
         Me.LabelControl25.Size = New System.Drawing.Size(58, 14)
-        Me.LabelControl25.TabIndex = 10
+        Me.LabelControl25.TabIndex = 24
         Me.LabelControl25.Text = "Sản phẩm:"
         '
-        'cbInputObject
+        'PanelControl4
         '
-        Me.cbInputObject.EditValue = "(Chưa chọn)"
-        Me.cbInputObject.Location = New System.Drawing.Point(87, 45)
-        Me.cbInputObject.Name = "cbInputObject"
-        Me.cbInputObject.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbInputObject.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cbInputObject.Size = New System.Drawing.Size(118, 20)
-        Me.cbInputObject.TabIndex = 0
+        Me.PanelControl4.Controls.Add(Me.SimpleButton14)
+        Me.PanelControl4.Controls.Add(Me.SimpleButton4)
+        Me.PanelControl4.Controls.Add(Me.SimpleButton5)
+        Me.PanelControl4.Controls.Add(Me.SimpleButton6)
+        Me.PanelControl4.Controls.Add(Me.SimpleButton7)
+        Me.PanelControl4.Controls.Add(Me.SimpleButton8)
+        Me.PanelControl4.Location = New System.Drawing.Point(462, 41)
+        Me.PanelControl4.Name = "PanelControl4"
+        Me.PanelControl4.Size = New System.Drawing.Size(245, 88)
+        Me.PanelControl4.TabIndex = 22
+        '
+        'SimpleButton14
+        '
+        Me.SimpleButton14.Location = New System.Drawing.Point(15, 47)
+        Me.SimpleButton14.Name = "SimpleButton14"
+        Me.SimpleButton14.Size = New System.Drawing.Size(61, 28)
+        Me.SimpleButton14.TabIndex = 32
+        Me.SimpleButton14.Text = "Xem"
+        '
+        'SimpleButton4
+        '
+        Me.SimpleButton4.Location = New System.Drawing.Point(164, 15)
+        Me.SimpleButton4.Name = "SimpleButton4"
+        Me.SimpleButton4.Size = New System.Drawing.Size(71, 28)
+        Me.SimpleButton4.TabIndex = 29
+        Me.SimpleButton4.Text = "Xoá"
+        '
+        'SimpleButton5
+        '
+        Me.SimpleButton5.Location = New System.Drawing.Point(86, 15)
+        Me.SimpleButton5.Name = "SimpleButton5"
+        Me.SimpleButton5.Size = New System.Drawing.Size(71, 28)
+        Me.SimpleButton5.TabIndex = 28
+        Me.SimpleButton5.Text = "Sửa"
+        '
+        'SimpleButton6
+        '
+        Me.SimpleButton6.Location = New System.Drawing.Point(15, 15)
+        Me.SimpleButton6.Name = "SimpleButton6"
+        Me.SimpleButton6.Size = New System.Drawing.Size(61, 28)
+        Me.SimpleButton6.TabIndex = 27
+        Me.SimpleButton6.Text = "Thêm"
+        '
+        'SimpleButton7
+        '
+        Me.SimpleButton7.Enabled = False
+        Me.SimpleButton7.Location = New System.Drawing.Point(86, 46)
+        Me.SimpleButton7.Name = "SimpleButton7"
+        Me.SimpleButton7.Size = New System.Drawing.Size(71, 29)
+        Me.SimpleButton7.TabIndex = 30
+        Me.SimpleButton7.Text = "Lưu"
+        '
+        'SimpleButton8
+        '
+        Me.SimpleButton8.Enabled = False
+        Me.SimpleButton8.Location = New System.Drawing.Point(164, 46)
+        Me.SimpleButton8.Name = "SimpleButton8"
+        Me.SimpleButton8.Size = New System.Drawing.Size(71, 28)
+        Me.SimpleButton8.TabIndex = 31
+        Me.SimpleButton8.Text = "Huỷ"
+        '
+        'LabelControl29
+        '
+        Me.LabelControl29.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl29.Location = New System.Drawing.Point(16, 15)
+        Me.LabelControl29.Name = "LabelControl29"
+        Me.LabelControl29.Size = New System.Drawing.Size(133, 14)
+        Me.LabelControl29.TabIndex = 17
+        Me.LabelControl29.Text = "THÔNG TIN NHẬP KHO"
         '
         'dgvInput
         '
         Me.dgvInput.Cursor = System.Windows.Forms.Cursors.Default
-        Me.dgvInput.Location = New System.Drawing.Point(5, 114)
+        Me.dgvInput.Location = New System.Drawing.Point(5, 135)
         Me.dgvInput.MainView = Me.GridView7
         Me.dgvInput.Name = "dgvInput"
-        Me.dgvInput.Size = New System.Drawing.Size(702, 248)
+        Me.dgvInput.Size = New System.Drawing.Size(702, 261)
         Me.dgvInput.TabIndex = 8
         Me.dgvInput.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView7})
         '
@@ -1574,7 +1663,7 @@ Partial Class FormAdmin
         'LabelControl24
         '
         Me.LabelControl24.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl24.Location = New System.Drawing.Point(445, 48)
+        Me.LabelControl24.Location = New System.Drawing.Point(445, 16)
         Me.LabelControl24.Name = "LabelControl24"
         Me.LabelControl24.Size = New System.Drawing.Size(62, 14)
         Me.LabelControl24.TabIndex = 7
@@ -1582,7 +1671,8 @@ Partial Class FormAdmin
         '
         'dtpInput
         '
-        Me.dtpInput.Location = New System.Drawing.Point(518, 47)
+        Me.dtpInput.Enabled = False
+        Me.dtpInput.Location = New System.Drawing.Point(518, 15)
         Me.dtpInput.Name = "dtpInput"
         Me.dtpInput.Size = New System.Drawing.Size(189, 20)
         Me.dtpInput.TabIndex = 3
@@ -1591,101 +1681,170 @@ Partial Class FormAdmin
         '
         Me.tpOutput.Controls.Add(Me.PanelControl21)
         Me.tpOutput.Name = "tpOutput"
-        Me.tpOutput.Size = New System.Drawing.Size(718, 373)
+        Me.tpOutput.Size = New System.Drawing.Size(718, 401)
         Me.tpOutput.Text = "Xuất kho"
         '
         'PanelControl21
         '
+        Me.PanelControl21.Controls.Add(Me.PanelControl12)
+        Me.PanelControl21.Controls.Add(Me.PanelControl9)
         Me.PanelControl21.Controls.Add(Me.LabelControl31)
-        Me.PanelControl21.Controls.Add(Me.LabelControl32)
-        Me.PanelControl21.Controls.Add(Me.cbOutputStatus)
-        Me.PanelControl21.Controls.Add(Me.LabelControl34)
-        Me.PanelControl21.Controls.Add(Me.nmOutputCount)
-        Me.PanelControl21.Controls.Add(Me.LabelControl35)
-        Me.PanelControl21.Controls.Add(Me.cbOutputObject)
         Me.PanelControl21.Controls.Add(Me.dgvOutput)
         Me.PanelControl21.Controls.Add(Me.LabelControl36)
         Me.PanelControl21.Controls.Add(Me.dtpOutput)
-        Me.PanelControl21.Location = New System.Drawing.Point(3, 3)
+        Me.PanelControl21.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl21.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl21.Name = "PanelControl21"
-        Me.PanelControl21.Size = New System.Drawing.Size(712, 367)
+        Me.PanelControl21.Size = New System.Drawing.Size(718, 401)
         Me.PanelControl21.TabIndex = 5
         '
-        'LabelControl31
+        'PanelControl12
         '
-        Me.LabelControl31.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl31.Location = New System.Drawing.Point(301, 13)
-        Me.LabelControl31.Name = "LabelControl31"
-        Me.LabelControl31.Size = New System.Drawing.Size(131, 14)
-        Me.LabelControl31.TabIndex = 17
-        Me.LabelControl31.Text = "THÔNG TIN XUẤT KHO"
+        Me.PanelControl12.Controls.Add(Me.cbOutputStatus)
+        Me.PanelControl12.Controls.Add(Me.cbbOutputObject)
+        Me.PanelControl12.Controls.Add(Me.LabelControl32)
+        Me.PanelControl12.Controls.Add(Me.LabelControl34)
+        Me.PanelControl12.Controls.Add(Me.nmOutputCount)
+        Me.PanelControl12.Controls.Add(Me.LabelControl35)
+        Me.PanelControl12.Location = New System.Drawing.Point(5, 50)
+        Me.PanelControl12.Name = "PanelControl12"
+        Me.PanelControl12.Size = New System.Drawing.Size(451, 88)
+        Me.PanelControl12.TabIndex = 32
+        '
+        'cbOutputStatus
+        '
+        Me.cbOutputStatus.FormattingEnabled = True
+        Me.cbOutputStatus.Location = New System.Drawing.Point(75, 50)
+        Me.cbOutputStatus.Name = "cbOutputStatus"
+        Me.cbOutputStatus.Size = New System.Drawing.Size(130, 21)
+        Me.cbOutputStatus.TabIndex = 26
+        '
+        'cbbOutputObject
+        '
+        Me.cbbOutputObject.FormattingEnabled = True
+        Me.cbbOutputObject.Location = New System.Drawing.Point(75, 17)
+        Me.cbbOutputObject.Name = "cbbOutputObject"
+        Me.cbbOutputObject.Size = New System.Drawing.Size(130, 21)
+        Me.cbbOutputObject.TabIndex = 25
         '
         'LabelControl32
         '
         Me.LabelControl32.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl32.Location = New System.Drawing.Point(249, 83)
+        Me.LabelControl32.Location = New System.Drawing.Point(9, 52)
         Me.LabelControl32.Name = "LabelControl32"
         Me.LabelControl32.Size = New System.Drawing.Size(60, 14)
-        Me.LabelControl32.TabIndex = 16
+        Me.LabelControl32.TabIndex = 24
         Me.LabelControl32.Text = "Trạng thái:"
-        '
-        'cbOutputStatus
-        '
-        Me.cbOutputStatus.EditValue = "(Chưa chọn)"
-        Me.cbOutputStatus.Location = New System.Drawing.Point(320, 81)
-        Me.cbOutputStatus.Name = "cbOutputStatus"
-        Me.cbOutputStatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbOutputStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cbOutputStatus.Size = New System.Drawing.Size(118, 20)
-        Me.cbOutputStatus.TabIndex = 4
         '
         'LabelControl34
         '
         Me.LabelControl34.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl34.Location = New System.Drawing.Point(269, 47)
+        Me.LabelControl34.Location = New System.Drawing.Point(244, 20)
         Me.LabelControl34.Name = "LabelControl34"
         Me.LabelControl34.Size = New System.Drawing.Size(53, 14)
-        Me.LabelControl34.TabIndex = 12
+        Me.LabelControl34.TabIndex = 23
         Me.LabelControl34.Text = "Số lượng:"
         '
         'nmOutputCount
         '
         Me.nmOutputCount.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.nmOutputCount.Location = New System.Drawing.Point(337, 47)
+        Me.nmOutputCount.Location = New System.Drawing.Point(303, 18)
         Me.nmOutputCount.Name = "nmOutputCount"
         Me.nmOutputCount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.nmOutputCount.Properties.IsFloatValue = False
         Me.nmOutputCount.Properties.Mask.EditMask = "N00"
         Me.nmOutputCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.nmOutputCount.Size = New System.Drawing.Size(72, 20)
-        Me.nmOutputCount.TabIndex = 2
+        Me.nmOutputCount.Size = New System.Drawing.Size(123, 20)
+        Me.nmOutputCount.TabIndex = 20
         '
         'LabelControl35
         '
         Me.LabelControl35.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl35.Location = New System.Drawing.Point(16, 47)
+        Me.LabelControl35.Location = New System.Drawing.Point(11, 19)
         Me.LabelControl35.Name = "LabelControl35"
         Me.LabelControl35.Size = New System.Drawing.Size(58, 14)
-        Me.LabelControl35.TabIndex = 10
+        Me.LabelControl35.TabIndex = 22
         Me.LabelControl35.Text = "Sản phẩm:"
         '
-        'cbOutputObject
+        'PanelControl9
         '
-        Me.cbOutputObject.EditValue = "(Chưa chọn)"
-        Me.cbOutputObject.Location = New System.Drawing.Point(87, 45)
-        Me.cbOutputObject.Name = "cbOutputObject"
-        Me.cbOutputObject.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbOutputObject.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cbOutputObject.Size = New System.Drawing.Size(118, 20)
-        Me.cbOutputObject.TabIndex = 1
+        Me.PanelControl9.Controls.Add(Me.SimpleButton16)
+        Me.PanelControl9.Controls.Add(Me.SimpleButton9)
+        Me.PanelControl9.Controls.Add(Me.SimpleButton10)
+        Me.PanelControl9.Controls.Add(Me.SimpleButton11)
+        Me.PanelControl9.Controls.Add(Me.SimpleButton12)
+        Me.PanelControl9.Controls.Add(Me.SimpleButton13)
+        Me.PanelControl9.Location = New System.Drawing.Point(462, 50)
+        Me.PanelControl9.Name = "PanelControl9"
+        Me.PanelControl9.Size = New System.Drawing.Size(245, 88)
+        Me.PanelControl9.TabIndex = 23
+        '
+        'SimpleButton16
+        '
+        Me.SimpleButton16.Location = New System.Drawing.Point(15, 45)
+        Me.SimpleButton16.Name = "SimpleButton16"
+        Me.SimpleButton16.Size = New System.Drawing.Size(65, 28)
+        Me.SimpleButton16.TabIndex = 32
+        Me.SimpleButton16.Text = "Xem"
+        '
+        'SimpleButton9
+        '
+        Me.SimpleButton9.Location = New System.Drawing.Point(164, 15)
+        Me.SimpleButton9.Name = "SimpleButton9"
+        Me.SimpleButton9.Size = New System.Drawing.Size(71, 28)
+        Me.SimpleButton9.TabIndex = 29
+        Me.SimpleButton9.Text = "Xoá"
+        '
+        'SimpleButton10
+        '
+        Me.SimpleButton10.Location = New System.Drawing.Point(86, 15)
+        Me.SimpleButton10.Name = "SimpleButton10"
+        Me.SimpleButton10.Size = New System.Drawing.Size(71, 28)
+        Me.SimpleButton10.TabIndex = 28
+        Me.SimpleButton10.Text = "Sửa"
+        '
+        'SimpleButton11
+        '
+        Me.SimpleButton11.Location = New System.Drawing.Point(15, 15)
+        Me.SimpleButton11.Name = "SimpleButton11"
+        Me.SimpleButton11.Size = New System.Drawing.Size(65, 28)
+        Me.SimpleButton11.TabIndex = 27
+        Me.SimpleButton11.Text = "Thêm"
+        '
+        'SimpleButton12
+        '
+        Me.SimpleButton12.Enabled = False
+        Me.SimpleButton12.Location = New System.Drawing.Point(86, 45)
+        Me.SimpleButton12.Name = "SimpleButton12"
+        Me.SimpleButton12.Size = New System.Drawing.Size(71, 29)
+        Me.SimpleButton12.TabIndex = 30
+        Me.SimpleButton12.Text = "Lưu"
+        '
+        'SimpleButton13
+        '
+        Me.SimpleButton13.Enabled = False
+        Me.SimpleButton13.Location = New System.Drawing.Point(163, 46)
+        Me.SimpleButton13.Name = "SimpleButton13"
+        Me.SimpleButton13.Size = New System.Drawing.Size(71, 28)
+        Me.SimpleButton13.TabIndex = 31
+        Me.SimpleButton13.Text = "Huỷ"
+        '
+        'LabelControl31
+        '
+        Me.LabelControl31.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl31.Location = New System.Drawing.Point(16, 16)
+        Me.LabelControl31.Name = "LabelControl31"
+        Me.LabelControl31.Size = New System.Drawing.Size(131, 14)
+        Me.LabelControl31.TabIndex = 17
+        Me.LabelControl31.Text = "THÔNG TIN XUẤT KHO"
         '
         'dgvOutput
         '
         Me.dgvOutput.Cursor = System.Windows.Forms.Cursors.Default
-        Me.dgvOutput.Location = New System.Drawing.Point(5, 114)
+        Me.dgvOutput.Location = New System.Drawing.Point(5, 144)
         Me.dgvOutput.MainView = Me.GridView8
         Me.dgvOutput.Name = "dgvOutput"
-        Me.dgvOutput.Size = New System.Drawing.Size(702, 248)
+        Me.dgvOutput.Size = New System.Drawing.Size(702, 252)
         Me.dgvOutput.TabIndex = 8
         Me.dgvOutput.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView8})
         '
@@ -1697,7 +1856,7 @@ Partial Class FormAdmin
         'LabelControl36
         '
         Me.LabelControl36.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl36.Location = New System.Drawing.Point(445, 48)
+        Me.LabelControl36.Location = New System.Drawing.Point(451, 15)
         Me.LabelControl36.Name = "LabelControl36"
         Me.LabelControl36.Size = New System.Drawing.Size(59, 14)
         Me.LabelControl36.TabIndex = 7
@@ -1705,7 +1864,7 @@ Partial Class FormAdmin
         '
         'dtpOutput
         '
-        Me.dtpOutput.Location = New System.Drawing.Point(518, 47)
+        Me.dtpOutput.Location = New System.Drawing.Point(524, 14)
         Me.dtpOutput.Name = "dtpOutput"
         Me.dtpOutput.Size = New System.Drawing.Size(189, 20)
         Me.dtpOutput.TabIndex = 3
@@ -1715,15 +1874,21 @@ Partial Class FormAdmin
         Me.tpObject.Controls.Add(Me.PanelControl29)
         Me.tpObject.Controls.Add(Me.PanelControl30)
         Me.tpObject.Controls.Add(Me.PanelControl31)
-        Me.tpObject.Controls.Add(Me.PanelControl32)
         Me.tpObject.Name = "tpObject"
-        Me.tpObject.Size = New System.Drawing.Size(718, 373)
+        Me.tpObject.Size = New System.Drawing.Size(718, 401)
         Me.tpObject.Text = "Sản phẩm"
         '
         'PanelControl29
         '
-        Me.PanelControl29.Controls.Add(Me.cbUnit)
-        Me.PanelControl29.Controls.Add(Me.cbSuplier)
+        Me.PanelControl29.Controls.Add(Me.btnAddUnitObject)
+        Me.PanelControl29.Controls.Add(Me.btnAddSupplierObject)
+        Me.PanelControl29.Controls.Add(Me.btnDeleteObject)
+        Me.PanelControl29.Controls.Add(Me.LabelControl16)
+        Me.PanelControl29.Controls.Add(Me.btnEditObject)
+        Me.PanelControl29.Controls.Add(Me.txtIDObject)
+        Me.PanelControl29.Controls.Add(Me.btnAddObject)
+        Me.PanelControl29.Controls.Add(Me.cbbUnitObject)
+        Me.PanelControl29.Controls.Add(Me.cbbSuplierObject)
         Me.PanelControl29.Controls.Add(Me.LabelControl42)
         Me.PanelControl29.Controls.Add(Me.LabelControl41)
         Me.PanelControl29.Controls.Add(Me.btnSaveObject)
@@ -1733,28 +1898,72 @@ Partial Class FormAdmin
         Me.PanelControl29.Controls.Add(Me.txtNameObject)
         Me.PanelControl29.Location = New System.Drawing.Point(402, 66)
         Me.PanelControl29.Name = "PanelControl29"
-        Me.PanelControl29.Size = New System.Drawing.Size(313, 299)
+        Me.PanelControl29.Size = New System.Drawing.Size(313, 330)
         Me.PanelControl29.TabIndex = 19
         '
-        'cbUnit
+        'btnAddSupplierObject
         '
-        Me.cbUnit.EditValue = "(Chưa chọn)"
-        Me.cbUnit.Location = New System.Drawing.Point(117, 165)
-        Me.cbUnit.Name = "cbUnit"
-        Me.cbUnit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cbUnit.Size = New System.Drawing.Size(176, 20)
-        Me.cbUnit.TabIndex = 7
+        Me.btnAddSupplierObject.Location = New System.Drawing.Point(267, 131)
+        Me.btnAddSupplierObject.Name = "btnAddSupplierObject"
+        Me.btnAddSupplierObject.Size = New System.Drawing.Size(26, 21)
+        Me.btnAddSupplierObject.TabIndex = 31
+        Me.btnAddSupplierObject.Text = "+"
         '
-        'cbSuplier
+        'btnDeleteObject
         '
-        Me.cbSuplier.EditValue = "(Chưa chọn)"
-        Me.cbSuplier.Location = New System.Drawing.Point(117, 132)
-        Me.cbSuplier.Name = "cbSuplier"
-        Me.cbSuplier.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbSuplier.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cbSuplier.Size = New System.Drawing.Size(176, 20)
-        Me.cbSuplier.TabIndex = 6
+        Me.btnDeleteObject.Location = New System.Drawing.Point(208, 222)
+        Me.btnDeleteObject.Name = "btnDeleteObject"
+        Me.btnDeleteObject.Size = New System.Drawing.Size(85, 94)
+        Me.btnDeleteObject.TabIndex = 2
+        Me.btnDeleteObject.Text = "Xoá"
+        '
+        'LabelControl16
+        '
+        Me.LabelControl16.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl16.Location = New System.Drawing.Point(11, 65)
+        Me.LabelControl16.Name = "LabelControl16"
+        Me.LabelControl16.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl16.TabIndex = 23
+        Me.LabelControl16.Text = "ID:"
+        '
+        'btnEditObject
+        '
+        Me.btnEditObject.Location = New System.Drawing.Point(114, 222)
+        Me.btnEditObject.Name = "btnEditObject"
+        Me.btnEditObject.Size = New System.Drawing.Size(85, 45)
+        Me.btnEditObject.TabIndex = 1
+        Me.btnEditObject.Text = "Sửa"
+        '
+        'txtIDObject
+        '
+        Me.txtIDObject.Location = New System.Drawing.Point(117, 64)
+        Me.txtIDObject.Name = "txtIDObject"
+        Me.txtIDObject.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDObject.TabIndex = 22
+        '
+        'btnAddObject
+        '
+        Me.btnAddObject.Location = New System.Drawing.Point(18, 222)
+        Me.btnAddObject.Name = "btnAddObject"
+        Me.btnAddObject.Size = New System.Drawing.Size(85, 45)
+        Me.btnAddObject.TabIndex = 0
+        Me.btnAddObject.Text = "Thêm"
+        '
+        'cbbUnitObject
+        '
+        Me.cbbUnitObject.FormattingEnabled = True
+        Me.cbbUnitObject.Location = New System.Drawing.Point(117, 167)
+        Me.cbbUnitObject.Name = "cbbUnitObject"
+        Me.cbbUnitObject.Size = New System.Drawing.Size(144, 21)
+        Me.cbbUnitObject.TabIndex = 21
+        '
+        'cbbSuplierObject
+        '
+        Me.cbbSuplierObject.FormattingEnabled = True
+        Me.cbbSuplierObject.Location = New System.Drawing.Point(117, 132)
+        Me.cbbSuplierObject.Name = "cbbSuplierObject"
+        Me.cbbSuplierObject.Size = New System.Drawing.Size(144, 21)
+        Me.cbbSuplierObject.TabIndex = 20
         '
         'LabelControl42
         '
@@ -1776,21 +1985,21 @@ Partial Class FormAdmin
         '
         'btnSaveObject
         '
-        Me.btnSaveObject.Location = New System.Drawing.Point(117, 251)
+        Me.btnSaveObject.Enabled = False
+        Me.btnSaveObject.Location = New System.Drawing.Point(18, 273)
         Me.btnSaveObject.Name = "btnSaveObject"
-        Me.btnSaveObject.Size = New System.Drawing.Size(85, 28)
+        Me.btnSaveObject.Size = New System.Drawing.Size(85, 44)
         Me.btnSaveObject.TabIndex = 8
         Me.btnSaveObject.Text = "Lưu"
-        Me.btnSaveObject.Visible = False
         '
         'btnCancelObject
         '
-        Me.btnCancelObject.Location = New System.Drawing.Point(208, 251)
+        Me.btnCancelObject.Enabled = False
+        Me.btnCancelObject.Location = New System.Drawing.Point(114, 273)
         Me.btnCancelObject.Name = "btnCancelObject"
-        Me.btnCancelObject.Size = New System.Drawing.Size(85, 28)
+        Me.btnCancelObject.Size = New System.Drawing.Size(85, 43)
         Me.btnCancelObject.TabIndex = 9
         Me.btnCancelObject.Text = "Huỷ"
-        Me.btnCancelObject.Visible = False
         '
         'LabelControl37
         '
@@ -1820,9 +2029,9 @@ Partial Class FormAdmin
         'PanelControl30
         '
         Me.PanelControl30.Controls.Add(Me.dgvObject)
-        Me.PanelControl30.Location = New System.Drawing.Point(3, 66)
+        Me.PanelControl30.Location = New System.Drawing.Point(3, 5)
         Me.PanelControl30.Name = "PanelControl30"
-        Me.PanelControl30.Size = New System.Drawing.Size(393, 301)
+        Me.PanelControl30.Size = New System.Drawing.Size(393, 393)
         Me.PanelControl30.TabIndex = 18
         '
         'dgvObject
@@ -1830,16 +2039,16 @@ Partial Class FormAdmin
         Me.dgvObject.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvObject.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvObject.Location = New System.Drawing.Point(2, 2)
-        Me.dgvObject.MainView = Me.GridView10
+        Me.dgvObject.MainView = Me.gridObject
         Me.dgvObject.Name = "dgvObject"
-        Me.dgvObject.Size = New System.Drawing.Size(389, 297)
+        Me.dgvObject.Size = New System.Drawing.Size(389, 389)
         Me.dgvObject.TabIndex = 2
-        Me.dgvObject.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView10})
+        Me.dgvObject.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridObject})
         '
-        'GridView10
+        'gridObject
         '
-        Me.GridView10.GridControl = Me.dgvObject
-        Me.GridView10.Name = "GridView10"
+        Me.gridObject.GridControl = Me.dgvObject
+        Me.gridObject.Name = "gridObject"
         '
         'PanelControl31
         '
@@ -1865,52 +2074,22 @@ Partial Class FormAdmin
         Me.btnSearchObject.TabIndex = 4
         Me.btnSearchObject.Text = "Tìm"
         '
-        'PanelControl32
+        'tpUnit
         '
-        Me.PanelControl32.Controls.Add(Me.btnDeleteObject)
-        Me.PanelControl32.Controls.Add(Me.btnEditObject)
-        Me.PanelControl32.Controls.Add(Me.btnAddObject)
-        Me.PanelControl32.Location = New System.Drawing.Point(3, 5)
-        Me.PanelControl32.Name = "PanelControl32"
-        Me.PanelControl32.Size = New System.Drawing.Size(395, 55)
-        Me.PanelControl32.TabIndex = 16
-        '
-        'btnDeleteObject
-        '
-        Me.btnDeleteObject.Location = New System.Drawing.Point(287, 5)
-        Me.btnDeleteObject.Name = "btnDeleteObject"
-        Me.btnDeleteObject.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteObject.TabIndex = 2
-        Me.btnDeleteObject.Text = "Xoá"
-        '
-        'btnEditObject
-        '
-        Me.btnEditObject.Location = New System.Drawing.Point(143, 5)
-        Me.btnEditObject.Name = "btnEditObject"
-        Me.btnEditObject.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditObject.TabIndex = 1
-        Me.btnEditObject.Text = "Sửa"
-        '
-        'btnAddObject
-        '
-        Me.btnAddObject.Location = New System.Drawing.Point(5, 5)
-        Me.btnAddObject.Name = "btnAddObject"
-        Me.btnAddObject.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddObject.TabIndex = 0
-        Me.btnAddObject.Text = "Thêm"
-        '
-        'XtraTabPage7
-        '
-        Me.XtraTabPage7.Controls.Add(Me.PanelControl27)
-        Me.XtraTabPage7.Controls.Add(Me.PanelControl28)
-        Me.XtraTabPage7.Controls.Add(Me.PanelControl25)
-        Me.XtraTabPage7.Controls.Add(Me.PanelControl26)
-        Me.XtraTabPage7.Name = "XtraTabPage7"
-        Me.XtraTabPage7.Size = New System.Drawing.Size(718, 373)
-        Me.XtraTabPage7.Text = "Đơn vị"
+        Me.tpUnit.Controls.Add(Me.PanelControl27)
+        Me.tpUnit.Controls.Add(Me.PanelControl28)
+        Me.tpUnit.Controls.Add(Me.PanelControl25)
+        Me.tpUnit.Name = "tpUnit"
+        Me.tpUnit.Size = New System.Drawing.Size(718, 401)
+        Me.tpUnit.Text = "Đơn vị"
         '
         'PanelControl27
         '
+        Me.PanelControl27.Controls.Add(Me.LabelControl11)
+        Me.PanelControl27.Controls.Add(Me.txtIDUnit)
+        Me.PanelControl27.Controls.Add(Me.btnAddUnit)
+        Me.PanelControl27.Controls.Add(Me.btnEditUnit)
+        Me.PanelControl27.Controls.Add(Me.btnDeleteUnit)
         Me.PanelControl27.Controls.Add(Me.btnSaveUnit)
         Me.PanelControl27.Controls.Add(Me.btnCancelUnit)
         Me.PanelControl27.Controls.Add(Me.LabelControl39)
@@ -1918,26 +2097,66 @@ Partial Class FormAdmin
         Me.PanelControl27.Controls.Add(Me.txtNameUnit)
         Me.PanelControl27.Location = New System.Drawing.Point(402, 66)
         Me.PanelControl27.Name = "PanelControl27"
-        Me.PanelControl27.Size = New System.Drawing.Size(313, 299)
+        Me.PanelControl27.Size = New System.Drawing.Size(313, 330)
         Me.PanelControl27.TabIndex = 15
+        '
+        'LabelControl11
+        '
+        Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl11.Location = New System.Drawing.Point(17, 90)
+        Me.LabelControl11.Name = "LabelControl11"
+        Me.LabelControl11.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl11.TabIndex = 10
+        Me.LabelControl11.Text = "ID:"
+        '
+        'txtIDUnit
+        '
+        Me.txtIDUnit.Location = New System.Drawing.Point(118, 88)
+        Me.txtIDUnit.Name = "txtIDUnit"
+        Me.txtIDUnit.Size = New System.Drawing.Size(176, 20)
+        Me.txtIDUnit.TabIndex = 9
+        '
+        'btnAddUnit
+        '
+        Me.btnAddUnit.Location = New System.Drawing.Point(17, 194)
+        Me.btnAddUnit.Name = "btnAddUnit"
+        Me.btnAddUnit.Size = New System.Drawing.Size(85, 45)
+        Me.btnAddUnit.TabIndex = 0
+        Me.btnAddUnit.Text = "Thêm"
+        '
+        'btnEditUnit
+        '
+        Me.btnEditUnit.Location = New System.Drawing.Point(114, 194)
+        Me.btnEditUnit.Name = "btnEditUnit"
+        Me.btnEditUnit.Size = New System.Drawing.Size(85, 45)
+        Me.btnEditUnit.TabIndex = 1
+        Me.btnEditUnit.Text = "Sửa"
+        '
+        'btnDeleteUnit
+        '
+        Me.btnDeleteUnit.Location = New System.Drawing.Point(208, 194)
+        Me.btnDeleteUnit.Name = "btnDeleteUnit"
+        Me.btnDeleteUnit.Size = New System.Drawing.Size(87, 103)
+        Me.btnDeleteUnit.TabIndex = 2
+        Me.btnDeleteUnit.Text = "Xoá"
         '
         'btnSaveUnit
         '
-        Me.btnSaveUnit.Location = New System.Drawing.Point(117, 142)
+        Me.btnSaveUnit.Enabled = False
+        Me.btnSaveUnit.Location = New System.Drawing.Point(17, 245)
         Me.btnSaveUnit.Name = "btnSaveUnit"
-        Me.btnSaveUnit.Size = New System.Drawing.Size(85, 28)
+        Me.btnSaveUnit.Size = New System.Drawing.Size(85, 52)
         Me.btnSaveUnit.TabIndex = 6
         Me.btnSaveUnit.Text = "Lưu"
-        Me.btnSaveUnit.Visible = False
         '
         'btnCancelUnit
         '
-        Me.btnCancelUnit.Location = New System.Drawing.Point(208, 142)
+        Me.btnCancelUnit.Enabled = False
+        Me.btnCancelUnit.Location = New System.Drawing.Point(114, 245)
         Me.btnCancelUnit.Name = "btnCancelUnit"
-        Me.btnCancelUnit.Size = New System.Drawing.Size(85, 28)
+        Me.btnCancelUnit.Size = New System.Drawing.Size(85, 52)
         Me.btnCancelUnit.TabIndex = 7
         Me.btnCancelUnit.Text = "Huỷ"
-        Me.btnCancelUnit.Visible = False
         '
         'LabelControl39
         '
@@ -1951,7 +2170,7 @@ Partial Class FormAdmin
         'LabelControl40
         '
         Me.LabelControl40.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl40.Location = New System.Drawing.Point(11, 104)
+        Me.LabelControl40.Location = New System.Drawing.Point(17, 126)
         Me.LabelControl40.Name = "LabelControl40"
         Me.LabelControl40.Size = New System.Drawing.Size(68, 14)
         Me.LabelControl40.TabIndex = 6
@@ -1959,7 +2178,7 @@ Partial Class FormAdmin
         '
         'txtNameUnit
         '
-        Me.txtNameUnit.Location = New System.Drawing.Point(117, 103)
+        Me.txtNameUnit.Location = New System.Drawing.Point(119, 124)
         Me.txtNameUnit.Name = "txtNameUnit"
         Me.txtNameUnit.Size = New System.Drawing.Size(176, 20)
         Me.txtNameUnit.TabIndex = 5
@@ -1967,9 +2186,9 @@ Partial Class FormAdmin
         'PanelControl28
         '
         Me.PanelControl28.Controls.Add(Me.dgvUnit)
-        Me.PanelControl28.Location = New System.Drawing.Point(3, 66)
+        Me.PanelControl28.Location = New System.Drawing.Point(3, 5)
         Me.PanelControl28.Name = "PanelControl28"
-        Me.PanelControl28.Size = New System.Drawing.Size(393, 301)
+        Me.PanelControl28.Size = New System.Drawing.Size(393, 393)
         Me.PanelControl28.TabIndex = 14
         '
         'dgvUnit
@@ -1977,16 +2196,16 @@ Partial Class FormAdmin
         Me.dgvUnit.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvUnit.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvUnit.Location = New System.Drawing.Point(2, 2)
-        Me.dgvUnit.MainView = Me.GridView9
+        Me.dgvUnit.MainView = Me.gridUnit
         Me.dgvUnit.Name = "dgvUnit"
-        Me.dgvUnit.Size = New System.Drawing.Size(389, 297)
+        Me.dgvUnit.Size = New System.Drawing.Size(389, 389)
         Me.dgvUnit.TabIndex = 2
-        Me.dgvUnit.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView9})
+        Me.dgvUnit.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridUnit})
         '
-        'GridView9
+        'gridUnit
         '
-        Me.GridView9.GridControl = Me.dgvUnit
-        Me.GridView9.Name = "GridView9"
+        Me.gridUnit.GridControl = Me.dgvUnit
+        Me.gridUnit.Name = "gridUnit"
         '
         'PanelControl25
         '
@@ -2012,49 +2231,14 @@ Partial Class FormAdmin
         Me.btnSearchUnit.TabIndex = 5
         Me.btnSearchUnit.Text = "Tìm"
         '
-        'PanelControl26
+        'tpSupplier
         '
-        Me.PanelControl26.Controls.Add(Me.btnDeleteUnit)
-        Me.PanelControl26.Controls.Add(Me.btnEditUnit)
-        Me.PanelControl26.Controls.Add(Me.btnAddUnit)
-        Me.PanelControl26.Location = New System.Drawing.Point(3, 5)
-        Me.PanelControl26.Name = "PanelControl26"
-        Me.PanelControl26.Size = New System.Drawing.Size(395, 55)
-        Me.PanelControl26.TabIndex = 12
-        '
-        'btnDeleteUnit
-        '
-        Me.btnDeleteUnit.Location = New System.Drawing.Point(287, 5)
-        Me.btnDeleteUnit.Name = "btnDeleteUnit"
-        Me.btnDeleteUnit.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteUnit.TabIndex = 2
-        Me.btnDeleteUnit.Text = "Xoá"
-        '
-        'btnEditUnit
-        '
-        Me.btnEditUnit.Location = New System.Drawing.Point(143, 5)
-        Me.btnEditUnit.Name = "btnEditUnit"
-        Me.btnEditUnit.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditUnit.TabIndex = 1
-        Me.btnEditUnit.Text = "Sửa"
-        '
-        'btnAddUnit
-        '
-        Me.btnAddUnit.Location = New System.Drawing.Point(5, 5)
-        Me.btnAddUnit.Name = "btnAddUnit"
-        Me.btnAddUnit.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddUnit.TabIndex = 0
-        Me.btnAddUnit.Text = "Thêm"
-        '
-        'XtraTabPage8
-        '
-        Me.XtraTabPage8.Controls.Add(Me.PanelControl33)
-        Me.XtraTabPage8.Controls.Add(Me.PanelControl36)
-        Me.XtraTabPage8.Controls.Add(Me.PanelControl34)
-        Me.XtraTabPage8.Controls.Add(Me.PanelControl35)
-        Me.XtraTabPage8.Name = "XtraTabPage8"
-        Me.XtraTabPage8.Size = New System.Drawing.Size(718, 373)
-        Me.XtraTabPage8.Text = "Nhà cung cấp"
+        Me.tpSupplier.Controls.Add(Me.PanelControl33)
+        Me.tpSupplier.Controls.Add(Me.PanelControl34)
+        Me.tpSupplier.Controls.Add(Me.PanelControl35)
+        Me.tpSupplier.Name = "tpSupplier"
+        Me.tpSupplier.Size = New System.Drawing.Size(718, 401)
+        Me.tpSupplier.Text = "Nhà cung cấp"
         '
         'PanelControl33
         '
@@ -2080,130 +2264,145 @@ Partial Class FormAdmin
         Me.btnSearchSuplier.TabIndex = 4
         Me.btnSearchSuplier.Text = "Tìm"
         '
-        'PanelControl36
-        '
-        Me.PanelControl36.Controls.Add(Me.btnDeleteSuplier)
-        Me.PanelControl36.Controls.Add(Me.btnEditSuplier)
-        Me.PanelControl36.Controls.Add(Me.btnAddSuplier)
-        Me.PanelControl36.Location = New System.Drawing.Point(3, 5)
-        Me.PanelControl36.Name = "PanelControl36"
-        Me.PanelControl36.Size = New System.Drawing.Size(395, 55)
-        Me.PanelControl36.TabIndex = 26
-        '
-        'btnDeleteSuplier
-        '
-        Me.btnDeleteSuplier.Location = New System.Drawing.Point(287, 5)
-        Me.btnDeleteSuplier.Name = "btnDeleteSuplier"
-        Me.btnDeleteSuplier.Size = New System.Drawing.Size(85, 45)
-        Me.btnDeleteSuplier.TabIndex = 2
-        Me.btnDeleteSuplier.Text = "Xoá"
-        '
-        'btnEditSuplier
-        '
-        Me.btnEditSuplier.Location = New System.Drawing.Point(143, 5)
-        Me.btnEditSuplier.Name = "btnEditSuplier"
-        Me.btnEditSuplier.Size = New System.Drawing.Size(85, 45)
-        Me.btnEditSuplier.TabIndex = 1
-        Me.btnEditSuplier.Text = "Sửa"
-        '
-        'btnAddSuplier
-        '
-        Me.btnAddSuplier.Location = New System.Drawing.Point(5, 5)
-        Me.btnAddSuplier.Name = "btnAddSuplier"
-        Me.btnAddSuplier.Size = New System.Drawing.Size(85, 45)
-        Me.btnAddSuplier.TabIndex = 0
-        Me.btnAddSuplier.Text = "Thêm"
-        '
         'PanelControl34
         '
+        Me.PanelControl34.Controls.Add(Me.LabelControl17)
+        Me.PanelControl34.Controls.Add(Me.txtIDSupplier)
+        Me.PanelControl34.Controls.Add(Me.btnAddSupplier)
+        Me.PanelControl34.Controls.Add(Me.btnEditSupplier)
+        Me.PanelControl34.Controls.Add(Me.btnDeleteSupplier)
         Me.PanelControl34.Controls.Add(Me.LabelControl44)
-        Me.PanelControl34.Controls.Add(Me.txtEmailSuplier)
+        Me.PanelControl34.Controls.Add(Me.txtEmailSupplier)
         Me.PanelControl34.Controls.Add(Me.LabelControl43)
-        Me.PanelControl34.Controls.Add(Me.txtPhoneSuplier)
-        Me.PanelControl34.Controls.Add(Me.txtAddressSuplier)
+        Me.PanelControl34.Controls.Add(Me.txtPhoneSupplier)
+        Me.PanelControl34.Controls.Add(Me.txtAddressSupplier)
         Me.PanelControl34.Controls.Add(Me.LabelControl46)
-        Me.PanelControl34.Controls.Add(Me.btnSaveSuplier)
-        Me.PanelControl34.Controls.Add(Me.btnCancelSuplier)
+        Me.PanelControl34.Controls.Add(Me.btnSaveSupplier)
+        Me.PanelControl34.Controls.Add(Me.btnCancelSupplier)
         Me.PanelControl34.Controls.Add(Me.LabelControl48)
         Me.PanelControl34.Controls.Add(Me.LabelControl49)
-        Me.PanelControl34.Controls.Add(Me.txtNameSuplier)
+        Me.PanelControl34.Controls.Add(Me.txtNameSupplier)
         Me.PanelControl34.Location = New System.Drawing.Point(402, 66)
         Me.PanelControl34.Name = "PanelControl34"
-        Me.PanelControl34.Size = New System.Drawing.Size(313, 299)
+        Me.PanelControl34.Size = New System.Drawing.Size(313, 330)
         Me.PanelControl34.TabIndex = 13
+        '
+        'LabelControl17
+        '
+        Me.LabelControl17.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl17.Location = New System.Drawing.Point(18, 52)
+        Me.LabelControl17.Name = "LabelControl17"
+        Me.LabelControl17.Size = New System.Drawing.Size(18, 14)
+        Me.LabelControl17.TabIndex = 27
+        Me.LabelControl17.Text = "ID:"
+        '
+        'txtIDSupplier
+        '
+        Me.txtIDSupplier.Enabled = False
+        Me.txtIDSupplier.Location = New System.Drawing.Point(130, 50)
+        Me.txtIDSupplier.Name = "txtIDSupplier"
+        Me.txtIDSupplier.Size = New System.Drawing.Size(164, 20)
+        Me.txtIDSupplier.TabIndex = 26
+        '
+        'btnAddSupplier
+        '
+        Me.btnAddSupplier.Location = New System.Drawing.Point(18, 230)
+        Me.btnAddSupplier.Name = "btnAddSupplier"
+        Me.btnAddSupplier.Size = New System.Drawing.Size(85, 45)
+        Me.btnAddSupplier.TabIndex = 0
+        Me.btnAddSupplier.Text = "Thêm"
+        '
+        'btnEditSupplier
+        '
+        Me.btnEditSupplier.Location = New System.Drawing.Point(116, 230)
+        Me.btnEditSupplier.Name = "btnEditSupplier"
+        Me.btnEditSupplier.Size = New System.Drawing.Size(85, 45)
+        Me.btnEditSupplier.TabIndex = 1
+        Me.btnEditSupplier.Text = "Sửa"
+        '
+        'btnDeleteSupplier
+        '
+        Me.btnDeleteSupplier.Location = New System.Drawing.Point(212, 230)
+        Me.btnDeleteSupplier.Name = "btnDeleteSupplier"
+        Me.btnDeleteSupplier.Size = New System.Drawing.Size(82, 95)
+        Me.btnDeleteSupplier.TabIndex = 2
+        Me.btnDeleteSupplier.Text = "Xoá"
         '
         'LabelControl44
         '
         Me.LabelControl44.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.LabelControl44.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl44.Location = New System.Drawing.Point(7, 187)
+        Me.LabelControl44.Location = New System.Drawing.Point(18, 202)
         Me.LabelControl44.Name = "LabelControl44"
         Me.LabelControl44.Size = New System.Drawing.Size(35, 14)
         Me.LabelControl44.TabIndex = 25
         Me.LabelControl44.Text = "Email:"
         '
-        'txtEmailSuplier
+        'txtEmailSupplier
         '
-        Me.txtEmailSuplier.Location = New System.Drawing.Point(125, 186)
-        Me.txtEmailSuplier.Name = "txtEmailSuplier"
-        Me.txtEmailSuplier.Size = New System.Drawing.Size(163, 20)
-        Me.txtEmailSuplier.TabIndex = 7
+        Me.txtEmailSupplier.Enabled = False
+        Me.txtEmailSupplier.Location = New System.Drawing.Point(131, 200)
+        Me.txtEmailSupplier.Name = "txtEmailSupplier"
+        Me.txtEmailSupplier.Size = New System.Drawing.Size(163, 20)
+        Me.txtEmailSupplier.TabIndex = 7
         '
         'LabelControl43
         '
         Me.LabelControl43.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl43.Location = New System.Drawing.Point(7, 161)
+        Me.LabelControl43.Location = New System.Drawing.Point(18, 175)
         Me.LabelControl43.Name = "LabelControl43"
         Me.LabelControl43.Size = New System.Drawing.Size(86, 14)
         Me.LabelControl43.TabIndex = 23
         Me.LabelControl43.Text = "Số điện thoại:"
         '
-        'txtPhoneSuplier
+        'txtPhoneSupplier
         '
-        Me.txtPhoneSuplier.Location = New System.Drawing.Point(125, 159)
-        Me.txtPhoneSuplier.Name = "txtPhoneSuplier"
-        Me.txtPhoneSuplier.Size = New System.Drawing.Size(163, 20)
-        Me.txtPhoneSuplier.TabIndex = 6
+        Me.txtPhoneSupplier.Enabled = False
+        Me.txtPhoneSupplier.Location = New System.Drawing.Point(131, 173)
+        Me.txtPhoneSupplier.Name = "txtPhoneSupplier"
+        Me.txtPhoneSupplier.Size = New System.Drawing.Size(163, 20)
+        Me.txtPhoneSupplier.TabIndex = 6
         '
-        'txtAddressSuplier
+        'txtAddressSupplier
         '
-        Me.txtAddressSuplier.Location = New System.Drawing.Point(125, 95)
-        Me.txtAddressSuplier.Multiline = True
-        Me.txtAddressSuplier.Name = "txtAddressSuplier"
-        Me.txtAddressSuplier.Size = New System.Drawing.Size(164, 54)
-        Me.txtAddressSuplier.TabIndex = 6
+        Me.txtAddressSupplier.Enabled = False
+        Me.txtAddressSupplier.Location = New System.Drawing.Point(131, 113)
+        Me.txtAddressSupplier.Multiline = True
+        Me.txtAddressSupplier.Name = "txtAddressSupplier"
+        Me.txtAddressSupplier.Size = New System.Drawing.Size(164, 49)
+        Me.txtAddressSupplier.TabIndex = 6
         '
         'LabelControl46
         '
         Me.LabelControl46.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl46.Location = New System.Drawing.Point(8, 97)
+        Me.LabelControl46.Location = New System.Drawing.Point(18, 115)
         Me.LabelControl46.Name = "LabelControl46"
         Me.LabelControl46.Size = New System.Drawing.Size(44, 14)
         Me.LabelControl46.TabIndex = 14
         Me.LabelControl46.Text = "Địa chỉ:"
         '
-        'btnSaveSuplier
+        'btnSaveSupplier
         '
-        Me.btnSaveSuplier.Location = New System.Drawing.Point(125, 235)
-        Me.btnSaveSuplier.Name = "btnSaveSuplier"
-        Me.btnSaveSuplier.Size = New System.Drawing.Size(85, 28)
-        Me.btnSaveSuplier.TabIndex = 8
-        Me.btnSaveSuplier.Text = "Lưu"
-        Me.btnSaveSuplier.Visible = False
+        Me.btnSaveSupplier.Enabled = False
+        Me.btnSaveSupplier.Location = New System.Drawing.Point(18, 281)
+        Me.btnSaveSupplier.Name = "btnSaveSupplier"
+        Me.btnSaveSupplier.Size = New System.Drawing.Size(85, 44)
+        Me.btnSaveSupplier.TabIndex = 8
+        Me.btnSaveSupplier.Text = "Lưu"
         '
-        'btnCancelSuplier
+        'btnCancelSupplier
         '
-        Me.btnCancelSuplier.Location = New System.Drawing.Point(216, 235)
-        Me.btnCancelSuplier.Name = "btnCancelSuplier"
-        Me.btnCancelSuplier.Size = New System.Drawing.Size(71, 28)
-        Me.btnCancelSuplier.TabIndex = 9
-        Me.btnCancelSuplier.Text = "Huỷ"
-        Me.btnCancelSuplier.Visible = False
+        Me.btnCancelSupplier.Enabled = False
+        Me.btnCancelSupplier.Location = New System.Drawing.Point(117, 281)
+        Me.btnCancelSupplier.Name = "btnCancelSupplier"
+        Me.btnCancelSupplier.Size = New System.Drawing.Size(84, 44)
+        Me.btnCancelSupplier.TabIndex = 9
+        Me.btnCancelSupplier.Text = "Huỷ"
         '
         'LabelControl48
         '
         Me.LabelControl48.Appearance.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl48.Location = New System.Drawing.Point(48, 15)
+        Me.LabelControl48.Location = New System.Drawing.Point(60, 15)
         Me.LabelControl48.Name = "LabelControl48"
         Me.LabelControl48.Size = New System.Drawing.Size(206, 18)
         Me.LabelControl48.TabIndex = 8
@@ -2212,25 +2411,26 @@ Partial Class FormAdmin
         'LabelControl49
         '
         Me.LabelControl49.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl49.Location = New System.Drawing.Point(7, 59)
+        Me.LabelControl49.Location = New System.Drawing.Point(18, 83)
         Me.LabelControl49.Name = "LabelControl49"
-        Me.LabelControl49.Size = New System.Drawing.Size(112, 14)
+        Me.LabelControl49.Size = New System.Drawing.Size(54, 14)
         Me.LabelControl49.TabIndex = 6
-        Me.LabelControl49.Text = "Tên nhà cung cấp:"
+        Me.LabelControl49.Text = "Tên NCC:"
         '
-        'txtNameSuplier
+        'txtNameSupplier
         '
-        Me.txtNameSuplier.Location = New System.Drawing.Point(125, 58)
-        Me.txtNameSuplier.Name = "txtNameSuplier"
-        Me.txtNameSuplier.Size = New System.Drawing.Size(164, 20)
-        Me.txtNameSuplier.TabIndex = 5
+        Me.txtNameSupplier.Enabled = False
+        Me.txtNameSupplier.Location = New System.Drawing.Point(131, 81)
+        Me.txtNameSupplier.Name = "txtNameSupplier"
+        Me.txtNameSupplier.Size = New System.Drawing.Size(164, 20)
+        Me.txtNameSupplier.TabIndex = 5
         '
         'PanelControl35
         '
         Me.PanelControl35.Controls.Add(Me.dgvSuplier)
-        Me.PanelControl35.Location = New System.Drawing.Point(3, 66)
+        Me.PanelControl35.Location = New System.Drawing.Point(3, 5)
         Me.PanelControl35.Name = "PanelControl35"
-        Me.PanelControl35.Size = New System.Drawing.Size(393, 301)
+        Me.PanelControl35.Size = New System.Drawing.Size(393, 393)
         Me.PanelControl35.TabIndex = 10
         '
         'dgvSuplier
@@ -2238,16 +2438,16 @@ Partial Class FormAdmin
         Me.dgvSuplier.Cursor = System.Windows.Forms.Cursors.Default
         Me.dgvSuplier.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvSuplier.Location = New System.Drawing.Point(2, 2)
-        Me.dgvSuplier.MainView = Me.GridView11
+        Me.dgvSuplier.MainView = Me.gridSupplier
         Me.dgvSuplier.Name = "dgvSuplier"
-        Me.dgvSuplier.Size = New System.Drawing.Size(389, 297)
+        Me.dgvSuplier.Size = New System.Drawing.Size(389, 389)
         Me.dgvSuplier.TabIndex = 2
-        Me.dgvSuplier.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView11})
+        Me.dgvSuplier.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridSupplier})
         '
-        'GridView11
+        'gridSupplier
         '
-        Me.GridView11.GridControl = Me.dgvSuplier
-        Me.GridView11.Name = "GridView11"
+        Me.gridSupplier.GridControl = Me.dgvSuplier
+        Me.gridSupplier.Name = "gridSupplier"
         '
         'XtraTabPage2
         '
@@ -2273,14 +2473,21 @@ Partial Class FormAdmin
         Me.XtraTabPage6.Name = "XtraTabPage6"
         Me.XtraTabPage6.Size = New System.Drawing.Size(294, 272)
         '
+        'btnAddUnitObject
+        '
+        Me.btnAddUnitObject.Location = New System.Drawing.Point(267, 167)
+        Me.btnAddUnitObject.Name = "btnAddUnitObject"
+        Me.btnAddUnitObject.Size = New System.Drawing.Size(26, 21)
+        Me.btnAddUnitObject.TabIndex = 32
+        Me.btnAddUnitObject.Text = "+"
+        '
         'FormAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(765, 487)
+        Me.ClientSize = New System.Drawing.Size(751, 473)
         Me.Controls.Add(Me.tcAdmin)
         Me.MaximumSize = New System.Drawing.Size(781, 526)
-        Me.MinimumSize = New System.Drawing.Size(781, 526)
         Me.Name = "FormAdmin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormAdmin"
@@ -2361,76 +2568,76 @@ Partial Class FormAdmin
         CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gridStaff, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpInventoryManagement.ResumeLayout(False)
-        Me.tpInventoryManagement.PerformLayout()
         CType(Me.PanelControl22, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl22.ResumeLayout(False)
-        CType(Me.XtraTabControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.XtraTabControl2.ResumeLayout(False)
+        CType(Me.tcInputOutput, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tcInputOutput.ResumeLayout(False)
         Me.tpInput.ResumeLayout(False)
         CType(Me.panelTotal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelTotal.ResumeLayout(False)
         Me.panelTotal.PerformLayout()
-        CType(Me.cbInputStatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl6.ResumeLayout(False)
+        Me.PanelControl6.PerformLayout()
         CType(Me.nmInputPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nmInputCount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbInputObject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl4.ResumeLayout(False)
         CType(Me.dgvInput, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpOutput.ResumeLayout(False)
         CType(Me.PanelControl21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl21.ResumeLayout(False)
         Me.PanelControl21.PerformLayout()
-        CType(Me.cbOutputStatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl12, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl12.ResumeLayout(False)
+        Me.PanelControl12.PerformLayout()
         CType(Me.nmOutputCount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbOutputObject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl9, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl9.ResumeLayout(False)
         CType(Me.dgvOutput, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpObject.ResumeLayout(False)
         CType(Me.PanelControl29, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl29.ResumeLayout(False)
         Me.PanelControl29.PerformLayout()
-        CType(Me.cbUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbSuplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIDObject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNameObject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl30, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl30.ResumeLayout(False)
         CType(Me.dgvObject, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridObject, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl31, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl31.ResumeLayout(False)
         CType(Me.txtSearchObject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl32, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl32.ResumeLayout(False)
-        Me.XtraTabPage7.ResumeLayout(False)
+        Me.tpUnit.ResumeLayout(False)
         CType(Me.PanelControl27, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl27.ResumeLayout(False)
         Me.PanelControl27.PerformLayout()
+        CType(Me.txtIDUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNameUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl28, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl28.ResumeLayout(False)
         CType(Me.dgvUnit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridUnit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl25, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl25.ResumeLayout(False)
         CType(Me.txtSearchUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl26, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl26.ResumeLayout(False)
-        Me.XtraTabPage8.ResumeLayout(False)
+        Me.tpSupplier.ResumeLayout(False)
         CType(Me.PanelControl33, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl33.ResumeLayout(False)
         CType(Me.txtSearchSuplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl36, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl36.ResumeLayout(False)
         CType(Me.PanelControl34, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl34.ResumeLayout(False)
         Me.PanelControl34.PerformLayout()
-        CType(Me.txtEmailSuplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPhoneSuplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtNameSuplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtIDSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtEmailSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPhoneSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNameSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl35, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl35.ResumeLayout(False)
         CType(Me.dgvSuplier, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gridSupplier, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage2.ResumeLayout(False)
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -2530,34 +2737,19 @@ Partial Class FormAdmin
     Friend WithEvents btnDeleteCustomer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditCustomer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddCustomer As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl30 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents PanelControl22 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents XtraTabControl2 As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents tcInputOutput As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents tpInput As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents panelTotal As DevExpress.XtraEditors.PanelControl
     Friend WithEvents LabelControl29 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl28 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cbInputStatus As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents LabelControl27 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents nmInputPrice As DevExpress.XtraEditors.SpinEdit
-    Friend WithEvents LabelControl26 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents nmInputCount As DevExpress.XtraEditors.SpinEdit
-    Friend WithEvents LabelControl25 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cbInputObject As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents dgvInput As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView7 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents tpOutput As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tpObject As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents XtraTabPage7 As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents XtraTabPage8 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tpUnit As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tpSupplier As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents PanelControl21 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents LabelControl31 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl32 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cbOutputStatus As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents LabelControl34 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents nmOutputCount As DevExpress.XtraEditors.SpinEdit
-    Friend WithEvents LabelControl35 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cbOutputObject As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents dgvOutput As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView8 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LabelControl36 As DevExpress.XtraEditors.LabelControl
@@ -2571,15 +2763,12 @@ Partial Class FormAdmin
     Friend WithEvents PanelControl25 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtSearchUnit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnSearchUnit As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents PanelControl26 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnDeleteUnit As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditUnit As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddUnit As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl24 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents dtpInput As System.Windows.Forms.DateTimePicker
     Friend WithEvents PanelControl29 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents cbUnit As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents cbSuplier As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl42 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl41 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btnSaveObject As DevExpress.XtraEditors.SimpleButton
@@ -2589,11 +2778,10 @@ Partial Class FormAdmin
     Friend WithEvents txtNameObject As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PanelControl30 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvObject As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView10 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridObject As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents PanelControl31 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtSearchObject As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnSearchObject As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents PanelControl32 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents btnDeleteObject As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditObject As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddObject As DevExpress.XtraEditors.SimpleButton
@@ -2605,29 +2793,28 @@ Partial Class FormAdmin
     Friend WithEvents txtNameUnit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PanelControl28 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvUnit As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView9 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridUnit As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents PanelControl34 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents LabelControl43 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtPhoneSuplier As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtAddressSuplier As System.Windows.Forms.TextBox
+    Friend WithEvents txtPhoneSupplier As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtAddressSupplier As System.Windows.Forms.TextBox
     Friend WithEvents LabelControl46 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents btnSaveSuplier As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnCancelSuplier As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnSaveSupplier As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnCancelSupplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl48 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl49 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtNameSuplier As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtNameSupplier As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PanelControl35 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvSuplier As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView11 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents gridSupplier As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LabelControl44 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtEmailSuplier As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtEmailSupplier As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PanelControl33 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtSearchSuplier As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnSearchSuplier As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents PanelControl36 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents btnDeleteSuplier As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnEditSuplier As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnAddSuplier As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnDeleteSupplier As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnEditSupplier As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnAddSupplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cbCategoryFood As System.Windows.Forms.ComboBox
     Friend WithEvents LabelControl33 As DevExpress.XtraEditors.LabelControl
@@ -2649,4 +2836,45 @@ Partial Class FormAdmin
     Friend WithEvents txtNameTable As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtIDCustomer As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cbbUnitObject As System.Windows.Forms.ComboBox
+    Friend WithEvents cbbSuplierObject As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelControl16 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDObject As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDUnit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl17 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtIDSupplier As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents PanelControl6 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents btnAddObjectInput As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbbInputStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents cbbInputObject As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelControl28 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl27 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents nmInputPrice As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents LabelControl26 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents nmInputCount As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents LabelControl25 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents PanelControl4 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents SimpleButton4 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton7 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton8 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents PanelControl12 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cbbOutputObject As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelControl32 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl34 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents nmOutputCount As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents LabelControl35 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents PanelControl9 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents SimpleButton9 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton10 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton11 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton12 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton13 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton14 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnAddSupplierObject As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbOutputStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents SimpleButton16 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnAddUnitObject As DevExpress.XtraEditors.SimpleButton
 End Class

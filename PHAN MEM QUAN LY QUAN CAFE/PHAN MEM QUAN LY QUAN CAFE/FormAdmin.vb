@@ -1,5 +1,6 @@
-﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DTO
-Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
+﻿Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.PHAN_MEM_QUAN_LY_QUAN_CAFE.DAO
+Imports PHAN_MEM_QUAN_LY_QUAN_CAFE.Ultils
+Imports System.Text.RegularExpressions
 
 Public Class FormAdmin
 
@@ -10,6 +11,8 @@ Public Class FormAdmin
     Private tableFoodList As BindingSource = New BindingSource()
     Private staffList As BindingSource = New BindingSource()
     Private customerList As BindingSource = New BindingSource()
+    Private supplierList As BindingSource = New BindingSource()
+    Private unitList As BindingSource = New BindingSource()
 
     Private isUpdateTable As Boolean = False
     Private isAddTable As Boolean = False
@@ -26,7 +29,9 @@ Public Class FormAdmin
     Private isUpdateStaff As Boolean = False
     Private isAddStaff As Boolean = False
 
-    Public loginAccount As Accounts
+    Private isUpdateSupplier As Boolean = False
+    Private isAddSupplier As Boolean = False
+
     Private _idStaff As Integer
 
     Public Sub New(idStaff As Integer)
@@ -47,20 +52,32 @@ Public Class FormAdmin
         dgvTable.DataSource = tableFoodList
         dgvStaff.DataSource = staffList
         dgvCustomer.DataSource = customerList
+        dgvSuplier.DataSource = supplierList
+        dgvUnit.DataSource = unitList
 
         'LoadDateTimePickerBill()
         'LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value)
         LoadListFood()
         AddFoodBindding()
+
         LoadCatagoryIntoCombobox(cbCategoryFood)
         LoadListCategoryFood()
         AddCategoryFoodBindding()
+
         LoadListTableFood()
         AddTableFoodBindding()
-        LoadStaff()
+
+        LoadListStaff()
         AddStaffBindding()
+
         LoadListCustomer()
         AddCustomerBindding()
+
+        LoadListSupplier()
+        AddSupplierBindding()
+
+        LoadListUnit()
+        AddUnitBindding()
 
         ChangeColumnName()
     End Sub
@@ -77,8 +94,7 @@ Public Class FormAdmin
         cb.DisplayMember = "_name"
     End Sub
 
-#Region "Đưa dữ liệu lên các textbox tương ứng"
-
+    'Load các text tương ứng từ datagrid lên các box
     'Thức ăn
     Private Sub AddFoodBindding()
         txtIDFood.DataBindings.Add(New Binding("Text", dgvFood.DataSource, "_id", True, DataSourceUpdateMode.Never))
@@ -87,9 +103,9 @@ Public Class FormAdmin
     End Sub
 
     'Danh mục
-    Private Sub AddCategoryFoodBindding()
-        txtIDCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_id", True, DataSourceUpdateMode.Never))
-        txtNameCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_name", True, DataSourceUpdateMode.Never))
+    Private Sub AddUnitBindding()
+        txtIDUnit.DataBindings.Add(New Binding("Text", dgvUnit.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameUnit.DataBindings.Add(New Binding("Text", dgvUnit.DataSource, "_name", True, DataSourceUpdateMode.Never))
     End Sub
 
     'Bàn ăn
@@ -115,7 +131,25 @@ Public Class FormAdmin
         txtPhoneCustomer.DataBindings.Add(New Binding("Text", dgvCustomer.DataSource, "_phone", True, DataSourceUpdateMode.Never))
     End Sub
 
-#End Region
+    Private Sub AddSupplierBindding()
+        txtIDSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_name", True, DataSourceUpdateMode.Never))
+        txtAddressSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_address", True, DataSourceUpdateMode.Never))
+        txtPhoneSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_phone", True, DataSourceUpdateMode.Never))
+        txtEmailSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_email", True, DataSourceUpdateMode.Never))
+    End Sub
+
+    'Danh mục
+    Private Sub AddCategoryFoodBindding()
+        txtIDCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_name", True, DataSourceUpdateMode.Never))
+    End Sub
+
+    'Danh mục
+    Private Sub AddUnitFoodBindding()
+        txtIDUnit.DataBindings.Add(New Binding("Text", dgvUnit.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameUnit.DataBindings.Add(New Binding("Text", dgvUnit.DataSource, "_name", True, DataSourceUpdateMode.Never))
+    End Sub
 
     ' Lấy danh sách các món ăn
     Private Sub LoadListFood()
@@ -133,7 +167,7 @@ Public Class FormAdmin
     End Sub
 
     'Lấy danh sách nhân viên
-    Private Sub LoadStaff()
+    Private Sub LoadListStaff()
         staffList.DataSource = StaffDAO._Instance.GetListStaff()
     End Sub
 
@@ -142,32 +176,51 @@ Public Class FormAdmin
         customerList.DataSource = CustomerDAO._Instance.GetListCustomer()
     End Sub
 
-    'Thêm nhân viên
-    Private Sub AddStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
-        StaffDAO._Instance.InsertStaff(fullname, dateofbirth, idCard, address, phone)
-        MessageBox.Show("Thêm tài khoản thành công")
-        LoadStaff()
-
-        isAddStaff = False
-        Enable()
-
+    'Lấy danh sách nhà cung cấp
+    Private Sub LoadListSupplier()
+        supplierList.DataSource = SuppilerDAO._Instance.GetListSupplier()
+        cbbSuplierObject.DataSource = SuppilerDAO._Instance.GetListSupplier()
+        cbbSuplierObject.DisplayMember = "_name"
     End Sub
 
+    'Lấy danh sách Đơn vị tính
+    Private Sub LoadListUnit()
+        unitList.DataSource = UnitDAO._Instance.GetListUnit()
+        cbbUnitObject.DataSource = UnitDAO._Instance.GetListUnit()
+        cbbUnitObject.DisplayMember = "_name"
+    End Sub
+
+    'Thêm nhân viên
+    Private Sub AddStaff(fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
+        If CheckEmpty(fullname) <> True Or CheckEmpty(dateofbirth) <> True Then
+            StaffDAO._Instance.InsertStaff(fullname, dateofbirth, idCard, address, phone)
+            MessageBox.Show("Thêm tài khoản thành công")
+            LoadListStaff()
+
+            isAddStaff = False
+            Enable()
+        Else
+            MessageBox.Show("Không được để trống các trường dữ liệu")
+        End If
+    End Sub
+
+    'Xoá nhân viên
     Private Sub DeleteStaff(id As Integer)
         If StaffDAO._Instance.DeleteStaff(id) Then
             MessageBox.Show("Xóa thành công")
-            LoadStaff()
+            LoadListStaff()
         Else
             MessageBox.Show("Xóa thất bại")
         End If
     End Sub
 
+    'Chỉnh sửa nhân viên
     Private Sub UpdateStaff(id As Integer, fullname As String, dateofbirth As String, idCard As String, address As String, phone As String)
         If StaffDAO._Instance.UpdateInfoStaff(id, fullname, dateofbirth, idCard, address, phone) Then
             Dim acc As Accounts = AccountDAO._Instance.GetAccountByIdStaff(id)
             If AccountDAO._Instance.UpdateUsernameAccountStaff(acc._id, idCard) Then
                 MessageBox.Show("Sửa thành công")
-                LoadStaff()
+                LoadListStaff()
 
                 isUpdateStaff = False
                 Enable()
@@ -181,165 +234,252 @@ Public Class FormAdmin
 
     'Thêm bàn ăn
     Private Sub AddTableFood(name As String)
-        If TableDAO._Instance.InsertTableFood(name) Then
-            MessageBox.Show("Thêm thành công")
-            LoadListTableFood()
+        If CheckEmpty(name) <> True Then
+            If TableDAO._Instance.InsertTableFood(name) Then
+                MessageBox.Show("Thêm thành công")
+                LoadListTableFood()
 
-            isAddTable = False
-            Enable()
+                isAddTable = False
+                Enable()
 
-            RaiseEvent InsertTables(Me, New EventArgs())
+                RaiseEvent InsertTables(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi thêm")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi thêm")
+            MessageBox.Show("Không được để trống")
         End If
     End Sub
 
     'Sửa bàn ăn
     Private Sub EditTableFood(id As Integer, name As String)
-        If TableDAO._Instance.UpdateTableFood(id, name) Then
-            MessageBox.Show("Sửa thành công")
-            LoadListTableFood()
+        If CheckEmpty(name) <> True Then
+            If TableDAO._Instance.UpdateTableFood(id, name) Then
+                MessageBox.Show("Sửa thành công")
+                LoadListTableFood()
 
-            isUpdateTable = False
-            Enable()
+                isUpdateTable = False
+                Enable()
 
-            RaiseEvent UpdateTables(Me, New EventArgs())
+                RaiseEvent UpdateTables(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi sửa")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi sửa")
+            MessageBox.Show("Không được để trống")
         End If
     End Sub
 
     'Xóa bàn ăn
     Private Sub DeleteTable(id As Integer)
-        If TableDAO._Instance.DeleteTableFood(id) Then
-            MessageBox.Show("Xoá thành công")
-            LoadListTableFood()
-            RaiseEvent DeleteTables(Me, New EventArgs())
-        Else
-            MessageBox.Show("Có lỗi khi xoá")
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa Bàn ăn này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If TableDAO._Instance.DeleteTableFood(id) Then
+                MessageBox.Show("Xoá thành công")
+                LoadListTableFood()
+                RaiseEvent DeleteTables(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi xoá")
+            End If
         End If
     End Sub
 
     'Thêm danh mục
     Private Sub AddCategoryFood(name As String)
-        If CategoriesDAO._Instance.InsertCategory(name) Then
-            MessageBox.Show("Thêm thành công")
-            LoadListCategoryFood()
-            LoadCatagoryIntoCombobox(cbCategoryFood)
+        If CheckEmpty(name) <> True Then
+            If CategoriesDAO._Instance.InsertCategory(name) Then
+                MessageBox.Show("Thêm thành công")
+                LoadListCategoryFood()
+                LoadCatagoryIntoCombobox(cbCategoryFood)
 
-            isAddCategory = False
-            Enable()
+                isAddCategory = False
+                Enable()
 
-            RaiseEvent InsertCategoryFoods(Me, New EventArgs())
+                RaiseEvent InsertCategoryFoods(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi thêm")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi thêm")
+            MessageBox.Show("Không được để trống tên bàn ăn")
         End If
     End Sub
 
     'Chỉnh sửa danh mục
     Private Sub EditCategory(id As Integer, name As String)
-        If CategoriesDAO._Instance.UpdateCategory(id, name) Then
-            MessageBox.Show("Sửa thành công")
-            LoadListCategoryFood()
-            LoadCatagoryIntoCombobox(cbCategoryFood)
+        If CheckEmpty(name) <> True Then
+            If CategoriesDAO._Instance.UpdateCategory(id, name) Then
+                MessageBox.Show("Sửa thành công")
+                LoadListCategoryFood()
+                LoadCatagoryIntoCombobox(cbCategoryFood)
 
-            isUpdateCategory = False
-            Enable()
+                isUpdateCategory = False
+                Enable()
 
-            RaiseEvent UpdateCategoryFoods(Me, New EventArgs())
+                RaiseEvent UpdateCategoryFoods(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi sửa")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi sửa")
+            MessageBox.Show("Không được để trống tên bàn ăn")
         End If
     End Sub
 
     'Xóa danh mục
     Private Sub DeleteCategory(id As Integer)
-        CategoriesDAO._Instance.DeleteCategory(id)
-        MessageBox.Show("Xoá thành công")
-        LoadListCategoryFood()
-        LoadCatagoryIntoCombobox(cbCategoryFood)
-        RaiseEvent DeleteCategoryFoods(Me, New EventArgs())
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa danh mục này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            CategoriesDAO._Instance.DeleteCategory(id)
+            MessageBox.Show("Xoá thành công")
+            LoadListCategoryFood()
+            LoadCatagoryIntoCombobox(cbCategoryFood)
+            RaiseEvent DeleteCategoryFoods(Me, New EventArgs())
+        End If
     End Sub
 
     'Thêm món ăn
     Private Sub AddFood(name As String, price As Integer, categoryID As Integer)
-        If ItemsDAO._Instance.InsertFood(name, price, categoryID) Then
-            MessageBox.Show("Thêm thành công")
-            LoadListFood()
+        If CheckEmpty(name) <> True Or CheckEmpty(price) <> True Then
+            If ItemsDAO._Instance.InsertFood(name, price, categoryID) Then
+                MessageBox.Show("Thêm thành công")
+                LoadListFood()
 
-            isAddFood = False
-            Enable()
+                isAddFood = False
+                Enable()
 
-            RaiseEvent InsertFoods(Me, New EventArgs())
+                RaiseEvent InsertFoods(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi thêm")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi thêm")
+            MessageBox.Show("Không được để trống các trường dữ liệu")
         End If
     End Sub
 
     'Chỉnh sửa món ăn
     Private Sub EditFood(id As Integer, name As String, categoryID As Integer, price As Integer)
-        If ItemsDAO._Instance.UpdateFood(id, name, categoryID, price) Then
-            MessageBox.Show("Sửa thành công")
-            LoadListFood()
+        If CheckEmpty(name) <> True Or CheckEmpty(price) <> True Then
+            If ItemsDAO._Instance.UpdateFood(id, name, categoryID, price) Then
+                MessageBox.Show("Sửa thành công")
+                LoadListFood()
 
-            isUpdateFood = False
-            Enable()
+                isUpdateFood = False
+                Enable()
 
-            RaiseEvent UpdateFoods(Me, New EventArgs())
+                RaiseEvent UpdateFoods(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi sửa")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi sửa")
+            MessageBox.Show("Không được để trống các trường dữ liệu")
         End If
     End Sub
 
     'Xoá món ăn
     Private Sub DeleteFood(id As Integer)
-        If ItemsDAO._Instance.DeleteFood(id) Then
-            MessageBox.Show("Xoá thành công")
-            LoadListFood()
-            RaiseEvent DeleteFoods(Me, New EventArgs())
-        Else
-            MessageBox.Show("Có lỗi khi xoá")
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa món ăn này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If ItemsDAO._Instance.DeleteFood(id) Then
+                MessageBox.Show("Xoá thành công")
+                LoadListFood()
+                RaiseEvent DeleteFoods(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi xoá")
+            End If
         End If
     End Sub
 
     'Thêm khách hàng
     Private Sub AddCustomer(name As String, phone As String)
-        If CustomerDAO._Instance.InsertCustomer(name, phone) Then
-            MessageBox.Show("Thêm thành công")
-            LoadListCustomer()
+        If CheckEmpty(name) <> True Then
+            If CustomerDAO._Instance.InsertCustomer(name, phone) Then
+                MessageBox.Show("Thêm thành công")
+                LoadListCustomer()
 
-            isAddCustomer = False
-            Enable()
+                isAddCustomer = False
+                Enable()
 
-            RaiseEvent AddCustomers(Me, New EventArgs())
+                RaiseEvent AddCustomers(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi thêm")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi thêm")
+            MessageBox.Show("Không được để trống tên khách hàng")
         End If
     End Sub
 
     'Chỉnh sửa khách hàng
     Private Sub EditCustomer(id As Integer, name As String, phone As String)
-        If CustomerDAO._Instance.UpdateCustomer(id, name, phone) Then
-            MessageBox.Show("Sửa thành công")
-            LoadListCustomer()
+        If CheckEmpty(name) <> True Then
+            If CustomerDAO._Instance.UpdateCustomer(id, name, phone) Then
+                MessageBox.Show("Sửa thành công")
+                LoadListCustomer()
 
-            isUpdateFood = False
-            Enable()
+                isUpdateFood = False
+                Enable()
 
-            RaiseEvent UpdateCustomers(Me, New EventArgs())
+                RaiseEvent UpdateCustomers(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi sửa")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi sửa")
+            MessageBox.Show("Không được để trống tên khách hàng")
         End If
     End Sub
 
     'Xoá khách hàng
     Private Sub DeleteCustomer(id As Integer)
-        If CustomerDAO._Instance.DeleteCustomer(id) Then
-            MessageBox.Show("Xoá thành công")
-            LoadListCustomer()
-            RaiseEvent DeleteCustomers(Me, New EventArgs())
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa khách hàng này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If CustomerDAO._Instance.DeleteCustomer(id) Then
+                MessageBox.Show("Xoá thành công")
+                LoadListCustomer()
+                RaiseEvent DeleteCustomers(Me, New EventArgs())
+            Else
+                MessageBox.Show("Có lỗi khi xoá")
+            End If
+        End If
+    End Sub
+
+    'Thêm Nhà cung cấp
+    Private Sub AddSupplier(name As String, address As String, phone As String, email As String)
+        If CheckEmpty(name) <> True Or CheckEmpty(address) <> True Then
+            If SuppilerDAO._Instance.InsertSupplier(name, address, phone, email) Then
+                MessageBox.Show("Thêm thành công")
+
+                isAddSupplier = False
+                Enable()
+
+                LoadListSupplier()
+            Else
+                MessageBox.Show("Thêm thất bại")
+            End If
         Else
-            MessageBox.Show("Có lỗi khi xoá")
+            MessageBox.Show("Không được để trống tên nhà cung cấp")
+        End If
+    End Sub
+
+    'Chỉnh sửa Nhà cung cấp
+    Private Sub EditSupplier(id As Integer, name As String, address As String, phone As String, email As String)
+        If CheckEmpty(name) <> True Then
+            If SuppilerDAO._Instance.UpdateSupplier(id, name, address, phone, email) Then
+                MessageBox.Show("Sửa thành công")
+
+                isAddSupplier = False
+                Enable()
+
+                LoadListSupplier()
+            Else
+                MessageBox.Show("Sửa thất bại")
+            End If
+        Else
+            MessageBox.Show("Không được để trống")
+        End If
+    End Sub
+
+    'Xoá Nhà cung cấp
+    Private Sub DeleteSupplier(id As Integer)
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa Nhà cung cấp này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If SuppilerDAO._Instance.DeleteSupplier(id) Then
+                MessageBox.Show("Xoá thành công")
+                LoadListSupplier()
+
+            End If
         End If
     End Sub
 
@@ -381,8 +521,16 @@ Public Class FormAdmin
         gridCustomer.Columns(2).Caption = "SĐT"
         gridCustomer.Columns(3).Caption = "Ngày tạo"
         gridCustomer.Columns(4).Caption = "Đã Xoá"
-
         gridCustomer.BestFitColumns()
+
+        'Bảng Nhà cung cấp
+        gridSupplier.Columns(0).Caption = "Mã nhà cung cấp"
+        gridSupplier.Columns(1).Caption = "Tên nhà cung cấp"
+        gridSupplier.Columns(2).Caption = "Địa chỉ"
+        gridSupplier.Columns(3).Caption = "SĐT"
+        gridSupplier.Columns(4).Caption = "Email"
+        gridSupplier.Columns(5).Caption = "Đã Xoá"
+        gridSupplier.BestFitColumns()
     End Sub
 
     'Mở/Đóng các items
@@ -478,8 +626,33 @@ Public Class FormAdmin
             EnableButton(True, False, btnAddStaff, btnEditStaff, btnDeleteStaff, btnSaveStaff, btnCancelStaff)
             btnResetPass.Enabled = True
         End If
+
+        If isAddSupplier = True Or isUpdateSupplier = True Then
+            txtNameSupplier.Enabled = True
+            txtAddressSupplier.Enabled = True
+            txtPhoneSupplier.Enabled = True
+            txtEmailSupplier.Enabled = True
+
+            EnableButton(False, True, btnAddSupplier, btnEditSupplier, btnDeleteSupplier, btnSaveSupplier, btnCancelSupplier)
+
+            If isAddCustomer = True Then
+                txtNameSupplier.Text = ""
+                txtAddressSupplier.Text = ""
+                txtPhoneSupplier.Text = ""
+                txtEmailSupplier.Text = ""
+                txtIDSupplier.Text = "Mã nhà cung cấp được lấy tự động"
+            End If
+        ElseIf isAddSupplier = False Or isUpdateSupplier = False Then
+            txtNameSupplier.Enabled = False
+            txtAddressSupplier.Enabled = False
+            txtPhoneSupplier.Enabled = False
+            txtEmailSupplier.Enabled = False
+
+            EnableButton(True, False, btnAddSupplier, btnEditSupplier, btnDeleteSupplier, btnSaveSupplier, btnCancelSupplier)
+        End If
     End Sub
 
+    'Mở các button
     Private Sub EnableButton(enableAED As Boolean, enableSC As Boolean,
                              buttonAdd As DevExpress.XtraEditors.SimpleButton,
                              buttonEdit As DevExpress.XtraEditors.SimpleButton,
@@ -523,18 +696,14 @@ Public Class FormAdmin
 
     'Nút Lưu Món ăn
     Private Sub btnSaveFood_Click(sender As Object, e As EventArgs) Handles btnSaveFood.Click
-        If isAddFood = True Then
-            Dim name As String = txtNameFood.Text
-            Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
-            Dim price As Integer = Convert.ToInt32(nmPriceFood.Value)
+        Dim name As String = txtNameFood.Text
+        Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
+        Dim price As Integer = Convert.ToInt32(nmPriceFood.Value)
 
+        If isAddFood = True Then
             AddFood(name, price, categoryID)
         ElseIf isUpdateFood = True Then
-            Dim name As String = txtNameFood.Text
-            Dim categoryID As Integer = (TryCast(cbCategoryFood.SelectedItem, Categories))._id
-            Dim price As Single = CSng(nmPriceFood.Value)
             Dim id As Integer = Convert.ToInt32(txtIDFood.Text)
-
             EditFood(id, name, categoryID, price)
         End If
     End Sub
@@ -571,11 +740,11 @@ Public Class FormAdmin
 
     'Nút Lưu Danh Mục
     Private Sub btnSaveCategory_Click(sender As Object, e As EventArgs) Handles btnSaveCategory.Click
+        Dim name As String = txtNameCategory.Text
+
         If isAddCategory = True Then
-            Dim name As String = txtNameCategory.Text
             AddCategoryFood(name)
         ElseIf isUpdateCategory = True Then
-            Dim name As String = txtNameCategory.Text
             Dim id As Integer = Convert.ToInt32(txtIDCategory.Text)
             EditCategory(id, name)
         End If
@@ -613,11 +782,11 @@ Public Class FormAdmin
 
     'Nút Lưu Bàn Ăn
     Private Sub btnSaveTable_Click(sender As Object, e As EventArgs) Handles btnSaveTable.Click
+        Dim name As String = txtNameTable.Text
+
         If isAddTable = True Then
-            Dim name As String = txtNameTable.Text
             AddTableFood(name)
         ElseIf isUpdateTable = True Then
-            Dim name As String = txtNameTable.Text
             Dim id As Integer = Convert.ToInt32(txtIDTable.Text)
             EditTableFood(id, name)
         End If
@@ -641,13 +810,12 @@ Public Class FormAdmin
 
     'Lưu khách hàng
     Private Sub btnSaveCustomer_Click(sender As Object, e As EventArgs) Handles btnSaveCustomer.Click
+        Dim name As String = txtNameCustomer.Text
+        Dim phone As String = txtPhoneCustomer.Text
+
         If isAddCustomer = True Then
-            Dim name As String = txtNameCustomer.Text
-            Dim phone As String = txtPhoneCustomer.Text
             AddCustomer(name, phone)
         ElseIf isUpdateCustomer = True Then
-            Dim name As String = txtNameCustomer.Text
-            Dim phone As String = txtPhoneCustomer.Text
             Dim id As Integer = Convert.ToInt32(txtIDCustomer.Text)
             EditCustomer(id, name, phone)
         End If
@@ -730,6 +898,7 @@ Public Class FormAdmin
         End Try
     End Sub
 
+    'Nút chỉnh sửa staff
     Private Sub btnEditStaff_Click(sender As Object, e As EventArgs) Handles btnEditStaff.Click
         isAddStaff = False
         isUpdateStaff = True
@@ -737,6 +906,7 @@ Public Class FormAdmin
         Enable()
     End Sub
 
+    'Nút Thay đổi mật khẩu
     Private Sub btnResetPass_Click(sender As Object, e As EventArgs) Handles btnResetPass.Click
         If MessageBox.Show(String.Format("Bạn có chắc muốn đổi mật khẩu cho tài khoản này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
             Dim username As String = txtIDCardStaff.Text
@@ -747,6 +917,63 @@ Public Class FormAdmin
             End If
         End If
     End Sub
+
+    'Nút xoá nhân viên
+    Private Sub btnDeleteStaff_Click(sender As Object, e As EventArgs) Handles btnDeleteStaff.Click
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa nhân viên này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            Dim id As Integer = Convert.ToInt32(txtIDStaff.Text)
+            If id = _idStaff Then
+                MessageBox.Show("Không nên xóa bạn chứ!!!")
+            Else
+                If (StaffDAO._Instance.DeleteStaff(id)) Then
+                    MessageBox.Show("Xóa thành công")
+                    LoadListStaff()
+                Else
+                    MessageBox.Show("Có lỗi khi xóa")
+                End If
+            End If
+        End If
+    End Sub
+
+    'Nút lưu nhân viên
+    Private Sub btnSaveStaff_Click(sender As Object, e As EventArgs) Handles btnSaveStaff.Click
+        Dim fullname As String = txtNameStaff.Text
+        Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
+
+        Dim idCard As String = txtIDCardStaff.Text
+        Dim address As String = txtAddressStaff.Text
+        Dim phone As String = txtPhoneStaff.Text
+
+        If isAddStaff = True Then
+            AddStaff(fullname, dob, idCard, address, phone)
+        ElseIf isUpdateStaff = True Then
+            Dim id As Integer = Convert.ToInt32(txtIDStaff.Text)
+            UpdateStaff(id, fullname, dob, idCard, address, phone)
+        End If
+    End Sub
+
+    'Nút huỷ nhân viên
+    Private Sub btnCancelStaff_Click(sender As Object, e As EventArgs) Handles btnCancelStaff.Click
+        isAddStaff = False
+        isUpdateStaff = False
+
+        Enable()
+    End Sub
+
+    'Sự kiện không cho nhập chữ
+
+    Private Sub txtPhoneCustomer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPhoneCustomer.KeyPress
+        CheckInputOnlyNumber(e)
+    End Sub
+
+    Private Sub txtIDCardStaff_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIDCardStaff.KeyPress
+        CheckInputOnlyNumber(e)
+    End Sub
+
+    Private Sub txtPhoneStaff_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPhoneStaff.KeyPress
+        CheckInputOnlyNumber(e)
+    End Sub
+
 #End Region
 
 #Region "CUSTOM EVENT"
@@ -946,42 +1173,74 @@ Public Class FormAdmin
 
 #End Region
 
-    Private Sub btnDeleteStaff_Click(sender As Object, e As EventArgs) Handles btnDeleteStaff.Click
-        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa nhân viên này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-            Dim id As Integer = Convert.ToInt32(txtIDStaff.Text)
-            If id = _idStaff Then
-                MessageBox.Show("Không được xóa bạn chứ!!!")
-            Else
-                If (StaffDAO._Instance.DeleteStaff(id)) Then
-                    MessageBox.Show("Xóa thành công")
-                    LoadStaff()
-                Else
-                    MessageBox.Show("Có lỗi khi xóa")
-                End If
-            End If
-        End If
+    Private Sub btnAddObjectInput_Click(sender As Object, e As EventArgs) Handles btnAddObjectInput.Click
+        tcInputOutput.SelectedTabPage = tpObject
     End Sub
 
-    Private Sub btnSaveStaff_Click(sender As Object, e As EventArgs) Handles btnSaveStaff.Click
-        Dim fullname As String = txtNameStaff.Text
-        Dim dob As String = dtpDOBStaff.Value.Year & "-" & dtpDOBStaff.Value.Month & "-" & dtpDOBStaff.Value.Day
-
-        Dim idCard As String = txtIDCardStaff.Text
-        Dim address As String = txtAddressStaff.Text
-        Dim phone As String = txtPhoneStaff.Text
-
-        If isAddStaff = True Then
-            AddStaff(fullname, dob, idCard, address, phone)
-        ElseIf isUpdateStaff = True Then
-            Dim id As Integer = Convert.ToInt32(txtIDStaff.Text)
-            UpdateStaff(id, fullname, dob, idCard, address, phone)
-        End If
+    Private Sub btnAddSupplierObject_Click(sender As Object, e As EventArgs) Handles btnAddSupplierObject.Click
+        tcInputOutput.SelectedTabPage = tpSupplier
     End Sub
 
-    Private Sub btnCancelStaff_Click(sender As Object, e As EventArgs) Handles btnCancelStaff.Click
-        isAddStaff = False
-        isUpdateStaff = False
+    Private Function validateEmail(emailAddress) As Boolean
+        Dim email As New Regex("([\w-+]+(?:\.[\w-+]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7})")
+        If email.IsMatch(emailAddress) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Private Sub btnAddSuplier_Click(sender As Object, e As EventArgs) Handles btnAddSupplier.Click
+        isAddSupplier = True
+        isUpdateSupplier = False
 
         Enable()
+    End Sub
+
+    Private Sub txtPhoneSuplier_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPhoneSupplier.KeyPress
+        CheckInputOnlyNumber(e)
+    End Sub
+
+    Private Sub CheckInputOnlyNumber(e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub btnEditSupplier_Click(sender As Object, e As EventArgs) Handles btnEditSupplier.Click
+        isAddSupplier = False
+        isUpdateSupplier = True
+
+        Enable()
+    End Sub
+
+    Private Sub btnSaveSupplier_Click(sender As Object, e As EventArgs) Handles btnSaveSupplier.Click
+        Dim name As String = txtNameSupplier.Text
+        Dim address As String = txtAddressSupplier.Text
+        Dim phone As String = txtPhoneSupplier.Text
+        Dim email As String = txtEmailSupplier.Text
+
+        If isAddSupplier = True Then
+            AddSupplier(name, address, phone, email)
+        ElseIf isUpdateSupplier = True Then
+            Dim id As Integer = Convert.ToInt32(txtIDSupplier.Text)
+            EditSupplier(id, name, address, phone, email)
+        End If
+    End Sub
+
+    Private Sub btnCancelSupplier_Click(sender As Object, e As EventArgs) Handles btnCancelSupplier.Click
+        isAddSupplier = False
+        isUpdateSupplier = False
+
+        Enable()
+    End Sub
+
+    Private Sub btnDeleteSupplier_Click(sender As Object, e As EventArgs) Handles btnDeleteSupplier.Click
+        Dim id As Integer = Convert.ToInt32(txtIDSupplier.Text)
+        DeleteSupplier(id)
+    End Sub
+
+    Private Sub btnAddUnitObject_Click(sender As Object, e As EventArgs) Handles btnAddUnitObject.Click
+        tcInputOutput.SelectedTabPage = tpUnit
     End Sub
 End Class
