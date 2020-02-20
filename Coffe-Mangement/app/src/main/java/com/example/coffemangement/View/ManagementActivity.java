@@ -84,7 +84,7 @@ public class ManagementActivity extends AppCompatActivity {
                 if (con == null) {
                     z = "Error in connection with SQL server";
                 } else {
-                    String query = "SELECT * FROM TABLES";
+                    String query = "SELECT * FROM TABLES WHERE statusDel = 0";
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
 

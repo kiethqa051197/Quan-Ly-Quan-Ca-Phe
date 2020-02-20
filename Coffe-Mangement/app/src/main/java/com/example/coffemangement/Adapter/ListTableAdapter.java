@@ -1,5 +1,7 @@
 package com.example.coffemangement.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffemangement.Model.Table;
 import com.example.coffemangement.R;
+import com.example.coffemangement.View.OrderActivity;
 
 import java.util.List;
 
@@ -31,6 +34,7 @@ class ListTableViewHolder extends RecyclerView.ViewHolder{
 
 public class ListTableAdapter extends RecyclerView.Adapter<ListTableViewHolder>{
     private List<Table> tableList;
+    private Context context;
 
     public ListTableAdapter(List<Table> tableList) {
         this.tableList = tableList;
@@ -39,6 +43,7 @@ public class ListTableAdapter extends RecyclerView.Adapter<ListTableViewHolder>{
     @NonNull
     @Override
     public ListTableViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_table, parent, false);
 
@@ -56,6 +61,14 @@ public class ListTableAdapter extends RecyclerView.Adapter<ListTableViewHolder>{
         }else {
             holder.imgTable.setImageResource(R.drawable.table_true);
         }
+
+        holder.itemtable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, OrderActivity.class);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

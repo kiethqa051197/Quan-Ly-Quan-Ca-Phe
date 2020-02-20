@@ -9,11 +9,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connect {
-    private String ip = "192.168.1.5";
+    private String ip = "192.168.3.73";
     private String classs = "net.sourceforge.jtds.jdbc.Driver";
     private String db = "QUANCAFE";
-    private String un = "kiet";
-    private String password = "123456";
+    private String un = "sa";
+    private String password = "htl";
 
 
     @SuppressLint("NewApi")
@@ -25,7 +25,7 @@ public class Connect {
         String ConnURL = null;
         try {
             Class.forName(classs);
-            ConnURL = "jdbc:jtds:sqlserver://" + ip + ":1433;"
+            ConnURL = "jdbc:jtds:sqlserver://" + ip + ":1435;"
                     + "databaseName=" + db + ";user=" + un + ";password="
                     + password + ";";
             conn = DriverManager.getConnection(ConnURL);
