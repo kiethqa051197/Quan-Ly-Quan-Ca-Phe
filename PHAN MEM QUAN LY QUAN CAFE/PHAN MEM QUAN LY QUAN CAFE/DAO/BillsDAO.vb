@@ -56,7 +56,4 @@ Public Class BillsDAO
         End Try
     End Function
 
-    Public Function PrintReport(id As Integer) As DataTable
-        Return DataProvider._Instance.ExecuteQuery("EXEC PC_REPORT_BILLS @idBill ", New Object() {id})
-    End Function
 End Class

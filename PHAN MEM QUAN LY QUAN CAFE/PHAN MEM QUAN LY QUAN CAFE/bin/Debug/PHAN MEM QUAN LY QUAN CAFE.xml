@@ -6,7 +6,59 @@ PHANMEMQUANLYQUANCAFE
 </name>
 </assembly>
 <members>
-<member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.ResourceManager">
+<member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill.PC_BILL_REPORTDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill.PC_BILL_REPORTRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill.PC_BILL_REPORTRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.PC_BILL_REPORTTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.UpdateUpdatedRows(PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.UpdateInsertedRows(PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.UpdateDeletedRows(PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.UpdateAll(PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBill)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:PHAN_MEM_QUAN_LY_QUAN_CAFE.DataSetBillTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="P:PHAN_MEM_QUAN_LY_QUAN_CAFE.PrintRibbonControllerResources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>

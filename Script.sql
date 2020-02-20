@@ -525,3 +525,15 @@ begin
 	  Select @idInput = MAX(id) from INPUTS
 	  Insert INPUTINFOS (idObject, idInput, count, inputPrice, status) values (@idObject, @idInput, @count, @inputPrice, @status)
 End
+GO
+
+CREATE PROC PC_BILL_REPORT
+	@idbill int
+AS
+BEGIN
+	SELECT b.id, i.name, bi.price, bi.count
+	FROM BILLS as b 
+	join BILLINFOS as bi on b.id = bi.idBill
+	join ITEMS as i on bi.idItems = i.id
+	where b.id = @idbill
+END

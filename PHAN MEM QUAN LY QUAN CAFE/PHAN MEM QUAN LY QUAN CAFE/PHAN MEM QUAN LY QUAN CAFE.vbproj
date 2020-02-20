@@ -69,12 +69,20 @@
     <Reference Include="DevExpress.XtraScheduler.v14.1.Reporting.Extensions, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -95,12 +103,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bill_Report.Designer.vb">
-      <DependentUpon>Bill_Report.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Bill_Report.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="DAO\AccountDAO.vb" />
     <Compile Include="DAO\BillsDAO.vb" />
     <Compile Include="DAO\BillsInfoDAO.vb" />
@@ -110,6 +112,14 @@
     <Compile Include="DAO\StaffDAO.vb" />
     <Compile Include="DAO\SuppilerDAO.vb" />
     <Compile Include="DAO\UnitDAO.vb" />
+    <Compile Include="DataSetBill.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetBill.vb">
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DTO\Customers.vb" />
     <Compile Include="DAO\DataProvider.vb" />
     <Compile Include="DAO\ItemsDAO.vb" />
@@ -187,12 +197,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Report_Bill.Designer.vb">
+      <DependentUpon>Report_Bill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Report_Bill.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Ultils.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Bill_Report.resx">
-      <DependentUpon>Bill_Report.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.vb</DependentUpon>
     </EmbeddedResource>
@@ -222,8 +235,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PrintRibbonControllerResources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report_Bill.resx">
+      <DependentUpon>Report_Bill.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSetBill.xsc">
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBill.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBill.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetBill.xss">
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -234,8 +261,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

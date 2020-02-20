@@ -23,19 +23,6 @@ Partial Class FormAdmin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.tcAdmin = New DevExpress.XtraTab.XtraTabControl()
-        Me.tpBill = New DevExpress.XtraTab.XtraTabPage()
-        Me.LabelControl45 = New DevExpress.XtraEditors.LabelControl()
-        Me.btnEnd = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnNext = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnPrevious = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnFirst = New DevExpress.XtraEditors.SimpleButton()
-        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
-        Me.dgvRevenue = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.dtpToDate = New System.Windows.Forms.DateTimePicker()
-        Me.btnStatistical = New DevExpress.XtraEditors.SimpleButton()
-        Me.dtpFromDate = New System.Windows.Forms.DateTimePicker()
         Me.tpTable = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl23 = New DevExpress.XtraEditors.PanelControl()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
@@ -188,6 +175,7 @@ Partial Class FormAdmin
         Me.dtpOutput = New System.Windows.Forms.DateTimePicker()
         Me.tpObject = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl29 = New DevExpress.XtraEditors.PanelControl()
+        Me.btnAddUnitObject = New DevExpress.XtraEditors.SimpleButton()
         Me.btnAddSupplierObject = New DevExpress.XtraEditors.SimpleButton()
         Me.btnDeleteObject = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl16 = New DevExpress.XtraEditors.LabelControl()
@@ -255,16 +243,8 @@ Partial Class FormAdmin
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
-        Me.btnAddUnitObject = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcAdmin.SuspendLayout()
-        Me.tpBill.SuspendLayout()
-        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl2.SuspendLayout()
-        CType(Me.dgvRevenue, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl1.SuspendLayout()
         Me.tpTable.SuspendLayout()
         CType(Me.PanelControl23, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl23.SuspendLayout()
@@ -399,120 +379,10 @@ Partial Class FormAdmin
         Me.tcAdmin.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tcAdmin.Location = New System.Drawing.Point(0, 0)
         Me.tcAdmin.Name = "tcAdmin"
-        Me.tcAdmin.SelectedTabPage = Me.tpBill
+        Me.tcAdmin.SelectedTabPage = Me.tpTable
         Me.tcAdmin.Size = New System.Drawing.Size(751, 473)
         Me.tcAdmin.TabIndex = 0
-        Me.tcAdmin.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tpBill, Me.tpTable, Me.tpCategory, Me.tpFood, Me.tpCustomer, Me.tpStaff, Me.tpInventoryManagement})
-        '
-        'tpBill
-        '
-        Me.tpBill.Controls.Add(Me.LabelControl45)
-        Me.tpBill.Controls.Add(Me.btnEnd)
-        Me.tpBill.Controls.Add(Me.btnNext)
-        Me.tpBill.Controls.Add(Me.btnPrevious)
-        Me.tpBill.Controls.Add(Me.btnFirst)
-        Me.tpBill.Controls.Add(Me.PanelControl2)
-        Me.tpBill.Controls.Add(Me.PanelControl1)
-        Me.tpBill.Name = "tpBill"
-        Me.tpBill.Size = New System.Drawing.Size(745, 445)
-        Me.tpBill.Text = "Doanh thu"
-        '
-        'LabelControl45
-        '
-        Me.LabelControl45.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl45.Location = New System.Drawing.Point(373, 416)
-        Me.LabelControl45.Name = "LabelControl45"
-        Me.LabelControl45.Size = New System.Drawing.Size(8, 14)
-        Me.LabelControl45.TabIndex = 7
-        Me.LabelControl45.Text = "1"
-        '
-        'btnEnd
-        '
-        Me.btnEnd.Location = New System.Drawing.Point(523, 413)
-        Me.btnEnd.Name = "btnEnd"
-        Me.btnEnd.Size = New System.Drawing.Size(75, 23)
-        Me.btnEnd.TabIndex = 5
-        Me.btnEnd.Text = "Cuối"
-        '
-        'btnNext
-        '
-        Me.btnNext.Location = New System.Drawing.Point(442, 413)
-        Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(75, 23)
-        Me.btnNext.TabIndex = 4
-        Me.btnNext.Text = "Kế tiếp"
-        '
-        'btnPrevious
-        '
-        Me.btnPrevious.Location = New System.Drawing.Point(221, 413)
-        Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(75, 23)
-        Me.btnPrevious.TabIndex = 3
-        Me.btnPrevious.Text = "Trước"
-        '
-        'btnFirst
-        '
-        Me.btnFirst.Location = New System.Drawing.Point(140, 413)
-        Me.btnFirst.Name = "btnFirst"
-        Me.btnFirst.Size = New System.Drawing.Size(75, 23)
-        Me.btnFirst.TabIndex = 2
-        Me.btnFirst.Text = "Đầu"
-        '
-        'PanelControl2
-        '
-        Me.PanelControl2.Controls.Add(Me.dgvRevenue)
-        Me.PanelControl2.Location = New System.Drawing.Point(8, 63)
-        Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(725, 340)
-        Me.PanelControl2.TabIndex = 1
-        '
-        'dgvRevenue
-        '
-        Me.dgvRevenue.Cursor = System.Windows.Forms.Cursors.Default
-        Me.dgvRevenue.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvRevenue.Location = New System.Drawing.Point(2, 2)
-        Me.dgvRevenue.MainView = Me.GridView1
-        Me.dgvRevenue.Name = "dgvRevenue"
-        Me.dgvRevenue.Size = New System.Drawing.Size(721, 336)
-        Me.dgvRevenue.TabIndex = 2
-        Me.dgvRevenue.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.GridControl = Me.dgvRevenue
-        Me.GridView1.Name = "GridView1"
-        '
-        'PanelControl1
-        '
-        Me.PanelControl1.Controls.Add(Me.dtpToDate)
-        Me.PanelControl1.Controls.Add(Me.btnStatistical)
-        Me.PanelControl1.Controls.Add(Me.dtpFromDate)
-        Me.PanelControl1.Location = New System.Drawing.Point(8, 15)
-        Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(725, 42)
-        Me.PanelControl1.TabIndex = 0
-        '
-        'dtpToDate
-        '
-        Me.dtpToDate.Location = New System.Drawing.Point(518, 11)
-        Me.dtpToDate.Name = "dtpToDate"
-        Me.dtpToDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpToDate.TabIndex = 2
-        '
-        'btnStatistical
-        '
-        Me.btnStatistical.Location = New System.Drawing.Point(330, 4)
-        Me.btnStatistical.Name = "btnStatistical"
-        Me.btnStatistical.Size = New System.Drawing.Size(80, 33)
-        Me.btnStatistical.TabIndex = 1
-        Me.btnStatistical.Text = "Thống kê"
-        '
-        'dtpFromDate
-        '
-        Me.dtpFromDate.Location = New System.Drawing.Point(8, 11)
-        Me.dtpFromDate.Name = "dtpFromDate"
-        Me.dtpFromDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpFromDate.TabIndex = 0
+        Me.tcAdmin.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tpTable, Me.tpCategory, Me.tpFood, Me.tpCustomer, Me.tpStaff, Me.tpInventoryManagement})
         '
         'tpTable
         '
@@ -1901,6 +1771,14 @@ Partial Class FormAdmin
         Me.PanelControl29.Size = New System.Drawing.Size(313, 330)
         Me.PanelControl29.TabIndex = 19
         '
+        'btnAddUnitObject
+        '
+        Me.btnAddUnitObject.Location = New System.Drawing.Point(267, 167)
+        Me.btnAddUnitObject.Name = "btnAddUnitObject"
+        Me.btnAddUnitObject.Size = New System.Drawing.Size(26, 21)
+        Me.btnAddUnitObject.TabIndex = 32
+        Me.btnAddUnitObject.Text = "+"
+        '
         'btnAddSupplierObject
         '
         Me.btnAddSupplierObject.Location = New System.Drawing.Point(267, 131)
@@ -2473,14 +2351,6 @@ Partial Class FormAdmin
         Me.XtraTabPage6.Name = "XtraTabPage6"
         Me.XtraTabPage6.Size = New System.Drawing.Size(294, 272)
         '
-        'btnAddUnitObject
-        '
-        Me.btnAddUnitObject.Location = New System.Drawing.Point(267, 167)
-        Me.btnAddUnitObject.Name = "btnAddUnitObject"
-        Me.btnAddUnitObject.Size = New System.Drawing.Size(26, 21)
-        Me.btnAddUnitObject.TabIndex = 32
-        Me.btnAddUnitObject.Text = "+"
-        '
         'FormAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2493,14 +2363,6 @@ Partial Class FormAdmin
         Me.Text = "FormAdmin"
         CType(Me.tcAdmin, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tcAdmin.ResumeLayout(False)
-        Me.tpBill.ResumeLayout(False)
-        Me.tpBill.PerformLayout()
-        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl2.ResumeLayout(False)
-        CType(Me.dgvRevenue, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl1.ResumeLayout(False)
         Me.tpTable.ResumeLayout(False)
         CType(Me.PanelControl23, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl23.ResumeLayout(False)
@@ -2644,21 +2506,9 @@ Partial Class FormAdmin
 
     End Sub
     Friend WithEvents tcAdmin As DevExpress.XtraTab.XtraTabControl
-    Friend WithEvents tpBill As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tpTable As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tpCategory As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tpFood As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents dtpToDate As System.Windows.Forms.DateTimePicker
-    Friend WithEvents btnStatistical As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents dtpFromDate As System.Windows.Forms.DateTimePicker
-    Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents dgvRevenue As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents btnPrevious As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnFirst As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnEnd As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnNext As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl3 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents dgvTable As DevExpress.XtraGrid.GridControl
     Friend WithEvents gridTable As DevExpress.XtraGrid.Views.Grid.GridView
@@ -2815,7 +2665,6 @@ Partial Class FormAdmin
     Friend WithEvents btnDeleteSupplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnEditSupplier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddSupplier As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cbCategoryFood As System.Windows.Forms.ComboBox
     Friend WithEvents LabelControl33 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtIDFood As DevExpress.XtraEditors.TextEdit

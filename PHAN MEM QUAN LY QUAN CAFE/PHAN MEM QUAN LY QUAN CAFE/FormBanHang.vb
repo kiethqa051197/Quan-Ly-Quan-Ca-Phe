@@ -214,8 +214,8 @@ Public Class FormBanHang
                 ShowBill(table._id)
                 LoadTable()
 
-                'Dim report As New FormHoaDon
-                'report.ShowDialog()
+                Dim report As New FormHoaDon(idBill)
+                report.ShowDialog()
             End If
         End If
     End Sub
