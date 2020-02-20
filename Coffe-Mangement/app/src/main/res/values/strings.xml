@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Coffe Mangement</string>
+    <string name="dangnhap">Đăng nhập</string>
+    <string name="khongduocdetrong">Bạn không được để trống!!!</string>
+
+    <string name="email">Email</string>
+    <string name="emailExample">anhkietxl051197@gmail.com</string>
+    <string name="matkhau">Mật khẩu</string>
+</resources>
