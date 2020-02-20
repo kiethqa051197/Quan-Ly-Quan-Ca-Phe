@@ -200,7 +200,7 @@ Public Class FormBanHang
         Dim table As Tables = TryCast(listBill.Tag, Tables)
         Dim idBill As Integer = BillsDAO._Instance.GetUncheckBillIDByTableID(table._id)
         Dim discount As Integer = CInt(nmDiscount.Value)
-        Dim totalPrice As Double = Convert.ToDouble(txtTotal.Text.Split(","c)(0))
+        Dim totalPrice As Double = Convert.ToDouble(txtTotal.Text.Split(",")(0))
         Dim finalTotalPrice As Double = totalPrice - (totalPrice / 100) * discount
 
         Dim selectedCustomer As Customers = TryCast(cbbCustomer.SelectedItem, Customers)
@@ -211,11 +211,12 @@ Public Class FormBanHang
             If MessageBox.Show(String.Format("Bạn có chắc thanh toán hoá đơn cho bàn {0}" & vbLf & "Tổng tiền - (Tổng tiền / 100) x Giảm giá" & vbLf & " => {1}000 - ({1}000 / 100) x {2} = {3}000", table._name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
                 BillsDAO._Instance.CheckOut(idBill, idCustomer, discount, idStaff)
                 TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
-                ShowBill(table._id)
-                LoadTable()
 
                 Dim report As New FormHoaDon(idBill)
                 report.ShowDialog()
+
+                ShowBill(table._id)
+                LoadTable()
             End If
         End If
     End Sub

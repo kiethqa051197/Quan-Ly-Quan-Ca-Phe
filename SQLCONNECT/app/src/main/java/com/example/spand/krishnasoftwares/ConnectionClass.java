@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 
 class ConnectionClass {
-    private String ip = "192.168.3.73\\SQL2K16";
+    private String ip = "192.168.3.73,1435";
     private String classs = "net.sourceforge.jtds.jdbc.Driver";
     private String db = "QUANCAFE";
     private String un = "K97";
