@@ -141,12 +141,12 @@ Partial Class FormAdmin
         Me.nmInputCount = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl25 = New DevExpress.XtraEditors.LabelControl()
         Me.PanelControl4 = New DevExpress.XtraEditors.PanelControl()
-        Me.SimpleButton14 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnShowDetailBillInput = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnDeleteInput = New DevExpress.XtraEditors.SimpleButton()
+        Me.btEditInput = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnAddInput = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnSaveInput = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnCancelInput = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
         Me.dgvInput = New DevExpress.XtraGrid.GridControl()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -175,6 +175,7 @@ Partial Class FormAdmin
         Me.dtpOutput = New System.Windows.Forms.DateTimePicker()
         Me.tpObject = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl29 = New DevExpress.XtraEditors.PanelControl()
+        Me.cbbUnitObject = New System.Windows.Forms.ComboBox()
         Me.btnAddUnitObject = New DevExpress.XtraEditors.SimpleButton()
         Me.btnAddSupplierObject = New DevExpress.XtraEditors.SimpleButton()
         Me.btnDeleteObject = New DevExpress.XtraEditors.SimpleButton()
@@ -182,7 +183,6 @@ Partial Class FormAdmin
         Me.btnEditObject = New DevExpress.XtraEditors.SimpleButton()
         Me.txtIDObject = New DevExpress.XtraEditors.TextEdit()
         Me.btnAddObject = New DevExpress.XtraEditors.SimpleButton()
-        Me.cbbUnitObject = New System.Windows.Forms.ComboBox()
         Me.cbbSuplierObject = New System.Windows.Forms.ComboBox()
         Me.LabelControl42 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl41 = New DevExpress.XtraEditors.LabelControl()
@@ -1445,66 +1445,66 @@ Partial Class FormAdmin
         '
         'PanelControl4
         '
-        Me.PanelControl4.Controls.Add(Me.SimpleButton14)
-        Me.PanelControl4.Controls.Add(Me.SimpleButton4)
-        Me.PanelControl4.Controls.Add(Me.SimpleButton5)
-        Me.PanelControl4.Controls.Add(Me.SimpleButton6)
-        Me.PanelControl4.Controls.Add(Me.SimpleButton7)
-        Me.PanelControl4.Controls.Add(Me.SimpleButton8)
+        Me.PanelControl4.Controls.Add(Me.btnShowDetailBillInput)
+        Me.PanelControl4.Controls.Add(Me.btnDeleteInput)
+        Me.PanelControl4.Controls.Add(Me.btEditInput)
+        Me.PanelControl4.Controls.Add(Me.btnAddInput)
+        Me.PanelControl4.Controls.Add(Me.btnSaveInput)
+        Me.PanelControl4.Controls.Add(Me.btnCancelInput)
         Me.PanelControl4.Location = New System.Drawing.Point(462, 41)
         Me.PanelControl4.Name = "PanelControl4"
         Me.PanelControl4.Size = New System.Drawing.Size(245, 88)
         Me.PanelControl4.TabIndex = 22
         '
-        'SimpleButton14
+        'btnShowDetailBillInput
         '
-        Me.SimpleButton14.Location = New System.Drawing.Point(15, 47)
-        Me.SimpleButton14.Name = "SimpleButton14"
-        Me.SimpleButton14.Size = New System.Drawing.Size(61, 28)
-        Me.SimpleButton14.TabIndex = 32
-        Me.SimpleButton14.Text = "Xem"
+        Me.btnShowDetailBillInput.Location = New System.Drawing.Point(15, 49)
+        Me.btnShowDetailBillInput.Name = "btnShowDetailBillInput"
+        Me.btnShowDetailBillInput.Size = New System.Drawing.Size(61, 28)
+        Me.btnShowDetailBillInput.TabIndex = 32
+        Me.btnShowDetailBillInput.Text = "Xem"
         '
-        'SimpleButton4
+        'btnDeleteInput
         '
-        Me.SimpleButton4.Location = New System.Drawing.Point(164, 15)
-        Me.SimpleButton4.Name = "SimpleButton4"
-        Me.SimpleButton4.Size = New System.Drawing.Size(71, 28)
-        Me.SimpleButton4.TabIndex = 29
-        Me.SimpleButton4.Text = "Xoá"
+        Me.btnDeleteInput.Location = New System.Drawing.Point(164, 15)
+        Me.btnDeleteInput.Name = "btnDeleteInput"
+        Me.btnDeleteInput.Size = New System.Drawing.Size(71, 28)
+        Me.btnDeleteInput.TabIndex = 29
+        Me.btnDeleteInput.Text = "Xoá"
         '
-        'SimpleButton5
+        'btEditInput
         '
-        Me.SimpleButton5.Location = New System.Drawing.Point(86, 15)
-        Me.SimpleButton5.Name = "SimpleButton5"
-        Me.SimpleButton5.Size = New System.Drawing.Size(71, 28)
-        Me.SimpleButton5.TabIndex = 28
-        Me.SimpleButton5.Text = "Sửa"
+        Me.btEditInput.Location = New System.Drawing.Point(86, 15)
+        Me.btEditInput.Name = "btEditInput"
+        Me.btEditInput.Size = New System.Drawing.Size(71, 28)
+        Me.btEditInput.TabIndex = 28
+        Me.btEditInput.Text = "Sửa"
         '
-        'SimpleButton6
+        'btnAddInput
         '
-        Me.SimpleButton6.Location = New System.Drawing.Point(15, 15)
-        Me.SimpleButton6.Name = "SimpleButton6"
-        Me.SimpleButton6.Size = New System.Drawing.Size(61, 28)
-        Me.SimpleButton6.TabIndex = 27
-        Me.SimpleButton6.Text = "Thêm"
+        Me.btnAddInput.Location = New System.Drawing.Point(15, 15)
+        Me.btnAddInput.Name = "btnAddInput"
+        Me.btnAddInput.Size = New System.Drawing.Size(61, 28)
+        Me.btnAddInput.TabIndex = 27
+        Me.btnAddInput.Text = "Thêm"
         '
-        'SimpleButton7
+        'btnSaveInput
         '
-        Me.SimpleButton7.Enabled = False
-        Me.SimpleButton7.Location = New System.Drawing.Point(86, 46)
-        Me.SimpleButton7.Name = "SimpleButton7"
-        Me.SimpleButton7.Size = New System.Drawing.Size(71, 29)
-        Me.SimpleButton7.TabIndex = 30
-        Me.SimpleButton7.Text = "Lưu"
+        Me.btnSaveInput.Enabled = False
+        Me.btnSaveInput.Location = New System.Drawing.Point(86, 48)
+        Me.btnSaveInput.Name = "btnSaveInput"
+        Me.btnSaveInput.Size = New System.Drawing.Size(71, 29)
+        Me.btnSaveInput.TabIndex = 30
+        Me.btnSaveInput.Text = "Lưu"
         '
-        'SimpleButton8
+        'btnCancelInput
         '
-        Me.SimpleButton8.Enabled = False
-        Me.SimpleButton8.Location = New System.Drawing.Point(164, 46)
-        Me.SimpleButton8.Name = "SimpleButton8"
-        Me.SimpleButton8.Size = New System.Drawing.Size(71, 28)
-        Me.SimpleButton8.TabIndex = 31
-        Me.SimpleButton8.Text = "Huỷ"
+        Me.btnCancelInput.Enabled = False
+        Me.btnCancelInput.Location = New System.Drawing.Point(164, 48)
+        Me.btnCancelInput.Name = "btnCancelInput"
+        Me.btnCancelInput.Size = New System.Drawing.Size(71, 28)
+        Me.btnCancelInput.TabIndex = 31
+        Me.btnCancelInput.Text = "Huỷ"
         '
         'LabelControl29
         '
@@ -1651,7 +1651,7 @@ Partial Class FormAdmin
         '
         'SimpleButton16
         '
-        Me.SimpleButton16.Location = New System.Drawing.Point(15, 45)
+        Me.SimpleButton16.Location = New System.Drawing.Point(15, 48)
         Me.SimpleButton16.Name = "SimpleButton16"
         Me.SimpleButton16.Size = New System.Drawing.Size(65, 28)
         Me.SimpleButton16.TabIndex = 32
@@ -1684,7 +1684,7 @@ Partial Class FormAdmin
         'SimpleButton12
         '
         Me.SimpleButton12.Enabled = False
-        Me.SimpleButton12.Location = New System.Drawing.Point(86, 45)
+        Me.SimpleButton12.Location = New System.Drawing.Point(86, 48)
         Me.SimpleButton12.Name = "SimpleButton12"
         Me.SimpleButton12.Size = New System.Drawing.Size(71, 29)
         Me.SimpleButton12.TabIndex = 30
@@ -1693,7 +1693,7 @@ Partial Class FormAdmin
         'SimpleButton13
         '
         Me.SimpleButton13.Enabled = False
-        Me.SimpleButton13.Location = New System.Drawing.Point(163, 46)
+        Me.SimpleButton13.Location = New System.Drawing.Point(163, 49)
         Me.SimpleButton13.Name = "SimpleButton13"
         Me.SimpleButton13.Size = New System.Drawing.Size(71, 28)
         Me.SimpleButton13.TabIndex = 31
@@ -1750,6 +1750,7 @@ Partial Class FormAdmin
         '
         'PanelControl29
         '
+        Me.PanelControl29.Controls.Add(Me.cbbUnitObject)
         Me.PanelControl29.Controls.Add(Me.btnAddUnitObject)
         Me.PanelControl29.Controls.Add(Me.btnAddSupplierObject)
         Me.PanelControl29.Controls.Add(Me.btnDeleteObject)
@@ -1757,7 +1758,6 @@ Partial Class FormAdmin
         Me.PanelControl29.Controls.Add(Me.btnEditObject)
         Me.PanelControl29.Controls.Add(Me.txtIDObject)
         Me.PanelControl29.Controls.Add(Me.btnAddObject)
-        Me.PanelControl29.Controls.Add(Me.cbbUnitObject)
         Me.PanelControl29.Controls.Add(Me.cbbSuplierObject)
         Me.PanelControl29.Controls.Add(Me.LabelControl42)
         Me.PanelControl29.Controls.Add(Me.LabelControl41)
@@ -1770,6 +1770,15 @@ Partial Class FormAdmin
         Me.PanelControl29.Name = "PanelControl29"
         Me.PanelControl29.Size = New System.Drawing.Size(313, 330)
         Me.PanelControl29.TabIndex = 19
+        '
+        'cbbUnitObject
+        '
+        Me.cbbUnitObject.Enabled = False
+        Me.cbbUnitObject.FormattingEnabled = True
+        Me.cbbUnitObject.Location = New System.Drawing.Point(117, 165)
+        Me.cbbUnitObject.Name = "cbbUnitObject"
+        Me.cbbUnitObject.Size = New System.Drawing.Size(144, 21)
+        Me.cbbUnitObject.TabIndex = 33
         '
         'btnAddUnitObject
         '
@@ -1814,6 +1823,7 @@ Partial Class FormAdmin
         '
         'txtIDObject
         '
+        Me.txtIDObject.Enabled = False
         Me.txtIDObject.Location = New System.Drawing.Point(117, 64)
         Me.txtIDObject.Name = "txtIDObject"
         Me.txtIDObject.Size = New System.Drawing.Size(176, 20)
@@ -1827,16 +1837,9 @@ Partial Class FormAdmin
         Me.btnAddObject.TabIndex = 0
         Me.btnAddObject.Text = "Thêm"
         '
-        'cbbUnitObject
-        '
-        Me.cbbUnitObject.FormattingEnabled = True
-        Me.cbbUnitObject.Location = New System.Drawing.Point(117, 167)
-        Me.cbbUnitObject.Name = "cbbUnitObject"
-        Me.cbbUnitObject.Size = New System.Drawing.Size(144, 21)
-        Me.cbbUnitObject.TabIndex = 21
-        '
         'cbbSuplierObject
         '
+        Me.cbbSuplierObject.Enabled = False
         Me.cbbSuplierObject.FormattingEnabled = True
         Me.cbbSuplierObject.Location = New System.Drawing.Point(117, 132)
         Me.cbbSuplierObject.Name = "cbbSuplierObject"
@@ -1899,6 +1902,7 @@ Partial Class FormAdmin
         '
         'txtNameObject
         '
+        Me.txtNameObject.Enabled = False
         Me.txtNameObject.Location = New System.Drawing.Point(117, 99)
         Me.txtNameObject.Name = "txtNameObject"
         Me.txtNameObject.Size = New System.Drawing.Size(176, 20)
@@ -1989,6 +1993,7 @@ Partial Class FormAdmin
         '
         'txtIDUnit
         '
+        Me.txtIDUnit.Enabled = False
         Me.txtIDUnit.Location = New System.Drawing.Point(118, 88)
         Me.txtIDUnit.Name = "txtIDUnit"
         Me.txtIDUnit.Size = New System.Drawing.Size(176, 20)
@@ -2056,6 +2061,7 @@ Partial Class FormAdmin
         '
         'txtNameUnit
         '
+        Me.txtNameUnit.Enabled = False
         Me.txtNameUnit.Location = New System.Drawing.Point(119, 124)
         Me.txtNameUnit.Name = "txtNameUnit"
         Me.txtNameUnit.Size = New System.Drawing.Size(176, 20)
@@ -2685,7 +2691,6 @@ Partial Class FormAdmin
     Friend WithEvents txtNameTable As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtIDCustomer As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents cbbUnitObject As System.Windows.Forms.ComboBox
     Friend WithEvents cbbSuplierObject As System.Windows.Forms.ComboBox
     Friend WithEvents LabelControl16 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtIDObject As DevExpress.XtraEditors.TextEdit
@@ -2704,11 +2709,11 @@ Partial Class FormAdmin
     Friend WithEvents nmInputCount As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents LabelControl25 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents PanelControl4 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents SimpleButton4 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton7 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton8 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnDeleteInput As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btEditInput As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnAddInput As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnSaveInput As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnCancelInput As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl12 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cbbOutputObject As System.Windows.Forms.ComboBox
     Friend WithEvents LabelControl32 As DevExpress.XtraEditors.LabelControl
@@ -2721,9 +2726,10 @@ Partial Class FormAdmin
     Friend WithEvents SimpleButton11 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton12 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton13 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton14 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnShowDetailBillInput As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddSupplierObject As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cbOutputStatus As System.Windows.Forms.ComboBox
     Friend WithEvents SimpleButton16 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddUnitObject As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbbUnitObject As System.Windows.Forms.ComboBox
 End Class

@@ -13,6 +13,7 @@ Public Class FormAdmin
     Private customerList As BindingSource = New BindingSource()
     Private supplierList As BindingSource = New BindingSource()
     Private unitList As BindingSource = New BindingSource()
+    Private objectList As BindingSource = New BindingSource()
 
     Private isUpdateTable As Boolean = False
     Private isAddTable As Boolean = False
@@ -31,6 +32,12 @@ Public Class FormAdmin
 
     Private isUpdateSupplier As Boolean = False
     Private isAddSupplier As Boolean = False
+
+    Private isUpdateUnit As Boolean = False
+    Private isAddUnit As Boolean = False
+
+    Private isUpdateObject As Boolean = False
+    Private isAddObject As Boolean = False
 
     Private _idStaff As Integer
 
@@ -53,6 +60,7 @@ Public Class FormAdmin
         dgvStaff.DataSource = staffList
         dgvCustomer.DataSource = customerList
         dgvSuplier.DataSource = supplierList
+        dgvObject.DataSource = objectList
         dgvUnit.DataSource = unitList
 
         'LoadDateTimePickerBill()
@@ -75,6 +83,9 @@ Public Class FormAdmin
 
         LoadListSupplier()
         AddSupplierBindding()
+
+        LoadListObject()
+        AddObjectBindding()
 
         LoadListUnit()
         AddUnitBindding()
@@ -131,6 +142,7 @@ Public Class FormAdmin
         txtPhoneCustomer.DataBindings.Add(New Binding("Text", dgvCustomer.DataSource, "_phone", True, DataSourceUpdateMode.Never))
     End Sub
 
+    'Nhà cung cấp
     Private Sub AddSupplierBindding()
         txtIDSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_id", True, DataSourceUpdateMode.Never))
         txtNameSupplier.DataBindings.Add(New Binding("Text", dgvSuplier.DataSource, "_name", True, DataSourceUpdateMode.Never))
@@ -145,7 +157,13 @@ Public Class FormAdmin
         txtNameCategory.DataBindings.Add(New Binding("Text", dgvCategory.DataSource, "_name", True, DataSourceUpdateMode.Never))
     End Sub
 
-    'Danh mục
+    'Đơn vị
+    Private Sub AddObjectBindding()
+        txtIDObject.DataBindings.Add(New Binding("Text", dgvObject.DataSource, "_id", True, DataSourceUpdateMode.Never))
+        txtNameObject.DataBindings.Add(New Binding("Text", dgvObject.DataSource, "_name", True, DataSourceUpdateMode.Never))
+    End Sub
+
+    'Đơn vị
     Private Sub AddUnitFoodBindding()
         txtIDUnit.DataBindings.Add(New Binding("Text", dgvUnit.DataSource, "_id", True, DataSourceUpdateMode.Never))
         txtNameUnit.DataBindings.Add(New Binding("Text", dgvUnit.DataSource, "_name", True, DataSourceUpdateMode.Never))
@@ -183,9 +201,19 @@ Public Class FormAdmin
         cbbSuplierObject.DisplayMember = "_name"
     End Sub
 
+    Private Sub LoadListObject()
+        objectList.DataSource = ObjectDAO._Instance.GetListObject()
+        cbbInputObject.DataSource = ObjectDAO._Instance.GetListObject()
+        cbbInputObject.DisplayMember = "_name"
+
+        cbbOutputObject.DataSource = ObjectDAO._Instance.GetListObject()
+        cbbOutputObject.DisplayMember = "_name"
+    End Sub
+
     'Lấy danh sách Đơn vị tính
     Private Sub LoadListUnit()
         unitList.DataSource = UnitDAO._Instance.GetListUnit()
+
         cbbUnitObject.DataSource = UnitDAO._Instance.GetListUnit()
         cbbUnitObject.DisplayMember = "_name"
     End Sub
@@ -649,6 +677,42 @@ Public Class FormAdmin
             txtEmailSupplier.Enabled = False
 
             EnableButton(True, False, btnAddSupplier, btnEditSupplier, btnDeleteSupplier, btnSaveSupplier, btnCancelSupplier)
+        End If
+
+        If isAddUnit = True Or isUpdateUnit = True Then
+            txtNameUnit.Enabled = True
+
+            EnableButton(False, True, btnAddUnit, btnEditUnit, btnDeleteUnit, btnSaveUnit, btnCancelUnit)
+
+            If isAddUnit = True Then
+                txtNameUnit.Text = ""
+                txtIDUnit.Text = "Mã đơn vị được lấy tự động"
+            End If
+        ElseIf isAddUnit = False Or isUpdateUnit = False Then
+            txtNameUnit.Enabled = False
+
+            EnableButton(True, False, btnAddUnit, btnEditUnit, btnDeleteUnit, btnSaveUnit, btnCancelUnit)
+        End If
+
+        If isAddObject = True Or isUpdateObject = True Then
+            txtNameObject.Enabled = True
+            cbbSuplierObject.Enabled = True
+            cbbUnitObject.Enabled = True
+
+            EnableButton(False, True, btnAddObject, btnEditObject, btnDeleteObject, btnSaveObject, btnCancelObject)
+
+            If isAddObject = True Then
+                txtNameObject.Text = ""
+                cbbSuplierObject.SelectedIndex = 0
+                cbbUnitObject.SelectedIndex = 0
+                txtIDObject.Text = "Mã đơn vị được lấy tự động"
+            End If
+        ElseIf isAddObject = False Or isUpdateObject = False Then
+            txtNameObject.Enabled = False
+            cbbSuplierObject.Enabled = False
+            cbbUnitObject.Enabled = False
+
+            EnableButton(True, False, btnAddObject, btnEditObject, btnDeleteObject, btnSaveObject, btnCancelObject)
         End If
     End Sub
 
@@ -1243,4 +1307,213 @@ Public Class FormAdmin
     Private Sub btnAddUnitObject_Click(sender As Object, e As EventArgs) Handles btnAddUnitObject.Click
         tcInputOutput.SelectedTabPage = tpUnit
     End Sub
+
+    Private Sub btnAddUnit_Click(sender As Object, e As EventArgs) Handles btnAddUnit.Click
+        isAddUnit = True
+        isUpdateUnit = False
+
+        Enable()
+    End Sub
+
+    Private Sub btnEditUnit_Click(sender As Object, e As EventArgs) Handles btnEditUnit.Click
+        isAddUnit = False
+        isUpdateUnit = True
+
+        Enable()
+    End Sub
+
+    Private Sub btnAddObject_Click(sender As Object, e As EventArgs) Handles btnAddObject.Click
+        isAddObject = True
+        isUpdateObject = False
+
+        Enable()
+    End Sub
+
+    Private Sub btnSaveUnit_Click(sender As Object, e As EventArgs) Handles btnSaveUnit.Click
+        Dim name As String = txtNameUnit.Text
+
+        If isAddUnit = True Then
+            AddUnit(name)
+        ElseIf isUpdateUnit = True Then
+            Dim id As Integer = Convert.ToInt32(txtIDUnit.Text)
+            EditUnit(id, name)
+        End If
+    End Sub
+
+    Private Sub btnCancelUnit_Click(sender As Object, e As EventArgs) Handles btnCancelUnit.Click
+        isAddUnit = False
+        isUpdateUnit = False
+
+        Enable()
+    End Sub
+
+    Private Sub btnDeleteUnit_Click(sender As Object, e As EventArgs) Handles btnDeleteUnit.Click
+        Dim id As Integer = Convert.ToInt32(txtIDUnit.Text)
+        DeleteUnit(id)
+    End Sub
+
+    Private Sub AddUnit(name As String)
+        If CheckEmpty(name) <> True Then
+            If UnitDAO._Instance.InsertUnit(name) Then
+                MessageBox.Show("Thêm thành công")
+
+                isAddUnit = False
+                Enable()
+
+                LoadListUnit()
+            Else
+                MessageBox.Show("Thêm thất bại")
+            End If
+        Else
+            MessageBox.Show("Không được để trống tên nhà cung cấp")
+        End If
+    End Sub
+
+    Private Sub EditUnit(id As Integer, name As String)
+        If CheckEmpty(name) <> True Then
+            If UnitDAO._Instance.UpdateUnit(id, name) Then
+                MessageBox.Show("Sửa thành công")
+
+                isUpdateUnit = False
+                Enable()
+
+                LoadListUnit()
+            Else
+                MessageBox.Show("Sửa thất bại")
+            End If
+        Else
+            MessageBox.Show("Không được để trống")
+        End If
+    End Sub
+
+    Private Sub DeleteUnit(id As Integer)
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa Đơn vị tính này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If UnitDAO._Instance.DeleteUnit(id) Then
+                MessageBox.Show("Xoá thành công")
+                LoadListUnit()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnEditObject_Click(sender As Object, e As EventArgs) Handles btnEditObject.Click
+        isAddObject = False
+        isUpdateObject = True
+
+        Enable()
+    End Sub
+
+    Private Sub btnSaveObject_Click(sender As Object, e As EventArgs) Handles btnSaveObject.Click
+        Dim name As String = txtNameUnit.Text
+        Dim unitID As Integer = (TryCast(cbbUnitObject.SelectedItem, Units))._id
+        Dim supplierID As Integer = (TryCast(cbbUnitObject.SelectedItem, Suppliers))._id
+
+        If isAddObject = True Then
+            AddObject(name, unitID, supplierID)
+        ElseIf isUpdateObject = True Then
+            Dim id As Integer = Convert.ToInt32(txtIDUnit.Text)
+            EditObject(id, name, unitID, supplierID)
+        End If
+    End Sub
+
+    Private Sub btnCancelObject_Click(sender As Object, e As EventArgs) Handles btnCancelObject.Click
+        isAddObject = False
+        isUpdateObject = False
+
+        Enable()
+    End Sub
+
+    Private Sub btnDeleteObject_Click(sender As Object, e As EventArgs) Handles btnDeleteObject.Click
+        Dim id As Integer = Convert.ToInt32(txtIDObject.Text)
+        DeleteObject(id)
+    End Sub
+
+    Private Sub DeleteObject(id As Integer)
+        If MessageBox.Show(String.Format("Bạn có chắc muốn xóa Sản phẩm này hay không?"), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If ObjectDAO._Instance.DeleteObject(id) Then
+                MessageBox.Show("Xoá thành công")
+                LoadListObject()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtIDObject_TextChanged(sender As Object, e As EventArgs) Handles txtIDObject.TextChanged
+        Try
+            If gridObject.SelectedRowsCount > 0 Then
+                Dim owningRow As Integer() = gridObject.GetSelectedRows()
+                Dim idUnit As Integer = gridObject.GetRowCellValue(owningRow(0), gridObject.Columns(2))
+
+                Dim unit As Units = UnitDAO._Instance.GetUnitByID(idUnit)
+                cbbUnitObject.SelectedItem = unit
+
+                Dim index As Integer = -1
+                Dim i As Integer = 0
+
+                For Each item As Units In cbbUnitObject.Items
+                    If item._id = unit._id Then
+                        index = i
+                        Exit For
+                    End If
+
+                    i += 1
+                Next
+
+                cbbUnitObject.SelectedIndex = index
+
+                Dim idSupplier As Integer = gridObject.GetRowCellValue(owningRow(0), gridObject.Columns(3))
+
+                Dim supplier As Suppliers = SuppilerDAO._Instance.GetSupplierByID(idSupplier)
+                cbbSuplierObject.SelectedItem = supplier
+
+                Dim index2 As Integer = -1
+                Dim i2 As Integer = 0
+
+                For Each item As Suppliers In cbbSuplierObject.Items
+                    If item._id = supplier._id Then
+                        index2 = i
+                        Exit For
+                    End If
+
+                    i2 += 1
+                Next
+
+                cbbSuplierObject.SelectedIndex = index
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub AddObject(name As String, unitID As Integer, supplierID As Integer)
+        If CheckEmpty(name) <> True Then
+            If ObjectDAO._Instance.InsertObject(name, unitID, supplierID) Then
+                MessageBox.Show("Thêm thành công")
+
+                isAddObject = False
+                Enable()
+
+                LoadListObject()
+            Else
+                MessageBox.Show("Thêm thất bại")
+            End If
+        Else
+            MessageBox.Show("Không được để trống tên sản phẩm")
+        End If
+    End Sub
+
+    Private Sub EditObject(id As Integer, name As String, unitID As Integer, supplierID As Integer)
+        If CheckEmpty(name) <> True Then
+            If ObjectDAO._Instance.UpdateObject(id, name, unitID, supplierID) Then
+                MessageBox.Show("Cập nhật thành công")
+
+                isUpdateObject = False
+                Enable()
+
+                LoadListObject()
+            Else
+                MessageBox.Show("Cập nhật thất bại")
+            End If
+        Else
+            MessageBox.Show("Không được để trống tên nhà sản phẩm")
+        End If
+    End Sub
+
 End Class

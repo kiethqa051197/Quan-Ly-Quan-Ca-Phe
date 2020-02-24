@@ -52,4 +52,17 @@ Public Class SuppilerDAO
         Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
         Return result > 0
     End Function
+
+    Public Function GetSupplierByID(id As Integer) As Suppliers
+        Dim suppliers As Suppliers = Nothing
+        Dim query As String = "SELECT * FROM SUPPLIERS WHERE id = " & id
+        Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
+
+        For Each item As DataRow In data.Rows
+            suppliers = New Suppliers(item)
+            Return suppliers
+        Next
+
+        Return suppliers
+    End Function
 End Class
