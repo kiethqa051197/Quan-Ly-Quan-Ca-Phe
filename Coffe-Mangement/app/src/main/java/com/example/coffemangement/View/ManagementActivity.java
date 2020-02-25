@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,10 +45,11 @@ public class ManagementActivity extends AppCompatActivity {
         layoutManager = new GridLayoutManager(getApplicationContext(), 3);
         listTable.setLayoutManager(layoutManager);
 
-        LoadTable orderData = new LoadTable();
-        orderData.execute("");
+        LoadTable loadTable = new LoadTable();
+        loadTable.execute("");
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class LoadTable extends AsyncTask<String, String, String> {
         String z = "";
         Boolean isSuccess = false;
@@ -60,8 +62,7 @@ public class ManagementActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String r) {
             Toast.makeText(ManagementActivity.this, z + "", Toast.LENGTH_LONG).show();
-            if (isSuccess == false)
-            {
+            if (!isSuccess) {
                 Toast.makeText(ManagementActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
             else {
@@ -69,8 +70,7 @@ public class ManagementActivity extends AppCompatActivity {
                     adapterTable = new ListTableAdapter(tableList);
                     adapterTable.notifyDataSetChanged();
                     listTable.setAdapter(adapterTable);
-                } catch (Exception ex)
-                {
+                } catch (Exception ignored) {
 
                 }
             }
@@ -88,8 +88,7 @@ public class ManagementActivity extends AppCompatActivity {
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
 
-                    if (rs != null) // if resultset not null, I add items to itemArraylist using class created
-                    {
+                    if (rs != null){
                         while (rs.next())
                         {
                             try {
@@ -107,10 +106,6 @@ public class ManagementActivity extends AppCompatActivity {
                 }
             } catch (Exception ex) {
                 z = "Exceptions";
-                ex.printStackTrace();
-                Writer writer = new StringWriter();
-                ex.printStackTrace(new PrintWriter(writer));
-                z = writer.toString();
                 isSuccess = false;
             }
             return z;

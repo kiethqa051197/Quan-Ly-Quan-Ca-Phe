@@ -33,7 +33,10 @@
         End If
 
         Me.status = CInt(row("status"))
-        If row("discount").ToString() <> "" Then Me.discount = CInt(row("discount"))
+
+        If row("discount").ToString() <> "" Then
+            Me.discount = CInt(row("discount"))
+        End If
 
         Me.idStaff = CInt(row("idStaff"))
     End Sub

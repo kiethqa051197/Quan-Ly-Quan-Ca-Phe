@@ -197,12 +197,14 @@ Public Class FormAdmin
     'Lấy danh sách nhà cung cấp
     Private Sub LoadListSupplier()
         supplierList.DataSource = SuppilerDAO._Instance.GetListSupplier()
+
         cbbSuplierObject.DataSource = SuppilerDAO._Instance.GetListSupplier()
         cbbSuplierObject.DisplayMember = "_name"
     End Sub
 
     Private Sub LoadListObject()
         objectList.DataSource = ObjectDAO._Instance.GetListObject()
+
         cbbInputObject.DataSource = ObjectDAO._Instance.GetListObject()
         cbbInputObject.DisplayMember = "_name"
 
@@ -559,6 +561,20 @@ Public Class FormAdmin
         gridSupplier.Columns(4).Caption = "Email"
         gridSupplier.Columns(5).Caption = "Đã Xoá"
         gridSupplier.BestFitColumns()
+
+        'Bảng Đơn vị
+        gridUnit.Columns(0).Caption = "Mã đơn vị"
+        gridUnit.Columns(1).Caption = "Tên đơn vị"
+        gridUnit.Columns(2).Caption = "Đã xoá"
+        gridUnit.BestFitColumns()
+
+        'Bảng Sản phẩm
+        gridObject.Columns(0).Caption = "Mã sản phẩm"
+        gridObject.Columns(1).Caption = "Tên sản phẩm"
+        gridObject.Columns(2).Caption = "Mã đơn vị tính"
+        gridObject.Columns(3).Caption = "Mã nhà cung cấp"
+        gridObject.Columns(4).Caption = "Đã Xoá"
+        gridObject.BestFitColumns()
     End Sub
 
     'Mở/Đóng các items
@@ -1403,14 +1419,14 @@ Public Class FormAdmin
     End Sub
 
     Private Sub btnSaveObject_Click(sender As Object, e As EventArgs) Handles btnSaveObject.Click
-        Dim name As String = txtNameUnit.Text
+        Dim name As String = txtNameObject.Text
         Dim unitID As Integer = (TryCast(cbbUnitObject.SelectedItem, Units))._id
-        Dim supplierID As Integer = (TryCast(cbbUnitObject.SelectedItem, Suppliers))._id
+        Dim supplierID As Integer = (TryCast(cbbSuplierObject.SelectedItem, Suppliers))._id
 
         If isAddObject = True Then
             AddObject(name, unitID, supplierID)
         ElseIf isUpdateObject = True Then
-            Dim id As Integer = Convert.ToInt32(txtIDUnit.Text)
+            Dim id As Integer = Convert.ToInt32(txtIDObject.Text)
             EditObject(id, name, unitID, supplierID)
         End If
     End Sub

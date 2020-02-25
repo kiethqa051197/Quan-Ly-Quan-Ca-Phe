@@ -69,8 +69,6 @@ public class ListTableAdapter extends RecyclerView.Adapter<ListTableViewHolder>{
             holder.imgTable.setImageResource(R.drawable.table_true);
         }
 
-        holder.itemtable.setTag(table.getId());
-
         holder.imgTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +87,8 @@ public class ListTableAdapter extends RecyclerView.Adapter<ListTableViewHolder>{
             @Override
             public void onClick(View v) {
                 Intent iOder = new Intent(context, OrderActivity.class);
-                iOder.putExtra("table", holder.itemtable.getTag().toString());
+                iOder.putExtra("tableID", table.getId());
+                iOder.putExtra("tableName", table.getName());
                 context.startActivity(iOder);
             }
         });

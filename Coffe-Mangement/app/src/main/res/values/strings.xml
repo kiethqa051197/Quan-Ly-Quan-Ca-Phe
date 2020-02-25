@@ -10,4 +10,16 @@
     <string name="trangchu">Trang chủ</string>
     <string name="thucdon">Thực đơn</string>
     <string name="nhanvien">Nhân viên</string>
+    <string name="tenmonan">Tên món ăn</string>
+    <string name="soluong">Số lượng</string>
+    <string name="thanhtien">Thành tiền</string>
+    <string name="goimon">Gọi món</string>
+    <string name="huy">Huỷ</string>
+    <string name="chuyensangban">Chuyển sang bàn</string>
+    <string name="banan">Bàn ăn</string>
+    <string name="tru">-</string>
+    <string name="soluongmacdinh">1</string>
+    <string name="cong">+</string>
+    <string name="thanhtoan">Thanh toán</string>
+    <string name="dongia">Đơn giá</string>
 </resources>

@@ -1,9 +1,9 @@
 package com.example.coffemangement.Model;
 
 public class Table {
-    int id;
-    String name;
-    String status;
+    private int id;
+    private String name;
+    private String status;
 
     public int getId() {
         return id;
@@ -33,5 +33,11 @@ public class Table {
         this.id = id;
         this.name = name;
         this.status = status;
+    }
+
+    @androidx.annotation.NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }

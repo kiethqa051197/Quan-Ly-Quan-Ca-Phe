@@ -34,13 +34,13 @@ Public Class ObjectDAO
         Return list
     End Function
 
-    Public Function InsertObject(name As String, idUnit As String, idSupplier As String) As Boolean
+    Public Function InsertObject(name As String, idUnit As Integer, idSupplier As Integer) As Boolean
         Dim query As String = String.Format("INSERT INTO OBJECTS (name, idUnit, idSupplier) VALUES  (N'{0}', {1}, {2})", name, idUnit, idSupplier)
         Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
         Return result > 0
     End Function
 
-    Public Function UpdateObject(id As Integer, name As String, idUnit As String, idSupplier As String) As Boolean
+    Public Function UpdateObject(id As Integer, name As String, idUnit As Integer, idSupplier As Integer) As Boolean
         Dim query As String = String.Format("UPDATE OBJECTS SET name = N'{1}' , idUnit = {2} , idSupplier = {3} WHERE id = {0}", id, name, idUnit, idSupplier)
         Dim result As Integer = DataProvider._Instance.ExecuteNoneQuery(query)
         Return result > 0

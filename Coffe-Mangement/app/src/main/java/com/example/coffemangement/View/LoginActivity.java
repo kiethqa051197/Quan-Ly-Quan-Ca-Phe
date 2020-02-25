@@ -2,6 +2,7 @@ package com.example.coffemangement.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class DoLogin extends AsyncTask<String, String, String> {
         String z = "";
         Boolean isSuccess = false;
@@ -82,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent i = new Intent(LoginActivity.this, ManagementActivity.class);
                             startActivity(i);
                         } else {
-
+                            z = "Error to excute query";
                         }
                     }
                 } catch (Exception ex) {
