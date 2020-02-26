@@ -56,8 +56,7 @@ public class OrderActivity extends AppCompatActivity {
 
         txtbanan.setText(getIntent().getStringExtra("tableName"));
 
-        listBill = findViewById(R.id.recyclerTable);
-        listBill.setHasFixedSize(true);
+        listBill = findViewById(R.id.recyclerOrder);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         listBill.setLayoutManager(layoutManager);
 
@@ -164,7 +163,7 @@ public class OrderActivity extends AppCompatActivity {
                 if (con == null) {
                     z = "Error in connection with SQL server";
                 } else {
-                    String query = "SELECT i.name, bi.count, i.price, i.price*bi.count AS totalPrice FROM BILLINFOS AS bi, BILLS AS b, ITEMS AS i WHERE bi.idBill = b.id AND bi.idItems = i.id AND b.status = 0 AND b.idTable = " + getIntent().getStringExtra("tableID") + "";
+                    String query = "SELECT i.name, bi.count, i.price, i.price*bi.count AS totalPrice FROM BILLINFOS AS bi, BILLS AS b, ITEMS AS i WHERE bi.idBill = b.id AND bi.idItems = i.id AND b.status = 0 AND b.idTable = " + getIntent().getIntExtra("tableID", 0) + "";
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
 

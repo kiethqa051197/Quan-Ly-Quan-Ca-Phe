@@ -122,7 +122,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/size5dp"/>
+                android:layout_margin="@dimen/size5dp"
+                android:background="@drawable/border_linear"/>
         </LinearLayout>
 
         <LinearLayout
