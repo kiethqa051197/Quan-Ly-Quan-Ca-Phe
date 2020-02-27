@@ -61,7 +61,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
 
             if (isSuccess) {
-                Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(LoginActivity.this, ManagementActivity.class);
+                startActivity(i);
             }
         }
 
@@ -81,8 +82,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (rs.next()) {
                             isSuccess = true;
-                            Intent i = new Intent(LoginActivity.this, ManagementActivity.class);
-                            startActivity(i);
                         } else {
                             z = "Error to excute query";
                         }

@@ -34,4 +34,12 @@ Public Class InputDAO
 
         Return list
     End Function
+
+    Public Function getParameter() As Integer
+        Dim query As String = "DECLARE @get VARCHAR(20); EXEC Temp '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get "
+
+        Dim ton As Integer = DataProvider._Instance.ExecuteScalar(query)
+
+        Return ton
+    End Function
 End Class

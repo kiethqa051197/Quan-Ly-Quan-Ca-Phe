@@ -14,7 +14,6 @@
     <string name="soluong">Số lượng</string>
     <string name="thanhtien">Thành tiền</string>
     <string name="goimon">Gọi món</string>
-    <string name="huy">Huỷ</string>
     <string name="chuyensangban">Chuyển sang bàn</string>
     <string name="banan">Bàn ăn</string>
     <string name="tru">-</string>
@@ -22,4 +21,6 @@
     <string name="cong">+</string>
     <string name="thanhtoan">Thanh toán</string>
     <string name="dongia">Đơn giá</string>
+    <string name="thoat">Thoát</string>
+    <string name="tongcong">Tổng cộng:</string>
 </resources>

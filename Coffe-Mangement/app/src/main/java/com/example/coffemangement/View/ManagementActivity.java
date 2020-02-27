@@ -111,4 +111,11 @@ public class ManagementActivity extends AppCompatActivity {
             return z;
         }
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        LoadTable loadTable = new LoadTable();
+        loadTable.execute("");
+    }
 }

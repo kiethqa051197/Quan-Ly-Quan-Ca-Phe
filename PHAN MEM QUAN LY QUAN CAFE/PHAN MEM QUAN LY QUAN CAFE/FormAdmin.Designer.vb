@@ -1576,7 +1576,7 @@ Partial Class FormAdmin
         Me.PanelControl12.Controls.Add(Me.LabelControl34)
         Me.PanelControl12.Controls.Add(Me.nmOutputCount)
         Me.PanelControl12.Controls.Add(Me.LabelControl35)
-        Me.PanelControl12.Location = New System.Drawing.Point(5, 50)
+        Me.PanelControl12.Location = New System.Drawing.Point(5, 43)
         Me.PanelControl12.Name = "PanelControl12"
         Me.PanelControl12.Size = New System.Drawing.Size(451, 88)
         Me.PanelControl12.TabIndex = 32
@@ -1584,17 +1584,17 @@ Partial Class FormAdmin
         'cbOutputStatus
         '
         Me.cbOutputStatus.FormattingEnabled = True
-        Me.cbOutputStatus.Location = New System.Drawing.Point(75, 50)
+        Me.cbOutputStatus.Location = New System.Drawing.Point(85, 50)
         Me.cbOutputStatus.Name = "cbOutputStatus"
-        Me.cbOutputStatus.Size = New System.Drawing.Size(130, 21)
+        Me.cbOutputStatus.Size = New System.Drawing.Size(120, 21)
         Me.cbOutputStatus.TabIndex = 26
         '
         'cbbOutputObject
         '
         Me.cbbOutputObject.FormattingEnabled = True
-        Me.cbbOutputObject.Location = New System.Drawing.Point(75, 17)
+        Me.cbbOutputObject.Location = New System.Drawing.Point(85, 17)
         Me.cbbOutputObject.Name = "cbbOutputObject"
-        Me.cbbOutputObject.Size = New System.Drawing.Size(130, 21)
+        Me.cbbOutputObject.Size = New System.Drawing.Size(120, 21)
         Me.cbbOutputObject.TabIndex = 25
         '
         'LabelControl32
@@ -1609,7 +1609,7 @@ Partial Class FormAdmin
         'LabelControl34
         '
         Me.LabelControl34.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl34.Location = New System.Drawing.Point(244, 20)
+        Me.LabelControl34.Location = New System.Drawing.Point(245, 20)
         Me.LabelControl34.Name = "LabelControl34"
         Me.LabelControl34.Size = New System.Drawing.Size(53, 14)
         Me.LabelControl34.TabIndex = 23
@@ -1618,13 +1618,13 @@ Partial Class FormAdmin
         'nmOutputCount
         '
         Me.nmOutputCount.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.nmOutputCount.Location = New System.Drawing.Point(303, 18)
+        Me.nmOutputCount.Location = New System.Drawing.Point(316, 18)
         Me.nmOutputCount.Name = "nmOutputCount"
         Me.nmOutputCount.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.nmOutputCount.Properties.IsFloatValue = False
         Me.nmOutputCount.Properties.Mask.EditMask = "N00"
         Me.nmOutputCount.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-        Me.nmOutputCount.Size = New System.Drawing.Size(123, 20)
+        Me.nmOutputCount.Size = New System.Drawing.Size(110, 20)
         Me.nmOutputCount.TabIndex = 20
         '
         'LabelControl35
@@ -1644,7 +1644,7 @@ Partial Class FormAdmin
         Me.PanelControl9.Controls.Add(Me.SimpleButton11)
         Me.PanelControl9.Controls.Add(Me.SimpleButton12)
         Me.PanelControl9.Controls.Add(Me.SimpleButton13)
-        Me.PanelControl9.Location = New System.Drawing.Point(462, 50)
+        Me.PanelControl9.Location = New System.Drawing.Point(462, 43)
         Me.PanelControl9.Name = "PanelControl9"
         Me.PanelControl9.Size = New System.Drawing.Size(245, 88)
         Me.PanelControl9.TabIndex = 23
@@ -1711,10 +1711,10 @@ Partial Class FormAdmin
         'dgvOutput
         '
         Me.dgvOutput.Cursor = System.Windows.Forms.Cursors.Default
-        Me.dgvOutput.Location = New System.Drawing.Point(5, 144)
+        Me.dgvOutput.Location = New System.Drawing.Point(5, 137)
         Me.dgvOutput.MainView = Me.GridView8
         Me.dgvOutput.Name = "dgvOutput"
-        Me.dgvOutput.Size = New System.Drawing.Size(702, 252)
+        Me.dgvOutput.Size = New System.Drawing.Size(702, 259)
         Me.dgvOutput.TabIndex = 8
         Me.dgvOutput.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView8})
         '

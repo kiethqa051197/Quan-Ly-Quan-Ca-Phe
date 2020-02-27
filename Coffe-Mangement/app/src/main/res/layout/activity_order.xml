@@ -97,6 +97,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/size5dp"
+        android:padding="@dimen/size10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tongcong"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtTotalPriceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -106,13 +134,13 @@
             android:padding="@dimen/size10dp">
 
             <Button
-                android:id="@+id/switchTable"
+                android:id="@+id/btnSwitchTable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/chuyensangban"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
-                android:background="@android:color/darker_gray"
+                android:background="@android:color/holo_orange_light"
                 android:layout_weight="1"
                 android:layout_margin="@dimen/size5dp"
                 android:textStyle="bold"/>
@@ -133,7 +161,7 @@
             android:padding="@dimen/size10dp">
 
             <Button
-                android:id="@+id/addFood"
+                android:id="@+id/btnOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/goimon"
@@ -146,7 +174,7 @@
                 tools:ignore="ButtonStyle" />
 
             <Button
-                android:id="@+id/paymentFood"
+                android:id="@+id/btnPayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/thanhtoan"
@@ -159,10 +187,10 @@
                 tools:ignore="ButtonStyle" />
 
             <Button
-                android:id="@+id/cancel"
+                android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/huy"
+                android:text="@string/thoat"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"

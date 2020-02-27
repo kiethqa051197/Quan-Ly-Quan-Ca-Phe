@@ -1,9 +1,9 @@
 ﻿Public Class Units
     Private id As Integer
     Private name As String
-    Private status As String
+    Private status As Boolean
 
-    Public Sub New(id As Integer, name As String, status As String)
+    Public Sub New(id As Integer, name As String, status As Boolean)
         Me.id = id
         Me.name = name
         Me.status = status
@@ -12,7 +12,7 @@
     Public Sub New(row As DataRow)
         Me.id = CInt(row("id"))
         Me.name = row("name").ToString()
-        Me.status = row("status").ToString()
+        Me.status = CType(row("status"), Boolean)
     End Sub
 
     Public Property _id() As Integer
@@ -33,11 +33,11 @@
         End Set
     End Property
 
-    Public Property _status() As String
+    Public Property _status() As Boolean
         Get
             Return status
         End Get
-        Set(value As String)
+        Set(value As Boolean)
             status = value
         End Set
     End Property

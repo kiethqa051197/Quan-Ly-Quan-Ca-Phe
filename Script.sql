@@ -537,3 +537,77 @@ BEGIN
 	join ITEMS as i on bi.idItems = i.id
 	where b.id = @idbill
 END
+GO
+
+/*
+CREATE PROC nhap
+	@thangnamtruoc nvarchar(Max), @thangnamtruoc2 nvarchar(Max),
+	@thangnamdangxet nvarchar(Max), @thangnamdangxet2 nvarchar(Max), 
+	@idSanPham int, --mã sản phẩm
+	@dx int, @truoc int
+AS
+BEGIN
+	DECLARE @nhapthangtruoc int, @xuatthangtruoc int
+	DECLARE @nhapthangdangxet int, @xuatthangdangxet int
+
+	select @nhapthangtruoc = SUM(ii.count)
+	from INPUTINFOS as ii 
+			join INPUTS i on ii.idInput = i .id 
+			join OBJECTS o on o.id = ii.idObject
+	where i.dateInput BETWEEN (select CONCAT(@thangnamtruoc, ' ', '00:00:00')) and (select CONCAT(@thangnamtruoc2, ' ', '23:59:59')) AND ii.idObject = @idSanPham
+
+	select @xuatthangtruoc = SUM(oi.count)
+	from OUTPUTINFOS as oi 
+			join OUTPUTS op on oi.idOutput = op.id 
+			join OBJECTS o on o.id = oi.idObject
+	where op.dateOutput BETWEEN (select CONCAT(@thangnamtruoc, ' ', '00:00:00')) and (select CONCAT(@thangnamtruoc2, ' ', '23:59:59')) AND oi.idObject = @idSanPham
+
+	Declare @toncuoithangtruoc int = @nhapthangtruoc - @xuatthangtruoc
+
+
+	select @nhapthangdangxet = SUM(ii.count)
+	from INPUTINFOS as ii 
+			join INPUTS i on ii.idInput = i .id 
+			join OBJECTS o on o.id = ii.idObject
+	where i.dateInput BETWEEN (select CONCAT(@thangnamdangxet, ' ','00:00:00')) and (select CONCAT(@thangnamdangxet2, ' ', '23:59:59')) AND ii.idObject = @idSanPham
+
+	select @xuatthangdangxet = SUM(oi.count)
+	from OUTPUTINFOS as oi 
+			join OUTPUTS op on oi.idOutput = op.id 
+			join OBJECTS o on o.id = oi.idObject
+	where op.dateOutput BETWEEN (select CONCAT(@thangnamdangxet, ' ','00:00:00')) and (select CONCAT(@thangnamdangxet2, ' ', '23:59:59')) AND oi.idObject = @idSanPham
+
+	Declare @toncuoithangdangxet int  = @toncuoithangtruoc + (@nhapthangdangxet - @xuatthangdangxet)
+
+	select @dx = @toncuoithangdangxet
+	select @truoc = @toncuoithangtruoc
+END
+Go
+*/
+
+CREATE PROC Temp
+	@thangnam nvarchar(Max), @thangnam2 nvarchar(Max),
+	@idSanPham int, --mã sản phẩm
+	@ton int output
+AS
+BEGIN
+	DECLARE @nhapthangtruoc int, @xuatthangtruoc int
+
+	select @nhapthangtruoc = SUM(ii.count)
+	from INPUTINFOS as ii 
+			join INPUTS i on ii.idInput = i .id 
+			join OBJECTS o on o.id = ii.idObject
+	where i.dateInput BETWEEN (select CONCAT(@thangnam, ' ', '00:00:00')) and (select CONCAT(@thangnam2, ' ', '23:59:59')) AND ii.idObject = @idSanPham
+
+	select @xuatthangtruoc = SUM(oi.count)
+	from OUTPUTINFOS as oi 
+			join OUTPUTS op on oi.idOutput = op.id 
+			join OBJECTS o on o.id = oi.idObject
+	where op.dateOutput BETWEEN (select CONCAT(@thangnam, ' ', '00:00:00')) and (select CONCAT(@thangnam2, ' ', '23:59:59')) AND oi.idObject = @idSanPham
+
+	Declare @toncuoithang int = @nhapthangtruoc - @xuatthangtruoc
+
+	select @ton = @toncuoithang
+END
+
+DECLARE @get VARCHAR(20); EXEC Temp '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get 
