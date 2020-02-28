@@ -45,77 +45,46 @@ public class ManagementActivity extends AppCompatActivity {
         layoutManager = new GridLayoutManager(getApplicationContext(), 3);
         listTable.setLayoutManager(layoutManager);
 
-        LoadTable loadTable = new LoadTable();
-        loadTable.execute("");
+        LoadTable();
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public class LoadTable extends AsyncTask<String, String, String> {
-        String z = "";
-        Boolean isSuccess = false;
+    public void LoadTable(){
+        try {
+            Connection con = connectionClass.CONN();
+            if (con == null) {
+                Toast.makeText(this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+            } else {
+                String query = "SELECT * FROM TABLES WHERE statusDel = 0";
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
 
-        @Override
-        protected void onPreExecute() {
-            Toast.makeText(ManagementActivity.this, "Please  wait....", Toast.LENGTH_SHORT).show();
-        }
+                if (rs != null){
+                    while (rs.next()) {
+                        try {
+                            tableList.add(new Table(rs.getInt("id"), rs.getString("name"), rs.getString("status")));
 
-        @Override
-        protected void onPostExecute(String r) {
-            Toast.makeText(ManagementActivity.this, z + "", Toast.LENGTH_LONG).show();
-            if (!isSuccess) {
-                Toast.makeText(ManagementActivity.this, "Error", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                try {
-                    adapterTable = new ListTableAdapter(tableList);
-                    adapterTable.notifyDataSetChanged();
-                    listTable.setAdapter(adapterTable);
-                } catch (Exception ignored) {
-
-                }
-            }
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            try {
-                Connection con = connectionClass.CONN();
-                if (con == null) {
-                    z = "Error in connection with SQL server";
-                } else {
-                    String query = "SELECT * FROM TABLES WHERE statusDel = 0";
-                    Statement stmt = con.createStatement();
-                    ResultSet rs = stmt.executeQuery(query);
-
-                    if (rs != null){
-                        while (rs.next())
-                        {
-                            try {
-                                tableList.add(new Table(rs.getInt("id"), rs.getString("name"), rs.getString("status")));
-                            } catch (Exception ex) {
-                                ex.printStackTrace();
-                            }
+                            adapterTable = new ListTableAdapter(tableList);
+                            adapterTable.notifyDataSetChanged();
+                            listTable.setAdapter(adapterTable);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
                         }
-                        z = "Found";
-                        isSuccess = true;
-                    } else {
-                        z = "No Data found!";
-                        isSuccess = false;
                     }
+                } else {
+                    Toast.makeText(this, "Lỗi query", Toast.LENGTH_SHORT).show();
                 }
-            } catch (Exception ex) {
-                z = "Exceptions";
-                isSuccess = false;
             }
-            return z;
+        } catch (Exception ex) {
+            Toast.makeText(this, "Lỗi kết nối tới SQL Server", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        LoadTable loadTable = new LoadTable();
-        loadTable.execute("");
+    protected void onResume() {
+        super.onResume();
+
+        tableList.clear();
+
+        LoadTable();
     }
 }

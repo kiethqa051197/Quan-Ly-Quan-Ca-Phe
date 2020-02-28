@@ -206,17 +206,22 @@ Public Class FormBanHang
         Dim selectedCustomer As Customers = TryCast(cbbCustomer.SelectedItem, Customers)
         Dim idCustomer = selectedCustomer._id
 
-        If idBill <> -1 Then
+        If table Is Nothing Then
+            MessageBox.Show("Hãy chọn bàn")
+            Return
+        Else
+            If idBill <> -1 Then
 
-            If MessageBox.Show(String.Format("Bạn có chắc thanh toán hoá đơn cho bàn {0}" & vbLf & "Tổng tiền - (Tổng tiền / 100) x Giảm giá" & vbLf & " => {1}000 - ({1}000 / 100) x {2} = {3}000", table._name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-                BillsDAO._Instance.CheckOut(idBill, idCustomer, discount, idStaff)
-                TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
+                If MessageBox.Show(String.Format("Bạn có chắc thanh toán hoá đơn cho bàn {0}" & vbLf & "Tổng tiền - (Tổng tiền / 100) x Giảm giá" & vbLf & " => {1}000 - ({1}000 / 100) x {2} = {3}000", table._name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+                    BillsDAO._Instance.CheckOut(idBill, idCustomer, discount, idStaff)
+                    TableDAO._Instance.UpdateStatusTable(table._id, "Trống")
 
-                Dim report As New FormHoaDon(idBill)
-                report.ShowDialog()
+                    Dim report As New FormHoaDon(idBill)
+                    report.ShowDialog()
 
-                ShowBill(table._id)
-                LoadTable()
+                    ShowBill(table._id)
+                    LoadTable()
+                End If
             End If
         End If
     End Sub

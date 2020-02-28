@@ -152,6 +152,13 @@ Partial Class FormAdmin
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LabelControl24 = New DevExpress.XtraEditors.LabelControl()
         Me.dtpInput = New System.Windows.Forms.DateTimePicker()
+        Me.tcInventory = New DevExpress.XtraTab.XtraTabPage()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtgiatritrungbinh = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.dtp = New System.Windows.Forms.DateTimePicker()
+        Me.txtDoanhThu = New System.Windows.Forms.TextBox()
+        Me.btnView = New DevExpress.XtraEditors.SimpleButton()
         Me.tpOutput = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl21 = New DevExpress.XtraEditors.PanelControl()
         Me.PanelControl12 = New DevExpress.XtraEditors.PanelControl()
@@ -322,6 +329,7 @@ Partial Class FormAdmin
         Me.PanelControl4.SuspendLayout()
         CType(Me.dgvInput, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tcInventory.SuspendLayout()
         Me.tpOutput.SuspendLayout()
         CType(Me.PanelControl21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl21.SuspendLayout()
@@ -1320,7 +1328,7 @@ Partial Class FormAdmin
         Me.tcInputOutput.SelectedTabPage = Me.tpInput
         Me.tcInputOutput.Size = New System.Drawing.Size(724, 429)
         Me.tcInputOutput.TabIndex = 0
-        Me.tcInputOutput.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tpInput, Me.tpOutput, Me.tpObject, Me.tpUnit, Me.tpSupplier})
+        Me.tcInputOutput.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tcInventory, Me.tpInput, Me.tpOutput, Me.tpObject, Me.tpUnit, Me.tpSupplier})
         '
         'tpInput
         '
@@ -1542,10 +1550,71 @@ Partial Class FormAdmin
         'dtpInput
         '
         Me.dtpInput.Enabled = False
+        Me.dtpInput.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpInput.Location = New System.Drawing.Point(518, 15)
         Me.dtpInput.Name = "dtpInput"
         Me.dtpInput.Size = New System.Drawing.Size(189, 20)
         Me.dtpInput.TabIndex = 3
+        '
+        'tcInventory
+        '
+        Me.tcInventory.Controls.Add(Me.Label4)
+        Me.tcInventory.Controls.Add(Me.txtgiatritrungbinh)
+        Me.tcInventory.Controls.Add(Me.Label3)
+        Me.tcInventory.Controls.Add(Me.dtp)
+        Me.tcInventory.Controls.Add(Me.txtDoanhThu)
+        Me.tcInventory.Controls.Add(Me.btnView)
+        Me.tcInventory.Name = "tcInventory"
+        Me.tcInventory.Size = New System.Drawing.Size(718, 401)
+        Me.tcInventory.Text = "Tồn kho"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(240, 77)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(84, 13)
+        Me.Label4.TabIndex = 45
+        Me.Label4.Text = "Gia tri trung binh"
+        '
+        'txtgiatritrungbinh
+        '
+        Me.txtgiatritrungbinh.Location = New System.Drawing.Point(57, 77)
+        Me.txtgiatritrungbinh.Name = "txtgiatritrungbinh"
+        Me.txtgiatritrungbinh.Size = New System.Drawing.Size(146, 20)
+        Me.txtgiatritrungbinh.TabIndex = 44
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(240, 134)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(55, 13)
+        Me.Label3.TabIndex = 43
+        Me.Label3.Text = "doanh thu"
+        '
+        'dtp
+        '
+        Me.dtp.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtp.Location = New System.Drawing.Point(57, 24)
+        Me.dtp.Name = "dtp"
+        Me.dtp.Size = New System.Drawing.Size(121, 20)
+        Me.dtp.TabIndex = 38
+        '
+        'txtDoanhThu
+        '
+        Me.txtDoanhThu.Location = New System.Drawing.Point(57, 134)
+        Me.txtDoanhThu.Name = "txtDoanhThu"
+        Me.txtDoanhThu.Size = New System.Drawing.Size(146, 20)
+        Me.txtDoanhThu.TabIndex = 37
+        '
+        'btnView
+        '
+        Me.btnView.Location = New System.Drawing.Point(279, 24)
+        Me.btnView.Name = "btnView"
+        Me.btnView.Size = New System.Drawing.Size(61, 21)
+        Me.btnView.TabIndex = 34
+        Me.btnView.Text = "Xem"
         '
         'tpOutput
         '
@@ -1734,6 +1803,7 @@ Partial Class FormAdmin
         '
         'dtpOutput
         '
+        Me.dtpOutput.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpOutput.Location = New System.Drawing.Point(524, 14)
         Me.dtpOutput.Name = "dtpOutput"
         Me.dtpOutput.Size = New System.Drawing.Size(189, 20)
@@ -2453,6 +2523,8 @@ Partial Class FormAdmin
         Me.PanelControl4.ResumeLayout(False)
         CType(Me.dgvInput, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tcInventory.ResumeLayout(False)
+        Me.tcInventory.PerformLayout()
         Me.tpOutput.ResumeLayout(False)
         CType(Me.PanelControl21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl21.ResumeLayout(False)
@@ -2732,4 +2804,11 @@ Partial Class FormAdmin
     Friend WithEvents SimpleButton16 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnAddUnitObject As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cbbUnitObject As System.Windows.Forms.ComboBox
+    Friend WithEvents tcInventory As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents btnView As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtDoanhThu As System.Windows.Forms.TextBox
+    Friend WithEvents dtp As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtgiatritrungbinh As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

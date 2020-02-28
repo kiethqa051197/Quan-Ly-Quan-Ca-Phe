@@ -56,4 +56,15 @@ Public Class BillsDAO
         End Try
     End Function
 
+    Public Function GetTotalPrice(mothStart As String, mothEnd As String) As Integer
+        Dim query As String = "DECLARE @get VARCHAR(20); EXEC PC_Bill_byDate '" & mothStart + "' , '" & mothEnd + "' , @get output; SELECT @get "
+
+        If DataProvider._Instance.ExecuteScalar(query) Is DBNull.Value Then
+            Return 0
+        Else
+            Dim totalPrice As Integer = DataProvider._Instance.ExecuteScalar(query)
+            Return totalPrice
+        End If
+    End Function
+
 End Class

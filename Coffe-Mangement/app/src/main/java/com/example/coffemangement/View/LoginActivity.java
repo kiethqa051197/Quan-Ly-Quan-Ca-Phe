@@ -37,61 +37,34 @@ public class LoginActivity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DoLogin doLogin = new DoLogin();
-                doLogin.execute("");
+                Login(edtpass.getText().toString().trim(), edtpass.getText().toString().trim());
             }
         });
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public class DoLogin extends AsyncTask<String, String, String> {
-        String z = "";
-        Boolean isSuccess = false;
+    private void Login(String username, String pass){
+        if (username.equals("") || pass.equals(""))
+            Toast.makeText(this, "Nhập đầy đủ tên và mật khấu", Toast.LENGTH_SHORT).show();
+        else {
+            try {
+                Connection con = connectionClass.CONN();
+                if (con == null) {
+                    Toast.makeText(this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+                } else {
+                    String query = "EXEC PC_Login " + username + " , " + pass;
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery(query);
 
-        String userid = edtuserid.getText().toString();
-        String password = edtpass.getText().toString();
-
-        @Override
-        protected void onPreExecute() {
-            Toast.makeText(LoginActivity.this, "Please  wait....", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected void onPostExecute(String r) {
-            Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
-
-            if (isSuccess) {
-                Intent i = new Intent(LoginActivity.this, ManagementActivity.class);
-                startActivity(i);
-            }
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            if (userid.trim().equals("") || password.trim().equals(""))
-                z = "Please enter User Id and Password";
-            else {
-                try {
-                    Connection con = connectionClass.CONN();
-                    if (con == null) {
-                        z = "Error in connection with SQL server";
+                    if (rs != null) {
+                        Intent iManage = new Intent(this, ManagementActivity.class);
+                        startActivity(iManage);
                     } else {
-                        String query = "EXEC PC_Login " + userid + " , " + password;
-                        Statement stmt = con.createStatement();
-                        ResultSet rs = stmt.executeQuery(query);
-
-                        if (rs.next()) {
-                            isSuccess = true;
-                        } else {
-                            z = "Error to excute query";
-                        }
+                        Toast.makeText(this, "Lỗi query", Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception ex) {
-                    isSuccess = false;
-                    z = "Exceptions";
                 }
+            } catch (Exception ex) {
+                Toast.makeText(this, "Lỗi kết nối tới SQL Server", Toast.LENGTH_SHORT).show();
             }
-            return z;
         }
     }
 }

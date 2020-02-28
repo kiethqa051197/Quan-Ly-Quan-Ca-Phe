@@ -1567,6 +1567,77 @@ Public Class FormAdmin
     End Sub
 
     Private Sub btnDeleteInput_Click(sender As Object, e As EventArgs) Handles btnDeleteInput.Click
-        MessageBox.Show(InputDAO._Instance.getParameter.ToString)
+
+    End Sub
+
+    Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
+        Dim thangdangxet As Integer = dtp.Value.Month
+        Dim namdangxet As Integer = dtp.Value.Year
+
+        Dim thangtruoc As Integer = 0
+        Dim namtruoc As Integer = 0
+
+        If thangdangxet = 1 Then
+            thangtruoc = 12
+            namtruoc = namdangxet - 1
+        Else
+            thangtruoc = thangdangxet - 1
+            namtruoc = namdangxet
+        End If
+
+        Dim ngaybatdauthangnay As String
+        Dim ngayketthucthangnay As String
+        Dim ngaybatdauthangtruoc As String
+        Dim ngayketthucthangtruoc As String
+
+        If thangdangxet < 10 Then
+            ngaybatdauthangnay = namdangxet.ToString + "-0" + thangdangxet.ToString + "-" + "01"
+            ngayketthucthangnay = namdangxet.ToString + "-0" + thangdangxet.ToString + "-" + System.DateTime.DaysInMonth(namdangxet, thangdangxet).ToString
+        Else
+            ngaybatdauthangnay = namdangxet.ToString + "-" + thangdangxet.ToString + "-" + "01"
+            ngayketthucthangnay = namdangxet.ToString + "-" + thangdangxet.ToString + "-" + System.DateTime.DaysInMonth(namdangxet, thangdangxet).ToString
+        End If
+
+        If thangtruoc < 10 Then
+            ngaybatdauthangtruoc = namtruoc.ToString + "-0" + thangtruoc.ToString + "-" + "01"
+            ngayketthucthangtruoc = namtruoc.ToString + "-0" + thangtruoc.ToString + "-" + System.DateTime.DaysInMonth(namtruoc, thangtruoc).ToString
+        Else
+            ngaybatdauthangtruoc = namtruoc.ToString + "-" + thangtruoc.ToString + "-" + "01"
+            ngayketthucthangtruoc = namtruoc.ToString + "-" + thangtruoc.ToString + "-" + System.DateTime.DaysInMonth(namtruoc, thangtruoc).ToString
+        End If
+
+        Dim giatritontruoc As Integer = 0
+        Dim giatrinhapsau As Integer = 0
+
+        Dim tonthangtruoc As Integer = 0
+        Dim tonthangnay As Integer = 0
+
+        Dim soluongnhapsau As Integer = 0
+
+        Dim listObjectInput As List(Of Objects) = InputDAO._Instance.getListObject()
+
+        For Each i As Objects In listObjectInput
+            giatritontruoc += InputDAO._Instance.getInventory(ngaybatdauthangtruoc, ngayketthucthangtruoc, i._id) * InputDAO._Instance.getPrice(ngaybatdauthangtruoc, ngayketthucthangtruoc, i._id)
+            giatrinhapsau += InputDAO._Instance.getCount(ngaybatdauthangnay, ngayketthucthangnay, i._id) * InputDAO._Instance.getPrice(ngaybatdauthangnay, ngayketthucthangnay, i._id)
+
+            soluongnhapsau += InputDAO._Instance.getCount(ngaybatdauthangnay, ngayketthucthangnay, i._id)
+
+            tonthangtruoc += InputDAO._Instance.getInventory(ngaybatdauthangtruoc, ngayketthucthangtruoc, i._id)
+            tonthangnay += InputDAO._Instance.getInventory(ngaybatdauthangnay, ngayketthucthangnay, i._id)
+        Next
+
+        Dim giatritrungbinh As Integer = Convert.ToUInt32((giatritontruoc + giatrinhapsau) / (soluongnhapsau + tonthangtruoc + tonthangnay))
+
+        txtgiatritrungbinh.Text = giatritrungbinh
+
+        Dim loinhuan As Integer = 0
+
+        For Each i As Objects In listObjectInput
+            loinhuan += giatritrungbinh * OutputDAO._Instance.getCount(ngaybatdauthangnay, ngayketthucthangnay, i._id)
+        Next
+
+        Dim bill As Integer = BillsDAO._Instance.GetTotalPrice(ngaybatdauthangnay, ngayketthucthangnay)
+
+        txtDoanhThu.Text = bill - loinhuan
     End Sub
 End Class

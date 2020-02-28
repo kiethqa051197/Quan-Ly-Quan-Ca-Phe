@@ -539,56 +539,10 @@ BEGIN
 END
 GO
 
-/*
-CREATE PROC nhap
-	@thangnamtruoc nvarchar(Max), @thangnamtruoc2 nvarchar(Max),
-	@thangnamdangxet nvarchar(Max), @thangnamdangxet2 nvarchar(Max), 
+CREATE PROC PC_INVENTORY
+	@thangnambatdau nvarchar(Max), @thangnamketthuc nvarchar(Max),
 	@idSanPham int, --mã sản phẩm
-	@dx int, @truoc int
-AS
-BEGIN
-	DECLARE @nhapthangtruoc int, @xuatthangtruoc int
-	DECLARE @nhapthangdangxet int, @xuatthangdangxet int
-
-	select @nhapthangtruoc = SUM(ii.count)
-	from INPUTINFOS as ii 
-			join INPUTS i on ii.idInput = i .id 
-			join OBJECTS o on o.id = ii.idObject
-	where i.dateInput BETWEEN (select CONCAT(@thangnamtruoc, ' ', '00:00:00')) and (select CONCAT(@thangnamtruoc2, ' ', '23:59:59')) AND ii.idObject = @idSanPham
-
-	select @xuatthangtruoc = SUM(oi.count)
-	from OUTPUTINFOS as oi 
-			join OUTPUTS op on oi.idOutput = op.id 
-			join OBJECTS o on o.id = oi.idObject
-	where op.dateOutput BETWEEN (select CONCAT(@thangnamtruoc, ' ', '00:00:00')) and (select CONCAT(@thangnamtruoc2, ' ', '23:59:59')) AND oi.idObject = @idSanPham
-
-	Declare @toncuoithangtruoc int = @nhapthangtruoc - @xuatthangtruoc
-
-
-	select @nhapthangdangxet = SUM(ii.count)
-	from INPUTINFOS as ii 
-			join INPUTS i on ii.idInput = i .id 
-			join OBJECTS o on o.id = ii.idObject
-	where i.dateInput BETWEEN (select CONCAT(@thangnamdangxet, ' ','00:00:00')) and (select CONCAT(@thangnamdangxet2, ' ', '23:59:59')) AND ii.idObject = @idSanPham
-
-	select @xuatthangdangxet = SUM(oi.count)
-	from OUTPUTINFOS as oi 
-			join OUTPUTS op on oi.idOutput = op.id 
-			join OBJECTS o on o.id = oi.idObject
-	where op.dateOutput BETWEEN (select CONCAT(@thangnamdangxet, ' ','00:00:00')) and (select CONCAT(@thangnamdangxet2, ' ', '23:59:59')) AND oi.idObject = @idSanPham
-
-	Declare @toncuoithangdangxet int  = @toncuoithangtruoc + (@nhapthangdangxet - @xuatthangdangxet)
-
-	select @dx = @toncuoithangdangxet
-	select @truoc = @toncuoithangtruoc
-END
-Go
-*/
-
-CREATE PROC Temp
-	@thangnam nvarchar(Max), @thangnam2 nvarchar(Max),
-	@idSanPham int, --mã sản phẩm
-	@ton int output
+	@inventory int output
 AS
 BEGIN
 	DECLARE @nhapthangtruoc int, @xuatthangtruoc int
@@ -597,17 +551,77 @@ BEGIN
 	from INPUTINFOS as ii 
 			join INPUTS i on ii.idInput = i .id 
 			join OBJECTS o on o.id = ii.idObject
-	where i.dateInput BETWEEN (select CONCAT(@thangnam, ' ', '00:00:00')) and (select CONCAT(@thangnam2, ' ', '23:59:59')) AND ii.idObject = @idSanPham
+	where i.dateInput BETWEEN (select CONCAT(@thangnambatdau, ' ', '00:00:00')) and (select CONCAT(@thangnamketthuc, ' ', '23:59:59')) AND ii.idObject = @idSanPham
 
 	select @xuatthangtruoc = SUM(oi.count)
 	from OUTPUTINFOS as oi 
 			join OUTPUTS op on oi.idOutput = op.id 
 			join OBJECTS o on o.id = oi.idObject
-	where op.dateOutput BETWEEN (select CONCAT(@thangnam, ' ', '00:00:00')) and (select CONCAT(@thangnam2, ' ', '23:59:59')) AND oi.idObject = @idSanPham
+	where op.dateOutput BETWEEN (select CONCAT(@thangnambatdau, ' ', '00:00:00')) and (select CONCAT(@thangnamketthuc, ' ', '23:59:59')) AND oi.idObject = @idSanPham
 
 	Declare @toncuoithang int = @nhapthangtruoc - @xuatthangtruoc
 
-	select @ton = @toncuoithang
+	select @inventory = @toncuoithang
 END
 
-DECLARE @get VARCHAR(20); EXEC Temp '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get 
+DECLARE @get VARCHAR(20); EXEC PC_INVENTORY '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get 
+Go
+
+CREATE PROC PC_GETPRICE_INPUT
+	@thangnambatdau nvarchar(Max), @thangnamketthuc nvarchar(Max),
+	@idSanPham int, --mã sản phẩm
+	@inputPrice int output
+AS
+BEGIN
+	select @inputPrice = ii.inputPrice
+	from INPUTS as i join INPUTINFOS as ii on ii.idInput = i.id
+	where i.dateInput between (select CONCAT(@thangnambatdau, ' ', '00:00:00')) and (select CONCAT(@thangnamketthuc, ' ', '23:59:59')) and ii.idObject = @idSanPham
+end	
+
+DECLARE @get VARCHAR(20); EXEC PC_GETPRICE_INPUT '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get 
+
+select * from OBJECTS
+where id In (select ii.idObject from INPUTS as i join INPUTINFOS as ii on ii.idInput = i.id
+group by ii.idObject)
+GO
+
+CREATE PROC PC_GETCOUNT_INPUT
+	@thangnambatdau nvarchar(Max), @thangnamketthuc nvarchar(Max),
+	@idSanPham int, --mã sản phẩm
+	@inputCount int output
+AS
+BEGIN
+	select @inputCount = ii.count
+	from INPUTS as i join INPUTINFOS as ii on ii.idInput = i.id
+	where i.dateInput between (select CONCAT(@thangnambatdau, ' ', '00:00:00')) and (select CONCAT(@thangnamketthuc, ' ', '23:59:59')) and ii.idObject = @idSanPham
+end	
+
+DECLARE @get VARCHAR(20); EXEC PC_GETCOUNT_INPUT '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get
+Go
+
+CREATE PROC PC_Bill_byDate
+	@thangnambatdau nvarchar(Max), @thangnamketthuc nvarchar(Max),
+	@totalPrice int output
+AS
+BEGIN
+	Select @totalPrice = SUM(bi.count * bi.price)
+	from BILLS b join BILLINFOS bi on b.id = bi.idBill
+	where b.dateCheckOut between @thangnambatdau and @thangnamketthuc
+end
+
+DECLARE @get VARCHAR(20); EXEC PC_Bill_byDate '2020-01-01' , '2020-01-31' , @get output; SELECT @get
+Go
+
+CREATE PROC PC_GETCOUNT_OUTPUT
+	@thangnambatdau nvarchar(Max), @thangnamketthuc nvarchar(Max),
+	@idSanPham int, --mã sản phẩm
+	@outputCount int output
+AS
+BEGIN
+	select @outputCount = oi.count
+	from OUTPUTS as o join OUTPUTINFOS as oi on oi.idOutput = o.id
+	where o.dateOutput between (select CONCAT(@thangnambatdau, ' ', '00:00:00')) and (select CONCAT(@thangnamketthuc, ' ', '23:59:59')) and oi.idObject = @idSanPham
+end	
+
+DECLARE @get VARCHAR(20); EXEC PC_GETCOUNT_OUTPUT '2020-02-01' , '2020-02-29' , 2, @get output; SELECT @get
+Go

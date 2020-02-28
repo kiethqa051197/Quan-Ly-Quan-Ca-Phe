@@ -22,7 +22,7 @@ Public Class InputDAO
     Private Sub New()
     End Sub
 
-    Public Function GetListUnit() As List(Of Inputs)
+    Public Function GetListInput() As List(Of Inputs)
         Dim list As List(Of Inputs) = New List(Of Inputs)()
         Dim query As String = "select * from Inputs"
         Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
@@ -35,11 +35,49 @@ Public Class InputDAO
         Return list
     End Function
 
-    Public Function getParameter() As Integer
-        Dim query As String = "DECLARE @get VARCHAR(20); EXEC Temp '2020-01-01' , '2020-01-31' , 1, @get output; SELECT @get "
+    Public Function getInventory(mothStart As String, mothEnd As String, idObject As Integer) As Integer
+        Dim query As String = "DECLARE @get VARCHAR(20); EXEC PC_INVENTORY '" & mothStart + "' , '" & mothEnd + "' , " & idObject & ", @get output; SELECT @get "
 
-        Dim ton As Integer = DataProvider._Instance.ExecuteScalar(query)
+        If DataProvider._Instance.ExecuteScalar(query) Is DBNull.Value Then
+            Return 0
+        Else
+            Dim ton As Integer = DataProvider._Instance.ExecuteScalar(query)
+            Return ton
+        End If
+    End Function
 
-        Return ton
+    Public Function getPrice(mothStart As String, mothEnd As String, idObject As Integer) As Integer
+        Dim query As String = "DECLARE @get VARCHAR(20); EXEC PC_GETPRICE_INPUT '" & mothStart + "' , '" & mothEnd + "' , " & idObject & ", @get output; SELECT @get "
+
+        If DataProvider._Instance.ExecuteScalar(query) Is DBNull.Value Then
+            Return 0
+        Else
+            Dim price As Integer = DataProvider._Instance.ExecuteScalar(query)
+            Return price
+        End If
+    End Function
+
+    Public Function getCount(mothStart As String, mothEnd As String, idObject As Integer) As Integer
+        Dim query As String = "DECLARE @get VARCHAR(20); EXEC PC_GETCOUNT_INPUT '" & mothStart + "' , '" & mothEnd + "' , " & idObject & ", @get output; SELECT @get "
+
+        If DataProvider._Instance.ExecuteScalar(query) Is DBNull.Value Then
+            Return 0
+        Else
+            Dim price As Integer = DataProvider._Instance.ExecuteScalar(query)
+            Return price
+        End If
+    End Function
+
+    Public Function getListObject() As List(Of Objects)
+        Dim list As List(Of Objects) = New List(Of Objects)()
+        Dim query As String = "select * from OBJECTS where id In (select ii.idObject from INPUTS as i join INPUTINFOS as ii on ii.idInput = i.id group by ii.idObject)"
+        Dim data As DataTable = DataProvider._Instance.ExecuteQuery(query)
+
+        For Each item As DataRow In data.Rows
+            Dim input As Objects = New Objects(item)
+            list.Add(input)
+        Next
+
+        Return list
     End Function
 End Class

@@ -110,6 +110,7 @@
     <Compile Include="DAO\CustomerDAO.vb" />
     <Compile Include="DAO\InputDAO.vb" />
     <Compile Include="DAO\ObjectDAO.vb" />
+    <Compile Include="DAO\OutputDAO.vb" />
     <Compile Include="DAO\StaffDAO.vb" />
     <Compile Include="DAO\SuppilerDAO.vb" />
     <Compile Include="DAO\UnitDAO.vb" />
